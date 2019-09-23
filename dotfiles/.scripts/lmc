@@ -1,0 +1,20 @@
+#!/bin/sh
+
+case "$1" in
+	"up") pamixer --allow-boost -i "$2" || amixer sset Master 2%+ ;;
+	"down") pamixer --allow-boost -d "$2" || amixer sset Master 2%- ;;
+	"mute") pamixer --allow-boost -t || amixer sset Master toggle ;;
+	"truemute") pamixer --allow-boost -m || amixer sset Master mute ;;
+	"toggle") mpc toggle ; $newmpd ;;
+	"pause") mpc pause ; $newmpd ;;
+	"forward") mpc seek +"$2" ; $newmpd ;;
+	"back") mpc seek -"$2" ; $newmpd ;;
+	"next") mpc next ; $newmpd ;;
+	"prev") mpc prev ; $newmpd ;;
+	"replay") mpc seek 0% ; $newmpd ;;
+esac
+
+kill -44 $(pgrep -x i3blocks)
+kill -45 $(pgrep -x i3blocks)
+
+exit

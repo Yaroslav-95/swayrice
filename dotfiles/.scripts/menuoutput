@@ -1,0 +1,16 @@
+#!/bin/sh
+# Change audio output for all streams and set as default using dmenu
+
+# Source settings from .dmenurc
+if ! [ -f "$HOME/.dmenurc" ]; then
+	cp /usr/share/dmenu/dmenurc $HOME/.dmenurc
+fi
+. $HOME/.dmenurc
+
+output=$(listsinks | dmenu -i $DMENU_OPTIONS)
+
+[ "$output" != "" ] || exit
+
+changeoutput $output
+
+notify-send "🔉 Audio output switched" "Audio output switched to '$output'"

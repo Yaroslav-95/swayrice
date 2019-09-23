@@ -1,0 +1,5 @@
+#!/bin/sh
+
+xydata=$(swaymsg -t get_tree | grep -B 5 '"focused": true' | head -n 4 | tr -d '\n\r' | sed -e 's/[^0-9,]//g' -e 's/,/ /2' -e 's/,/x/2')
+
+echo $xydata

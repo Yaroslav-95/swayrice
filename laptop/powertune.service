@@ -1,0 +1,11 @@
+[Unit]
+Description=Tune system's power management
+
+[Service]
+User=root
+Group=root
+ExecStart=/bin/powertune
+
+[Install]
+Alias=powertune.service
+WantedBy=multi-user.target

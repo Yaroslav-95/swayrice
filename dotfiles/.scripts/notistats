@@ -1,0 +1,10 @@
+#!/bin/sh
+
+body=$(echo -e "Screen brightness:\t$(xbacklight -get)";
+lscpu | grep 'CPU MHz';
+sensors | grep 'Package id 0' | sed 's/Package id 0/CPU temp/' | awk '{print $1 $2 "\t" $3}';
+sensors | grep 'fan';
+echo print\(\'BAT0 drainage:\\t{}W\'.format\($(grep 'POWER_SUPPLY_POWER_NOW' /sys/class/power_supply/BAT0/uevent | awk -F '=' '{print $2}')/1000000\)\) | python;
+echo print\(\'BAT1 drainage:\\t{}W\'.format\($(grep 'POWER_SUPPLY_POWER_NOW' /sys/class/power_supply/BAT1/uevent | awk -F '=' '{print $2}')/1000000\)\) | python)
+
+notify-send "Hardware status" "$body"

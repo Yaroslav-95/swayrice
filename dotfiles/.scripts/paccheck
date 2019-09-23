@@ -1,0 +1,10 @@
+#!/bin/sh
+
+ping -q -c 1 1.1.1.1 > /dev/null || exit
+
+notify-send "⬆ Update check" "Checking for updates..."
+
+sudo pacman -Sy
+upno=$(pacman -Qu | wc -l)
+
+notify-send "⬆ Update Check" "$upno updates are available"

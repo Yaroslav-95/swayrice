@@ -1,0 +1,16 @@
+#!/bin/sh
+# Give dmenu list of all unicode characters to copy.
+# Shows the selected character in dunst if running.
+
+# Source settings from .bemenurc
+. $HOME/.bemenurc
+
+chosen=$(grep -v "#" ~/.emoji | bemenu -i -l 25 $BEMENU_OPTIONS)
+
+if [ -z $chosen ]; then
+    exit 0
+fi
+
+c=$(echo "$chosen" | sed "s/ .*//")
+echo "$c" | tr -d '\n' | wl-copy
+notify-send "'$c' copied to clipboard."

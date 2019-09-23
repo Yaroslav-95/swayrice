@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Source settings from .bemenurc
+. $HOME/.bemenurc
+
+action=$(printf "logout\nsuspend\nreboot\nshutdown\n" | bemenu -p "What to do?" $BEMENU_OPTIONS)
+
+i3session $action

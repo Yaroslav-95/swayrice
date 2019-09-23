@@ -1,0 +1,48 @@
+##############################################################################
+## This is the example configuration file. Copy it to $HOME/.ncmpcpp/config ##
+## or $XDG_CONFIG_HOME/ncmpcpp/config and set up your preferences.          ##
+##############################################################################
+#
+# Interfaz:
+user_interface = 						"alternative"
+alternative_header_first_line_format = 	"$(white)─┤ $b$(red)%a$(end)$/b ├─$(end)"
+alternative_header_second_line_format =	"$(16)%t (%y)$(end)"
+alternative_ui_separator_color = 		"cyan"
+
+# Formato de canción:
+song_columns_list_format = 				"$L (10)[white]{n} $1│$7 (20)[cyan]{a} $1│$7 (20)[white]{b} $1│$7 (30)[cyan]{t} $1│$7 (10)[white]{l}"
+now_playing_prefix = 					"$b"
+centered_cursor = 						"no"
+cyclic_scrolling = 						"yes"
+mouse_list_scroll_whole_page = 			"no"
+
+# Varias configuraciones:
+autocenter_mode = 						"yes"
+display_bitrate = 						"yes"
+header_visibility = 					"yes"
+statusbar_visibility = 					"yes"
+progressbar_look = 						"▃▃▃"
+external_editor =                       "nvim"
+
+
+# Visualizador de música:
+visualizer_output_name = 				"FIFO"
+visualizer_in_stereo = 					"no"
+visualizer_fifo_path = 					"/tmp/mpd.fifo"
+visualizer_sync_interval = 				"10"
+visualizer_type = 						"spectrum"
+visualizer_look = 						"▋▋"
+
+
+# Color:
+color1 = 								"white"
+color2 = 								"red"
+discard_colors_if_item_is_selected = 	"yes"
+main_window_color = 					"white"
+header_window_color = 					"4"
+progressbar_color = 					"blue"
+statusbar_color = 						"red"
+volume_color = 							"4"
+window_border_color = 					"white"
+active_window_border = 					"4"
+

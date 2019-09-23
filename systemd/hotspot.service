@@ -1,0 +1,11 @@
+[Unit]
+Description=Nobody tells me how to use my internet >:(
+
+[Service]
+User=root
+Group=root
+ExecStart=/usr/bin/sysctl net.ipv4.ip_default_ttl=65
+
+[Install]
+Alias=hotspot.service
+WantedBy=multi-user.target

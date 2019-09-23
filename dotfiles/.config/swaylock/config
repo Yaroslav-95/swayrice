@@ -1,0 +1,5 @@
+image=~/.config/lockwall.png
+color=#000000
+indicator-radius=100
+show-failed-attempts
+inside-color=#00000000

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+source ~/Documents/venvs/$1/bin/activate

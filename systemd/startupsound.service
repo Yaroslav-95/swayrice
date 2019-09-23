@@ -1,0 +1,9 @@
+[Unit]
+Description=Play Startup Sound
+
+[Service]
+ExecStart=/usr/bin/mplayer /home/yaroslav/.soundalerts/start.ogg
+
+[Install]
+Alias=startupsound.service
+WantedBy=sound.target

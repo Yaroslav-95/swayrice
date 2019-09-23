@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Source settings from .bemenurc
+. $HOME/.bemenurc
+
+bemenu-run $BEMENU_OPTIONS

@@ -1,0 +1,14 @@
+#Refresh rate of the visualizers. A really high refresh rate may cause screen tearing. Default is 20.
+visualizer.fps=30
+
+#Sets the audio sources to use. Currently available ones are "mpd" and "alsa"Sets the audio sources to use.
+#Currently available ones are "mpd", "pulse", and "alsa". Defaults to "mpd".
+audio.sources=pulse
+
+#Available smoothing options are monstercat, sgs, none.
+visualizer.spectrum.smoothing.mode=monstercat
+
+#This configures the sgs smoothing effect on the spectrum visualizer. More points spreads out the smoothing
+#effect and increasing passes runs the smoother multiple times on reach run. Defaults are points=3 and passes=2.
+visualizer.sgs.smoothing.points=5
+visualizer.sgs.smoothing.passes=2

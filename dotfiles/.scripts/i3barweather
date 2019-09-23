@@ -1,0 +1,18 @@
+#!/bin/bash
+
+location="Saint Petersburg"
+
+if [[ "$location" != "" ]]
+then
+    location="~${location// /+}"
+fi
+
+forecast=$(curl -s wttr.in/$location?format=2)
+
+if [[ ${#forecast} -gt 30 ]]
+then
+    exit
+fi
+
+echo $forecast
+

@@ -1,0 +1,29 @@
+#
+# ~/.bemenurc
+#
+
+BEMENU_BACKEND=wayland
+
+## define the font for dmenu to be used
+BEMENU_FN="FuraCodeNerdFontMono 8"
+
+## textcolour for title
+BEMENU_TF="#F9FAF9"
+
+## background colour for unselected menu-items
+BEMENU_NB="#000000"
+
+## textcolour for unselected menu-items
+BEMENU_NF="#DAC99D"
+
+## background colour for highlighted menu-items
+BEMENU_HB="#689D6A"
+
+## textcolour for highlighted menu-items
+BEMENU_HF="#F9FAF9"
+
+## command for the terminal application to be used:
+TERMINAL_CMD="terminal -e"
+
+## export our variables
+BEMENU_OPTIONS="--tf=$BEMENU_TF --fn=$BEMENU_FN --nb=$BEMENU_NB --nf=$BEMENU_NF --hf=$BEMENU_HF --hb=$BEMENU_HB"

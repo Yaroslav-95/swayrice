@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Source settings from .bemenurc
+. $HOME/.bemenurc
+
+display=$(swaymsg -t get_outputs | grep -E "name" | sed "s/^.*\"name\": \"//g;s/\",$//g;" | bemenu -p "Select output: " $BEMENU_OPTIONS)
+
+if [ -z $display ]; then
+    exit 0
+fi
+
+action=$(printf "enable\ndisable\n" | bemenu -p "Choose action: " $BEMENU_OPTIONS)
+
+swaymsg output $display $action
