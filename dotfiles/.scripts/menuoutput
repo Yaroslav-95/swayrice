@@ -1,13 +1,10 @@
 #!/bin/sh
 # Change audio output for all streams and set as default using dmenu
 
-# Source settings from .dmenurc
-if ! [ -f "$HOME/.dmenurc" ]; then
-	cp /usr/share/dmenu/dmenurc $HOME/.dmenurc
-fi
-. $HOME/.dmenurc
+# Source settings from .bemenurc
+. $HOME/.bemenurc
 
-output=$(listsinks | dmenu -i $DMENU_OPTIONS)
+output=$(listsinks | bemenu -p "Select audio output: " $BEMENU_OPTIONS)
 
 [ "$output" != "" ] || exit
 
