@@ -65,6 +65,7 @@ set $ws10 10
 # Open specific applications in specific modes
 for_window [title="alsamixer"] floating enable
 for_window [title="ncpamixer"] floating enable
+for_window [title="nmtui"] floating enable
 for_window [title="i3_help"] floating enable, sticky enable
 for_window [class="Lightdm-settings"] floating enable
 for_window [class="Lxappearance"] floating enable, sticky enable
@@ -110,12 +111,7 @@ for_window [title="quakemite"] floating enable, sticky enable
 
 # Outputs
 output "*" background ~/.config/wall1.png fill
-output "eDP-1" scale 1.31 pos 960 1080
-output "HDMI-A-2" scale 1 pos 0 0
-output "DP-5" scale 1 pos 0 0
-output "DP-4" scale 1 pos 1920 0
-output "DP-7" scale 1 pos 0 0
-output "DP-6" scale 1 pos 1920 0
+output "eDP-1" scale 1.53 pos 0 0
 
 # Keymaps
 input * xkb_layout "us,es,ru"
@@ -192,16 +188,16 @@ bindsym --to-code {
     $mod+grave exec --no-startup-id menuducksearch
     $mod+Shift+grave exec --no-startup-id menuemoji
     $mod+F1 exec --no-startup-id zathura ~/.config/i3/i3guide.pdf
+    $mod+Shift+n exec $term -e 'nmtui'
 
     # Screenshot and recording
     Print exec --no-startup-id menugrim -q
-    Shift+Print exec --no-startup-id menugrim
-    $mod+Print exec --no-startup-id dmenurecord
-    $mod+Delete exec $stoprec
+    $mod+Print exec --no-startup-id menugrim
+    Shift+Print exec --no-startup-id swayrecord
 
     # Sound
-    $mod+Ctrl+m exec $term -e 'ncpamixer'
-    $mod+Shift+m exec --no-startup-id menuoutput
+    $mod+Shift+m exec $term -e 'ncpamixer'
+    $mod+Ctrl+m exec --no-startup-id menuoutput
 
     # Applications that start with no gaps
     $mod+g		exec --no-startup-id gimp; gaps inner current set 0; gaps outer current set 0

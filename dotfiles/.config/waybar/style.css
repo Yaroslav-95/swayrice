@@ -58,20 +58,6 @@ window#waybar {
     border-radius: 0;
     background: #0C3D27;
 }
-#backlight,
-#memory,
-#cpu,
-#battery,
-#network,
-#tray,
-#pulseaudio,
-#mpd,
-#temperature,
-#custom-weather,
-#custom-swaykbd,
-#idle_inhibitor {
-    padding: 0 8px;
-}
 #tray {
     background: #000000;
 }
@@ -83,21 +69,22 @@ window#waybar {
 #temperature,
 #backlight,
 #custom-weather,
+#custom-rec-status,
 #custom-swaykbd {
     color: #000000;
     background: #8ec07c;
+    padding: 0 8px;
 }
 #cpu {
     background: #f1fa8c;
 }
+#network,
 #battery{
     background: #191919;
+    padding: 0 8px;
 }
 #battery.charging {
     color: #8ec07c;
-}
-#network{
-    background: #191919;
 }
 #memory, #cpu, #tray {
     color: #1E1F23;

@@ -142,6 +142,11 @@
         },
         "on-click": "termite -e ncpamixer"
     },
+    "custom/rec-status": {
+        "format": "{}",
+        "signal": 5,
+        "exec": "$HOME/.scripts/i3barrecstatus"
+    },
     "custom/weather": {
         "format": "{}",
         "interval": 900,

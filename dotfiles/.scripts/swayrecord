@@ -1,0 +1,14 @@
+#!/bin/sh
+
+if [ -f "$HOME/.recordingpid" ]; then
+    killall -SIGINT wf-recorder
+    rm -f ~/.recordingpid
+    notify-send "⏺ Screen recording" "Recording stopped"
+    killall -39 waybar
+    exit
+fi
+
+wf-recorder -f "$HOME/Video/recordings/$(date '+%y%m%d-%H%M-%S').mkv" &
+echo $! > ~/.recordingpid
+notify-send "⏺ Screen recording" "Recording started"
+killall -39 waybar
