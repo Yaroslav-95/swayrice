@@ -69,9 +69,17 @@ let mapleader =" "
 " Copy selected text to system clipboard (requires gvim installed):
 	vnoremap <C-c> "*y :let @+=@*<CR>
 
-" Copy and paste to clipboard
-	vmap <F3> "+y
-	map <F4> "+p
+" Copy to clipboard
+    vnoremap  <leader>y  "+y
+    nnoremap  <leader>Y  "+yg_
+    nnoremap  <leader>y  "+y
+    nnoremap  <leader>yy  "+yy
+
+" Paste from clipboard
+    nnoremap <leader>p "+p
+    nnoremap <leader>P "+P
+    vnoremap <leader>p "+p
+    vnoremap <leader>P "+P
 
 " Enable Goyo by default for mutt writting
 	" Goyo's width will be the line limit in mutt.
