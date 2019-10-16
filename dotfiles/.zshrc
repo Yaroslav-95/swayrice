@@ -65,6 +65,7 @@ path=("$HOME/.scripts" "$path[@]")
 export PATH
 export EDITOR="nvim"
 export TERMINAL="termite"
+export TERM="xterm-256color"
 export BROWSER="qutebrowser"
 
 # Generic shortcuts
