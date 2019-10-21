@@ -6,7 +6,6 @@
 set $mod Mod4
 set $term termite
 set $browser "qutebrowser"
-set $stoprec --no-startup-id dmenurecord kill
 
 # set default desktop layout (default is tiling)
 # workspace_layout tabbed <stacking|tabbed>

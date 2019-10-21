@@ -1,7 +1,7 @@
 #!/bin/sh
 
-vertical=$(($(xdotool getdisplaygeometry | awk '{print $2}') - newsize))
-horizontal=$(($(xdotool getdisplaygeometry | awk '{print $1}') - newwidth))
+vertical=$(swaymsg -t get_outputs | jq ".[0].current_mode.height")
+horizontal=$(swaymsg -t get_outputs | jq ".[0].current_mode.width")
 
 convert $1 -resize ${horizontal}x${vertical}\> ~/.config/lockwall.png
 convert ~/.config/lockwall.png -brightness-contrast -20,-20 -paint 1 -noise 0x8 -blur 9,9 ~/.config/lockwall.png

@@ -5,4 +5,4 @@
 
 action=$(printf "logout\nsuspend\nreboot\nshutdown\n" | bemenu -p "What to do?" $BEMENU_OPTIONS)
 
-i3session $action
+swaysession $action
