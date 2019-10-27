@@ -1,0 +1,106 @@
+#!/bin/bash
+
+# Script for mounting/unmounting drives (including encrypted ones)
+# For encrypted drives, it works only if there's just one partition inside the
+# crypt_LUKS volume
+
+# Yaroslav de la Peña Smirnov
+
+. $HOME/.bemenurc
+
+readarray -t blkdevs <<< "$(lsblk -r -o NAME,TYPE,FSTYPE,MOUNTPOINT | tail -n +2)"
+
+get_mountable() {
+    for blkdev in "${blkdevs[@]}"; do
+        name="$(cut -d " " -f1 <<< "${blkdev}")"
+        btype="$(cut -d " " -f2 <<< "${blkdev}")"
+        fstype="$(cut -d " " -f3 <<< "${blkdev}")"
+        mountpoint="$(cut -d " " -f4 <<< "${blkdev}")"
+        if [ "$btype" = "part" ]; then
+            if [ -z "$mountpoint" ]; then
+                if [ "$fstype" = "crypto_LUKS" ]; then
+                    if [ "$(lsblk -r -o FSTYPE "/dev/$name" | tail -n 1)" = "crypto_LUKS" ]; then
+                        echo "$name"
+                    fi
+                else
+                    echo "$name"
+                fi
+            fi
+        fi
+    done
+}
+
+get_unmountable() {
+    for blkdev in "${blkdevs[@]}"; do
+        name="$(cut -d " " -f1 <<< "${blkdev}")"
+        btype="$(cut -d " " -f2 <<< "${blkdev}")"
+        fstype="$(cut -d " " -f3 <<< "${blkdev}")"
+        mountpoint="$(cut -d " " -f4 <<< "${blkdev}")"
+        if [ "$btype" = "part" ]; then
+            if [ -z "$mountpoint" ] && [ "$fstype" = "crypto_LUKS" ]; then
+                mountpoint="$(lsblk -r -o MOUNTPOINT "/dev/$name" | tail -n 1)"
+            fi
+            if [ -n "$mountpoint" ] && [ "$mountpoint" != "/" ] && [ "$mountpoint" != "/boot" ]; then
+                echo "$name"
+            fi
+        fi
+    done
+}
+
+mount_dev() {
+    fstype="$(lsblk -r -o FSTYPE "/dev/$1" | tail -n 1)"
+    part="/dev/$1"
+    if [ "$fstype" = "crypto_LUKS" ]; then
+        password="$(bemenu -p "Enter passphrase for encrypted drive:" $BEMENU_CREDS_OPTIONS)"
+        if [ -z "$password" ]; then
+            exit 0
+        fi
+        printf "%s" "$password" > "$HOME/.cache/diskey"
+        part="$(udisksctl unlock --key-file="$HOME/.cache/diskey" -b "/dev/$1" | cut -d " " -f4 )"
+        part="${part%?}"
+        rm -f "$HOME/.cache/diskey"
+    fi
+    message="$(udisksctl mount -b "$part")"
+    if [ $? -eq 0 ]; then
+        notify-send "💽Drive mounting" "$message"
+    else
+        notify-send "💽Drive mounting" "An error occurred, could not mount device $1"
+    fi
+}
+
+unmount_dev() {
+    fstype="$(lsblk -r -o FSTYPE "/dev/$1" | sed "2q;d")"
+    if [ "$fstype" = "crypto_LUKS" ]; then
+        volume="/dev/mapper/$(lsblk -r -o NAME "/dev/$1" | tail -n 1)"
+        if udisksctl unmount -b "$volume" && udisksctl lock -b "/dev/$1"; then
+            notify-send "💽Drive manager" "Device $1 has been unmounted and locked"
+        else
+            notify-send "💽Drive manager" "An error occurred, could not unmount device $1"
+        fi
+    else
+        if udisksctl unmount -b "/dev/$1"; then
+            notify-send "💽Drive manager" "Device $1 has been unmounted"
+        else
+            notify-send "💽Drive manager" "An error occurred, could not unmount device $1"
+        fi
+    fi
+}
+
+action="$(printf "mount\nunmount\n" | bemenu -p "What to do?" $BEMENU_OPTIONS)"
+
+case "$action" in
+    mount)
+        blkdev="$(get_mountable | bemenu -p "Choose device to mount:" $BEMENU_OPTIONS)"
+        if [ -z "$blkdev" ]; then
+            exit 0
+        fi
+        mount_dev "$blkdev";;
+    unmount)
+        blkdev="$(get_unmountable | bemenu -p "Choose device to umount:" $BEMENU_OPTIONS)"
+        if [ -z "$blkdev" ]; then
+            exit 0
+        fi
+        unmount_dev "$blkdev";;
+    *)
+        notify-send "💽Drive manager" "That's not an option";;
+esac

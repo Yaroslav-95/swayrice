@@ -179,6 +179,7 @@ bindsym --to-code {
     # Start Applications
     $mod+Shift+w exec --no-startup-id $browser
     $mod+F3 exec menudisplay
+    $mod+F4 exec menublk
     $mod+r exec $term -e vifm
     $mod+s exec "xway steam"
     $mod+m exec $term -e ncmpcpp
