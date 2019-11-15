@@ -19,7 +19,7 @@ hide_edge_borders both
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:FuraCode Nerd Font Mono 10
+font pango:BlexMono Nerd Font Mono 10
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
@@ -27,14 +27,14 @@ floating_modifier $mod
 
 ##### Startup scripts and programs #####
 # Waybar
-exec_always waybar_launch
+exec --no-startup-id waybar_launch
 # KDE Connect
 exec --no-startup-id kdeconnect-indicator
 # Mopidy music daemon
 # exec_always --no-startup-id ~/.scripts/mopidy_launch
 exec --no-startup-id mpd
 # Bluetooth adapter applet
-exec_always --no-startup-id blueman-applet
+#exec_always --no-startup-id blueman-applet
 # Motification handler
 exec --no-startup-id mako_launch
 # NetworkManager Applet
@@ -91,17 +91,18 @@ for_window [app_id="telegramdesktop"] floating enable, sticky enable
 
 # Quake-like Terminal dropdown
 for_window [title="quakemite"] floating enable, sticky enable
+for_window [title="quakemite"] border none
 
 # switch to workspace with urgent window automatically
 # for_window [urgent=latest] focus
 
 # Theme colors
 # class                   border  backgr. text    indic.  child_border
-  client.focused          #212121 #212121 #8EC07C #FDF6E3 #689D6A
-  client.focused_inactive #000000 #151515 #689D6A #454948 #000000
-  client.unfocused        #000000 #151515 #EBDBB2 #454948 #000000
+  client.focused          #212121 #212121 #8EC07C #81acc1 #434C5E
+  client.focused_inactive #000000 #151515 #689D6A #1d2021 #1B1E25
+  client.unfocused        #000000 #151515 #EBDBB2 #1d2021 #1B1E25
   client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2 #CB4B16
-  client.placeholder      #FFFFFF #0c0c0c #ffffff #FFFFFF #FFFFFF
+  client.placeholder      #FFFFFF #0c0c0c #ffffff #FFFFFF #3f6e90
 
   client.background       #2B2C2B
 
@@ -110,7 +111,6 @@ for_window [title="quakemite"] floating enable, sticky enable
 
 # Outputs
 output "*" background ~/.config/wall1.png fill
-output "eDP-1" scale 1.53 pos 0 0
 
 # Keymaps
 input * xkb_layout "us,es,ru"
@@ -180,9 +180,10 @@ bindsym --to-code {
     $mod+Shift+w exec --no-startup-id $browser
     $mod+F3 exec menudisplay
     $mod+F4 exec menublk
-    $mod+r exec $term -e vifm
+    $mod+r exec kitty -e ranger
     $mod+s exec "xway steam"
     $mod+m exec $term -e ncmpcpp
+    $mod+Ctrl+v exec $term -e vis
     $mod+o exec --no-startup-id notistats
     $mod+c exec --no-startup-id camtoggle
     $mod+grave exec --no-startup-id menuducksearch

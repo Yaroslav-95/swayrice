@@ -2,49 +2,50 @@
 # Base16 Gruvbox dark, hard
 # Author = Dawid Kurek (dawikur@gmail.com), morhetz (https =//github.com/morhetz/gruvbox)
 
-foreground          = #d5c4a1
-foreground_bold     = #ebdbb2
-cursor              = #ebdbb2
-cursor_foreground   = #1d2021
-background          = rgba(32, 32, 33, 0.9)
+foreground          = #e5e9f0
+foreground_bold     = #d8dee9
+cursor              = #d8dee9
+cursor_foreground   = #d8dee9
+background          = rgba(27, 30, 37, 0.98)
+# #1b1e25
 
 # 16 color space
 
 # Black, Gray, Silver, White
 color0  = #1d2021
-color8  = #665c54
-color7  = #d5c4a1
-color15 = #fbf1c7
+color8  = #434c5e
+color7  = #a1a6b2
+color15 = #e5e9f0
 
 # DarkRed + Red
-color1 =  #cc241d
-color9 =  #fb4934
+color1 =  #b73030
+color9 =  #c45c5c
 # DarkGreen + Green
-color2 =  #98971a
-color10 = #b8bb26
+color2 =  #7ea95a
+color10 = #9eba86
 # DarkYellow + Yellow
-color3 =  #d79921
-color11 = #fabd2f
+color3 =  #b2872f
+color11 = #e2b55a
 # DarkBlue + Blue
-color4 =  #458588
-color12 = #83a598
+color4 =  #3f6e90
+color12 = #81acc1
 # DarkMagenta + Magenta
-color5 =  #b16286
-color13 = #d3869b
+color5 =  #9c6992
+color13 = #b48ead
 # DarkCyan + Cyan
-color6 =  #689d6a
-color14 = #8ec07c
+color6 =  #5b8277
+color14 = #7fac96
 
 # Extra colors
-color16 = #fe8019
-color17 = #d65d0e
-color18 = #3c3836
-color19 = #504945
-color20 = #bdae93
-color21 = #ebdbb2
+color16 = #d08770
+color17 = #af5539
+color18 = #2d333f
+color19 = #3b4252
+color20 = #697792
+color21 = #d8dee9
 
 [options]
-font = FuraCode Nerd Font Mono 11
+font = BlexMono Nerd Font Mono 10
 allow_bold = true
 cursor_shape = underline
 mouse_autohide = true

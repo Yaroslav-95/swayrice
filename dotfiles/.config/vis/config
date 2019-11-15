@@ -5,7 +5,7 @@ audio.sources=pulse
 
 audio.stereo.enabled=false
 
-colors.scheme=custom1
+colors.scheme=ultramar
 
 #Available smoothing options are monstercat, sgs, none.
 visualizer.spectrum.smoothing.mode=monstercat

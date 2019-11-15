@@ -1,16 +1,15 @@
 * {
     font-size: 11px;
-    font-family: "FuraCode Nerd Font Mono";
+    font-family: "BlexMono Nerd Font Mono";
     min-height: 0;
 }
-
 window#waybar {
-    background: rgba(26, 26, 26, 0.75);
-    color: #fdf6e3;
+    background: rgba(27, 30, 37, 0.95);
+    color: #e5e9f0;
     min-height: 0;
 }
 #custom-right-arrow-cyan, #custom-left-arrow-cyan {
-    color: #8ec07c;
+    color: #89b699;
     font-size: 20px;
 }
 #custom-right-arrow-black, #custom-left-arrow-black {
@@ -19,27 +18,24 @@ window#waybar {
 }
 #custom-left-arrow-gray {
     color: #191919;
-    background: #8ec07c;
+    background: #89b699;
     font-size: 20px;
 }
 #custom-right-arrow-black {
-    background: #8ec07c;
+    background: #89b699;
 }
 #custom-left-arrow-black {
     background: #191919;
 }
-#clock.1 {
-    background: #2D888D;
+#custom-left-decorator-black,
+#custom-right-decorator-black {
+    font-size: 20px;
+    background: rgba(27, 30, 37, 0.95);
+    color: #000000;
 }
-#clock.2 {
-    color: #1E1F23;
-    background: #DCDCCC;
-}
-#clock.3 {
-    background: #E00421;
-}
+#tray,
 #workspaces {
-    padding-left: 8px;
+    padding: 0 8px;
     background: #000000;
 }
 #workspaces button {
@@ -47,7 +43,7 @@ window#waybar {
     color: #fdf6e3;
 }
 #workspaces button.focused {
-    color:  #8ec07c;
+    color:  #5b8277;
 }
 #workspaces button:hover {
     box-shadow: inherit;
@@ -58,37 +54,18 @@ window#waybar {
     border-radius: 0;
     background: #0C3D27;
 }
-#tray {
-    background: #000000;
-}
-#memory {
-    background: #ff6e67;
-}
-#pulseaudio,
 #mpd,
-#temperature,
+#clock,
+#battery,
+#network,
 #backlight,
+#pulseaudio,
+#temperature,
 #custom-weather,
 #custom-rec-status,
 #custom-swaykbd {
-    color: #000000;
-    background: #8ec07c;
     padding: 0 8px;
 }
-#cpu {
-    background: #f1fa8c;
-}
-#network,
-#battery{
-    background: #191919;
-    padding: 0 8px;
-}
-#battery.charging {
-    color: #8ec07c;
-}
-#memory, #cpu, #tray {
-    color: #1E1F23;
-}
-#clock{
-    padding: 0 16px;
+#custom-weather {
+    color: #5b8277;
 }

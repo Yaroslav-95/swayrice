@@ -4,30 +4,29 @@
     "height": 25,
     "modules-left": [
         "sway/workspaces",
-        "custom/right-arrow-black",
         "sway/mode",
+        "custom/left-decorator-black",
         "mpd",
-        "pulseaudio",
-        "custom/right-arrow-cyan"
+        "pulseaudio"
     ],
-    "modules-center": ["clock"],
+    "modules-center": [
+        "clock",
+        "custom/weather"
+    ],
     "modules-right": [
-        "custom/left-arrow-cyan",
         "custom/swaykbd",
-        "custom/weather",
         "backlight",
-        "custom/left-arrow-gray",
         "network",
         "battery#bat0",
         "battery#bat1",
-        "custom/left-arrow-black",
+        "custom/right-decorator-black",
         "tray"
     ],
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
     "mpd": {
-        "format": " {stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {title} [{elapsedTime:%M:%S}] ",
+        "format": " {stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon} {artist} - {title} [{elapsedTime:%M:%S}]",
         "format-disconnected": " Disconnected ",
         "format-stopped": " {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
         "unknown-tag": "N/A",
@@ -36,8 +35,7 @@
             "on": " "
         },
         "random-icons": {
-            "off": "<span color=\"#f53c3c\"></span> ",
-            "on": " "
+            "on": ""
         },
         "repeat-icons": {
             "on": " "
@@ -46,8 +44,8 @@
             "on": "1 "
         },
         "state-icons": {
-            "paused": "",
-            "playing": ""
+            "paused": "<span color=\"#b2872f\"></span>",
+            "playing": "<span color=\"#5b8277\"></span>"
         },
         "tooltip-format": "MPD (connected)",
         "tooltip-format-disconnected": "MPD (disconnected)"
@@ -89,24 +87,36 @@
     },
     "battery#bat0": {
         "bat": "BAT0",
-        "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-icons": ["", "", "", "", ""]
+        "format": "{icon} {capacity}%",
+        "format-charging": " <span color=\"#5b8277\"></span> {capacity}%",
+        "format-plugged": "<span color=\"#5b8277\"></span> {capacity}%",
+        "format-icons": [
+            "<span color=\"#b73030\"></span>",
+            "<span color=\"#b2872f\"></span>",
+            "<span color=\"#5b8277\"></span>",
+            "<span color=\"#5b8277\"></span>",
+            "<span color=\"#5b8277\"></span>"
+        ]
     },
     "battery#bat1": {
         "bat": "BAT1",
-        "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-icons": ["", "", "", "", ""]
+        "format": "{icon} {capacity}%",
+        "format-charging": " <span color=\"#5b8277\"></span> {capacity}%",
+        "format-plugged": "<span color=\"#5b8277\"></span> {capacity}%",
+        "format-icons": [
+            "<span color=\"#b73030\"></span>",
+            "<span color=\"#b2872f\"></span>",
+            "<span color=\"#5b8277\"></span>",
+            "<span color=\"#5b8277\"></span>",
+            "<span color=\"#5b8277\"></span>"
+        ]
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid}: {ipaddr} ",
-        "format-ethernet": "{ifname}: {ipaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
+        "format-wifi": "<span color=\"#5b8277\"></span> {essid}: {ipaddr}",
+        "format-ethernet": "<span color=\"#5b8277\"></span> {ifname}: {ipaddr}",
+        "format-linked": "<span color=\"#5b8277\"></span> {ifname} (No IP)",
+        "format-disconnected": "<span color=\"#b73030\">⚠</span> Disconnected",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "custom/left-arrow-cyan": {
@@ -124,11 +134,17 @@
     "custom/right-arrow-black": {
         "format": ""
     },
+    "custom/left-decorator-black": {
+        "format": ""
+    },
+    "custom/right-decorator-black": {
+        "format": ""
+    },
     "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-muted": "",
+        "scroll-step": 5, // %, can be a float
+        "format": "<span color=\"#5b8277\">{icon}</span> {volume}%",
+        "format-bluetooth": "<span color=\"#5b8277\">{icon}</span> {volume}% {format_source}",
+        "format-muted": "<span color=\"#b73030\"></span>",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
@@ -153,7 +169,7 @@
         "exec": "$HOME/.scripts/i3barweather"
     },
     "custom/swaykbd": {
-        "format": "{} ",
+        "format": "<span color=\"#5b8277\"></span> {}",
         "exec": "$HOME/.scripts/swaykbd"
     },
     "custom/media": {
