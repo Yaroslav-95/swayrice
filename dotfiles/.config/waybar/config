@@ -82,7 +82,7 @@
     },
     "backlight": {
         // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
+        "format": "<span color=\"#5b8277\">{icon}</span> {percent}%",
         "format-icons": ["", ""]
     },
     "battery#bat0": {
