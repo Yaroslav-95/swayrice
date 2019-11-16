@@ -34,7 +34,7 @@ exec --no-startup-id kdeconnect-indicator
 # exec_always --no-startup-id ~/.scripts/mopidy_launch
 exec --no-startup-id mpd
 # Bluetooth adapter applet
-#exec_always --no-startup-id blueman-applet
+exec_always --no-startup-id blueman-applet
 # Motification handler
 exec --no-startup-id mako_launch
 # NetworkManager Applet
@@ -98,19 +98,24 @@ for_window [title="quakemite"] border none
 
 # Theme colors
 # class                   border  backgr. text    indic.  child_border
-  client.focused          #212121 #212121 #8EC07C #81acc1 #434C5E
-  client.focused_inactive #000000 #151515 #689D6A #1d2021 #1B1E25
-  client.unfocused        #000000 #151515 #EBDBB2 #1d2021 #1B1E25
+  client.focused          #212121 #1B1E25 #7FAC96 #81acc1 #434C5E
+  client.focused_inactive #000000 #3B4252 #D8DEE9 #1d2021 #1B1E25
+  client.unfocused        #000000 #3B4252 #D8DEE9 #1d2021 #1B1E25
   client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2 #CB4B16
-  client.placeholder      #FFFFFF #0c0c0c #ffffff #FFFFFF #3f6e90
+  client.placeholder      #FFFFFF #0C0C0C #FFFFFF #FFFFFF #3F6E90
 
   client.background       #2B2C2B
 
 # hide/unhide i3status bar
 # bindsym $mod+m bar mode toggle
 
+# Trackpoint (Thinkpad)
+input 2:10:TPPS/2_IBM_TrackPoint pointer_accel 0.8
+
 # Outputs
 output "*" background ~/.config/wall1.png fill
+# for laptop
+output "eDP-1" scale 1.53 pos 0 0
 
 # Keymaps
 input * xkb_layout "us,es,ru"
@@ -121,7 +126,7 @@ input * xkb_options "lv3:ralt_switch,grp:alt_shift_toggle,misc:typo,caps:escape,
 #############################
 
 # Set inner/outer gaps
-gaps inner 18
+gaps inner 15
 gaps outer 0
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
@@ -156,7 +161,7 @@ bindsym --to-code {
 
     # Mako (notifications)
     $mod+Ctrl+space exec "makoctl dismiss"
-    $mod+Ctrl+grave exec "makoctl list"
+    # $mod+Ctrl+grave exec "makoctl list"
 
     # Screen brightness controls
     XF86MonBrightnessUp exec "xbacklight -inc 5 -fps 30"
