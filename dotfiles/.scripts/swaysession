@@ -23,7 +23,7 @@ case "$1" in
     reboot)
         $logind reboot
         ;;
-    shutdown)
+    poweroff)
         $logind poweroff
         ;;
     *)
