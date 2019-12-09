@@ -3,7 +3,7 @@
 # Source settings from .bemenurc
 . $HOME/.bemenurc
 
-#action=$(compgen -c | sort -u | bemenu -p "Run:" $BEMENU_OPTIONS)
-#$action
+action=$(compgen -c | sort -u | bemenu -p "Run:" --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB")
+$action
 
-bemenu-run --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB"
+#bemenu-run --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB"

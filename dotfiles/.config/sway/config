@@ -147,6 +147,8 @@ bindsym --to-code {
 
     # start program launcher
     $mod+d exec --no-startup-id menurun
+    # start program launcher (force through XWayland)
+    $mod+Ctrl+d exec --no-startup-id menuxrun
 
     # Mako (notifications)
     $mod+Ctrl+space exec "makoctl dismiss"
@@ -172,6 +174,7 @@ bindsym --to-code {
 
     # Start Applications
     $mod+Shift+w exec --no-startup-id $browser
+    $mod+F2 exec menumako
     $mod+F3 exec menudisplay
     $mod+F4 exec menublk
     $mod+r exec kitty -e ranger
