@@ -10,7 +10,7 @@ git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
 
-yay -S --noconfirm ttf-symbola stig pam-gnupg mutt-wizard-git ncmpamixer lightdm-mini-greeter plymouth-git
+yay -S --noconfirm ttf-symbola stig pam-gnupg mutt-wizard-git ncmpamixer lightdm-mini-greeter plymouth-git mimeo xdg-utils-mimeo
 
 # Copy system config files
 cp system/sudoers /etc/
