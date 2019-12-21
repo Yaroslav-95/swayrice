@@ -108,7 +108,7 @@ for_window [title="quakemite"] border none
 # bindsym $mod+m bar mode toggle
 
 # Trackpoint (Thinkpad)
-input 2:10:TPPS/2_IBM_TrackPoint pointer_accel 0.8
+input 2:10:TPPS/2_IBM_TrackPoint pointer_accel 1
 
 # Outputs
 output "*" background ~/.config/wall1.png fill
