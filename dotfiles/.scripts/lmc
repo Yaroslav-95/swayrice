@@ -14,7 +14,4 @@ case "$1" in
 	"replay") mpc seek 0% ; $newmpd ;;
 esac
 
-kill -44 $(pgrep -x i3blocks)
-kill -45 $(pgrep -x i3blocks)
-
 exit

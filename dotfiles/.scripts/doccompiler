@@ -1,0 +1,34 @@
+#!/bin/sh
+
+# Script to compile some documents to their final output (.tex, .md, .rmd, etc.)
+# Taken from one of Luke Smith's scripts, except this one focuses solely on
+# document compilation and doesn't compile any scripts or programs.
+
+file=$(readlink -f "$1")
+dir=$(dirname "$file")
+base="${file%.*}"
+
+cd "$dir" || exit
+
+textype() { \
+	command="pdflatex -interaction=nonstopmode"
+	( sed 5q "$file" | grep -i -q 'xelatex' ) && command="xelatex"
+	$command --output-directory="$dir" "$base" &&
+	grep -i addbibresource "$file" >/dev/null &&
+	biber --input-directory "$dir" "$base" &&
+	$command --output-directory="$dir" "$base" &&
+	$command --output-directory="$dir" "$base"
+	}
+
+case "$file" in
+	*\.ms) refer -PS -e "$file" | groff -me -ms -kept -T pdf > "$base".pdf ;;
+	*\.mom) refer -PS -e "$file" | groff -mom -kept -T pdf > "$base".pdf ;;
+	*\.[0-9]) refer -PS -e "$file" | groff -mandoc -T pdf > "$base".pdf ;;
+	*\.rmd) echo "require(rmarkdown); rmarkdown::render('$file', quiet=TRUE)" | R -q --vanilla ;;
+	*\.tex) textype "$file" ;;
+	*\.md) pandoc "$file" --pdf-engine=xelatex -o "$base".pdf ;;
+	*\.sent) setsid sent "$file" 2>/dev/null & ;;
+	*) echo "Couldn't figure out file type!" && exit 1 ;;
+esac
+
+echo "Compiled successfully"
