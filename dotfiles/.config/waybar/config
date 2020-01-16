@@ -138,7 +138,7 @@
         "format": ""
     },
     "custom/right-decorator-black": {
-        "format": ""
+        "format": ""
     },
     "pulseaudio": {
         "scroll-step": 5, // %, can be a float
