@@ -7,7 +7,7 @@ then
     location="~${location// /+}"
 fi
 
-forecast=$(curl -s wttr.in/$location?format=2)
+forecast=$(curl -s wttr.in/$location?format=1)
 
 if [[ ${#forecast} -gt 30 ]]
 then

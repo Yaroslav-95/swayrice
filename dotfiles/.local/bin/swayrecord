@@ -8,7 +8,7 @@ if [ -f "$HOME/.recordingpid" ]; then
     exit
 fi
 
-wf-recorder -f "$HOME/Video/recordings/$(date '+%y%m%d-%H%M-%S').mkv" &
+wf-recorder -f "$HOME/Video/recordings/$(date '+%y%m%d-%H%M-%S').mp4" &
 echo $! > ~/.recordingpid
 notify-send "⏺ Screen recording" "Recording started"
 killall -39 waybar

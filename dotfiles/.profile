@@ -1,5 +1,4 @@
-#!/bin/sh
-
+export PATH=$PATH:$HOME/.local/bin
 export SCROT_DIR=$HOME/Pictures/screenshots/
 export GDK_BACKEND=wayland
 export EGL_PLATFORM=wayland
@@ -13,10 +12,12 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 # User specific environment and startup programs:
 export LANG=en_US.UTF-8
 export TERM=xterm-256color
+export TERMINAL=termite
+export EDITOR="nvim"
 export BROWSER=qutebrowser
-
-[[ -f ~/.bashrc ]] && source ~/.bashrc
+export ZDOTDIR="$HOME/.config/zsh"
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
     .scripts/swaystart
 fi
+

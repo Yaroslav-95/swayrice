@@ -59,23 +59,21 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 zle -N zle-keymap-select
 
-# Environment variables
-typeset -U PATH path
-path=("$HOME/.scripts" "$path[@]")
-export PATH
-export EDITOR="nvim"
-export TERMINAL="termite"
-export TERM="xterm-256color"
-export BROWSER="qutebrowser"
+# Some aliases
+alias v="nvim"
+alias abook="abook -C $HOME/.config/abook/abookrc --datafile $HOME/Documents/contacts/addressbook"
+alias eslint="./node_modules/.bin/eslint"
+alias ls='ls -hN --color=auto --group-directories-first'
+weath() { curl wttr.in/$1 ;} # Check the weather (give city or leave blank).
 
 # Generic shortcuts
 alias music="ncmpcpp"
 alias clock="ncmpcpp -s clock"
 alias news="newsboat"
-alias email="neomutt"
-alias files="vifm_launch"
+alias files="ranger"
 alias audio="ncpamixer"
 alias calendar="calcurse"
+alias contacts="abook"
 alias calc="R --no-save"
 
 # Mounting drive shortcuts
@@ -83,14 +81,6 @@ alias mnt="udisksctl mount -b"
 alias umnt="udisksctl unmount -b"
 alias dlock="udisksctl lock -b"
 alias dulock="udisksctl unlock -b"
-
-# Some aliases
-alias v="nvim"
-alias vf="vifm_launch"
-alias nf="clear && neofetch" # Le Redditfetch
-alias eslint="./node_modules/.bin/eslint"
-alias ls='ls -hN --color=auto --group-directories-first'
-weath() { curl wttr.in/$1 ;} # Check the weather (give city or leave blank).
 
 # Internet
 alias yt="youtube-dl --add-metadata -ic" # Download video link
