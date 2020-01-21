@@ -161,16 +161,16 @@
     "custom/rec-status": {
         "format": "{}",
         "signal": 5,
-        "exec": "$HOME/.local/bin/i3barrecstatus"
+        "exec": "i3barrecstatus"
     },
     "custom/weather": {
         "format": "{}",
         "interval": 900,
-        "exec": "$HOME/.local/bin/i3barweather"
+        "exec": "i3barweather"
     },
     "custom/swaykbd": {
         "format": "<span color=\"#5b8277\"></span> {}",
-        "exec": "$HOME/.local/bin/swaykbd"
+        "exec": "swaykbd"
     },
     "custom/media": {
         "format": "{icon} {}",
