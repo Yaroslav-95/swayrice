@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if pidof telegram-desktop > /dev/null; then
+if pidof telegram-desktop-bin > /dev/null; then
     if [ -z $(swaymsg -t get_tree | grep -A 1 'telegramdesktop' | tail -n 1 | grep 'true') ]; then
         swaymsg '[app_id="telegramdesktop"] scratchpad show'
     else
