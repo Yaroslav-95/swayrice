@@ -14,8 +14,10 @@
         "custom/weather"
     ],
     "modules-right": [
+        "custom/rec-status",
         "custom/swaykbd",
         "backlight",
+        "custom/vpn-status",
         "network",
         "battery#bat0",
         "battery#bat1",
@@ -159,14 +161,21 @@
         "on-click": "termite -e ncpamixer"
     },
     "custom/rec-status": {
-        "format": "{}",
+        "format": "<span color=\"#b73030\">{}</span>",
         "signal": 5,
-        "exec": "i3barrecstatus"
+        "interval": "once",
+        "exec": "barrecstatus"
+    },
+    "custom/vpn-status": {
+        "format": "<span color=\"#5b8277\">{}</span>",
+        "signal": 6,
+        "interval": "once",
+        "exec": "barvpnstatus"
     },
     "custom/weather": {
         "format": "{}",
         "interval": 900,
-        "exec": "i3barweather"
+        "exec": "barweather"
     },
     "custom/swaykbd": {
         "format": "<span color=\"#5b8277\"></span> {}",

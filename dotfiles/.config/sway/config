@@ -24,6 +24,12 @@ font pango:BlexMono Nerd Font Mono 10
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
 
+# GTK theme and icons
+set $gnome-schema org.gnome.desktop.interface
+exec_always {
+  gsettings set $gnome-schema gtk-theme 'oomox-materia-dark'
+  gsettings set $gnome-schema icon-theme 'Papirus-Dark'
+}
 
 ##### Startup scripts and programs #####
 # Waybar
@@ -31,7 +37,6 @@ exec --no-startup-id waybar_launch
 # KDE Connect
 exec --no-startup-id kdeconnect-indicator
 # music daemon
-# exec_always --no-startup-id ~/.scripts/mopidy_launch
 exec --no-startup-id mpd
 # Bluetooth adapter applet
 exec_always --no-startup-id blueman-applet
@@ -113,7 +118,7 @@ input 2:10:TPPS/2_IBM_TrackPoint pointer_accel 1
 # Outputs
 output "*" background ~/.config/wall1.png fill
 # Laptop display
-output "eDP-1" scale 1.53 pos 0 0
+output "eDP-1" scale 1.6 pos 0 0 scale_filter smart
 
 # Keymaps
 input * xkb_layout "us,es,ru"
@@ -186,6 +191,10 @@ bindsym --to-code {
     $mod+grave exec --no-startup-id menuducksearch
     $mod+Shift+grave exec --no-startup-id menuemoji
     $mod+F1 exec --no-startup-id zathura ~/.config/i3/i3guide.pdf
+
+    # Network management
+    $mod+Shift+c exec togglevpn
+    # Network management
     $mod+Shift+n exec $term -e 'nmtui'
 
     # Screenshot and recording

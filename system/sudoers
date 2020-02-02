@@ -81,11 +81,12 @@ root ALL=(ALL) ALL
 ## Uncomment to allow members of group wheel to execute any command
 %wheel ALL=(ALL) ALL
 
-## Run some commands without a password
-%wheel ALL=(ALL) NOPASSWD: /usr/bin/pacman -Sy
-
 ## Same thing without a password
 # %wheel ALL=(ALL) NOPASSWD: ALL
+
+## Run some commands without a password
+%wheel ALL=(ALL) NOPASSWD: /usr/bin/pacman -Sy
+%wheel ALL=(ALL) NOPASSWD: /usr/bin/openvpn
 
 ## Uncomment to allow members of group sudo to execute any command
 # %sudo	ALL=(ALL) ALL
@@ -98,4 +99,3 @@ root ALL=(ALL) ALL
 ## Read drop-in files from /etc/sudoers.d
 ## (the '#' here does not indicate a comment)
 #includedir /etc/sudoers.d
-

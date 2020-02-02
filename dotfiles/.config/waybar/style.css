@@ -63,8 +63,9 @@ window#waybar {
 #temperature,
 #custom-weather,
 #custom-rec-status,
+#custom-vpn-status,
 #custom-swaykbd {
-    padding: 0 8px;
+    padding: 0 6px;
 }
 #custom-weather {
     color: #5b8277;

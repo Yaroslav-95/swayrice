@@ -1,0 +1,16 @@
+#!/bin/sh
+
+if [ -f "$HOME/.cache/openvpnpid" ]; then
+  sudo killall -SIGINT openvpn
+  exit
+fi
+
+sudo openvpn "$HOME/.config/ovpn/conf.ovpn" &
+PID=$!
+notify-send "🔐 OpenVPN" "VPN is being initialized"
+echo $PID > ~/.cache/openvpnpid
+killall -40 waybar
+wait $PID
+notify-send "🔐 OpenVPN" "VPN service has stopped with exit code $?"
+rm ~/.cache/openvpnpid
+killall -40 waybar

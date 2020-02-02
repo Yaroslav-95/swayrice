@@ -1,6 +1,6 @@
 export PATH=$PATH:$HOME/.local/bin
 export SCROT_DIR=$HOME/Pictures/screenshots/
-export GDK_BACKEND=wayland
+#export GDK_BACKEND=wayland
 export EGL_PLATFORM=wayland
 export CLUTTER_PLATFORM=wayland
 export SDL_VIDEODRIVER=wayland
@@ -16,8 +16,9 @@ export TERMINAL=termite
 export EDITOR="nvim"
 export BROWSER=qutebrowser
 export ZDOTDIR="$HOME/.config/zsh"
+export INPUTRC="$HOME/.config/zsh/inputrc"
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-    .scripts/swaystart
+  sway
 fi
 

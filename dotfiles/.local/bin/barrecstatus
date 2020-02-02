@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ -f "$HOME/.cache/recordingpid" ]; then
+    printf "⏺ rec"
+    exit
+fi
+
+printf ""
