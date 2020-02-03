@@ -21,9 +21,11 @@ case "$1" in
         lock-color & sleep 1 && $logind hibernate
         ;;
     reboot)
+        rm -f ~/.cache/openvpnpid
         $logind reboot
         ;;
     poweroff)
+        rm -f ~/.cache/openvpnpid
         $logind poweroff
         ;;
     *)

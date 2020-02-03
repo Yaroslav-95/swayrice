@@ -87,6 +87,7 @@ root ALL=(ALL) ALL
 ## Run some commands without a password
 %wheel ALL=(ALL) NOPASSWD: /usr/bin/pacman -Sy
 %wheel ALL=(ALL) NOPASSWD: /usr/bin/openvpn
+%wheel ALL=(ALL) NOPASSWD: /usr/bin/killall -SIGINT openvpn
 
 ## Uncomment to allow members of group sudo to execute any command
 # %sudo	ALL=(ALL) ALL

@@ -1,7 +1,13 @@
 #!/bin/sh
 
 if [ -f "$HOME/.cache/openvpnpid" ]; then
+  rm ~/.cache/openvpnpid
   sudo killall -SIGINT openvpn
+  exit
+fi
+
+if [ ! -f "$HOME/.config/ovpn/conf.ovpn" ]; then
+  notify-send "🔐 OpenVPN" "Can't start VPN. Configuration file is missing"
   exit
 fi
 
@@ -12,5 +18,5 @@ echo $PID > ~/.cache/openvpnpid
 killall -40 waybar
 wait $PID
 notify-send "🔐 OpenVPN" "VPN service has stopped with exit code $?"
-rm ~/.cache/openvpnpid
+rm -f ~/.cache/openvpnpid
 killall -40 waybar
