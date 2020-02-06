@@ -21,7 +21,7 @@ ultramar = {
 }
 
 ## Default monospace fonts
-c.fonts.monospace = '"BlexMono Nerd Font Mono", "DejaVu Sans Mono"'
+c.fonts.default_family = ["BlexMono Nerd Font Mono", "DejaVu Sans Mono"]
 
 ## Background color of the completion widget category headers.
 ## Type: QssColor
