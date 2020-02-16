@@ -34,8 +34,6 @@ exec_always {
 ##### Startup scripts and programs #####
 # Waybar
 exec --no-startup-id waybar_launch
-# KDE Connect
-exec --no-startup-id kdeconnect-indicator
 # music daemon
 exec --no-startup-id mpd
 # Bluetooth adapter applet
