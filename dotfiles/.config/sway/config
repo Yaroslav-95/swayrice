@@ -186,9 +186,9 @@ bindsym --to-code {
     $mod+Ctrl+v exec $term -e vis
     $mod+o exec --no-startup-id notistats
     $mod+c exec --no-startup-id camtoggle
-    $mod+grave exec --no-startup-id menuducksearch
-    $mod+Shift+grave exec --no-startup-id menuemoji
-    $mod+F1 exec --no-startup-id zathura ~/.config/i3/i3guide.pdf
+    $mod+grave exec --no-startup-id menuemoji
+    $mod+Shift+grave exec --no-startup-id menuducksearch
+    # $mod+F1 exec --no-startup-id zathura ~/.config/i3/i3guide.pdf # TODO: update guide
 
     # Network management
     $mod+Shift+c exec togglevpn
@@ -198,7 +198,8 @@ bindsym --to-code {
     # Screenshot and recording
     Print exec --no-startup-id menugrim -q
     $mod+Print exec --no-startup-id menugrim
-    Shift+Print exec --no-startup-id swayrecord
+    Shift+Print exec --no-startup-id "swayrecord screencast"
+    Ctrl+Print exec --no-startup-id swayrecord
 
     # Sound
     $mod+Shift+m exec $term -e 'ncpamixer'

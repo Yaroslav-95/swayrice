@@ -1,5 +1,7 @@
 export PATH=$PATH:$HOME/.local/bin
 export SCROT_DIR=$HOME/Pictures/screenshots/
+export VREC_DIR=$HOME/Videos/recordings/
+export AREC_DIR=$HOME/Documents/audio/recordings/
 #export GDK_BACKEND=wayland
 export EGL_PLATFORM=wayland
 export CLUTTER_PLATFORM=wayland

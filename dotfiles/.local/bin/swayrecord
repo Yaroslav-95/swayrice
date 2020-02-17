@@ -1,14 +1,118 @@
 #!/bin/sh
 
-if [ -f "$HOME/.cache/recordingpid" ]; then
-    killall -SIGINT wf-recorder
-    rm -f ~/.cache/recordingpid
-    notify-send "⏺ Screen recording" "Recording stopped"
-    killall -39 waybar
-    exit
+# Source settings from .bemenurc
+. $HOME/.bemenurc
+
+if ! [ -d $VREC_DIR ]; then
+	mkdir -p $VREC_DIR
+fi
+if ! [ -d $AREC_DIR ]; then
+	mkdir -p $AREC_DIR
 fi
 
-wf-recorder -f "$HOME/Videos/recordings/$(date '+%y%m%d-%H%M-%S').mp4" &
-echo $! > ~/.cache/recordingpid
-notify-send "⏺ Screen recording" "Recording started"
-killall -39 waybar
+OUTPUT="$(date '+%y%m%d-%H%M-%S')"
+TYPE="$1"
+VIDEO_PID=""
+AUDIO_PID=""
+
+trap finishrecording SIGINT
+
+finishvideo () {
+  kill -2 "$VIDEO_PID"
+  notify-send "⏺ Recording" \
+    "Screen recording stopped and saved at "$VREC_DIR"/video-"$OUTPUT".mp4"
+}
+
+finishaudio () {
+  kill -2 "$AUDIO_PID"
+  notify-send "🎙 Recording" \
+    "Audio recording stopped and saved at "$AREC_DIR/$OUTPUT.flac""
+}
+
+finishscreencast () {
+  kill -2 "$VIDEO_PID"
+  kill -2 "$AUDIO_PID"
+  notify-send "📼 Recording" "One moment, screencast is being encoded..."
+  ffmpeg -i "$VREC_DIR/temp-$OUTPUT.mp4" \
+    -i "$VREC_DIR/temp-$OUTPUT.mp3" \
+    -codec copy \
+    -shortest \
+    "$VREC_DIR/screencast-$OUTPUT.mp4"
+  rm -f "$VREC_DIR/temp-$OUTPUT.mp4"
+  rm -f "$VREC_DIR/temp-$OUTPUT.mp3"
+  notify-send "📼 Recording" \
+    "Screencast recording stopped and saved at "$VREC_DIR/screencast-$OUTPUT.mp4""
+}
+
+finishrecording () {
+  case "$TYPE" in
+    video) finishvideo;;
+    audio) finishaudio;;
+    screencast) finishscreencast;;
+  esac
+  rm -f ~/.cache/recordingpid
+  rm -f ~/.cache/recordingicon
+  killall -39 waybar
+}
+
+killrecording () {
+  RECPID="$(cat "$HOME/.cache/recordingpid")"
+  kill -2 "$RECPID"
+  exit
+}
+
+video () {
+  wf-recorder -f "$VREC_DIR/video-$OUTPUT.mp4" &
+  VIDEO_PID=$!
+  echo $$ > ~/.cache/recordingpid
+  echo "⏺" > ~/.cache/recordingicon
+  notify-send "⏺ Recording" "Screen recording started"
+  killall -39 waybar
+  wait
+}
+
+screencast () {
+  wf-recorder -f "$VREC_DIR/temp-$OUTPUT.mp4" &
+  VIDEO_PID=$!
+  ffmpeg -f alsa -i default -c:a mp3 "$VREC_DIR/temp-$OUTPUT.mp3" &
+  AUDIO_PID=$!
+  echo $$ > ~/.cache/recordingpid
+  echo "📼" > ~/.cache/recordingicon
+  notify-send "📼 Recording" "Screencast recording started"
+  killall -39 waybar
+  wait
+}
+
+audio () {
+  ffmpeg -f alsa -i default -c:a flac "$AREC_DIR/$OUTPUT.flac" &
+  AUDIO_PID=$!
+  echo $$ > ~/.cache/recordingpid
+  echo "🎙" > ~/.cache/recordingicon
+  notify-send "🎙 Recording" "Audio recording started"
+  killall -39 waybar
+  wait
+}
+
+askrecording () {
+  TYPE="$(printf "video\nscreencast\naudio\n" | bemenu -l 6 -i -p "What should be recorded?" --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB")"
+  case "$TYPE" in
+    video) video;;
+    screencast) screencast;;
+    audio) audio;;
+    *) exit;;
+  esac
+}
+
+if [ -f "$HOME/.cache/recordingpid" ]; then
+  killrecording
+  exit
+fi
+
+case $1 in
+  video) video;;
+  screencast) screencast;;
+  audio) audio;;
+  kill) killrecording;;
+  *) askrecording;;
+esac
+
