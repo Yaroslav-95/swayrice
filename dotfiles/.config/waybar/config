@@ -28,11 +28,12 @@
         "format": "<span style=\"italic\">{}</span>"
     },
     "mpd": {
-        "format": " {stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon} {artist} - {title} [{elapsedTime:%M:%S}]",
+        "format": " {stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon} [{elapsedTime:%M:%S}] {artist} - {title}",
         "format-disconnected": " Disconnected ",
         "format-stopped": " {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
         "unknown-tag": "N/A",
         "interval": 2,
+        "max-length": 50,
         "consume-icons": {
             "on": " "
         },
@@ -49,8 +50,8 @@
             "paused": "<span color=\"#b2872f\"></span>",
             "playing": "<span color=\"#5b8277\"></span>"
         },
-        "tooltip-format": "MPD (connected)",
-        "tooltip-format-disconnected": "MPD (disconnected)"
+        "tooltip-format": "MPD now playing: {artist} - {title}",
+        "tooltip-format-disconnected": "MPD disconnected"
     },
     "idle_inhibitor": {
         "format": "{icon}",
@@ -115,11 +116,12 @@
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "<span color=\"#5b8277\"></span> {essid}: {ipaddr}",
-        "format-ethernet": "<span color=\"#5b8277\"></span> {ifname}: {ipaddr}",
-        "format-linked": "<span color=\"#5b8277\"></span> {ifname} (No IP)",
+        "format-wifi": "<span color=\"#5b8277\"></span> {essid}",
+        "format-ethernet": "<span color=\"#5b8277\"></span> {ifname}",
+        "format-linked": "<span color=\"#5b8277\"></span> {ifname}",
         "format-disconnected": "<span color=\"#b73030\">⚠</span> Disconnected",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr}"
     },
     "custom/left-arrow-cyan": {
         "format": ""
@@ -179,7 +181,8 @@
     },
     "custom/swaykbd": {
         "format": "<span color=\"#5b8277\"></span> {}",
-        "exec": "swaykbd"
+        "exec": "swaykbd",
+        "tooltip": false
     },
     "custom/media": {
         "format": "{icon} {}",

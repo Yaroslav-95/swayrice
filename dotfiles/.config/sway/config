@@ -34,8 +34,6 @@ exec_always {
 ##### Startup scripts and programs #####
 # Waybar
 exec --no-startup-id waybar_launch
-# KDE Connect
-exec --no-startup-id kdeconnect-indicator
 # music daemon
 exec --no-startup-id mpd
 # Bluetooth adapter applet
@@ -160,10 +158,10 @@ bindsym --to-code {
     # $mod+Ctrl+grave exec "makoctl list"
 
     # Screen brightness controls
-    XF86MonBrightnessUp exec "xbacklight -inc 5 -fps 30"
-    XF86MonBrightnessDown exec "xbacklight -dec 5 -fps 30"
-    $mod+Ctrl+Up exec "xbacklight -inc 5 -fps 30"
-    $mod+Ctrl+Down exec "xbacklight -dec 5 -fps 30"
+    XF86MonBrightnessUp exec "xbacklight -inc 5"
+    XF86MonBrightnessDown exec "xbacklight -dec 5"
+    $mod+Ctrl+Up exec "xbacklight -inc 5"
+    $mod+Ctrl+Down exec "xbacklight -dec 5"
 
     # Media keys
     XF86AudioPrev		exec --no-startup-id "lmc prev"
