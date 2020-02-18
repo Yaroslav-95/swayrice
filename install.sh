@@ -22,6 +22,7 @@ cp -r system/lightdm/ /etc/lightdm/
 cp systemd/hotspot.service /etc/systemd/system/
 cp systemd/startupsound.service /etc/systemd/system/
 cp system/plymouth/bgrt.plymouth /usr/share/plymouth/themes/bgrt/bgrt.plymouth
+cp system/pam.d/* /etc/pam.d/
 
 plymouth-set-default-theme -R bgrt
 
