@@ -23,6 +23,7 @@ cp systemd/hotspot.service /etc/systemd/system/
 cp systemd/startupsound.service /etc/systemd/system/
 cp system/plymouth/bgrt.plymouth /usr/share/plymouth/themes/bgrt/bgrt.plymouth
 cp system/pam.d/* /etc/pam.d/
+cp system/systemd/journald.conf /etc/systemd/journald.conf
 
 plymouth-set-default-theme -R bgrt
 
