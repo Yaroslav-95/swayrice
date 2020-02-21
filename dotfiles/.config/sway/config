@@ -177,6 +177,7 @@ bindsym --to-code {
 
     # Start Applications
     $mod+Shift+w exec --no-startup-id $browser
+    $mod+Ctrl+w exec --no-startup-id chromium
     $mod+F2 exec menumako
     $mod+F3 exec menudisplay
     $mod+F4 exec menublk
