@@ -21,6 +21,6 @@ export ZDOTDIR="$HOME/.config/zsh"
 export INPUTRC="$HOME/.config/zsh/inputrc"
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-  sway
+  sway && clear && exit
 fi
 
