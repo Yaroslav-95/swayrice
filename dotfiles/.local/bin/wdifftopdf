@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# Little dirty script to print wdiff's output to a pdf file using pandoc and latex
+
+title="wdiff to pdf"
+
+if [ -z "$1" ] || [ -z "$2" ]; then
+  echo "Please specify two files to wdiff"
+  exit
+fi
+
+if [ ! -z "$3" ]; then
+  title="$3"
+fi
+
+body="$(wdiff "$1" "$2" | sed 's/\[-/\\sout{\\textcolor[rgb]{0.5,0,0}{/g;s/-\]/}}/g;s/{+/\\textcolor[rgb]{0,0.64,0.1}{/g;s/+}/}/g')"
+
+file=$(readlink -f "$1")
+pandocfile="${file%.*}.md"
+resultfile="${file%.*}.pdf"
+
+printf -- "---\ntitle: %s\noutput: pdf_document\nheader-includes:\n  \\\\usepackage{ulem}\n  \\\\usepackage[margin=3cm]{geometry}\n---\n\n%s" "$title" "$body" > "$pandocfile"
+
+pandoc "$pandocfile" -o "$resultfile"
