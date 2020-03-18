@@ -1,0 +1,13 @@
+[Default Applications]
+application/rdf+xml=org.qutebrowser.qutebrowser.desktop;
+application/xhtml+xml=org.qutebrowser.qutebrowser.desktop;
+application/xml=org.qutebrowser.qutebrowser.desktop;
+x-scheme-handler/discord-589393213723246592=discord-589393213723246592.desktop;
+x-scheme-handler/http=org.qutebrowser.qutebrowser.desktop;
+x-scheme-handler/https=org.qutebrowser.qutebrowser.desktop;
+x-scheme-handler/qute=org.qutebrowser.qutebrowser.desktop;
+image/gif=imv.desktop;
+image/png=imv.desktop;
+image/jpeg=imv.desktop;
+text/html=nvim.desktop;
+text/xml=nvim.desktop;
