@@ -63,8 +63,9 @@ zle -N zle-keymap-select
 alias v="nvim"
 alias abook="abook -C $HOME/.config/abook/abookrc --datafile $HOME/Documents/contacts/addressbook"
 alias eslint="./node_modules/.bin/eslint"
-alias ls='ls -hN --color=auto --group-directories-first'
+alias ls="ls -hN --color=auto --group-directories-first"
 weath() { curl wttr.in/$1 ;} # Check the weather (give city or leave blank).
+wintitle() { printf "\033]2;%s\a" "$1";}
 
 # Generic shortcuts
 alias music="ncmpcpp"
