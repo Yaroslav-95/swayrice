@@ -1,6 +1,8 @@
 # Uncomment this to still load settings configured via autoconfig.yml
 config.load_autoconfig()
 
+# ------------ Color scheme ----------------
+
 ultramar = {
     'base03': '#1b1e25',
     'base02': '#2d333f',
@@ -20,7 +22,7 @@ ultramar = {
     'green': '#7ea95a'
 }
 
-## Default monospace fonts
+## Default fonts
 c.fonts.default_family = ["BlexMono Nerd Font Mono", "DejaVu Sans Mono"]
 
 ## Background color of the completion widget category headers.
@@ -359,4 +361,45 @@ c.colors.tabs.selected.odd.fg = ultramar['base3']
 ## Background color for webpages if unset (or empty to use the theme's
 ## color)
 ## Type: QtColor
-# c.colors.webpage.bg = 'white'
+c.colors.webpage.bg = ultramar['base03']
+
+# ------------ Key bindings ----------------
+
+# Why end the shortcuts in 9 when you still have one more useful key (0)?
+config.bind('<Alt-9>', 'tab-focus 9', mode='normal')
+config.bind('<Alt-0>', 'tab-focus -1', mode='normal')
+
+# Bindings for Russian keyboard layout (my most used bindings)
+
+config.bind('Р', 'back', mode='normal')
+config.bind('О', 'tab-next', mode='normal')
+config.bind('Л', 'tab-prev', mode='normal')
+config.bind('Д', 'next', mode='normal')
+
+config.bind('щ', 'set-cmd-text :open', mode='normal')
+config.bind('Щ', 'set-cmd-text :open -t', mode='normal')
+config.bind('по', 'set-cmd-text :open {url:pretty}', mode='normal')
+config.bind('пО', 'set-cmd-text :open -t -r {url:pretty}', mode='normal')
+
+config.bind('г', 'undo', mode='normal')
+config.bind('в', 'tab-close', mode='normal')
+config.bind('пС', 'tab-clone', mode='normal')
+
+config.bind('а', 'hint', mode='normal')
+config.bind('А', 'hint all tab', mode='normal')
+
+config.bind('ш', 'reload', mode='normal')
+config.bind('Ш', 'reload -f', mode='normal')
+
+config.bind('р', 'scroll left', mode='normal')
+config.bind('о', 'scroll down', mode='normal')
+config.bind('л', 'scroll up', mode='normal')
+config.bind('д', 'scroll right', mode='normal')
+config.bind('пп', 'scroll-to-perc 0', mode='normal')
+config.bind('П', 'scroll-to-perc', mode='normal')
+
+config.bind('ш', 'enter-mode insert', mode='normal')
+
+config.bind('Т', 'search-prev', mode='normal')
+config.bind('т', 'search-next', mode='normal')
+
