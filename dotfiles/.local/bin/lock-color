@@ -1,86 +1,10 @@
 #!/bin/sh
 
-#B='#00000000'  # blank
-#C='#ffffff22'  # clear ish
-#D='#b58900ff'  # default
-#T='#fcbd00dd'  # text
-#W='#880000bb'  # wrong
-#V='#fcbd00dd'  # verifying
+swaymsg input type:keyboard xkb_switch_layout 0
 
-B='#00000000'  # blank
-C='#ffffff22'  # clear ish
-D='#ffffffff'  # default
-T='#dac99dff'  # text
-W='#880000bb'  # wrong
-V='#023982dd'  # verifying
-# Approximate timeout rate in milliseconds (checked every 5 seconds).
-timeout="30000"
+swayidle timeout 15 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' &
 
+swaylock
 
-if [ "$(ps cax | grep sway)" ]; then
-    swaylock &
-
-    swayidle timeout 15 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' &
-
-    while [ "$(pgrep -x swaylock)" ]
-    do
-        sleep 1
-    done
-
-    pkill -n swayidle
-    exit
-fi
-# Take a screenshot:
-#scrot /tmp/screen.png
-
-#cp ~/.config/wall.png /tmp/screen.png
-# Create a blur on the shot:
-#convert /tmp/screen.png -paint 1 -swirl 360 /tmp/screen.png
-#convert /tmp/screen.png -brightness-contrast -20,-20 -paint 1 -noise 0x8 -blur 9,9 /tmp/screen.png
-
-i3lock \
-    --layoutcolor=$T \
-    --timecolor=$T \
-    --datecolor=$T \
-    --verifcolor=$T \
-    --wrongcolor=$W \
-    --keyhlcolor=$V \
-    --insidecolor=$B      \
-    --ringcolor=$T        \
-    --linecolor=$B        \
-    --separatorcolor=$D   \
-    --insidecolor=$B \
-    --insidewrongcolor=$B \
-    --insidevercolor=$B   \
-    --color=#000000 \
-    --clock \
-    --radius=150 \
-    --ring-width=5 \
-    --timestr="%H:%M:%S"  \
-    --datestr="%A %e, %b %Y" \
-    --veriftext="Verifying..."  \
-    --wrongtext="Nope!" \
-    --noinputtext="BLANK" \
-    --time-font=furacodenerdfontmono  \
-    --date-font=ibmplexsans  \
-    --timesize=45  \
-    --datesize=24  \
-
-# If still locked after $timeout milliseconds, turn off screen.
-while [ "$(pgrep -x i3lock)" ]
-do
-	if [ $timeout -lt $(xssstate -i) ]
-    then
-        xset dpms force off
-    fi
-	sleep 1
-done
-
-# --blur 7              \
-# --keylayout 2         \
-# --textsize=20
-# --modsize=10
-# --timefont=comic-sans
-# --datefont=monofur
-# etc
+pkill -n swayidle
 

@@ -2,6 +2,15 @@
 
 vertical=$(swaymsg -t get_outputs | jq ".[0].current_mode.height")
 horizontal=$(swaymsg -t get_outputs | jq ".[0].current_mode.width")
+scale=$(swaymsg -t get_outputs | jq ".[0].scale")
+barheight=$(echo ""$scale" * 28" | bc -l)
 
 convert $1 -resize ${horizontal}x${vertical}\> ~/.config/lockwall.png
+convert ~/.config/lockwall.png \
+  -background "#00000000" \
+  -gravity North \
+  -chop 0x"$barheight" \
+  -gravity South \
+  -extent "$horizontal"x"$vertical" \
+  ~/.config/lockwall.png
 convert ~/.config/lockwall.png ~/.config/lock.png -gravity center -composite ~/.config/lockwall.png

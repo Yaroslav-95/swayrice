@@ -1,5 +1,26 @@
 image=~/.config/lockwall.png
-color=#000000
+color=#00000000
+font=BlexMono Nerd Font Mono
+font-size=48
+scaling=fill
 indicator-radius=100
 show-failed-attempts
+hide-keyboard-layout
 inside-color=#00000000
+inside-ver-color=#3f6e90
+inside-wrong-color=#b73030
+inside-clear-color=#a1a6b2cc
+ring-color=#5b8277
+ring-ver-color=#3f6e90
+ring-wrong-color=#b73030
+ring-clear-color=#a1a6b2
+line-color=#434c5e
+line-ver-color=#434c5e
+line-wrong-color=#434c5e
+line-clear-color=#434c5e
+separator-color=#00000000
+key-hl-color=#9eba86
+text-color=#1d2021
+text-ver-color=#1d2021
+text-wrong-color=#1d2021
+text-clear-color=#1d2021
