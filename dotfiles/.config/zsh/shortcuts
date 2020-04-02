@@ -8,7 +8,7 @@ alias ls="ls -hN --color=auto --group-directories-first"
 alias tmux="tmux -f $HOME/.config/tmux/tmux.conf"
 alias units="units -H ''"
 weath() { curl wttr.in/$1 ;} # Check the weather (give city or leave blank).
-corona() { curl https://corona-stats.online/$1 ;} # It's corona time
+corona() { curl -s https://corona-stats.online/$1 ;} # It's corona time
 wintitle() { printf "\033]2;%s\a" "$1";}
 
 # Generic shortcuts

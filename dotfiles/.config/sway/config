@@ -116,11 +116,13 @@ input 2:10:TPPS/2_IBM_TrackPoint pointer_accel 1
 # Outputs
 output "*" background ~/.config/wall1.png fill
 # Laptop display
-output "eDP-1" scale 1.6 pos 0 0 scale_filter smart
+output "eDP-1" scale 1.6 pos 0 0 scale_filter linear
 
 # Keymaps
-input * xkb_layout "us,es,ru"
-input * xkb_options "lv3:ralt_switch,grp:alt_shift_toggle,misc:typo,caps:escape,grp_led:scroll"
+input type:keyboard {
+  xkb_layout "us,es,ru"
+  xkb_options "lv3:ralt_switch,grp:alt_shift_toggle,misc:typo,caps:escape,grp_led:scroll"
+}
 
 # Set inner/outer gaps
 gaps inner 15
@@ -171,9 +173,11 @@ bindsym --to-code {
     XF86AudioLowerVolume		exec --no-startup-id lmc down 5
     XF86AudioMute exec --no-startup-id lmc mute
 
+    $mod+Shift+F5   exec mpc seek -10
     $mod+F5     		exec lmc prev
     $mod+F6     		exec lmc toggle
     $mod+F7     		exec lmc next
+    $mod+Shift+F7   exec mpc seek +10
 
     # Start Applications
     $mod+Shift+w exec --no-startup-id $browser
