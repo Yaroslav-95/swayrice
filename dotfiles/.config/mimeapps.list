@@ -9,5 +9,5 @@ x-scheme-handler/qute=org.qutebrowser.qutebrowser.desktop;
 image/gif=imv.desktop;
 image/png=imv.desktop;
 image/jpeg=imv.desktop;
-text/html=nvim.desktop;
+text/html=org.qutebrowser.qutebrowser.desktop;
 text/xml=nvim.desktop;
