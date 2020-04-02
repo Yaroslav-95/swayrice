@@ -1,6 +1,6 @@
 #!/bin/sh
 
-swaymsg -r -t get_inputs | awk '/1:1:AT_Translated_Set_2_keyboard/;/xkb_active_layout_name/' | grep -A1 '\b1:1:AT_Translated_Set_2_keyboard\b' | grep "xkb_active_layout_name" | awk -F '"' '{print $4}'
+swaymsg -r -t get_inputs | grep "xkb_active_layout_name" | awk -F '"' '{print $4}' | sed 's/ (US)//g'
 
 swaymsg \
   --type subscribe \
