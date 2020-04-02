@@ -22,12 +22,13 @@ export BROWSER=qutebrowser
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
-export ZDOTDIR="$HOME/.config/zsh"
-export INPUTRC="$HOME/.config/zsh/inputrc"
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export INPUTRC="$XDG_CONFIG_HOME/zsh/inputrc"
 export LESSHISTFILE="-"
-export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
-export GNUPGNOME="$XDG_DATA_HOME/gnupg"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
 eval "$(dircolors "$HOME/.config/dir_colors")"
 
 # Start sway automatically upon login on tty1
