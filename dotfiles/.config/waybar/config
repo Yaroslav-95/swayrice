@@ -176,7 +176,7 @@
     },
     "custom/weather": {
         "format": "{}",
-        "interval": 900,
+        "interval": 180,
         "exec": "barweather"
     },
     "custom/swaykbd": {

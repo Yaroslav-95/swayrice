@@ -1,18 +1,39 @@
-#!/bin/bash
+#!/bin/sh
 
+cachefile="$HOME/.cache/weather"
 location="Saint Petersburg"
+update_freq=1800
+obsolete_after=10800
 
-if [[ "$location" != "" ]]
-then
+if [ -n "$location" ]; then
     location="~${location// /+}"
 fi
 
-forecast=$(curl -s wttr.in/$location?format=1)
+update_forecast() {
+  ping -q -c 1 1.1.1.1 >/dev/null || exit
+  forecast=$(curl -s wttr.in/"$location"?format=1)
+  if [ ${#forecast} -lt 30 ]; then
+    printf "%s\n" "$forecast" > "$cachefile"
+  fi
+}
 
-if [[ ${#forecast} -gt 30 ]]
-then
+if [ -f "$cachefile" ]; then
+  last_modif=$(date +%s -r "$cachefile")
+  current_secs=$(date +%s)
+  elapsed=$((current_secs - last_modif))
+  if [ $elapsed -gt $obsolete_after ]; then
+    rm "$cachefile"
+  fi
+  if [ $elapsed -gt $update_freq ]; then
+    update_forecast
+  fi
+else
+  update_forecast
+fi
+
+if [ ! -f "$cachefile" ]; then
     exit
 fi
 
-echo $forecast
+cat "$cachefile"
 
