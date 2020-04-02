@@ -21,18 +21,113 @@
       "exec-commands" : [
       ],
       "destinations" : [
-      ]
+      ],
+      "last-move-destination" : "~/dls/P2P"
     }
   ],
   "profile-id" : 0,
   "tree-views" : {
     "TrgTorrentTreeView" : {
+      "sort-col" : -1,
+      "sort-type" : 0,
+      "widths" : [
+        453,
+        76,
+        66,
+        72,
+        70,
+        91,
+        100,
+        113,
+        92,
+        57,
+        93,
+        114,
+        65,
+        149
+      ],
+      "columns" : [
+        "name",
+        "size",
+        "done",
+        "status",
+        "seeds",
+        "leechers",
+        "connected-peers",
+        "down-speed",
+        "up-speed",
+        "eta",
+        "uploaded",
+        "downloaded",
+        "ratio",
+        "added"
+      ]
     },
     "TrgTrackersTreeView" : {
+      "sort-col" : -2,
+      "sort-type" : 0,
+      "widths" : [
+        175,
+        346,
+        187,
+        236,
+        243,
+        244,
+        221,
+        230
+      ],
+      "columns" : [
+        "tier",
+        "announce-url",
+        "last-announce-peer-count",
+        "seeder-count",
+        "leecher-count",
+        "last-announce-time",
+        "last-result",
+        "scrape-url"
+      ]
     },
     "TrgFilesTreeView" : {
+      "sort-col" : -2,
+      "sort-type" : 0,
+      "widths" : [
+        368,
+        355,
+        387,
+        395,
+        377
+      ],
+      "columns" : [
+        "name",
+        "size",
+        "progress",
+        "wanted",
+        "priority"
+      ]
     },
     "TrgPeersTreeView" : {
+      "sort-col" : -2,
+      "sort-type" : 0,
+      "widths" : [
+        204,
+        219,
+        239,
+        270,
+        249,
+        247,
+        223,
+        231
+      ],
+      "columns" : [
+        "ip",
+        "host",
+        "country",
+        "down-speed",
+        "up-speed",
+        "progress",
+        "flags",
+        "client"
+      ]
     },
     "TrgFilesTreeView-dialog" : {
       "sort-col" : -2,
@@ -114,5 +209,10 @@
   "add-notify" : false,
   "complete-notify" : false,
   "dialog-width" : 1062,
-  "dialog-height" : 680
+  "dialog-height" : 680,
+  "style" : 1,
+  "window-height" : 1021,
+  "window-width" : 1886,
+  "notebook-paned-pos" : 583,
+  "states-paned-pos" : 278
 }

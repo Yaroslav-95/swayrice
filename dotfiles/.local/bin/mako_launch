@@ -1,9 +1,0 @@
-#!/bin/sh
-
-# Terminate already running mako instance
-killall -q mako
-
-# Wait until the processes have been shut down
-while pgrep -u $UID -x mako >/dev/null; do sleep 1; done
-
-mako --background-color "#2d333ff3" --border-color "#434c5e" --text-color "#e5e9f0" --font="BlexMono Nerd Font Mono 10" --default-timeout 5000 --height 300

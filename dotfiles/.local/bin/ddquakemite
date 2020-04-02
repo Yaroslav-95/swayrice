@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if ! [ -z "$(swaymsg -t get_tree | grep 'quakemite')" ]; then
     if [ -z "$(swaymsg -t get_tree | grep -A 42 'quakemite' | tail -n 1 | grep 'true')" ]; then
@@ -7,7 +7,7 @@ if ! [ -z "$(swaymsg -t get_tree | grep 'quakemite')" ]; then
         swaymsg '[title="quakemite"] move scratchpad'
     fi
 else
-    $TERMINAL -t "quakemite" -e "$SHELL -c 'TERM=xterm-256color; TERMINAL=termite; tmux a || tmux'" &
+    $TERMINAL -t "quakemite" -e "$SHELL -c 'TERM=xterm-256color; TERMINAL=termite; tmux -f "$HOME/.config/tmux/tmux.conf" a || tmux -f "$HOME/.config/tmux/tmux.conf"'" &
     sleep 0.2s
     currenty=$(swaygetcurrentwindow | cut -d ' ' -f1 | cut -d ',' -f2 )
     let moveup=$currenty-25

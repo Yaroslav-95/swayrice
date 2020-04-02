@@ -5,7 +5,7 @@
 # Anything else, it search it.
 
 # Source settings from .bemenurc
-. $HOME/.bemenurc
+. ~/.config/bemenurc
 
 choice=$(echo "" | bemenu -i -p "Search DuckDuckGo:" --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB") || exit 1
 

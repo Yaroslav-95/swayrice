@@ -6,7 +6,7 @@
 
 # Yaroslav de la Peña Smirnov
 
-. $HOME/.bemenurc
+. ~/.config/bemenurc
 
 readarray -t blkdevs <<< "$(lsblk -r -o NAME,TYPE,FSTYPE,MOUNTPOINT | tail -n +2)"
 

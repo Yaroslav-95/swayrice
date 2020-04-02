@@ -2,7 +2,7 @@
 Description=Play Startup Sound
 
 [Service]
-ExecStart=/usr/bin/mplayer /home/yaroslav/.soundalerts/start.ogg
+ExecStart=/usr/bin/mpv /home/yaroslav/.local/share/soundalerts/start.ogg
 
 [Install]
 Alias=startupsound.service

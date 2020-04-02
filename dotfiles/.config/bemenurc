@@ -1,0 +1,24 @@
+
+BEMENU_BACKEND=wayland
+
+## define the font for dmenu to be used
+BEMENU_FN="BlexMonoNerdFontMono 10"
+
+## textcolour for title
+BEMENU_TF="#D8DEE9"
+
+## background colour for unselected menu-items
+BEMENU_NB="#1B1E25"
+
+## textcolour for unselected menu-items
+BEMENU_NF="#D8DEE9"
+
+## background colour for highlighted menu-items
+BEMENU_HB="#5B8277"
+
+## textcolour for highlighted menu-items
+BEMENU_HF="#E5E9F0"
+
+## command for the terminal application to be used:
+TERMINAL_CMD="terminal -e"
+

@@ -5,7 +5,7 @@ if ! [ -d $SCROT_DIR ]; then
 fi
 
 # Source settings from .bemenurc
-. $HOME/.bemenurc
+. ~/.config/bemenurc
 
 notify_saved() {
     notify-send "screenshot has been saved in $SCROT_DIR" ;

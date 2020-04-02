@@ -1,0 +1,9 @@
+#!/bin/sh
+
+file=$(readlink -f "$1")
+dir=$(dirname "$file")
+base="${file%.*}"
+
+cd "$dir" || exit
+
+inkscape -z -D --file="$file" --export-pdf="$base.pdf"

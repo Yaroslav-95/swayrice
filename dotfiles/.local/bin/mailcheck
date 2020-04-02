@@ -12,7 +12,7 @@ export DISPLAY=:0.0
 
 notify() {
     notify-send "📬 Email" "$2 new mail(s) in \`$1\` account."
-    mplayer $HOME/.soundalerts/mail.mp3
+    mplayer $HOME/.local/share/soundalerts/mail.mp3
 }
 
 # Run mbsync. You can feed this script different settings.

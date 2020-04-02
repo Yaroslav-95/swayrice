@@ -1,8 +1,5 @@
 # Colors and prompt
 autoload -U colors && colors
-if [[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
-  . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
 
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
@@ -55,50 +52,16 @@ function zle-keymap-select {
 }
 
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
-preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+printf "\033]2;%s\a" "$PWD" # Set terminal window title to current dir
+# Repeat for every new prompt
+preexec() {
+  echo -ne '\e[5 q'
+  printf "\033]2;%s\a" "$PWD"
+}
 
 zle -N zle-keymap-select
 
-# Some aliases
-alias v="nvim"
-alias abook="abook -C $HOME/.config/abook/abookrc --datafile $HOME/Documents/contacts/addressbook"
-alias eslint="./node_modules/.bin/eslint"
-alias ls="ls -hN --color=auto --group-directories-first"
-weath() { curl wttr.in/$1 ;} # Check the weather (give city or leave blank).
-wintitle() { printf "\033]2;%s\a" "$1";}
+[ -f "$HOME/.config/zsh/shortcuts" ] && . "$HOME/.config/zsh/shortcuts"
 
-# Generic shortcuts
-alias music="ncmpcpp"
-alias clock="ncmpcpp -s clock"
-alias news="newsboat"
-alias files="ranger"
-alias audio="ncpamixer"
-alias calendar="calcurse"
-alias contacts="abook"
-alias calc="R --no-save"
-
-# Mounting drive shortcuts
-alias mnt="udisksctl mount -b"
-alias umnt="udisksctl unmount -b"
-alias dlock="udisksctl lock -b"
-alias dulock="udisksctl unlock -b"
-
-# Internet
-alias yt="youtube-dl --add-metadata -ic" # Download video link
-alias yta="youtube-dl --add-metadata -xic" # Download only audio
-alias YT="youtube-viewer"
-alias starwars="telnet towel.blinkenlights.nl"
-
-# Audio and Music
-alias mute="lmc mute"
-alias vu="lmc up"
-alias vd="lmc down"
-alias play="mpc toggle"
-alias next="mpc next"
-alias prev="mpc prev"
-alias pause="mpc pause"
-alias beg="mpc seek 0%"
-alias lilbak="mpc seek -10"
-alias lilfor="mpc seek +10"
-alias bigbak="mpc seek -120"
-alias bigfor="mpc seek +120"
+[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] &&
+  . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
