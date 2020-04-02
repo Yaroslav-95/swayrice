@@ -180,7 +180,7 @@
         "exec": "barweather"
     },
     "custom/swaykbd": {
-        "format": "<span color=\"#5b8277\">⌨</span> {}",
+        "format": "{}",
         "exec": "swaykbd",
         "tooltip": false
     },
