@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Source settings from .bemenurc
-. $HOME/.bemenurc
+. ~/.config/bemenurc
 
 if ! [ -d $VREC_DIR ]; then
 	mkdir -p $VREC_DIR
@@ -19,7 +19,7 @@ trap finishrecording SIGINT
 
 finishvideo () {
   kill -2 "$VIDEO_PID"
-  notify-send "⏺ Recording" \
+  notify-send "🔴 Recording" \
     "Screen recording stopped and saved at "$VREC_DIR"/video-"$OUTPUT".mp4"
 }
 
@@ -65,8 +65,8 @@ video () {
   wf-recorder -f "$VREC_DIR/video-$OUTPUT.mp4" &
   VIDEO_PID=$!
   echo $$ > ~/.cache/recordingpid
-  echo "⏺" > ~/.cache/recordingicon
-  notify-send "⏺ Recording" "Screen recording started"
+  echo "🔴" > ~/.cache/recordingicon
+  notify-send "🔴 Recording" "Screen recording started"
   killall -39 waybar
   wait
 }
