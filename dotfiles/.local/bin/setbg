@@ -1,3 +1,4 @@
 #!/bin/sh
 
+cp $1 ~/.config/wall1.png
 swaymsg output "*" background ~/.config/wall1.png fill
