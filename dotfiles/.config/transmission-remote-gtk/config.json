@@ -22,7 +22,7 @@
       ],
       "destinations" : [
       ],
-      "last-move-destination" : "~/dls/P2P"
+      "last-move-destination" : "/home/yaroslav/dls/p2p"
     }
   ],
   "profile-id" : 0,
@@ -67,14 +67,14 @@
       "sort-col" : -2,
       "sort-type" : 0,
       "widths" : [
-        175,
-        346,
-        187,
-        236,
-        243,
-        244,
-        221,
-        230
+        88,
+        259,
+        100,
+        149,
+        156,
+        157,
+        134,
+        137
       ],
       "columns" : [
         "tier",
@@ -91,11 +91,11 @@
       "sort-col" : -2,
       "sort-type" : 0,
       "widths" : [
-        368,
-        355,
-        387,
-        395,
-        377
+        1064,
+        78,
+        90,
+        98,
+        79
       ],
       "columns" : [
         "name",
@@ -109,14 +109,14 @@
       "sort-col" : -2,
       "sort-type" : 0,
       "widths" : [
-        204,
-        219,
-        239,
-        270,
-        249,
-        247,
-        223,
-        231
+        117,
+        132,
+        152,
+        183,
+        162,
+        160,
+        136,
+        138
       ],
       "columns" : [
         "ip",
@@ -211,8 +211,8 @@
   "dialog-width" : 1062,
   "dialog-height" : 680,
   "style" : 1,
-  "window-height" : 1021,
-  "window-width" : 1886,
-  "notebook-paned-pos" : 583,
+  "window-height" : 1019,
+  "window-width" : 1184,
+  "notebook-paned-pos" : 581,
   "states-paned-pos" : 278
 }

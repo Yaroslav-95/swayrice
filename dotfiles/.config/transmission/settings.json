@@ -15,7 +15,7 @@
     "cache-size-mb": 4,
     "compact-view": false,
     "dht-enabled": true,
-    "download-dir": "/home/yaroslav/dls/P2P",
+    "download-dir": "/home/yaroslav/dls/p2p",
     "download-queue-enabled": true,
     "download-queue-size": 5,
     "encryption": 1,
