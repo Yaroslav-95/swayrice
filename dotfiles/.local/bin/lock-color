@@ -2,7 +2,7 @@
 
 swaymsg input type:keyboard xkb_switch_layout 0
 
-swayidle timeout 15 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' &
+swayidle timeout 30 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' &
 
 swaylock
 
