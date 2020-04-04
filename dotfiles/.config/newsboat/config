@@ -1,4 +1,4 @@
-#auto-reload yes
+# auto-reload yes
 
 external-url-viewer "urlview"
 
@@ -32,6 +32,7 @@ color article cyan default
 
 browser linkhandler
 macro , open-in-browser
-macro v set browser "i3 exec mpv"; open-in-browser ; set browser linkhandler
-macro w set browser "w3m"; open-in-browser ; set browser linkhandler
+macro t set browser "tsp youtube-dl --add-metadata -ic"; open-in-browser ; set browser linkhandler
+macro a set browser "tsp youtube-dl --add-metadata -xic -f bestaudio/best"; open-in-browser ; set browser linkhandler
+macro v set browser "setsid nohup mpv"; open-in-browser ; set browser linkhandler
 macro c set browser "copy(){ echo $1 | wl-copy ;}; copy "; open-in-browser ; set browser linkhandler
