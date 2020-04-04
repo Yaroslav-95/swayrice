@@ -15,7 +15,7 @@ default_border pixel 2
 default_floating_border pixel 2
 
 # Hide borders
-hide_edge_borders both
+# hide_edge_borders both
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -133,7 +133,7 @@ gaps outer 0
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-smart_borders on
+smart_borders no_gaps
 
 ##### Bindsyms (layout-independent) #####
 bindsym --to-code {
