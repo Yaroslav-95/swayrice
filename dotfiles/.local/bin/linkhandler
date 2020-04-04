@@ -6,7 +6,7 @@
 # if a music file or pdf, it will download,
 # otherwise it opens link in browser.
 
-# If no url given. Opens browser. For using script as $BROWSER.
+# If no url given opens browser.
 [ -z "$1" ] && { "$BROWSER"; exit; }
 
 case "$1" in
@@ -16,7 +16,8 @@ case "$1" in
 		curl -sL "$1" > "/tmp/$(echo "$1" | sed "s/.*\///")" && sxiv -a "/tmp/$(echo "$1" | sed "s/.*\///")"  >/dev/null 2>&1 & ;;
 	*mp3|*flac|*opus|*mp3?source*)
 		setsid tsp curl -LO "$1" >/dev/null 2>&1 & ;;
-	*)
-		if [ -f "$1" ]; then "$TERMINAL" -e "$EDITOR $1"
-		else setsid "$BROWSER" "$1" >/dev/null 2>&1 & fi ;;
+  *://*|*.*)
+		setsid "$BROWSER" "$1" >/dev/null 2>&1 & ;;
+	*) # If it's not a url, perform a search using duckduckgo
+		setsid "$BROWSER" "https://duckduckgo.com/?q=$1&t=ffab&atb=v1-1" >/dev/null 2>&1 & ;;
 esac

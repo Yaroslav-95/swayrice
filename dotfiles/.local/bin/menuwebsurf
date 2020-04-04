@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# menu prompt to open a link or search with duckduckgo if it's
+# not a url
+
+# Source settings from .bemenurc
+. ~/.config/bemenurc
+
+prompt="🌐"
+
+# Have to use this "hack" because bemenu doesn't know how to paste
+if [ "$1" = "paste" ]; then
+  prompt="$(wl-paste)"
+fi
+
+choice=$(echo "$prompt" | bemenu -i -p "Enter link or query:" --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB") || exit 1
+
+if [ "$choice" = "🌐"  ]; then
+  linkhandler
+else
+  linkhandler "$choice"
+fi
+

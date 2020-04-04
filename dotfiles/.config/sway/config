@@ -192,7 +192,8 @@ bindsym --to-code {
     $mod+o exec --no-startup-id notistats
     $mod+c exec --no-startup-id camtoggle
     $mod+grave exec --no-startup-id menuemoji
-    $mod+Shift+grave exec --no-startup-id menuducksearch
+    $mod+Ctrl+grave exec --no-startup-id menuwebsurf
+    $mod+Shift+grave exec --no-startup-id menuwebsurf paste
     # $mod+F1 exec --no-startup-id zathura ~/.config/i3/i3guide.pdf # TODO: update guide
 
     # Network management
