@@ -2,7 +2,7 @@
 
 # Some aliases
 alias v="nvim"
-alias abook="abook -C $HOME/.config/abook/abookrc --datafile $HOME/docs/contacts/addressbook"
+alias abook="abook -C $HOME/.config/abook/abookrc --datafile $HOME/docs/data/contacts/addressbook"
 alias eslint="./node_modules/.bin/eslint"
 alias ls="ls -hN --color=auto --group-directories-first"
 alias tmux="tmux -f $HOME/.config/tmux/tmux.conf"
