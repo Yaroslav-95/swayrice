@@ -12,7 +12,7 @@ posy=$(($resy - $sy - 40))
 swaymsg resize set "$sx" "$sy"
 
 if [ "$1" = "left" ]; then
-  swaymsg move position -- "$((0 - 15))" "$posy"
+  swaymsg move position -- "-15" "$posy"
   exit
 fi
 swaymsg move position -- "$posx" "$posy"
