@@ -1,0 +1,27 @@
+#!/bin/sh
+
+if pidof pacman; then
+  exit
+fi
+
+ping -q -c 1 1.1.1.1 > /dev/null || exit
+
+# Source the needed env variables so that it can function properly from cron
+. ~/.cache/sessionenv
+
+notify-send " System upgrade" "Syncing repositories and downloading packages..."
+
+touch ~/.cache/pacsynclive
+killall -41 waybar
+
+sudo pacman -Syuw --noconfirm || notify-send " System upgrade" \
+  "Error downloading updates. Check your internet connection or that you have the required permissions"
+
+rm -f ~/.cache/pacsynclive
+killall -41 waybar
+
+upno=$(pacman -Qu | wc -l)
+
+if [ $upno -lt 0 ]; then
+  notify-send " System upgrade" "Repository sync finished. $upno updates are available"
+fi

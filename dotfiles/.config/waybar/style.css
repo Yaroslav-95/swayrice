@@ -62,8 +62,10 @@ window#waybar {
 #pulseaudio,
 #temperature,
 #custom-weather,
+#custom-ds4battery,
 #custom-rec-status,
 #custom-vpn-status,
+#custom-pac-status,
 #custom-swaykbd {
     padding: 0 6px;
 }

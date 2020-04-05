@@ -3,7 +3,7 @@
 swaymsg -r -t get_inputs | \
   grep "xkb_active_layout_name" | \
   awk -F '"' '{print $4}' | \
-  sed 's/English (US)/🇺🇸 English/g;s/Spanish/🇲🇽 Español/g;s/Russian/🇷🇺 Русский/g' | head -1
+      sed --unbuffered 's/English (US)/🇺🇸 EN/g;s/Spanish/🇲🇽 ES/g;s/Russian/🇷🇺 RU/g'| head -1
 
 swaymsg \
   --type subscribe \
@@ -14,8 +14,6 @@ swaymsg \
     --raw-output \
     --unbuffered \ '
       select(.change == "xkb_layout") |
-        .input.xkb_active_layout_name |
-        sub(" \\(US\\)"; "")
-    ' | \
-      sed --unbuffered 's/English/🇺🇸 English/g;s/Spanish/🇲🇽 Español/g;s/Russian/🇷🇺 Русский/g'
+        .input.xkb_active_layout_name' | \
+      sed --unbuffered 's/English (US)/🇺🇸 EN/g;s/Spanish/🇲🇽 ES/g;s/Russian/🇷🇺 RU/g'
 

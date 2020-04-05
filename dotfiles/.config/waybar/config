@@ -16,7 +16,9 @@
     "modules-right": [
         "custom/rec-status",
         "custom/swaykbd",
+        "custom/ds4battery",
         "backlight",
+        "custom/pac-status",
         "custom/vpn-status",
         "network",
         "battery#bat0",
@@ -174,10 +176,21 @@
         "interval": "once",
         "exec": "barvpnstatus"
     },
+    "custom/pac-status": {
+        "format": "<span color=\"#5b8277\"></span> {}",
+        "signal": 7,
+        "interval": "once",
+        "exec": "barpacstatus"
+    },
     "custom/weather": {
         "format": "{}",
         "interval": 180,
         "exec": "barweather"
+    },
+    "custom/ds4battery": {
+        "format": "🎮 {}",
+        "interval": 180,
+        "exec": "bards4battery"
     },
     "custom/swaykbd": {
         "format": "{}",

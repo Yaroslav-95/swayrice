@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if pidof pacman; then
+  exit
+fi
+
+touch ~/.cache/pacupdatelive
+killall -41 waybar
+
+sudo pacman -Syu
+
+rm -f ~/.cache/pacupdatelive
+killall -41 waybar

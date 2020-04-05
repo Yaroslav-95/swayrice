@@ -1,0 +1,16 @@
+#!/bin/sh
+
+if [ -f ~/.cache/pacsynclive ]; then
+  echo "syncing"
+  exit
+fi
+if [ -f ~/.cache/pacupgradelive ]; then
+  echo "installing"
+  exit
+fi
+
+upno=$(pacman -Qu | wc -l)
+
+if [ $upno -gt 0 ]; then
+  echo $upno
+fi
