@@ -222,9 +222,9 @@ bindsym --to-code {
 
     #focus_follows_mouse no
 
-    # Sticky float to bottom left
-    $mod+Ctrl+b floating toggle; sticky toggle; exec --no-startup-id bottomleft
-    $mod+Shift+b floating toggle; sticky toggle; exec --no-startup-id bottomright
+    # Sticky float to a bottom corner
+    $mod+Shift+b floating toggle; sticky toggle; exec --no-startup-id picinpic
+    $mod+Ctrl+b floating toggle; sticky toggle; exec --no-startup-id picinpic left
 
     # change focus
     $mod+h focus left

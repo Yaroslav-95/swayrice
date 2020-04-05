@@ -1,0 +1,18 @@
+#!/bin/sh
+
+currentmonrect="$(swaymsg -t get_outputs | jq ".[] | select(.focused == true) | .rect")"
+resx=$(echo $currentmonrect | jq --raw-output ".width")
+resy=$(echo $currentmonrect | jq --raw-output ".height")
+
+sx=$(($resx / 4))
+sy=$(($resy / 4))
+posx=$(($resx - $sx - 15))
+posy=$(($resy - $sy - 40))
+
+swaymsg resize set "$sx" "$sy"
+
+if [ "$1" = "left" ]; then
+  swaymsg move position -- "$((0 - 15))" "$posy"
+  exit
+fi
+swaymsg move position -- "$posx" "$posy"
