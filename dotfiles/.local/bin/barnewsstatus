@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if [ -f ~/.cache/newssynclive ]; then
+  echo "syncing"
+  exit
+fi
+
+unreadno=$(newsboat -x print-unread | cut -f1 -d' ')
+
+if [ $unreadno -gt 0 ]; then
+  echo $unreadno
+fi

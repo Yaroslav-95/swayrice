@@ -1,0 +1,13 @@
+#!/bin/sh
+
+ping -q -c 1 1.1.1.1 > /dev/null || exit
+
+. ~/.cache/sessionenv
+
+touch ~/.cache/newssynclive
+killall -42 waybar
+
+newsboat -x reload || true
+
+rm -f ~/.cache/newssynclive
+killall -42 waybar

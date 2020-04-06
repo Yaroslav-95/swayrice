@@ -19,6 +19,7 @@
         "custom/ds4battery",
         "backlight",
         "custom/pac-status",
+        "custom/news-status",
         "custom/vpn-status",
         "network",
         "battery#bat0",
@@ -180,7 +181,15 @@
         "format": "<span color=\"#5b8277\"></span> {}",
         "signal": 7,
         "interval": "once",
-        "exec": "barpacstatus"
+        "exec": "barpacstatus",
+        "tooltip": false
+    },
+    "custom/news-status": {
+        "format": "<span color=\"#5b8277\"></span> {}",
+        "signal": 8,
+        "interval": "once",
+        "exec": "barnewsstatus",
+        "tooltip": false
     },
     "custom/weather": {
         "format": "{}",
