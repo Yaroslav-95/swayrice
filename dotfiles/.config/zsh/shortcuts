@@ -14,7 +14,7 @@ wintitle() { printf "\033]2;%s\a" "$1";}
 # Generic shortcuts
 alias music="ncmpcpp"
 alias clock="ncmpcpp -s clock"
-alias news="newsboat"
+alias news="newsboat && killall -42 waybar"
 alias files="ranger"
 alias audio="ncpamixer"
 alias calendar="calcurse"
