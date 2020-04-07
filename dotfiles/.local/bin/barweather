@@ -10,7 +10,10 @@ if [ -n "$location" ]; then
 fi
 
 update_forecast() {
-  ping -q -c 1 1.1.1.1 >/dev/null || exit
+  # Check several times before giving up, useful when just waking up from sleep
+  # since internet is usually not available right away
+  wget -q --tries=5 --timeout=20 --spider 1.1.1.1 > /dev/null || exit
+
   forecast=$(curl -s wttr.in/"$location"?format=1)
   if [ ${#forecast} -lt 30 ]; then
     printf "%s\n" "$forecast" > "$cachefile"

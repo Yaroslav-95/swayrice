@@ -1,10 +1,13 @@
 #!/bin/sh
 
+# Don't try to sync if pacman is already running
 if pidof pacman; then
   exit
 fi
 
-ping -q -c 1 1.1.1.1 > /dev/null || exit
+# Check several times before giving up, useful when just waking up from sleep
+# since internet is usually not available right away
+wget -q --tries=5 --timeout=20 --spider 1.1.1.1 > /dev/null || exit
 
 # Source the needed env variables so that it can function properly from cron
 . ~/.cache/sessionenv

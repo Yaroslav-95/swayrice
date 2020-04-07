@@ -1,6 +1,10 @@
 #!/bin/sh
 
+# This is just a wrapper script to upgrade system AND update status bar module
+
+# Don't try to sync if pacman is already running
 if pidof pacman; then
+  echo "pacman is already running"
   exit
 fi
 

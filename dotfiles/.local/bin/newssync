@@ -1,7 +1,15 @@
 #!/bin/sh
 
-ping -q -c 1 1.1.1.1 > /dev/null || exit
+# Don't try to update feed if newsboat is already running
+if pidof newsboat; then
+  exit
+fi
 
+# Check several times before giving up, useful when just waking up from sleep
+# since internet is usually not available right away
+wget -q --tries=5 --timeout=20 --spider 1.1.1.1 > /dev/null || exit
+
+# Source the needed env variables so that it can function properly from cron
 . ~/.cache/sessionenv
 
 touch ~/.cache/newssynclive
