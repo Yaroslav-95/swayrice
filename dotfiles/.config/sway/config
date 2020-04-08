@@ -38,8 +38,10 @@ exec --no-startup-id waybar_launch
 exec --no-startup-id mpd
 # Bluetooth adapter applet
 exec_always --no-startup-id blueman-applet
-# Motification handler
+# Notification handler
 exec --no-startup-id mako
+# Environment variables for cron scripts
+exec_always --no-startup-id setsessionenv
 
 # Workspace names
 # to display names or symbols instead of plain workspace numbers you can use
