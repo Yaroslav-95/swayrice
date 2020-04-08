@@ -182,8 +182,8 @@ bindsym --to-code {
     $mod+Shift+F7   exec mpc seek +10
 
     # Start Applications
-    $mod+Shift+w exec --no-startup-id $browser
-    $mod+Ctrl+w exec --no-startup-id chromium
+    $mod+Shift+w exec $browser
+    $mod+Ctrl+w exec chromium
     $mod+F2 exec menumako
     $mod+F3 exec menudisplay
     $mod+F4 exec menublk
