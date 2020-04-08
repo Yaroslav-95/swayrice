@@ -1,0 +1,14 @@
+#!/bin/sh
+
+total=0
+
+# Check all accounts/mailboxes for new mail.
+for mailbox in "$HOME/.local/share/mail/"*
+do
+	account="$(echo "$mailbox" | sed "s/.*\///")"
+	newcount=$(find "$HOME/.local/share/mail/$account/INBOX/new/" "$HOME/.local/share/mail/$account/Inbox/new/" "$HOME/.local/share/mail/$account/inbox/new/" -type f 2> /dev/null | wc -l)
+  total=$((total + newcount))
+done
+
+[ $total -gt 0 ] && echo "$total"
+

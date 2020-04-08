@@ -17,11 +17,12 @@
         "custom/rec-status",
         "custom/swaykbd",
         "custom/ds4battery",
-        "backlight",
+        "custom/mail-status",
         "custom/pac-status",
         "custom/news-status",
         "custom/vpn-status",
         "network",
+        "backlight",
         "battery#bat0",
         "battery#bat1",
         "custom/right-decorator-black",
@@ -177,8 +178,15 @@
         "interval": "once",
         "exec": "barvpnstatus"
     },
+    "custom/mail-status": {
+        "format": "<span color=\"#5b8277\">📧</span> {}",
+        "signal": 8,
+        "interval": "once",
+        "exec": "barmailstatus",
+        "tooltip": false
+    },
     "custom/pac-status": {
-        "format": "<span color=\"#5b8277\"></span> {}",
+        "format": "<span color=\"#5b8277\"></span> {}",
         "signal": 7,
         "interval": "once",
         "exec": "barpacstatus",

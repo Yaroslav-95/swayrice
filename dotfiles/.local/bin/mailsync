@@ -1,0 +1,43 @@
+#!/bin/sh
+# Sync mail and give notification if there is new mail.
+
+# Run only if user logged in (prevent cron errors)
+w | grep "^$USER\W" >/dev/null || exit
+
+# Check several times before giving up, useful when just waking up from sleep
+# since internet is usually not available right away
+wget -q --tries=5 --timeout=20 --spider 1.1.1.1 > /dev/null || exit
+
+# Source the needed env variables so that it can function properly from cron
+. ~/.cache/sessionenv
+
+thereis=0
+
+# Run mbsync. You can feed this script different settings.
+if [ $# -eq 0 ]; then
+	mbsync -a
+else
+	mbsync "$@"
+fi
+
+# Check all accounts/mailboxes for new mail. Notify if there is new content.
+for mailbox in "$HOME/.local/share/mail/"*
+do
+	account="$(echo "$mailbox" | sed "s/.*\///")"
+	newcount=$(find "$HOME/.local/share/mail/$account/INBOX/new/" "$HOME/.local/share/mail/$account/Inbox/new/" "$HOME/.local/share/mail/$account/inbox/new/" -type f -newer "$HOME/.cache/lastmailsync" 2> /dev/null | wc -l)
+	if [ "$newcount" -gt "0" ]; then
+    notify-send "📬 Email" "$newcount new mail(s) in \`$account\` mailbox."
+    thereis=1
+  fi
+done
+
+if [ $thereis = 1 ]; then
+  mpv "$HOME/.local/share/soundalerts/mail.mp3" > /dev/null
+  killall -42 waybar
+fi
+
+notmuch new 2>/dev/null
+
+# Create a touch file that indicates the time of the last run of mailsync
+touch "$HOME/.cache/lastmailsync"
+

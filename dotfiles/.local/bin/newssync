@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Run only if user logged in (prevent cron errors)
+w | grep "^$USER\W" >/dev/null || exit
+
 # Don't try to update feed if newsboat is already running
 if pidof newsboat; then
   exit
