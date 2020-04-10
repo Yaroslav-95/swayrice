@@ -6,7 +6,7 @@ w | grep "^$USER\W" >/dev/null || exit
 
 # Check several times before giving up, useful when just waking up from sleep
 # since internet is usually not available right away
-wget -q --tries=5 --timeout=20 --spider 1.1.1.1 > /dev/null || exit
+wget -q --tries=3 --timeout=20 --spider 1.1.1.1 > /dev/null || exit
 
 # Source the needed env variables so that it can function properly from cron
 . ~/.cache/sessionenv
@@ -33,7 +33,7 @@ done
 
 if [ $thereis = 1 ]; then
   mpv "$HOME/.local/share/soundalerts/mail.mp3" > /dev/null
-  killall -42 waybar
+  killall -43 waybar
 fi
 
 notmuch new 2>/dev/null
