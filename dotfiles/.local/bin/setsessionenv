@@ -3,7 +3,9 @@
 # Create a file with the env variables of the current wayland session so that
 # cron scripts can source it and function properly
 
-printf "export DISPLAY=%s
+printf "export PASSWORD_STORE_DIR=%s
+export GTK2_RC_FILES=%s
+export DISPLAY=%s
 export WAYLAND_DISPLAY=%s
 export XDG_SESSION_ID=%s
 export XDG_SESSION_CLASS=%s
@@ -11,6 +13,8 @@ export XDG_SEAT=%s
 export XDG_RUNTIME_DIR=%s
 export I3SOCK=%s
 export SWAYSOCK=%s"\
+  "$PASSWORD_STORE_DIR" \
+  "$GTK2_RC_FILES" \
   "$DISPLAY" \
   "$WAYLAND_DISPLAY" \
   "$XDG_SESSION_ID" \
