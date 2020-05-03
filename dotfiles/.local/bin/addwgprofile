@@ -1,0 +1,3 @@
+#!/bin/sh
+
+nmcli connection import type wireguard file ~/.config/wg0.conf

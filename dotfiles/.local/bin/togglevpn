@@ -1,22 +1,10 @@
 #!/bin/sh
 
-if [ -f "$HOME/.cache/openvpnpid" ]; then
-  rm ~/.cache/openvpnpid
-  sudo killall -SIGINT openvpn
-  exit
-fi
+isup=$(ip a | grep wg0:)
 
-if [ ! -f "$HOME/.config/ovpn/conf.ovpn" ]; then
-  notify-send " OpenVPN" "Can't start VPN. Configuration file is missing"
-  exit
+if [ -z "$isup" ]; then
+  nmcli connection up wg0 && notify-send " VPN" "Wireguard VPN tunnel established" && exit
+  notify-send " VPN" "Error while trying to start Wireguard tunnel"
 fi
-
-sudo openvpn "$HOME/.config/ovpn/conf.ovpn" &
-PID=$!
-notify-send " OpenVPN" "VPN is being initialized"
-echo $PID > ~/.cache/openvpnpid
-killall -40 waybar
-wait $PID
-notify-send " OpenVPN" "VPN service has stopped with exit code $?"
-rm -f ~/.cache/openvpnpid
-killall -40 waybar
+nmcli connection down wg0 && notify-send " VPN" "Wireguard VPN tunnel brought down" && exit
+notify-send " VPN" "Error while trying to close Wireguard tunnel"

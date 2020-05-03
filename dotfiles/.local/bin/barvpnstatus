@@ -1,9 +1,15 @@
 #!/bin/sh
 
-if [ -f "$HOME/.cache/openvpnpid" ]; then
-    printf " vpn"
-    exit
+isup=$(ip a | grep wg0:)
+
+if [ -n "$isup" ]; then
+    printf " vpn\n"
+else
+  printf ""
 fi
 
-printf ""
-
+# For some goddamned weird reason sed crashes with a
+# "couldn't flush stdout: broken pipe" error when running from waybar itself
+# if I don't call sed from its hard location, so I had to call it using
+# /usr/bin/sed
+nmcli monitor | grep -E --line-buffered 'wg0: connected|wg0: disconnected' | /usr/bin/sed --unbuffered 's/wg0: connected/ vpn/g;s/wg0: disconnected//g'
