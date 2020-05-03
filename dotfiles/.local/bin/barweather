@@ -5,10 +5,6 @@ location="Saint Petersburg"
 update_freq=1800
 obsolete_after=10800
 
-if [ -n "$location" ]; then
-    location="~${location// /+}"
-fi
-
 update_forecast() {
   # Check several times before giving up, useful when just waking up from sleep
   # since internet is usually not available right away
@@ -35,7 +31,7 @@ else
 fi
 
 if [ ! -f "$cachefile" ]; then
-    exit
+  exit
 fi
 
 cat "$cachefile"
