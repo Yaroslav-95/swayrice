@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# Very simple script to display the changelog for a kernel version in the
+# terminal.
+# If no arguments are passed, the changelog for the currently loaded kernel is
+# displayed.
+
+version=$1
+
+if [ -z $1 ]; then
+  version=$(uname -r | awk -F '-' '{ print $1 }')
+fi
+
+major=$(echo $version | awk -F '.' '{ print $1 }')
+
+curl "https://cdn.kernel.org/pub/linux/kernel/v$major.x/ChangeLog-$version" | less
