@@ -1,0 +1,21 @@
+#!/bin/sh
+
+while read file; do
+  case "$1" in
+    "C-a")
+      setbg "$file"
+      exit ;;
+    "C-s")
+      setbglblur "$file"
+      exit ;;
+    "C-d")
+      setbglsimple "$file"
+      exit ;;
+    "C-c")
+      wl-copy < "$file"
+      exit ;;
+    "C-f")
+      wl-copy "$file"
+      exit ;;
+  esac
+done

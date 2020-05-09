@@ -3,7 +3,7 @@
 vertical=$(swaymsg -t get_outputs | jq ".[0].current_mode.height")
 horizontal=$(swaymsg -t get_outputs | jq ".[0].current_mode.width")
 scale=$(swaymsg -t get_outputs | jq ".[0].scale")
-barheight=$(echo ""$scale" * 28" | bc -l)
+barheight=$(echo ""$scale" * 27" | bc -l)
 
 convert $1 -resize ${horizontal}x${vertical}\> ~/.config/lockwall.png
 convert ~/.config/lockwall.png \
