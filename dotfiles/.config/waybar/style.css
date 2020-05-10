@@ -4,7 +4,7 @@
     min-height: 0;
 }
 window#waybar {
-    background: rgba(27, 30, 37, 0.95);
+    background: rgba(27, 30, 37, 1);
     color: #e5e9f0;
     min-height: 0;
 }

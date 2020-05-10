@@ -6,7 +6,7 @@ foreground          = #e5e9f0
 foreground_bold     = #d8dee9
 cursor              = #d8dee9
 cursor_foreground   = #d8dee9
-background          = rgba(27, 30, 37, 0.98)
+background          = #1b1e25
 # #1b1e25
 
 # 16 color space
@@ -49,3 +49,4 @@ font = BlexMono Nerd Font Mono 10
 allow_bold = true
 cursor_shape = underline
 mouse_autohide = true
+audible_bell = true

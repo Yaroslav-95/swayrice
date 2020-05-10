@@ -101,8 +101,8 @@ for_window [title="quakemite"] border none
 
 # Theme colors
 # class                   border  backgr. text    indic.  child_border
-  client.focused          #212121 #1B1E25 #7FAC96 #81acc1 #434C5E
-  client.focused_inactive #000000 #3B4252 #D8DEE9 #1d2021 #1B1E25
+  client.focused          #1B1E25 #1B1E25 #7FAC96 #81acc1 #434C5E
+  client.focused_inactive #3B4252 #3B4252 #7FAC96 #1d2021 #1B1E25
   client.unfocused        #000000 #3B4252 #D8DEE9 #1d2021 #1B1E25
   client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2 #CB4B16
   client.placeholder      #FFFFFF #0C0C0C #FFFFFF #FFFFFF #3F6E90
@@ -182,8 +182,8 @@ bindsym --to-code {
     $mod+Shift+F7   exec mpc seek +10
 
     # Start Applications
-    $mod+Shift+w exec $browser
-    $mod+Ctrl+w exec chromium
+    $mod+Shift+w exec --no-startup-id $browser
+    $mod+Ctrl+w exec --no-startup-id chromium
     $mod+F2 exec menumako
     $mod+F3 exec menudisplay
     $mod+F4 exec menublk
@@ -200,7 +200,6 @@ bindsym --to-code {
 
     # Network management
     $mod+Shift+c exec togglevpn
-    # Network management
     $mod+Shift+n exec $term -e 'nmtui'
 
     # Screenshot and recording
