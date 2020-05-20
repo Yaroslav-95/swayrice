@@ -10,15 +10,15 @@ base="${file%.*}"
 
 cd "$dir" || exit
 
-textype() { \
+textype() {
 	command="pdflatex -interaction=nonstopmode"
 	( sed 5q "$file" | grep -i -q 'xelatex' ) && command="xelatex"
-	$command --output-directory="$dir" "$base" &&
+	$command --output-directory="$dir" "$base"
 	grep -i addbibresource "$file" >/dev/null &&
 	biber --input-directory "$dir" "$base" &&
 	$command --output-directory="$dir" "$base" &&
 	$command --output-directory="$dir" "$base"
-	}
+}
 
 case "$file" in
 	*\.ms) refer -PS -e "$file" | groff -me -ms -kept -T pdf > "$base".pdf ;;
