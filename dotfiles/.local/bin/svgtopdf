@@ -6,4 +6,4 @@ base="${file%.*}"
 
 cd "$dir" || exit
 
-inkscape -z -D --file="$file" --export-pdf="$base.pdf"
+inkscape "$file" -D --export-type=pdf --export-filename="$base.pdf"
