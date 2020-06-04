@@ -5,6 +5,8 @@ isup=$(ip a | grep wg0:)
 if [ -z "$isup" ]; then
   nmcli connection up wg0 && notify-send " VPN" "Wireguard VPN tunnel established" && exit
   notify-send " VPN" "Error while trying to start Wireguard tunnel"
+  exit 1
 fi
 nmcli connection down wg0 && notify-send " VPN" "Wireguard VPN tunnel brought down" && exit
 notify-send " VPN" "Error while trying to close Wireguard tunnel"
+exit 1
