@@ -361,7 +361,7 @@ c.colors.tabs.selected.odd.fg = ultramar['base3']
 ## Background color for webpages if unset (or empty to use the theme's
 ## color)
 ## Type: QtColor
-c.colors.webpage.bg = ultramar['base03']
+# c.colors.webpage.bg = ultramar['base03']
 
 # ------------ Key bindings ----------------
 
@@ -374,7 +374,7 @@ config.bind('<Alt-0>', 'tab-focus -1', mode='normal')
 config.bind('Р', 'back', mode='normal')
 config.bind('О', 'tab-next', mode='normal')
 config.bind('Л', 'tab-prev', mode='normal')
-config.bind('Д', 'next', mode='normal')
+config.bind('Д', 'forward', mode='normal')
 
 config.bind('щ', 'set-cmd-text :open ', mode='normal')
 config.bind('Щ', 'set-cmd-text :open -t ', mode='normal')
