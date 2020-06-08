@@ -26,7 +26,7 @@ case "$file" in
 	*\.[0-9]) refer -PS -e "$file" | groff -mandoc -T pdf > "$base".pdf ;;
 	*\.rmd) echo "require(rmarkdown); rmarkdown::render('$file', quiet=TRUE)" | R -q --vanilla ;;
 	*\.tex) textype "$file" ;;
-	*\.md) pandoc "$file" --pdf-engine=xelatex -o "$base".pdf ;;
+	*\.md) pandoc "$file" -o "$base".pdf ;;
 	*\.sent) setsid sent "$file" 2>/dev/null & ;;
 	*) echo "Couldn't figure out file type!" && exit 1 ;;
 esac
