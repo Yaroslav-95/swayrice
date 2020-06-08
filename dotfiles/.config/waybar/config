@@ -37,7 +37,7 @@
         "format-stopped": "  {consumeIcon}{randomIcon}{repeatIcon}{singleIcon} [--:--] -- - --",
         "unknown-tag": "N/A",
         "interval": 2,
-        "max-length": 50,
+        "max-length": 60,
         "consume-icons": {
             "on": " "
         },
