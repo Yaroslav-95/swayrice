@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# Script to start a new textfile from template
+
+templdir=$HOME"/docs/templates/"
+
+if [ -z "$2" ]; then
+  echo "Specify template filename and new filename"
+  exit 0
+fi
+
+template="$templdir$1"
+file=$(readlink -f "$2")
+
+if [ ! -f "$template" ]; then
+  echo "Template $1 does not exist"
+  exit 0
+fi
+
+cp $template $file
+nvim $file
