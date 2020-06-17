@@ -22,6 +22,17 @@ ultramar = {
     'green': '#7ea95a'
 }
 
+## Default search engine
+
+# c.url.searchengines = { "DEFAULT": "https://searx.be/?q={}" }
+c.url.searchengines = { "DEFAULT": "https://srx.yaroslavps.com/?q={}" }
+
+# c.url.default_page = "https://searx.be"
+c.url.default_page = "https://srx.yaroslavps.com"
+
+# c.url.start_pages = "https://searx.be"
+c.url.start_pages = "https://srx.yaroslavps.com"
+
 ## Default fonts
 c.fonts.default_family = ["BlexMono Nerd Font Mono", "DejaVu Sans Mono"]
 
