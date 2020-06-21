@@ -187,6 +187,7 @@ bindsym --to-code {
     $mod+F2 exec menumako
     $mod+F3 exec menudisplay
     $mod+F4 exec menublk
+    $mod+F12 exec menutz
     $mod+r exec kitty -e ranger
     $mod+s exec "xway steam"
     $mod+m exec $term -e ncmpcpp

@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Source settings from .bemenurc
+. ~/.config/bemenurc
+
+timezone=$(cd /usr/share/zoneinfo/posix && find * -type f -or -type l | sort | bemenu -p "Select output: " --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB")
+
+if [ -n "$timezone" ]; then
+  notify-send "🗺 Date and time in $timezone" "$(TZ=:$timezone date)"
+else
+  notify-send "🗺 Date and time in your timezone" "$(TZ=:$timezone date)"
+fi
