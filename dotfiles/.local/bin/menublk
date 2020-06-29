@@ -42,7 +42,7 @@ get_unmountable() {
       if [ -z "$mountpoint" ] && [ "$fstype" = "crypto_LUKS" ]; then
         mountpoint="$(lsblk -r -o MOUNTPOINT "/dev/$name" | tail -n 1)"
       fi
-      if [ -n "$mountpoint" ] && [ "$mountpoint" != "/" ] && [ "$mountpoint" != "/boot" ]
+      if [ -n "$mountpoint" ] && [ "$mountpoint" != "/" ] && [ "$mountpoint" != "/boot" ] && [ "$mountpoint" != "[SWAP]" ]
       then
         echo "$name"
       fi

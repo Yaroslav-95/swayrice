@@ -67,6 +67,7 @@ set $ws10 10
 # Open specific applications in specific modes
 for_window [title="alsamixer"] floating enable
 for_window [title="ncpamixer"] floating enable
+for_window [title="pacmixer"] floating enable
 for_window [title="nmtui"] floating enable
 for_window [title="i3_help"] floating enable, sticky enable
 for_window [class="Lightdm-settings"] floating enable
@@ -210,7 +211,7 @@ bindsym --to-code {
     Ctrl+Print exec --no-startup-id swayrecord
 
     # Sound
-    $mod+Shift+m exec $term -e 'ncpamixer'
+    $mod+Shift+m exec $term -e 'pacmixer'
     $mod+Ctrl+m exec --no-startup-id menuoutput
 
     # Applications that start with no gaps

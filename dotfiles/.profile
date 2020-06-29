@@ -25,14 +25,17 @@ eval "$(sed 's/^[^#].*/export &/g;t;d' ~/.config/user-dirs.dirs)"
 export LESSHISTFILE="-"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export INPUTRC="$XDG_CONFIG_HOME/zsh/inputrc"
+export WEECHAT_HOME="$XDG_CONFIG_HOME/weechat"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
 eval "$(dircolors "$HOME/.config/dir_colors")"
 
-# Start sway automatically upon login on tty1
-if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+# Start sway automatically upon login on tty1 or tty2
+if [ -z $DISPLAY ] && [ $(tty) = /dev/tty1 ] || [ $(tty) = /dev/tty2 ]; then
+  # DBUS variables (for Artix)
+  export $(dbus-launch)
   sway > ~/.cache/sway.log 2>&1 && clear && exit
 fi
 
