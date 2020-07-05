@@ -17,5 +17,16 @@ while read file; do
     "C-f")
       wl-copy "$file"
       exit ;;
+    "C-r")
+      # Move file to 'trash' directory, if the current directory's name is
+      # JPEG, remove the NEF file as well
+      dir="$(dirname "$file")"
+      name="$(basename "$file")"
+      base="${name%.*}"
+      mv "$file" ~/etc/temp/trash/
+      if [ "JPEG" = "$(basename $dir)" ]; then
+        mv $(dirname "$dir")/"$base".NEF ~/etc/temp/trash/
+      fi
+      exit ;;
   esac
 done
