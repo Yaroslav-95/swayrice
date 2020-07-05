@@ -58,12 +58,6 @@ set $ws8 8
 set $ws9 9
 set $ws10 10
 
-# Open applications on specific workspaces
-# assign [class="Thunderbird"] $ws1
-# assign [class="Pale moon"] $ws2
-# assign [class="Pcmanfm"] $ws3
-# assign [class="Skype"] $ws5
-
 # Open specific applications in specific modes
 for_window [title="alsamixer"] floating enable
 for_window [title="ncpamixer"] floating enable
@@ -72,10 +66,8 @@ for_window [title="nmtui"] floating enable
 for_window [title="i3_help"] floating enable, sticky enable
 for_window [class="Lightdm-settings"] floating enable
 for_window [class="Lxappearance"] floating enable, sticky enable
-for_window [class="Nitrogen"] floating enable, sticky enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="qt5ct"] floating enable, sticky enable
-for_window [class="Qtconfig-qt4"] floating enable, sticky enable
 for_window [class="(?i)System-config-printer.py"] floating enable
 for_window [title="wl-clipboard"] floating enable
 
@@ -97,21 +89,15 @@ for_window [app_id="telegramdesktop"] floating enable, sticky enable
 for_window [title="quakemite"] floating enable, sticky enable
 for_window [title="quakemite"] border none
 
-# switch to workspace with urgent window automatically
-# for_window [urgent=latest] focus
-
 # Theme colors
 # class                   border  backgr. text    indic.  child_border
   client.focused          #7FAC96 #7FAC96 #1B1E25 #D8DEE9 #7FAC96
-  client.focused_inactive #3B4252 #3B4252 #7FAC96 #1d2021 #1B1E25
+  client.focused_inactive #1B1E25 #3B4252 #7FAC96 #1d2021 #1B1E25
   client.unfocused        #1B1E25 #3B4252 #D8DEE9 #1d2021 #1B1E25
   client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2 #CB4B16
   client.placeholder      #FFFFFF #0C0C0C #FFFFFF #FFFFFF #3F6E90
 
   client.background       #2B2C2B
-
-# hide/unhide i3status bar
-# bindsym $mod+m bar mode toggle
 
 # Laptop lid
 bindswitch --reload --locked lid:on exec "swaysession suspend"
@@ -144,11 +130,6 @@ smart_borders no_gaps
 ##### Bindsyms (layout-independent) #####
 bindsym --to-code {
 
-    # change borders
-    $mod+u border none
-    $mod+y border pixel 2
-    $mod+n border normal
-
     # start a terminal
     $mod+Return exec $term
 
@@ -156,10 +137,10 @@ bindsym --to-code {
     $mod+Shift+q kill
     $mod+q kill
 
-    # start program launcher
+    # bemenu program launcher (-x force run through xwayland, -t run in terminal)
     $mod+d exec --no-startup-id menurun
-    # start program launcher (force through XWayland)
-    $mod+Ctrl+d exec --no-startup-id menuxrun
+    $mod+Shift+d exec --no-startup-id "menurun -t"
+    $mod+Ctrl+d exec --no-startup-id "menurun -x"
 
     # Mako (notifications)
     $mod+Ctrl+space exec "makoctl dismiss"
@@ -195,6 +176,8 @@ bindsym --to-code {
     $mod+r exec kitty -e ranger
     $mod+s exec "xway steam"
     $mod+m exec $term -e ncmpcpp
+    $mod+n exec $term -e newsboat && killall -42 waybar
+    $mod+a exec $term -e aerc
     $mod+Ctrl+v exec $term -e vis
     $mod+o exec --no-startup-id notistats
     $mod+c exec --no-startup-id camtoggle
@@ -225,8 +208,6 @@ bindsym --to-code {
     $mod+Shift+t exec --no-startup-id ddtelegram
     $mod+Shift+p exec --no-startup-id ddquakemite
 
-    #focus_follows_mouse no
-
     # Sticky float to a bottom corner
     $mod+Shift+b floating toggle; sticky toggle; exec --no-startup-id picinpic
     $mod+Ctrl+b floating toggle; sticky toggle; exec --no-startup-id picinpic left
@@ -256,14 +237,14 @@ bindsym --to-code {
     $mod+Shift+Right move right
 
     # split orientation
-    $mod+b split h;exec notify-send 'tile horizontally'
-    $mod+v split v;exec notify-send 'tile vertically'
+    $mod+b split h
+    $mod+v split v
 
     # toggle fullscreen mode for the focused container
     $mod+f fullscreen toggle
 
     # change container layout (stacked, tabbed, toggle split)
-    # $mod+s layout stacking
+    $mod+slash layout stacking
     $mod+w layout tabbed
     $mod+e layout toggle split
 
@@ -337,16 +318,16 @@ bindsym --to-code {
     $mod+Shift+i exec --no-startup-id swayresize up
     $mod+Shift+o exec --no-startup-id swayresize right
 
-
     # Lock screen
     $mod+x exec --no-startup-id lock-color
 
-    $mod+a			gaps inner current plus 5
-    $mod+Shift+a		gaps inner current minus 5
-    $mod+Shift+d		gaps inner current set 0; gaps outer current set 0
-    $mod+t		gaps inner current set 18; gaps outer current set 0
-    $mod+z			gaps outer current plus 5
-    $mod+Shift+z		gaps outer current minus 5
+    # Gaps
+    $mod+semicolon		      gaps inner current set 15; gaps outer current set 0
+    $mod+Shift+semicolon		gaps inner current set 0; gaps outer current set 0
+    $mod+period			    gaps outer current plus 5
+    $mod+Shift+period		gaps outer current minus 5
+    $mod+comma		      gaps inner current plus 5
+    $mod+Shift+comma		gaps inner current minus 5
 }
 
 # bar {
