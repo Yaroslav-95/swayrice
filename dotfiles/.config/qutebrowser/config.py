@@ -27,6 +27,11 @@ ultramar = {
 
 c.content.notifications = False
 
+## Downloads
+
+# Automatically remove finished downloads from list
+c.downloads.remove_finished = 3000
+
 ## Default search engine
 
 # c.url.searchengines = { "DEFAULT": "https://searx.be/?q={}" }
