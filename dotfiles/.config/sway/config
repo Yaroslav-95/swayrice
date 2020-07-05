@@ -113,6 +113,9 @@ for_window [title="quakemite"] border none
 # hide/unhide i3status bar
 # bindsym $mod+m bar mode toggle
 
+# Laptop lid
+bindswitch --reload --locked lid:on exec "swaysession suspend"
+
 # Trackpoint (Thinkpad)
 input 2:10:TPPS/2_IBM_TrackPoint pointer_accel 1
 
