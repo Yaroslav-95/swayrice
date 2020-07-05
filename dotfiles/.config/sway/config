@@ -102,9 +102,9 @@ for_window [title="quakemite"] border none
 
 # Theme colors
 # class                   border  backgr. text    indic.  child_border
-  client.focused          #1B1E25 #1B1E25 #7FAC96 #81acc1 #434C5E
+  client.focused          #7FAC96 #7FAC96 #1B1E25 #D8DEE9 #7FAC96
   client.focused_inactive #3B4252 #3B4252 #7FAC96 #1d2021 #1B1E25
-  client.unfocused        #000000 #3B4252 #D8DEE9 #1d2021 #1B1E25
+  client.unfocused        #1B1E25 #3B4252 #D8DEE9 #1d2021 #1B1E25
   client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2 #CB4B16
   client.placeholder      #FFFFFF #0C0C0C #FFFFFF #FFFFFF #3F6E90
 
@@ -198,7 +198,6 @@ bindsym --to-code {
     $mod+grave exec --no-startup-id menuemoji
     $mod+Ctrl+grave exec --no-startup-id menuwebsurf
     $mod+Shift+grave exec --no-startup-id menuwebsurf paste
-    # $mod+F1 exec --no-startup-id zathura ~/.config/i3/i3guide.pdf # TODO: update guide
 
     # Network management
     $mod+Shift+c exec togglevpn
