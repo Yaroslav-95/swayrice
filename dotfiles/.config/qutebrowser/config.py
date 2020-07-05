@@ -19,8 +19,13 @@ ultramar = {
     'violet': '#9c6992',
     'blue': '#3f6e90',
     'cyan': '#5b8277',
+    'cyan2': '#7fac96',
     'green': '#7ea95a'
 }
+
+## Notifications for websites are retarded
+
+c.content.notifications = False
 
 ## Default search engine
 
@@ -355,19 +360,19 @@ c.colors.tabs.odd.fg = ultramar['base2']
 
 ## Background color of selected even tabs.
 ## Type: QtColor
-c.colors.tabs.selected.even.bg = ultramar['base03']
+c.colors.tabs.selected.even.bg = ultramar['cyan2']
 
 ## Foreground color of selected even tabs.
 ## Type: QtColor
-c.colors.tabs.selected.even.fg = ultramar['base3']
+c.colors.tabs.selected.even.fg = ultramar['base03']
 
 ## Background color of selected odd tabs.
 ## Type: QtColor
-c.colors.tabs.selected.odd.bg = ultramar['base03']
+c.colors.tabs.selected.odd.bg = ultramar['cyan2']
 
 ## Foreground color of selected odd tabs.
 ## Type: QtColor
-c.colors.tabs.selected.odd.fg = ultramar['base3']
+c.colors.tabs.selected.odd.fg = ultramar['base03']
 
 ## Background color for webpages if unset (or empty to use the theme's
 ## color)
