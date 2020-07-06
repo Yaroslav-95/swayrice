@@ -312,6 +312,9 @@ bindsym --to-code {
     # restart waybar
     $mod+Ctrl+r exec --no-startup-id waybar_launch
 
+    # show/hide waybar
+    $mod+F1 exec --no-startup-id "killall -10 waybar"
+
     # Shut down, restart and locking features
     $mod+Shift+e exec menusession
 
