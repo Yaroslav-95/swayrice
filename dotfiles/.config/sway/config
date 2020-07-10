@@ -185,7 +185,9 @@ bindsym --to-code {
     $mod+Ctrl+grave exec --no-startup-id menuwebsurf
     $mod+Shift+grave exec --no-startup-id menuwebsurf paste
     $mod+apostrophe exec --no-startup-id menupass
-    $mod+Shift+apostrophe exec --no-startup-id "menupass --type"
+    $mod+Shift+apostrophe exec --no-startup-id "menupass -l"
+    $mod+Ctrl+apostrophe exec --no-startup-id "menupass -f"
+    $mod+Ctrl+Shift+apostrophe exec --no-startup-id "menupass -s"
 
     # Network management
     $mod+Shift+c exec togglevpn

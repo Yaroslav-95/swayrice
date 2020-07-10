@@ -1,40 +1,81 @@
 #!/usr/bin/sh
 
-# Taken from https://git.zx2c4.com/password-store/tree/contrib/dmenu/passmenu
-# and modified
+# Inspiration taken from
+# https://git.zx2c4.com/password-store/tree/contrib/dmenu/passmenu
 
 # Source settings from .bemenurc
 . ~/.config/bemenurc
 
 shopt -s nullglob globstar
 
-title="Copy password to clipboard"
-typeit=0
-if [[ $1 == "--type" ]]; then
-title="Show and copy password to clipboard"
-	typeit=1
-	shift
-fi
+notititle="🔑 Password store"
+cleartime=30
+lastpass_cache="$HOME/.cache/lastpass"
 
 prefix=${PASSWORD_STORE_DIR-~/.password-store}
 password_files=( "$prefix"/**/*.gpg )
 password_files=( "${password_files[@]#"$prefix"/}" )
 password_files=( "${password_files[@]%.gpg}" )
 
-password=$(printf '%s\n' "${password_files[@]}" | bemenu -p "$title:" --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB")
 
-[[ -n $password ]] || exit
+notify_pass() {
+  notify-send \
+    "$notititle" \
+    "The password for $1 has been copied to the clipboard and will be cleared in 30 seconds"
+}
 
-oldclip=$(wl-paste)
-thepassword=$(pass show "$password")
-wl-copy "$thepassword"
+notify_spass() {
+  notify-send "$notititle" "Password for $1: $2"
+}
 
-if [[ $typeit -eq 0 ]]; then
-  notify-send "🔑 Password store" "The password for $password has been copied to the clipboard and will be cleared in 30 seconds"
-else
-  notify-send "🔑 Password store" "Password for $password: $thepassword"
-fi
+notify_nocache() {
+  notify-send "$notititle" "No cache about previously selected login"
+}
 
-sleep 30
-wl-copy $oldclip
-notify-send "🔑 Password store" "Password cleared from clipboard"
+show_menu() {
+  password=$(printf '%s\n' "${password_files[@]}" | bemenu -p "$1:" --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB")
+  [ -n "$password" ] || exit
+}
+
+copy_password() {
+  thepassword=$(pass show "$1"| sed -n 1p)
+  wl-copy "$thepassword"
+}
+
+copy_login() {
+  thelogin=$(pass show "$1"| sed -n 2p)
+  wl-copy "$thelogin"
+  notify-send "$notititle" "The login $thelogin has been copied to the clipboard"
+  printf "%s" "$1" > $lastpass_cache
+}
+
+wait_and_clear() {
+  sleep $cleartime
+  wl-copy ""
+  notify-send "🔑 Password store" "Clipboard has been cleared"
+}
+
+
+case $1 in
+  -l)
+    show_menu "Show and copy login to clipboard"
+    copy_login $password;;
+  -s)
+    show_menu "Show and copy password to clipboard"
+    copy_password $password
+    notify_spass "$password" "$thepassword"
+    wait_and_clear;;
+  -f)
+    ## Copy the password of the last copied login
+    [ -f $lastpass_cache ] || (notify_nocache && exit)
+    password=$(cat $lastpass_cache)
+    copy_password $password
+    notify_pass "$password" "$thepassword"
+    wait_and_clear;;
+  *)
+    show_menu "Copy password to clipboard"
+    copy_password $password
+    notify_pass "$password" "$thepassword"
+    wait_and_clear;;
+esac
+
