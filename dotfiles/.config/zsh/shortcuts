@@ -21,6 +21,7 @@ alias audio="ncpamixer"
 alias calendar="calcurse"
 alias contacts="abook"
 alias calc="R --no-save -q"
+alias spw="setsid $TERMINAL >/dev/null 2>&1 &"
 
 # Mounting drive shortcuts
 alias mnt="udisksctl mount -b"
