@@ -1,3 +1,15 @@
 #!/bin/sh
 
-pkill -f /dev/video || mpv --gpu-context=wayland --no-osc --no-input-default-bindings --input-conf=/dev/null --geometry=-0-0 --autofit=30%  --title="mpvfloat" /dev/video2
+# I have two cameras on my laptop and the first one is an IR camera (video0)
+# If a second camera is present, use the second one
+camera="/dev/video0"
+[ -f /dev/video2 ] && camera="/dev/video2"
+
+pkill -f /dev/video || mpv \
+  --gpu-context=wayland \
+  --no-osc \
+  --no-input-default-bindings \
+  --input-conf=/dev/null \
+  --geometry=-0-0 \
+  --autofit=25% \
+  --title="mpvfloat" "$camera"
