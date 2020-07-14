@@ -2,9 +2,9 @@
 
 swaymsg input type:keyboard xkb_switch_layout 0
 
-swayidle timeout 30 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' &
+gpg-connect-agent --no-autostart reloadagent /bye
 
+swayidle timeout 30 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' &
 swaylock
 
 pkill -n swayidle
-

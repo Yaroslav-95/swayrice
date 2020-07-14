@@ -1,7 +1,7 @@
 image=~/.config/lockwall.png
 color=#00000000
 font=BlexMono Nerd Font Mono
-font-size=48
+font-size=36
 scaling=fill
 indicator-radius=100
 show-failed-attempts

@@ -4,6 +4,9 @@
 # Run only if user logged in (prevent cron errors)
 w | grep "^$USER\W" >/dev/null || exit
 
+# Don't run if screen is locked (gpg key is locked too)
+pidof swaylock && exit
+
 # Check several times before giving up, useful when just waking up from sleep
 # since internet is usually not available right away
 wget -q --tries=3 --timeout=20 --spider 1.1.1.1 > /dev/null || exit
