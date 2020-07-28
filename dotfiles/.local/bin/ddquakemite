@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if ! [ -z "$(swaymsg -t get_tree | grep 'quakemite')" ]; then
-    if [ -z "$(swaymsg -t get_tree | grep -A 42 'quakemite' | tail -n 1 | grep 'true')" ]; then
+    if [ -z "$(swaymsg -t get_tree | grep -A 46 'quakemite' | tail -n 1 | grep 'true')" ]; then
         swaymsg '[title="quakemite"] scratchpad show'
     else
         swaymsg '[title="quakemite"] move scratchpad'
