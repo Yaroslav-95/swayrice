@@ -4,3 +4,5 @@ background-color=#2d333f
 border-color=#434c5e
 default-timeout=5000
 height=300
+max-visible=5
+max-history=10
