@@ -21,7 +21,7 @@ chown -R "$1:$1" build
 cd build
 sudo -u "$1" "git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si"
 
-yay -S --noconfirm aerc-git ttf-symbola pam-gnupg pacmixer mimeo xdg-utils-mimeo cli-visualizer
+yay -S --noconfirm aerc-git ttf-symbola pam-gnupg ncpamixer mimeo xdg-utils-mimeo cli-visualizer
 
 # Copy some fonts to make them available system-wide
 mkdir -p /usr/share/fonts/rice
