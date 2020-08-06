@@ -22,3 +22,4 @@ BEMENU_HF="#E5E9F0"
 ## command for the terminal application to be used:
 TERMINAL_CMD="terminal -e"
 
+BEMENU_MONITOR="-1"

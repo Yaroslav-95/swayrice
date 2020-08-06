@@ -54,7 +54,7 @@ mount_dev() {
   fstype="$(lsblk -r -o FSTYPE "/dev/$1" | tail -n 1)"
   part="/dev/$1"
   if [ "$fstype" = "crypto_LUKS" ]; then
-    password="$(echo "" | bemenu -p "Enter passphrase for encrypted drive:" --tf="$BEMENU_TF" --tb="$BEMENU_NB" --ff="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB")"
+    password="$(echo "" | bemenu -p "Enter passphrase for encrypted drive:" --tf="$BEMENU_TF" --tb="$BEMENU_NB" --ff="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB" --monitor="$BEMENU_MONITOR")"
     if [ -z "$password" ]; then
       exit 0
     fi
@@ -106,23 +106,23 @@ poweroff_dev() {
   fi
 }
 
-action="$(printf "mount\nunmount\npoweroff\n" | bemenu -p "What to do?" --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB")"
+action="$(printf "mount\nunmount\npoweroff\n" | bemenu -p "What to do?" --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB" --monitor="$BEMENU_MONITOR")"
 
 case "$action" in
   mount)
-    blkdev="$(get_mountable | bemenu -p "Choose device to mount:" --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB")"
+    blkdev="$(get_mountable | bemenu -p "Choose device to mount:" --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB" --monitor="$BEMENU_MONITOR")"
     if [ -z "$blkdev" ]; then
       exit 0
     fi
     mount_dev "$blkdev";;
   unmount)
-    blkdev="$(get_unmountable | bemenu -p "Choose device to umount:" --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB")"
+    blkdev="$(get_unmountable | bemenu -p "Choose device to umount:" --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB" --monitor="$BEMENU_MONITOR")"
     if [ -z "$blkdev" ]; then
       exit 0
     fi
     unmount_dev "$blkdev";;
   poweroff)
-    blkdev="$(get_usb_storage | bemenu -p "Choose device to power off:" --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB")"
+    blkdev="$(get_usb_storage | bemenu -p "Choose device to power off:" --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB" --monitor="$BEMENU_MONITOR")"
     if [ -z "$blkdev" ]; then
       exit 0
     fi
