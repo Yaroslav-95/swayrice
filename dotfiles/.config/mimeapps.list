@@ -13,3 +13,4 @@ x-scheme-handler/discord-589393213723246592=discord-589393213723246592.desktop;
 x-scheme-handler/http=org.qutebrowser.qutebrowser.desktop;
 x-scheme-handler/https=org.qutebrowser.qutebrowser.desktop;
 x-scheme-handler/qute=org.qutebrowser.qutebrowser.desktop;
+x-scheme-handler/discord-455712169795780630=discord-455712169795780630.desktop
