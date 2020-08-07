@@ -1,0 +1,5 @@
+#!/bin/sh -e
+
+powertop --auto-tune
+
+exec chpst -b powertune pause

@@ -1,0 +1,7 @@
+#!/bin/sh -e
+
+sv start agetty-tty2 || exit 1
+
+mpv --audio-device='<DESIRED_AUDIO_DEVICE>' --volume=100 --really-quiet /home/yaroslav/.local/share/soundalerts/start.ogg&
+
+exec chpst -b startupsound pause
