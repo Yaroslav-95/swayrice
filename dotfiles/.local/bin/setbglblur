@@ -8,7 +8,9 @@ barheight=$(echo ""$scale" * 27" | bc -l)
 convert "$1" -resize "$horizontal"x"$vertical"^ -gravity center \
   -extent "$horizontal"x"$vertical" ~/.config/lockwall.png
 convert ~/.config/lockwall.png \
+  -channel rgb \
   -brightness-contrast -20,-20 \
+  +channel \
   -paint 1 \
   -noise 0x8 \
   -blur 9,9 \
