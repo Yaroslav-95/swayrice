@@ -224,6 +224,8 @@ bindsym --to-code {
     $mod+j focus down
     $mod+k focus up
     $mod+l focus right
+    $mod+z focus parent
+    $mod+shift+z focus child
 
     # alternatively, you can use the cursor keys:
     $mod+Left focus left
