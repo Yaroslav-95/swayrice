@@ -107,6 +107,7 @@ input 2:10:TPPS/2_IBM_TrackPoint pointer_accel 1
 
 # Outputs
 output "*" background ~/.config/wall1.png fill
+output "HDMI-A-2" background ~/.config/wall2.png fill
 # Laptop display
 output "eDP-1" scale 1.6 pos 0 0 scale_filter linear
 # Two monitor layout
@@ -336,6 +337,7 @@ bindsym --to-code {
     # Gaps
     $mod+semicolon		      gaps inner current set 15; gaps outer current set 0
     $mod+Shift+semicolon		gaps inner current set 0; gaps outer current set 0
+    $mod+Ctrl+semicolon		gaps inner current set 45; gaps outer current set 15
     $mod+period			    gaps outer current plus 5
     $mod+Shift+period		gaps outer current minus 5
     $mod+comma		      gaps inner current plus 5

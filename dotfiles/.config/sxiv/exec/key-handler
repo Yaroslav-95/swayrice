@@ -2,8 +2,11 @@
 
 while read file; do
   case "$1" in
-    "C-a")
+    "C-a" | "C-1")
       setbg "$file"
+      exit ;;
+    "C-2")
+      setbg "$file" "2"
       exit ;;
     "C-s")
       setbglblur "$file"

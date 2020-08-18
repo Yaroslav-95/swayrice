@@ -1,4 +1,13 @@
 #!/bin/sh
 
-cp $1 ~/.config/wall1.png
-swaymsg output "*" background ~/.config/wall1.png fill
+mon="1"
+[ -n "$2" ] && mon="$2"
+
+cp $1 "$HOME/.config/wall$mon.png"
+
+IFS=$'\n'
+outputcf=$(grep '^output .* background.*$' ~/.config/sway/config)
+
+for line in $outputcf; do
+  swaymsg $line
+done
