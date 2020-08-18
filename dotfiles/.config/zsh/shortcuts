@@ -23,6 +23,10 @@ alias contacts="abook"
 alias calc="R --no-save -q"
 alias spw="setsid $TERMINAL >/dev/null 2>&1 &"
 
+# Fuzzy finder
+alias fzd='cd "$(find * -type d | fzf || echo ".")"'
+alias fzv='nvim $(fzf)'
+
 # Mounting drive shortcuts
 alias mnt="udisksctl mount -b"
 alias umnt="udisksctl unmount -b"
