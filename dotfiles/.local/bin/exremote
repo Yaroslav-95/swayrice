@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Helper script to execute commands on remote host
+
+[ -n "$1" ] || (echo "Specify command to run" && exit 0)
+
+host=$(cat $HOME/.config/exremote/host)
+
+ssh "$host" "source /home/$(whoami)/.profile 2> /dev/null && $1"

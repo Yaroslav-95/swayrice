@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Helper script to retrieve and send clipboard data to/from remote host
+
+action="copy"
+[ -n "$1" ] && action="$1"
+
+case "$action" in
+  copy)
+    exremote "wl-copy '$(wl-paste)'";;
+  paste)
+    exremote "wl-paste" | wl-copy --trim-newline;;
+  *)
+    echo "$1 is not a valid action";;
+esac

@@ -182,7 +182,6 @@ bindsym --to-code {
     $mod+m exec $term -e ncmpcpp
     $mod+n exec $term -e newsboat && killall -42 waybar
     $mod+a exec $term -e aerc
-    $mod+Ctrl+v exec $term -e vis
     $mod+o exec --no-startup-id notistats
     $mod+c exec --no-startup-id camtoggle
     $mod+grave exec --no-startup-id menuemoji
@@ -342,6 +341,26 @@ bindsym --to-code {
     $mod+Shift+period		gaps outer current minus 5
     $mod+comma		      gaps inner current plus 5
     $mod+Shift+comma		gaps inner current minus 5
+
+    #### Shortcuts to control my other computer through ssh ####
+
+    # Media keys
+    $mod+XF86AudioPrev		exec --no-startup-id exremote "lmc prev"
+    $mod+XF86AudioPlay		exec --no-startup-id exremote "lmc toggle"
+    $mod+XF86AudioNext		exec --no-startup-id exremote "lmc next"
+    $mod+XF86AudioRaiseVolume		exec --no-startup-id exremote "lmc up 5"
+    $mod+XF86AudioLowerVolume		exec --no-startup-id exremote "lmc down 5"
+    $mod+XF86AudioMute exec --no-startup-id exremote "lmc mute"
+
+    $mod+Ctrl+Shift+F5   exec exremote "mpc seek -10"
+    $mod+Ctrl+F5     		exec exremote "lmc prev"
+    $mod+Ctrl+F6     		exec exremote "lmc toggle"
+    $mod+Ctrl+F7     		exec exremote "lmc next"
+    $mod+Ctrl+Shift+F7   exec exremote "mpc seek +10"
+
+    # Remote computer's clipboard
+    $mod+Ctrl+c exec clipremote copy
+    $mod+Ctrl+v exec clipremote paste
 }
 
 # bar {
