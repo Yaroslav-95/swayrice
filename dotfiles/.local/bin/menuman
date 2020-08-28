@@ -1,0 +1,21 @@
+#!/bin/sh
+# Search and open man page
+
+list="$(man -k . | awk '{ print $1$2 }')"
+
+if [ "$1" = "-t" ]; then
+  chosen=$(printf "$list" | fzf)
+else
+  # Source settings from .bemenurc
+  . ~/.config/bemenurc
+
+  action="$TERMINAL -e"
+  chosen=$(printf "$list" | bemenu -p "Select man page:" -i -l 25 --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB" --monitor="$BEMENU_MONITOR")
+fi
+
+if [ -z "$chosen" ]; then
+    exit 0
+fi
+
+[ -n "$action" ] && $action "man $chosen" && exit 0
+man $chosen
