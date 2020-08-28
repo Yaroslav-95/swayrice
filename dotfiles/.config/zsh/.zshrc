@@ -52,11 +52,11 @@ function zle-keymap-select {
 }
 
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
-printf "\033]2;%s\a" "$PWD" # Set terminal window title to current dir
+printf "\033]2;%s\a" "$HOST:$PWD" # Set terminal window title to current dir
 # Repeat for every new prompt
-preexec() {
+precmd () {
   echo -ne '\e[5 q'
-  printf "\033]2;%s\a" "$PWD"
+  printf "\033]2;%s\a" "$HOST:$PWD"
 }
 
 zle -N zle-keymap-select
