@@ -1,0 +1,5 @@
+#!/bin/sh
+
+dir=$(dirname "$1")
+
+imv "$dir" -n "$1"

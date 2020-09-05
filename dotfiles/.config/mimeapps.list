@@ -9,6 +9,7 @@ image/jpeg=imv.desktop;
 image/png=imv.desktop;
 text/html=org.qutebrowser.qutebrowser.desktop;
 text/xml=nvim.desktop;
+text/plain=nvim.desktop;
 x-scheme-handler/discord-589393213723246592=discord-589393213723246592.desktop;
 x-scheme-handler/http=org.qutebrowser.qutebrowser.desktop;
 x-scheme-handler/https=org.qutebrowser.qutebrowser.desktop;

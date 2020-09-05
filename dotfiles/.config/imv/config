@@ -1,0 +1,9 @@
+[binds]
+
+<Ctrl+a> = exec setbg "$imv_current_file"
+<Ctrl+1> = exec setbg "$imv_current_file"
+<Ctrl+2> = exec setbg "$imv_current_file" "2"
+<Ctrl+s> = exec setbglblur "$imv_current_file"
+<Ctrl+d> = exec setbglsimple "$imv_current_file"
+<Ctrl+c> = exec wl-copy < "$imv_current_file"
+<Ctrl+Shift+c> = exec wl-copy "$imv_current_file"
