@@ -35,4 +35,4 @@ macro , open-in-browser
 macro t set browser "tsp youtube-dl --add-metadata -ic"; open-in-browser ; set browser linkhandler
 macro a set browser "tsp youtube-dl --add-metadata -xic -f bestaudio/best"; open-in-browser ; set browser linkhandler
 macro v set browser "setsid nohup mpv"; open-in-browser ; set browser linkhandler
-macro c set browser "copy(){ echo $1 | wl-copy ;}; copy "; open-in-browser ; set browser linkhandler
+macro c set browser "copy(){ printf '%s' $1 | wl-copy ;}; copy "; open-in-browser ; set browser linkhandler
