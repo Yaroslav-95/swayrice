@@ -22,7 +22,8 @@
       ],
       "destinations" : [
       ],
-      "last-move-destination" : "/home/yaroslav/dls/p2p"
+      "last-move-destination" : "/home/yaroslav/dls/p2p",
+      "last-add-destination" : "/home/yaroslav/dls/p2p"
     }
   ],
   "profile-id" : 0,
@@ -31,20 +32,20 @@
       "sort-col" : -1,
       "sort-type" : 0,
       "widths" : [
-        453,
-        76,
+        473,
+        77,
         66,
-        72,
+        93,
         70,
         91,
         100,
         113,
         92,
-        57,
+        74,
         93,
         114,
         65,
-        149
+        150
       ],
       "columns" : [
         "name",
@@ -67,14 +68,14 @@
       "sort-col" : -2,
       "sort-type" : 0,
       "widths" : [
-        88,
-        259,
-        100,
-        149,
-        156,
-        157,
-        134,
-        137
+        158,
+        226,
+        170,
+        219,
+        226,
+        227,
+        204,
+        212
       ],
       "columns" : [
         "tier",
@@ -91,11 +92,11 @@
       "sort-col" : -2,
       "sort-type" : 0,
       "widths" : [
-        1064,
-        78,
-        90,
-        98,
-        79
+        489,
+        269,
+        295,
+        303,
+        286
       ],
       "columns" : [
         "name",
@@ -109,14 +110,14 @@
       "sort-col" : -2,
       "sort-type" : 0,
       "widths" : [
-        117,
-        132,
-        152,
-        183,
+        200,
+        411,
+        210,
         162,
-        160,
-        136,
-        138
+        141,
+        139,
+        116,
+        263
       ],
       "columns" : [
         "ip",
@@ -211,8 +212,9 @@
   "dialog-width" : 1062,
   "dialog-height" : 680,
   "style" : 1,
-  "window-height" : 1019,
-  "window-width" : 1184,
-  "notebook-paned-pos" : 581,
-  "states-paned-pos" : 278
+  "window-height" : 989,
+  "window-width" : 1646,
+  "notebook-paned-pos" : 551,
+  "states-paned-pos" : 278,
+  "last-torrent-dir" : "/home/yaroslav/dls/torrents"
 }
