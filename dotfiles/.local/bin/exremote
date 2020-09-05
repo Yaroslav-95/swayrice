@@ -2,7 +2,7 @@
 
 # Helper script to execute commands on remote host
 
-[ -n "$1" ] || (echo "Specify command to run" && exit 0)
+[ -n "$1" ] || { echo "Specify command to run" && exit 0; }
 
 host=$(cat $HOME/.config/exremote/host)
 
