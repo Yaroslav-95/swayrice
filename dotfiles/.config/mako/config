@@ -3,6 +3,6 @@ text-color=#e5e9f0
 background-color=#2d333f
 border-color=#434c5e
 default-timeout=5000
-height=300
+height=700
 max-visible=5
 max-history=10
