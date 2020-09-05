@@ -16,6 +16,7 @@ export LANG=en_US.UTF-8
 export TERM=xterm-256color
 export TERMINAL=termite
 export EDITOR="nvim"
+export PAGER="less -R"
 export BROWSER=qutebrowser
 
 # Sanely export XDG Base dir variables
