@@ -178,7 +178,7 @@ bindsym --to-code {
     $mod+F3 exec menudisplay
     $mod+F4 exec menublk
     $mod+F12 exec menutz
-    $mod+r exec kitty -e ranger
+    $mod+r exec $term -t "ranger" -e ranger
     $mod+s exec "xway steam"
     $mod+m exec $term -e ncmpcpp
     $mod+n exec $term -e newsboat && killall -42 waybar
