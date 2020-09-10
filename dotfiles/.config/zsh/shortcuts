@@ -25,7 +25,7 @@ alias spw="setsid $TERMINAL >/dev/null 2>&1 &"
 
 # Fuzzy finder
 alias fzd='cd "$(find * -type d | fzf || echo ".")"'
-alias fzv='nvim $(fzf)'
+alias fzv='nvim $(find * -type f | fzf)'
 
 # Mounting drive shortcuts
 alias mnt="udisksctl mount -b"

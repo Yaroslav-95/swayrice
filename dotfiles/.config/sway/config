@@ -4,6 +4,7 @@
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
+set $alt Mod1
 set $term termite
 set $browser "qutebrowser"
 
@@ -326,13 +327,19 @@ bindsym --to-code {
     # Shut down, restart and locking features
     $mod+Shift+e exec menusession
 
+    # Resize
     $mod+Shift+y exec --no-startup-id swayresize left
     $mod+Shift+u exec --no-startup-id swayresize down
     $mod+Shift+i exec --no-startup-id swayresize up
     $mod+Shift+o exec --no-startup-id swayresize right
+    $mod+Ctrl+y exec --no-startup-id swayresize left 10
+    $mod+Ctrl+u exec --no-startup-id swayresize down 10
+    $mod+Ctrl+i exec --no-startup-id swayresize up 10
+    $mod+Ctrl+o exec --no-startup-id swayresize right 10
 
     # Lock screen
     $mod+x exec --no-startup-id lock-color
+    $mod+Shift+x exec --no-startup-id lock-color screenon
 
     # Gaps
     $mod+semicolon		      gaps inner current set 15; gaps outer current set 0
