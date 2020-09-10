@@ -339,6 +339,7 @@ bindsym --to-code {
 
     # Lock screen
     $mod+x exec --no-startup-id lock-color
+    $mod+Shift+x exec --no-startup-id lock-color screenon
 
     # Gaps
     $mod+semicolon		      gaps inner current set 15; gaps outer current set 0
