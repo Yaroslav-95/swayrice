@@ -1,0 +1,6 @@
+#!/bin/sh
+
+[ -z "$1" ] && exit
+
+setsid curl -sL "$1" > "/tmp/$(echo "$1" | sed "s/.*\///")" && sxiv -a "/tmp/$(echo "$1" | sed "s/.*\///")"  >/dev/null 2>&1 &
+

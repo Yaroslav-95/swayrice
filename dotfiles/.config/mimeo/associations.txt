@@ -1,0 +1,22 @@
+mpv --input-ipc-server=/tmp/mpvsock -quiet %U >/dev/null 2>&1
+  ^https?://(www.)?youtube.com/watch\?.*v=
+  ^https?://youtu.be/
+  ^https?://.*\.mkv
+  ^https?://.*\.webm
+  ^https?://.*\.mp4
+
+imgurl %U
+  ^https?://.*\.png
+  ^https?://.*\.jpg
+  ^https?://.*\.jpe
+  ^https?://.*\.jpeg
+  ^https?://.*\.gif
+  ^https?://.*\.bmp
+
+libreoffice %F
+  \.doc
+  \.docx
+  \.xls
+  \.xlsx
+  \.ppt
+  \.pptx

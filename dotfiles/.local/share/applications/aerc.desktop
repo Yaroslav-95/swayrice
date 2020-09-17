@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=aerc
+GenericName=Email Client
+Exec=aerc %u
+Terminal=true
+MimeType=x-scheme-handler/mailto
