@@ -1,6 +1,6 @@
 * {
     font-size: 11px;
-    font-family: "BlexMono Nerd Font Mono";
+    font-family: "monospace";
     min-height: 0;
 }
 window#waybar {

@@ -13,8 +13,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 # User specific environment and startup programs:
 export LANG=en_US.UTF-8
-export TERM=xterm-256color
-export TERMINAL=termite
+export TERMINAL=alacritty
 export EDITOR="nvim"
 export PAGER="less -R"
 export BROWSER=qutebrowser

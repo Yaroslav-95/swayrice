@@ -5,7 +5,7 @@
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
 set $alt Mod1
-set $term termite
+set $term alacritty
 set $browser "qutebrowser"
 
 # set default desktop layout (default is tiling)
@@ -20,7 +20,7 @@ default_floating_border pixel 2
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:BlexMono Nerd Font Mono 8
+font pango:monospace 8
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
@@ -60,15 +60,15 @@ set $ws9 9
 set $ws10 10
 
 # Open specific applications in specific modes
-for_window [title="alsamixer"] floating enable
-for_window [title="ncpamixer"] floating enable
-for_window [title="pacmixer"] floating enable
-for_window [title="nmtui"] floating enable
+for_window [title="^alsamixer$"] floating enable
+for_window [title="^ncpamixer$"] floating enable
+for_window [title="^pacmixer$"] floating enable
+for_window [title="^nmtui$"] floating enable
 for_window [title="i3_help"] floating enable, sticky enable
 for_window [class="Lightdm-settings"] floating enable
 for_window [class="Lxappearance"] floating enable, sticky enable
 for_window [class="Pavucontrol"] floating enable
-for_window [class="qt5ct"] floating enable, sticky enable
+for_window [class="^qt5ct$"] floating enable, sticky enable
 for_window [class="(?i)System-config-printer.py"] floating enable
 for_window [title="wl-clipboard"] floating enable
 
@@ -87,8 +87,8 @@ for_window [app_id="telegramdesktop"] floating enable, sticky enable
 # for_window [class="TelegramDesktop"] move scratchpad
 
 # Quake-like Terminal dropdown
-for_window [title="quakemite"] floating enable, sticky enable
-for_window [title="quakemite"] border none
+for_window [title="^ddterminal$"] floating enable, sticky enable
+for_window [title="^ddterminal$"] border none
 
 # Theme colors
 # class                   border  backgr. text    indic.  child_border
@@ -182,8 +182,8 @@ bindsym --to-code {
     $mod+r exec $term -t "ranger" -e ranger
     $mod+s exec "xway steam"
     $mod+m exec $term -e ncmpcpp
-    $mod+n exec $term -e newsboat && killall -42 waybar
-    $mod+a exec $term -e aerc
+    $mod+n exec $term -t "newsboat" -e newsboat && killall -42 waybar
+    $mod+a exec $term -t "aerc" -e aerc
     $mod+o exec --no-startup-id notistats
     $mod+c exec --no-startup-id camtoggle
     $mod+grave exec --no-startup-id menuemoji
@@ -196,7 +196,7 @@ bindsym --to-code {
 
     # Network management
     $mod+Shift+c exec togglevpn
-    $mod+Shift+n exec $term -e 'nmtui'
+    $mod+Shift+n exec $term -t "Network Manager" -e 'nmtui'
 
     # Screenshot and recording
     Print exec --no-startup-id menugrim -q
@@ -205,7 +205,7 @@ bindsym --to-code {
     Ctrl+Print exec --no-startup-id swayrecord
 
     # Sound
-    $mod+Shift+m exec $term -e 'ncpamixer'
+    $mod+Shift+m exec $term -t "ncpamixer" -e 'ncpamixer'
     $mod+Ctrl+m exec --no-startup-id menuoutput
 
     # Applications that start with no gaps
