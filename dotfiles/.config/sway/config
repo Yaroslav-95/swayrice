@@ -75,7 +75,7 @@ set $ws10 10
 for_window [title="^alsamixer$"] floating enable
 for_window [title="^ncpamixer$"] floating enable
 for_window [title="^pacmixer$"] floating enable
-for_window [title="^nmtui$"] floating enable
+for_window [title="^Network Manager$"] floating enable
 for_window [title="i3_help"] floating enable, sticky enable
 for_window [class="Lightdm-settings"] floating enable
 for_window [class="Lxappearance"] floating enable, sticky enable
@@ -150,28 +150,30 @@ bindsym --to-code {
     $mod+Ctrl+d exec --no-startup-id "menurun -x"
 
     # Mako (notifications)
-    $mod+Ctrl+space exec "makoctl dismiss"
+    $mod+Ctrl+space       exec "makoctl dismiss"
     $mod+Ctrl+Shift+space exec "makoctl restore"
 
     # Screen brightness controls
-    XF86MonBrightnessUp exec "xbacklight -inc 5"
+    XF86MonBrightnessUp   exec "xbacklight -inc 5"
     XF86MonBrightnessDown exec "xbacklight -dec 5"
-    $mod+Ctrl+Up exec "xbacklight -inc 5"
-    $mod+Ctrl+Down exec "xbacklight -dec 5"
+    $mod+Ctrl+Up          exec "xbacklight -inc 5"
+    $mod+Ctrl+Down        exec "xbacklight -dec 5"
 
     # Media keys
-    XF86AudioPrev		exec --no-startup-id "lmc prev"
-    XF86AudioPlay		exec --no-startup-id "lmc toggle"
-    XF86AudioNext		exec --no-startup-id "lmc next"
+    XF86AudioPrev		        exec --no-startup-id "lmc prev"
+    XF86AudioPlay		        exec --no-startup-id "lmc toggle"
+    XF86AudioNext		        exec --no-startup-id "lmc next"
     XF86AudioRaiseVolume		exec --no-startup-id lmc up 5
     XF86AudioLowerVolume		exec --no-startup-id lmc down 5
-    XF86AudioMute exec --no-startup-id lmc mute
+    XF86AudioMute           exec --no-startup-id lmc mute
 
     $mod+Shift+F5   exec mpc seek -10
     $mod+F5     		exec lmc prev
     $mod+F6     		exec lmc toggle
     $mod+F7     		exec lmc next
     $mod+Shift+F7   exec mpc seek +10
+    $mod+F8         exec mpc single
+    $mod+Shift+F8   exec mpc repeat
 
     # Start Applications
     $mod+Shift+w exec --no-startup-id $browser
