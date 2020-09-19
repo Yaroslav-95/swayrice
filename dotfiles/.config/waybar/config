@@ -5,7 +5,6 @@
     "modules-left": [
         "sway/workspaces",
         "sway/mode",
-        "custom/left-decorator-black",
         "mpd",
         "pulseaudio"
     ],
@@ -25,7 +24,6 @@
         "backlight",
         "battery#bat0",
         "battery#bat1",
-        "custom/right-decorator-black",
         "tray"
     ],
     "sway/mode": {
@@ -48,7 +46,7 @@
             "on": " "
         },
         "single-icons": {
-            "on": "1 "
+            "on": "[s]"
         },
         "state-icons": {
             "paused": "<span color=\"#b2872f\"></span>",
@@ -98,11 +96,11 @@
         "format-charging": " <span color=\"#5b8277\"></span> {capacity}%",
         "format-plugged": "<span color=\"#5b8277\"></span> {capacity}%",
         "format-icons": [
-            "<span color=\"#b73030\"></span>",
-            "<span color=\"#b2872f\"></span>",
-            "<span color=\"#5b8277\"></span>",
-            "<span color=\"#5b8277\"></span>",
-            "<span color=\"#5b8277\"></span>"
+            "<span color=\"#b73030\"></span>",
+            "<span color=\"#b2872f\"></span>",
+            "<span color=\"#5b8277\"></span>",
+            "<span color=\"#b2872f\"></span>",
+            "<span color=\"#5b8277\"></span>"
         ]
     },
     "battery#bat1": {
@@ -111,19 +109,19 @@
         "format-charging": " <span color=\"#5b8277\"></span> {capacity}%",
         "format-plugged": "<span color=\"#5b8277\"></span> {capacity}%",
         "format-icons": [
-            "<span color=\"#b73030\"></span>",
-            "<span color=\"#b2872f\"></span>",
-            "<span color=\"#5b8277\"></span>",
-            "<span color=\"#5b8277\"></span>",
-            "<span color=\"#5b8277\"></span>"
+            "<span color=\"#b73030\"></span>",
+            "<span color=\"#b2872f\"></span>",
+            "<span color=\"#5b8277\"></span>",
+            "<span color=\"#b2872f\"></span>",
+            "<span color=\"#5b8277\"></span>"
         ]
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "<span color=\"#5b8277\"></span> {essid}",
-        "format-ethernet": "<span color=\"#5b8277\"></span> {ifname}",
-        "format-linked": "<span color=\"#5b8277\"></span> {ifname}",
-        "format-disconnected": "<span color=\"#b73030\">⚠</span> Disconnected",
+        "format-wifi": "<span color=\"#5b8277\"></span> {essid}",
+        "format-ethernet": "<span color=\"#5b8277\"></span> {ifname}",
+        "format-linked": "<span color=\"#5b8277\"></span> {ifname}",
+        "format-disconnected": "<span color=\"#5b8277\">⚠</span> Disconnected",
         "format-alt": "{ifname}: {ipaddr}/{cidr}",
         "tooltip-format": "{ifname}: {ipaddr}/{cidr}"
     },
@@ -152,7 +150,7 @@
         "scroll-step": 5, // %, can be a float
         "format": "<span color=\"#5b8277\">{icon}</span> {volume}%",
         "format-bluetooth": "<span color=\"#5b8277\">{icon}</span> {volume}% {format_source}",
-        "format-muted": "<span color=\"#b73030\"></span>",
+        "format-muted": "<span color=\"#b2872f\"></span>",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
@@ -167,7 +165,7 @@
         "on-click": "termite -e ncpamixer"
     },
     "custom/rec-status": {
-        "format": "<span color=\"#b73030\">{}</span>",
+        "format": "<span color=\"#5b8277\">{}</span>",
         "signal": 5,
         "interval": "once",
         "exec": "barrecstatus"
@@ -184,14 +182,14 @@
         "tooltip": false
     },
     "custom/pac-status": {
-        "format": "<span color=\"#5b8277\"></span> {}",
+        "format": "<span color=\"#5b8277\"></span> {}",
         "signal": 7,
         "interval": "once",
         "exec": "barpacstatus",
         "tooltip": false
     },
     "custom/news-status": {
-        "format": "<span color=\"#5b8277\"></span> {}",
+        "format": "<span color=\"#5b8277\"></span> {}",
         "signal": 8,
         "interval": "once",
         "exec": "barnewsstatus",
@@ -212,15 +210,4 @@
         "exec": "swaykbd",
         "tooltip": false
     },
-    "custom/media": {
-        "format": "{icon} {}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-    }
 }

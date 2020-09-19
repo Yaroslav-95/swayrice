@@ -24,15 +24,16 @@ font pango:monospace 9
 
 # Theme colors
 # class                   border  backgr. text    indic.  child_border
-  client.focused          #7FAC96 #7FAC96 #1B1E25 #D8DEE9 #7FAC96
-  client.focused_inactive #3B4252 #3B4252 #7FAC96 #1d2021 #3B4252
-  client.unfocused        #2B2C2B #3B4252 #D8DEE9 #1d2021 #3B4252
-  client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2 #CB4B16
-  client.placeholder      #FFFFFF #0C0C0C #FFFFFF #FFFFFF #3F6E90
+  client.focused          #5b8277 #7fac96 #1d2021 #9eba86 #5b8277
+  client.focused_inactive #000000 #252832 #5b8277 #000000 #000000
+  client.unfocused        #000000 #252832 #d8dee9 #000000 #000000
+  client.urgent           #cb4b16 #fdf6e3 #1abc9c #268bd2 #cb4b16
+  client.placeholder      #ffffff #0c0c0c #ffffff #ffffff #3f6e90
 
-  client.background       #2B2C2B
+  client.background       #2b2c2b
 
-titlebar_padding 5 2
+titlebar_padding 6 2
+titlebar_border_thickness 2
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
@@ -100,7 +101,7 @@ for_window [app_id="telegramdesktop"] floating enable, sticky enable
 
 # Quake-like Terminal dropdown
 for_window [title="^ddterminal$"] floating enable, sticky enable
-for_window [title="^ddterminal$"] border none
+#for_window [title="^ddterminal$"] border none
 
 # Laptop lid
 bindswitch --reload --locked lid:on exec "swaysession suspend"
