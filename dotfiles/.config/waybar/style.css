@@ -1,60 +1,68 @@
 * {
-    font-size: 11px;
-    font-family: "monospace";
-    min-height: 0;
+  font-size: 11px;
+  font-family: monospace;
 }
 window#waybar {
-    background: rgba(27, 30, 37, 1);
-    color: #e5e9f0;
-    min-height: 0;
+  background: #000000;
+  color: #e5e9f0;
+  min-height: 0;
 }
 #custom-right-arrow-cyan, #custom-left-arrow-cyan {
-    color: #89b699;
-    font-size: 20px;
+  color: #89b699;
+  font-size: 20px;
 }
 #custom-right-arrow-black, #custom-left-arrow-black {
-    color: #000000;
-    font-size: 20px;
+  color: #000000;
+  font-size: 20px;
 }
 #custom-left-arrow-gray {
-    color: #191919;
-    background: #89b699;
-    font-size: 20px;
+  color: #191919;
+  background: #89b699;
+  font-size: 20px;
 }
 #custom-right-arrow-black {
-    background: #89b699;
+  background: #89b699;
 }
 #custom-left-arrow-black {
-    background: #191919;
+  background: #191919;
 }
 #custom-left-decorator-black,
 #custom-right-decorator-black {
-    font-size: 20px;
-    background: rgba(27, 30, 37, 0.95);
-    color: #000000;
+  font-size: 27px;
+  background: rgba(27, 30, 37, 0.95);
+  color: #000000;
 }
 #tray,
+#network,
+#custom-vpn-status,
 #workspaces {
-    padding: 0 8px;
-    background: #000000;
+  background: #1d2021;
+  border-top: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+}
+#workspaces {
+  padding: 0;
 }
 #workspaces button {
-    padding: 0 4px;
-    color: #fdf6e3;
+  padding: 0 6px;
+  color: #fdf6e3;
+  border-radius: 0;
+  border: 1px solid rgba(0, 0, 0, 0);
+}
+#workspaces button.visible {
+  color:  #5b8277;
+  border-color: #5b8277;
 }
 #workspaces button.focused {
-    color:  #5b8277;
+  color:  #000000;
+  border-color: #5b8277;
+  background: #5b8277;
 }
 #workspaces button:hover {
-    box-shadow: inherit;
-    text-shadow: inherit;
-}
-#workspaces button:hover {
-    border-color: #0C3D27;
-    border-radius: 0;
-    background: #0C3D27;
+  border: 1px solid #5b8277;
 }
 #mpd,
+#tray,
 #clock,
 #battery,
 #network,
@@ -69,8 +77,8 @@ window#waybar {
 #custom-pac-status,
 #custom-news-status,
 #custom-swaykbd {
-    padding: 0 6px;
+  padding: 0 6px;
 }
 #custom-weather {
-    color: #5b8277;
+  color: #5b8277;
 }
