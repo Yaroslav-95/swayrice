@@ -2,7 +2,7 @@
 BEMENU_BACKEND=wayland
 
 ## define the font for dmenu to be used
-BEMENU_FN="BlexMonoNerdFontMono 10"
+BEMENU_FN="monospace 10"
 
 ## textcolour for title
 BEMENU_TF="#D8DEE9"

@@ -44,7 +44,7 @@ c.url.default_page = "https://srx.yaroslavps.com"
 c.url.start_pages = "https://srx.yaroslavps.com"
 
 ## Default fonts
-c.fonts.default_size = "12pt"
+c.fonts.default_size = "10pt"
 
 ## Background color of the completion widget category headers.
 ## Type: QssColor
