@@ -8,7 +8,7 @@ BEMENU_FN="monospace 10"
 BEMENU_TF="#D8DEE9"
 
 ## background colour for unselected menu-items
-BEMENU_NB="#1B1E25"
+BEMENU_NB="#1D2021"
 
 ## textcolour for unselected menu-items
 BEMENU_NF="#D8DEE9"
