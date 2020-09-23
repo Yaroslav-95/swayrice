@@ -1,9 +1,12 @@
 #!/bin/sh
 # Sync mail and give notification if there is new mail.
 
+# Source the needed env variables so that it can function properly from cron
+. ~/.cache/sessionenv
+
 # Config files
-notmuchrc="$XDG_CONFIG_HOME/notmuchrc"
-mbsyncrc="$XDG_CONFIG_HOME/mbsyncrc"
+notmuchrc="$HOME/.config/notmuchrc"
+mbsyncrc="$HOME/.config/mbsyncrc"
 
 # Run only if user logged in (prevent cron errors)
 w | grep "^$USER\W" >/dev/null || exit
@@ -14,9 +17,6 @@ pidof swaylock && exit
 # Check several times before giving up, useful when just waking up from sleep
 # since internet is usually not available right away
 wget -q --tries=3 --timeout=20 --spider 1.1.1.1 > /dev/null || exit
-
-# Source the needed env variables so that it can function properly from cron
-. ~/.cache/sessionenv
 
 thereis=0
 
