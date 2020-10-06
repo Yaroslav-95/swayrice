@@ -10,6 +10,7 @@ export QT_QPA_PLATFORM=wayland-egl
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export _JAVA_AWT_WM_NONREPARENTING=1
+export MANWIDTH=80
 
 # User specific environment and startup programs:
 export LANG=en_US.UTF-8
@@ -30,6 +31,7 @@ export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
+export GOPATH="$XDG_DATA_HOME/go"
 eval "$(dircolors "$HOME/.config/dir_colors")"
 
 # Start sway automatically upon login on tty1 or tty2
