@@ -11,6 +11,11 @@ alias trans="trans -v -pager='less -R'"
 alias op="xdg-open"
 corona() { curl -s https://corona-stats.online/$1 ;} # It's corona time
 wintitle() { printf "\033]2;%s\a" "$1";}
+sass-watch() {
+  while inotifywait -q -e create -e modify sass; do 
+    sassc $1 $2
+  done
+}
 
 # Generic shortcuts
 alias music="ncmpcpp"
