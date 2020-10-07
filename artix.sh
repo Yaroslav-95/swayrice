@@ -3,7 +3,7 @@
 # Very basic helper script to install some programs and configs for an
 # Artix+runit+Sway system
 
-pacman -Sy --noconfirm zsh zsh-syntax-highlighting openresolv wireguard-tools bind-tools sway swaylock swayidle waybar egl-wayland imv swaybg xorg-server-xwayland termite kitty qt5-wayland wl-clipboard dbus tmux htop bemenu bemenu-wlroots mupdf mpd ncmpcpp mpc mpv libnotify mako cronie cronie-runit metalog metalog-runit dnsmasq dnsmasq-runit networkmanager networkmanager-runit rsync grim slurp ffmpeg w3m youtube-dl youtube-viewer newsboat wget curl inkscape gimp darktable gcc make fontconfig pkg-config fakeroot papirus-icon-theme alsa-utils pulseaudio pamixer pulseaudio-bluetooth imagemagick ntfs-3g unzip unrar gnome-themes-standard telegram-desktop qt5ct r bc udisks2 perl-term-readline-gnu transmission-cli transmission-remote-gtk python-pynvim python-pip python-pillow calcurse acpi acpid gnupg noto-fonts-cjk noto-fonts-emoji ttf-joypixels otf-latin-modern otf-latinmodern-math powerline-fonts python-pygit2 polkit polkit-gnome zathura zathura-pdf-mupdf zathura-djvu gst-libav vifm blueman bluez bluez-runit acpilight accountsservice lightdm xdg-user-dirs abook ranger terminus-font qutebrowser jq stow wdiff texlive-most units isync notmuch pass translate-shell gnome-keyring pacman-contrib
+pacman -Sy --noconfirm zsh zsh-syntax-highlighting openresolv wireguard-tools bind-tools sway swaylock swayidle waybar egl-wayland imv swaybg xorg-server-xwayland alacritty qt5-wayland wl-clipboard dbus tmux htop bemenu bemenu-wlroots mupdf mpd ncmpcpp mpc mpv libnotify mako cronie cronie-runit metalog metalog-runit dnsmasq dnsmasq-runit networkmanager networkmanager-runit rsync grim slurp ffmpeg w3m youtube-dl youtube-viewer newsboat wget curl inkscape gimp darktable gcc make fontconfig pkg-config fakeroot papirus-icon-theme alsa-utils pulseaudio pamixer pulseaudio-bluetooth imagemagick exiftool ntfs-3g unzip unrar gnome-themes-standard telegram-desktop qt5ct r bc udisks2 perl-term-readline-gnu transmission-cli transmission-remote-gtk python-pynvim python-pip python-pillow calcurse acpi acpid gnupg noto-fonts-cjk noto-fonts-emoji ttf-joypixels otf-latin-modern otf-latinmodern-math powerline-fonts python-pygit2 polkit polkit-gnome zathura zathura-pdf-mupdf zathura-djvu gst-libav vifm blueman bluez bluez-runit acpilight accountsservice lightdm xdg-user-dirs abook ranger terminus-font qutebrowser jq stow wdiff texlive-most units isync notmuch pass translate-shell gnome-keyring pacman-contrib
 
 # Copy system config files
 cp system/sudoers /etc/
@@ -21,7 +21,7 @@ chown -R "$1:$1" build
 cd build
 sudo -u "$1" "git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si"
 
-yay -S --noconfirm aerc-git ttf-symbola pam-gnupg ncpamixer mimeo xdg-utils-mimeo cli-visualizer
+yay -S --noconfirm aerc-git ttf-symbola ttf-ms-fonts pam-gnupg ncpamixer mimeo xdg-utils-mimeo cli-visualizer
 
 # Copy some fonts to make them available system-wide
 mkdir -p /usr/share/fonts/rice
