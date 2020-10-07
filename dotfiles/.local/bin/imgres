@@ -1,0 +1,28 @@
+#!/bin/sh
+
+if [ -z "$3" ]; then
+    echo "Usage: imgres option input output"
+    exit
+fi
+
+option="$1"
+input="$2"
+output="$3"
+
+case "$option" in
+    recipe)
+        convert "$input" -resize 1200x800 -quality 85 "$output"
+        exiftool -overwrite_original -all= "$output"
+        ;;
+    wallpaper)
+        convert "$input" -resize 2560x1440^ -quality 90 "$output"
+        ;;
+    thumbnail)
+        convert "$input" -resize 400x270 -quality 80 "$output"
+        exiftool -overwrite_original -all= "$output"
+        ;;
+    *)
+        echo "Invalid option \"$option\""
+        exit
+        ;;
+esac
