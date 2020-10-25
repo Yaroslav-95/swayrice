@@ -10,7 +10,7 @@ else
     $TERMINAL -t "ddterminal" -e tmuxatt &
     sleep 0.2s
     currenty=$(swaygetcurrentwindow | cut -d ' ' -f1 | cut -d ',' -f2 )
-    let moveup=$currenty-25
+    let moveup=$currenty-30
     swaymsg move up "$moveup px"
 fi
 
