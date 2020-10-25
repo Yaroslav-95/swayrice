@@ -1,0 +1,18 @@
+#!/bin/sh
+
+if ! [ -f "$HOME/.cache/transdaemonpid" ] ; then
+	transmission-daemon
+	TRANSPID=$!
+	TRANSEXIT=$?
+	if [ $TRANSEXIT -eq 0 ]; then
+		pkill -RTMIN+10 waybar 
+		echo "$TRANSPID" > ~/.cache/transdaemonpid
+		exit
+	fi
+	notify-send " Torrent server" "Error while trying to start Transmission daemon"
+	exit 1
+fi
+
+pkill -f "transmission-daemon"
+rm ~/.cache/transdaemonpid
+pkill -RTMIN+10 waybar 

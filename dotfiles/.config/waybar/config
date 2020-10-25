@@ -1,7 +1,7 @@
 
 {
     "layer": "bottom",
-    "height": 27,
+    "height": 30,
     "modules-left": [
         "sway/workspaces",
         "sway/mode",
@@ -19,6 +19,7 @@
         "custom/mail-status",
         "custom/pac-status",
         "custom/news-status",
+        "custom/torrent-status",
         "custom/vpn-status",
         "network",
         "backlight",
@@ -174,6 +175,12 @@
         "format": "<span color=\"#5b8277\">{}</span>",
         "exec": "barvpnstatus"
     },
+    "custom/torrent-status": {
+        "format": "<span color=\"#5b8277\">{}</span>",
+        "signal": 10,
+        "interval": "once",
+        "exec": "bartorrentstatus"
+    },
     "custom/mail-status": {
         "format": "<span color=\"#5b8277\">📧</span> {}",
         "signal": 9,
@@ -186,7 +193,6 @@
         "signal": 7,
         "interval": "once",
         "exec": "barpacstatus",
-        "tooltip": false
     },
     "custom/news-status": {
         "format": "<span color=\"#5b8277\"></span> {}",

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Start transmission's remote gtk frontend, if the daemon is not running, then start it as well
+
+if ! [ -f "$HOME/.cache/transdaemonpid" ] ; then
+	toggletorrent
+fi
+
+transmission-remote-gtk

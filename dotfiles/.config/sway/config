@@ -185,6 +185,8 @@ bindsym --to-code {
     $mod+F4 exec menublk
     $mod+F12 exec menutz
     $mod+r exec $term -t "ranger" -e ranger
+    $mod+t exec --no-startup-id toggletorrent
+    $mod+Ctrl+t exec --no-startup-id launch-transmission
     $mod+s exec "xway steam"
     $mod+m exec $term -e ncmpcpp
     $mod+n exec $term -t "newsboat" -e newsboat && killall -42 waybar

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# TODO: Count how many torrents are downloading and how many are uploading
+
+if [ -f "$HOME/.cache/transdaemonpid" ] ; then
+	echo ""
+fi
+
+printf ""

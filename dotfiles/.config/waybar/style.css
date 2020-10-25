@@ -37,6 +37,7 @@ window#waybar {
 #network,
 #backlight,
 #custom-vpn-status,
+#custom-torrent-status,
 #workspaces {
   background: #1d2021;
   border-top: 2px solid #000000;
@@ -72,13 +73,14 @@ window#waybar {
 #pulseaudio,
 #temperature,
 #custom-weather,
+#custom-swaykbd,
 #custom-ds4battery,
 #custom-rec-status,
 #custom-vpn-status,
-#custom-mail-status,
 #custom-pac-status,
+#custom-mail-status,
 #custom-news-status,
-#custom-swaykbd {
+#custom-torrent-status {
   padding: 0 6px;
 }
 #custom-weather {
