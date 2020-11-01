@@ -30,6 +30,6 @@ color listfocus_unread yellow default bold
 color info red black bold
 color article cyan default
 
-browser mimeo
+browser "setsid mimeo %u"
 macro , open-in-browser
-macro c set browser "copy(){ printf '%s' $1 | wl-copy ;}; copy "; open-in-browser ; set browser mimeo
+#macro c set browser "copy(){ printf '%s' $1 | wl-copy ;}; copy "; open-in-browser ; set browser mimeo
