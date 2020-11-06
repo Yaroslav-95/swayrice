@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=ImageViewer
+Name=imv
 GenericName=Image viewer
 GenericName[en_US]=Image viewer
-Exec=sxiv-rifle %f
+Exec=imv-rifle %f
 NoDisplay=true
 Terminal=false
 Type=Application
