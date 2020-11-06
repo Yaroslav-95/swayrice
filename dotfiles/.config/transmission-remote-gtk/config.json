@@ -18,10 +18,8 @@
       "update-interval" : 3,
       "min-update-interval" : 3,
       "session-update-interval" : 60,
-      "exec-commands" : [
-      ],
-      "destinations" : [
-      ],
+      "exec-commands" : [],
+      "destinations" : [],
       "last-move-destination" : "/home/yaroslav/dls/p2p",
       "last-add-destination" : "/home/yaroslav/dls/p2p"
     }
@@ -32,20 +30,20 @@
       "sort-col" : -1,
       "sort-type" : 0,
       "widths" : [
-        473,
-        77,
-        66,
-        93,
+        349,
+        81,
         70,
-        91,
-        100,
-        113,
-        92,
-        74,
-        93,
-        114,
-        65,
-        150
+        76,
+        54,
+        77,
+        83,
+        89,
+        72,
+        61,
+        97,
+        118,
+        69,
+        157
       ],
       "columns" : [
         "name",
@@ -68,14 +66,14 @@
       "sort-col" : -2,
       "sort-type" : 0,
       "widths" : [
-        158,
-        226,
-        170,
+        115,
+        288,
+        127,
+        176,
+        183,
         219,
-        226,
-        227,
-        204,
-        212
+        265,
+        269
       ],
       "columns" : [
         "tier",
@@ -92,11 +90,11 @@
       "sort-col" : -2,
       "sort-type" : 0,
       "widths" : [
-        489,
-        269,
-        295,
-        303,
-        286
+        360,
+        321,
+        320,
+        328,
+        313
       ],
       "columns" : [
         "name",
@@ -110,14 +108,14 @@
       "sort-col" : -2,
       "sort-type" : 0,
       "widths" : [
-        200,
-        411,
-        210,
-        162,
-        141,
-        139,
-        116,
-        263
+        203,
+        356,
+        220,
+        172,
+        151,
+        149,
+        125,
+        266
       ],
       "columns" : [
         "ip",
@@ -212,9 +210,9 @@
   "dialog-width" : 1062,
   "dialog-height" : 680,
   "style" : 1,
-  "window-height" : 989,
+  "window-height" : 986,
   "window-width" : 1646,
-  "notebook-paned-pos" : 551,
-  "states-paned-pos" : 278,
+  "notebook-paned-pos" : 548,
+  "states-paned-pos" : 190,
   "last-torrent-dir" : "/home/yaroslav/dls/torrents"
 }
