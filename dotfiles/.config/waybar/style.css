@@ -33,6 +33,7 @@ window#waybar {
   color: #000000;
 }
 #tray,
+#memory,
 #battery,
 #network,
 #backlight,
@@ -42,6 +43,9 @@ window#waybar {
   background: #1d2021;
   border-top: 2px solid #000000;
   border-bottom: 2px solid #000000;
+}
+#memory.warning {
+	color: #b2872f;
 }
 #workspaces {
   padding: 0;
@@ -67,6 +71,7 @@ window#waybar {
 #mpd,
 #tray,
 #clock,
+#memory,
 #battery,
 #network,
 #backlight,
