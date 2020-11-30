@@ -99,8 +99,8 @@
     "battery#bat0": {
         "bat": "BAT0",
         "format": "{icon} {capacity}%",
-        "format-charging": " <span color=\"#5b8277\"></span> {capacity}%",
-        "format-plugged": "<span color=\"#5b8277\"></span> {capacity}%",
+        "format-charging": " <span color=\"#5b8277\"></span> {capacity}%",
+        "format-plugged": "<span color=\"#5b8277\"></span> {capacity}%",
         "format-icons": [
             "<span color=\"#b73030\"></span>",
             "<span color=\"#b2872f\"></span>",
@@ -112,8 +112,8 @@
     "battery#bat1": {
         "bat": "BAT1",
         "format": "{icon} {capacity}%",
-        "format-charging": " <span color=\"#5b8277\"></span> {capacity}%",
-        "format-plugged": "<span color=\"#5b8277\"></span> {capacity}%",
+        "format-charging": " <span color=\"#5b8277\"></span> {capacity}%",
+        "format-plugged": "<span color=\"#5b8277\"></span> {capacity}%",
         "format-icons": [
             "<span color=\"#b73030\"></span>",
             "<span color=\"#b2872f\"></span>",
