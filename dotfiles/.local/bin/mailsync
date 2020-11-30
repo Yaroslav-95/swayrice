@@ -39,7 +39,7 @@ do
 done
 
 if [ $thereis = 1 ]; then
-  mpv --really-quiet "$HOME/.local/share/soundalerts/mail.mp3"
+  mpv --really-quiet "$HOME/.local/share/soundalerts/mail.ogg"
   killall -43 waybar
 fi
 
