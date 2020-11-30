@@ -183,6 +183,7 @@ bindsym --to-code {
     $mod+F2 exec menumako
     $mod+F3 exec menudisplay
     $mod+F4 exec menublk
+    $mod+F10 exec chcolors
     $mod+F12 exec menutz
     $mod+r exec $term -t "ranger" -e ranger
     $mod+t exec --no-startup-id toggletorrent

@@ -1,0 +1,20 @@
+#!/bin/sh
+
+COLORSCHEME="dark"
+
+if [ -f $HOME/.cache/colorscheme ]; then
+	source $HOME/.cache/colorscheme
+fi
+
+case $COLORSCHEME in
+	dark)
+		COLORSCHEME="light" ;;
+	*)
+		COLORSCHEME="dark" ;;
+esac
+
+sed -i --follow-symlinks \
+	"s/^colors:.*/colors: \*$COLORSCHEME/g" \
+	$HOME/.config/alacritty/alacritty.yml
+
+echo "export COLORSCHEME=$COLORSCHEME" > $HOME/.cache/colorscheme

@@ -63,5 +63,7 @@ zle -N zle-keymap-select
 
 [ -f "$HOME/.config/zsh/shortcuts" ] && . "$HOME/.config/zsh/shortcuts"
 
+[ -f "$HOME/.cache/colorscheme" ] && trap "source $HOME/.cache/colorscheme" DEBUG
+
 [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] &&
   . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
