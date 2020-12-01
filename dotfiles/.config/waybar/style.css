@@ -4,7 +4,7 @@
 }
 window#waybar {
   background: #000000;
-  color: #e5e9f0;
+  color: #faf6e5;
   min-height: 0;
 }
 #custom-right-arrow-cyan, #custom-left-arrow-cyan {
@@ -33,14 +33,13 @@ window#waybar {
   color: #000000;
 }
 #tray,
-#memory,
 #battery,
 #network,
 #backlight,
 #custom-vpn-status,
 #custom-torrent-status,
 #workspaces {
-  background: #1d2021;
+  background: #232328;
   border-top: 2px solid #000000;
   border-bottom: 2px solid #000000;
 }
