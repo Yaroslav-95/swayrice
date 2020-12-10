@@ -16,7 +16,7 @@ export MANWIDTH=80
 export LANG=en_US.UTF-8
 export TERMINAL=alacritty
 export EDITOR="nvim"
-export PAGER="less -R"
+export PAGER="less -R -j.5"
 export BROWSER=qutebrowser
 
 # Sanely export XDG Base dir variables
