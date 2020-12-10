@@ -23,12 +23,13 @@ bind-key x pb-delete
 bind-key ^D pagedown
 bind-key ^U pageup
 
-color listnormal cyan default
-color listfocus black yellow standout bold
-color listnormal_unread blue default
-color listfocus_unread yellow default bold
-color info red black bold
-color article cyan default
+color listnormal color7 default
+color listfocus cyan default standout bold
+color listnormal_unread red default
+color listfocus_unread red default standout bold
+color info blue color235 bold
+color article default default
+color end-of-text-marker white default
 
 browser "setsid mimeo %u"
 macro , open-in-browser

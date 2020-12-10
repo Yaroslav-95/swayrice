@@ -190,7 +190,7 @@ schemes:
             blue:    '#3f6e90'
             magenta: '#9c6992'
             cyan:    '#5b8277'
-            white:   '#d2d0c8'
+            white:   '#b0afa8'
 
         bright:
             black:   '#676775'
