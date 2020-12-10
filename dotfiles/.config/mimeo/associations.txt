@@ -13,6 +13,10 @@ imgurl %U
   ^https?://.*\.gif
   ^https?://.*\.bmp
 
+bookurl %U
+  ^https?://.*\.pdf
+  ^https?://.*\.djvu
+
 libreoffice %F
   \.doc
   \.docx
