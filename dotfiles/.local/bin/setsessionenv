@@ -11,6 +11,8 @@ export XDG_SESSION_ID=%s
 export XDG_SESSION_CLASS=%s
 export XDG_SEAT=%s
 export XDG_RUNTIME_DIR=%s
+export DBUS_SESSION_BUS_ADDRESS=%s
+export DBUS_SESSION_BUS_PID=%s
 export I3SOCK=%s
 export SWAYSOCK=%s"\
   "$PASSWORD_STORE_DIR" \
@@ -21,5 +23,7 @@ export SWAYSOCK=%s"\
   "$XDG_SESSION_CLASS" \
   "$XDG_SEAT" \
   "$XDG_RUNTIME_DIR" \
+  "$DBUS_SESSION_BUS_ADDRESS" \
+  "$DBUS_SESSION_BUS_PID" \
   "$I3SOCK" \
   "$SWAYSOCK" > ~/.cache/sessionenv
