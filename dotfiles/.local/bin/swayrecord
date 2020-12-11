@@ -44,11 +44,18 @@ finishscreencast () {
     "Screencast recording stopped and saved at "$VREC_DIR/screencast-$OUTPUT.mp4""
 }
 
+finishscreenshare() {
+  kill -2 "$VIDEO_PID"
+  notify-send "📺 Recording" \
+    "Screen sharing stopped."
+}
+
 finishrecording () {
   case "$TYPE" in
     video) finishvideo;;
     audio) finishaudio;;
     screencast) finishscreencast;;
+    screenshare) finishscreenshare;;
   esac
   rm -f ~/.cache/recordingpid
   rm -f ~/.cache/recordingicon
@@ -67,6 +74,20 @@ video () {
   echo $$ > ~/.cache/recordingpid
   echo "🔴" > ~/.cache/recordingicon
   notify-send "🔴 Recording" "Screen recording started"
+  killall -39 waybar
+  wait
+}
+
+screenshare () {
+  # Hack to share screen in certain apps under wayland wlroots-based compositors
+  loopbackcam="$(v4l2-ctl --list-devices | \
+  	grep v4l2loopback -m1 -A1 | \
+  	sed -e '1d' -e 's/\s//g')"
+  wf-recorder -x yuv420p -c rawvideo -m v4l2 -f $loopbackcam &
+  VIDEO_PID=$!
+  echo $$ > ~/.cache/recordingpid
+  echo "📺" > ~/.cache/recordingicon
+  notify-send "📺 Recording" "Screen share to fake webcam started"
   killall -39 waybar
   wait
 }
@@ -94,10 +115,11 @@ audio () {
 }
 
 askrecording () {
-  TYPE="$(printf "video\nscreencast\naudio\n" | bemenu -l 6 -i -p "What should be recorded?" --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB")"
+  TYPE="$(printf "video\nscreencast\nscreenshare\naudio\n" | bemenu -l 6 -i -p "What should be recorded?" --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB")"
   case "$TYPE" in
     video) video;;
     screencast) screencast;;
+  	screenshare) screenshare;;
     audio) audio;;
     *) exit;;
   esac
@@ -111,6 +133,7 @@ fi
 case $1 in
   video) video;;
   screencast) screencast;;
+  screenshare) screenshare;;
   audio) audio;;
   kill) killrecording;;
   *) askrecording;;

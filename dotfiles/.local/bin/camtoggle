@@ -4,12 +4,14 @@
 # If a second camera is present, use the second one
 camera="/dev/video0"
 [ -e /dev/video2 ] && camera="/dev/video2"
+[ -n "$1" ] && camera="$1"
 
 pkill -f /dev/video || mpv \
   --gpu-context=wayland \
+  --profile=low-latency \
   --no-osc \
   --no-input-default-bindings \
   --input-conf=/dev/null \
   --geometry=-0-0 \
   --autofit=25% \
-  --title="mpvfloat" "$camera"
+  --title="mpvfloat" "av://v4l2:$camera"
