@@ -16,6 +16,7 @@ sass-watch() {
     sassc $1 $2
   done
 }
+grm() { printf "git@git.yaroslavps.com:%s" "$1" }
 
 # Generic shortcuts
 alias music="ncmpcpp"
