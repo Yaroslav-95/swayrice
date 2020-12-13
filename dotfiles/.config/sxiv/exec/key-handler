@@ -1,5 +1,14 @@
 #!/bin/sh
 
+rotate() {
+	degree="$1"
+	file="$2"
+	case "$(file -b -i "$file")" in
+	image/jpeg*) jpegtran -rotate "$degree" -copy all -outfile "$file" "$file" ;;
+	*)           mogrify  -rotate "$degree" "$file" ;;
+	esac
+}
+
 while read file; do
   case "$1" in
     "C-a" | "C-1")
@@ -31,5 +40,8 @@ while read file; do
         mv $(dirname "$dir")/"$base".NEF ~/etc/temp/trash/
       fi
       exit ;;
+	"C-comma")  rotate 270 $file ;;
+	"C-period") rotate  90 $file ;;
+	"C-slash")  rotate 180 $file ;;
   esac
 done
