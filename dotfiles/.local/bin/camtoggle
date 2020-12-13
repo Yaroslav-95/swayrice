@@ -1,12 +1,15 @@
 #!/bin/sh
 
 # I have two cameras on my laptop and the first one is an IR camera (video0)
-# If a second camera is present, use the second one
+# If the hostname matches that of my laptop, use the second camera
 camera="/dev/video0"
-[ -e /dev/video2 ] && camera="/dev/video2"
-[ -n "$1" ] && camera="$1"
+if [ -n "$1" ]; then 
+	camera="$1"
+elif [ $HOSTNAME = "thinkslav" ]; then
+	camera="/dev/video2"
+fi
 
-pkill -f /dev/video || mpv \
+pkill -f "$camera" || mpv \
   --gpu-context=wayland \
   --profile=low-latency \
   --no-osc \
