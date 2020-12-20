@@ -28,6 +28,7 @@ alias calendar="calcurse"
 alias contacts="abook"
 alias calc="R --no-save -q"
 alias spw="setsid $TERMINAL >/dev/null 2>&1 &"
+alias testinet="ping -c2 example.com"
 
 # Fuzzy finder
 alias fzd='cd "$(find * -type d | fzf || echo ".")"'
