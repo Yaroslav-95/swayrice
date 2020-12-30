@@ -8,6 +8,7 @@ alias ls="ls -hN --color=auto --group-directories-first"
 alias tmux="tmux -f $HOME/.config/tmux/tmux.conf"
 alias units="units -H ''"
 alias trans="trans -v -pager='less -R'"
+alias lsdp="swaymsg -pt get_outputs | less"
 alias op="xdg-open"
 corona() { curl -s https://corona-stats.online/$1 ;} # It's corona time
 wintitle() { printf "\033]2;%s\a" "$1";}
