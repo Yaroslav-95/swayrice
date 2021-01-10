@@ -109,6 +109,12 @@ bindswitch --reload --locked lid:on exec "swaysession suspend"
 # Trackpoint (Thinkpad)
 input 2:10:TPPS/2_IBM_TrackPoint pointer_accel 1
 
+# Desktop mouse
+input 6127:24766:GamingMouseI_Gaming_Mouse {
+	accel_profile flat
+	pointer_accel -0.5
+}
+
 # Outputs
 output "*" background ~/.config/wall1.png fill
 output "HDMI-A-2" background ~/.config/wall2.png fill
@@ -116,7 +122,7 @@ output "HDMI-A-2" background ~/.config/wall2.png fill
 output "eDP-1" scale 1.6 pos 0 0 scale_filter linear
 # Two monitor layout
 output "HDMI-A-1" pos 0 0
-output "HDMI-A-2" pos 1920 200
+output "HDMI-A-2" pos 1920 0
 
 # Keymaps
 input type:keyboard {
