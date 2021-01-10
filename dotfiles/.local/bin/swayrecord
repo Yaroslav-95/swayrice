@@ -10,7 +10,7 @@ if ! [ -d $AREC_DIR ]; then
 	mkdir -p $AREC_DIR
 fi
 
-DISPLAY=""
+MONITOR=""
 OUTPUT="$(date '+%y%m%d-%H%M-%S')"
 TYPE="$1"
 VIDEO_PID=""
@@ -70,7 +70,7 @@ killrecording () {
 }
 
 video () {
-  wf-recorder -o "$DISPLAY" -f "$VREC_DIR/video-$OUTPUT.mp4" &
+  wf-recorder -o "$MONITOR" -f "$VREC_DIR/video-$OUTPUT.mp4" &
   VIDEO_PID=$!
   echo $$ > ~/.cache/recordingpid
   echo "🔴" > ~/.cache/recordingicon
@@ -84,7 +84,7 @@ screenshare () {
   loopbackcam="$(v4l2-ctl --list-devices | \
   	grep v4l2loopback -m1 -A1 | \
   	sed -e '1d' -e 's/\s//g')"
-  wf-recorder -o "$DISPLAY" -x yuv420p -c rawvideo -m v4l2 -f $loopbackcam &
+  wf-recorder -o "$MONITOR" -x yuv420p -c rawvideo -m v4l2 -f $loopbackcam &
   VIDEO_PID=$!
   echo $$ > ~/.cache/recordingpid
   echo "📺" > ~/.cache/recordingicon
@@ -94,7 +94,7 @@ screenshare () {
 }
 
 screencast () {
-  wf-recorder -o "$DISPLAY" -f "$VREC_DIR/temp-$OUTPUT.mp4" &
+  wf-recorder -o "$MONITOR" -f "$VREC_DIR/temp-$OUTPUT.mp4" &
   VIDEO_PID=$!
   ffmpeg -f alsa -i default -c:a mp3 "$VREC_DIR/temp-$OUTPUT.mp3" &
   AUDIO_PID=$!
@@ -132,9 +132,9 @@ if [ -f "$HOME/.cache/recordingpid" ]; then
 fi
 
 if [ $(swaymsg -t get_outputs | jq '. | length') -gt 1 ]; then
-DISPLAY=$(swaymsg -t get_outputs | grep -E "name" | sed "s/^.*\"name\": \"//g;s/\",$//g;" | bemenu -p "Select display for capture: " --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB" --monitor="$BEMENU_MONITOR")
+MONITOR=$(swaymsg -t get_outputs | grep -E "name" | sed "s/^.*\"name\": \"//g;s/\",$//g;" | bemenu -p "Select display for capture: " --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB" --monitor="$BEMENU_MONITOR")
 else
-	DISPLAY="$(swaymsg -t get_outputs | jq '.[0][\"name\"]')"
+	MONITOR="$(swaymsg -t get_outputs | jq -r '.[0]["name"]')"
 fi
 
 case $1 in
