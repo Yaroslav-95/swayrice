@@ -107,25 +107,28 @@ for_window [title="^ddterminal$"] floating enable, sticky enable
 bindswitch --reload --locked lid:on exec "swaysession suspend"
 
 # Trackpoint (Thinkpad)
-input 2:10:TPPS/2_IBM_TrackPoint pointer_accel 1
-
-# Desktop mouse
-input 6127:24766:GamingMouseI_Gaming_Mouse {
+input 2:10:TPPS/2_IBM_TrackPoint {
 	accel_profile flat
-	pointer_accel -0.5
+	pointer_accel 0.7
 }
 
-# Outputs
+# Trackpoint (Thinkpad Compact Keyboard (External))
+input 6127:24647:Lenovo_ThinkPad_Compact_USB_Keyboard_with_TrackPoint {
+	accel_profile flat
+	pointer_accel 1
+}
+
+# Desktop mouse
+input 1118:2083:Microsoft_Microsoft___Classic_IntelliMouse__ {
+	accel_profile flat
+	pointer_accel 0.5
+}
+
+# Default wallpaper
 output "*" background ~/.config/wall1.png fill
-output "HDMI-A-2" background ~/.config/wall2.png fill
-# Laptop display
-output "eDP-1" scale 1.6 pos 0 0 scale_filter linear
-# Two monitor layout
-output "HDMI-A-1" pos 0 0
-output "HDMI-A-2" pos 1920 0
 
 # Keymaps
-input type:keyboard {
+input * {
 	xkb_layout "us,es,ru"
 	xkb_options "lv3:ralt_switch,grp:alt_shift_toggle,misc:typo,caps:escape,grp_led:scroll"
 }
@@ -164,28 +167,6 @@ bindsym --to-code {
 	# Mako (notifications)
 	$mod+Ctrl+space       exec "makoctl dismiss"
 	$mod+Ctrl+Shift+space exec "makoctl restore"
-
-	# Screen brightness controls
-	XF86MonBrightnessUp   exec "xbacklight -inc 5"
-	XF86MonBrightnessDown exec "xbacklight -dec 5"
-	$mod+Ctrl+Up          exec "xbacklight -inc 5"
-	$mod+Ctrl+Down        exec "xbacklight -dec 5"
-
-	# Media keys
-	XF86AudioPrev		        exec --no-startup-id "lmc prev"
-	XF86AudioPlay		        exec --no-startup-id "lmc toggle"
-	XF86AudioNext		        exec --no-startup-id "lmc next"
-	XF86AudioRaiseVolume		exec --no-startup-id lmc up 5
-	XF86AudioLowerVolume		exec --no-startup-id lmc down 5
-	XF86AudioMute           exec --no-startup-id lmc mute
-
-	$mod+Shift+F5   exec mpc seek -10
-	$mod+F5     		exec lmc prev
-	$mod+F6     		exec lmc toggle
-	$mod+F7     		exec lmc next
-	$mod+Shift+F7   exec mpc seek +10
-	$mod+F8         exec mpc single
-	$mod+Shift+F8   exec mpc repeat
 
 	# Start Applications
 	$mod+Shift+w exec --no-startup-id $browser
@@ -390,16 +371,29 @@ bindsym --to-code {
 	$mod+Ctrl+v exec clipremote paste
 }
 
-# bar {
-    # position top
-    # separator_symbol  "|"
+##### Bindsyms (layout-independent lock-screen-independent) #####
+bindsym --to-code --locked {
+	# Screen brightness controls
+	XF86MonBrightnessUp   exec "xbacklight -inc 5"
+	XF86MonBrightnessDown exec "xbacklight -dec 5"
+	$mod+Ctrl+Up          exec "xbacklight -inc 5"
+	$mod+Ctrl+Down        exec "xbacklight -dec 5"
 
-    # status_command i3blocks
+	# Media keys
+	XF86AudioPrev		        exec --no-startup-id "lmc prev"
+	XF86AudioPlay		        exec --no-startup-id "lmc toggle"
+	XF86AudioNext		        exec --no-startup-id "lmc next"
+	XF86AudioRaiseVolume		exec --no-startup-id lmc up 5
+	XF86AudioLowerVolume		exec --no-startup-id lmc down 5
+	XF86AudioMute           exec --no-startup-id lmc mute
 
-    # colors {
-        # statusline #ffffff
-        # background #000000AA
-        # active_workspace #689d6a #323232 #689d6a
-        # focused_workspace #8ec07c #689d6a #ffffff
-    # }
-# }
+	$mod+Shift+F5   exec mpc seek -10
+	$mod+F5     		exec lmc prev
+	$mod+F6     		exec lmc toggle
+	$mod+F7     		exec lmc next
+	$mod+Shift+F7   exec mpc seek +10
+	$mod+F8         exec mpc single
+	$mod+Shift+F8   exec mpc repeat
+}
+
+include "~/.config/sway/`uname -n`"

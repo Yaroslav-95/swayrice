@@ -1,0 +1,20 @@
+# vim: filetype=i3
+
+# Configuration specific to my desktop computer
+
+# Outputs
+output "HDMI-A-2" background ~/.config/wall2.png fill
+output "HDMI-A-1" pos 0 0
+output "HDMI-A-2" pos 1920 0
+
+# Workspaces
+workspace $ws1 output HDMI-A-1
+workspace $ws2 output HDMI-A-1
+workspace $ws3 output HDMI-A-1
+workspace $ws4 output HDMI-A-1
+workspace $ws5 output HDMI-A-1
+workspace $ws6 output HDMI-A-1
+workspace $ws7 output HDMI-A-2
+workspace $ws8 output HDMI-A-2
+workspace $ws9 output HDMI-A-2
+workspace $ws10 output HDMI-A-2

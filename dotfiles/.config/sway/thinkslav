@@ -1,0 +1,6 @@
+# vim: filetype=i3
+
+# Configuration specific to my laptop computer
+
+# Outputs
+output "eDP-1" scale 1.6 pos 0 0 scale_filter linear
