@@ -19,3 +19,7 @@ x-scheme-handler/https=org.qutebrowser.qutebrowser.desktop;
 x-scheme-handler/qute=org.qutebrowser.qutebrowser.desktop;
 x-scheme-handler/discord-455712169795780630=discord-455712169795780630.desktop
 x-scheme-handler/mailto=aerc.desktop
+x-scheme-handler/tg=userapp-Telegram Desktop-UXAZV0.desktop
+
+[Added Associations]
+x-scheme-handler/tg=userapp-Telegram Desktop-UXAZV0.desktop;
