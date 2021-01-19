@@ -27,6 +27,10 @@ ultramar = {
 
 c.content.notifications = False
 
+## Disable JS by default
+
+c.content.javascript.enabled = False
+
 ## Downloads
 
 # Automatically remove finished downloads from list
@@ -45,6 +49,9 @@ c.url.start_pages = "https://srx.yaroslavps.com"
 
 ## Default fonts
 c.fonts.default_size = "10pt"
+
+## Prefer dark mode in websites that support it
+c.colors.webpage.prefers_color_scheme_dark = True
 
 ## Background color of the completion widget category headers.
 ## Type: QssColor
