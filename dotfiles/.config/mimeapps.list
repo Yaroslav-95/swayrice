@@ -10,6 +10,7 @@ audio/x-mod=mpv.desktop;
 image/gif=imv.desktop;
 image/jpeg=sxiv.desktop;
 image/png=sxiv.desktop;
+image/svg+xml=org.inkscape.Inkscape.desktop
 text/html=org.qutebrowser.qutebrowser.desktop;
 text/xml=nvim.desktop;
 text/plain=nvim.desktop;
