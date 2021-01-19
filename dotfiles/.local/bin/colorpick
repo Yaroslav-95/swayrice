@@ -1,0 +1,6 @@
+#!/bin/sh
+# Taken and slightly modified from Drew DeVault's dotfiles
+
+color=$(grim -g "$(slurp -p -b 00000000)" - | convert - txt:- | awk 'END{print $3}')
+wl-copy "$color"
+notify-send "🎨 Color copied to clipboard" "<span color=\"$color\">$color</span>"
