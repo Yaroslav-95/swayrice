@@ -34,6 +34,8 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
 export GOPATH="$XDG_DATA_HOME/go"
 eval "$(dircolors "$HOME/.config/dir_colors")"
 
+. "$HOME/.config/lf/icons"
+
 # Start sway automatically upon login on tty1 or tty2
 if [ -z $DISPLAY ] && [ $(tty) = /dev/tty1 ] || [ $(tty) = /dev/tty2 ]; then
   # DBUS variables (for Artix)

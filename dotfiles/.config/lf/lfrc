@@ -1,0 +1,92 @@
+# Personal lf conf
+# Inspired by the official example conf and Luke Smith's voidrice's
+
+set icons
+set scrolloff 10
+set ratios 1:4:3
+set period 1
+set ifs "\n"
+set info size
+set previewer ~/.local/bin/scope
+
+# Custom commands
+
+cmd on-cd &{{
+    # '&' commands run silently in background (which is what we want here),
+    # but are not connected to stdout.
+    # To make sure our escape sequence still reaches stdout we pipe it to /dev/tty
+    printf "\033]0; lf - $PWD\007" > /dev/tty
+}}
+
+on-cd
+
+cmd mkdir $mkdir -p "$(echo $* | tr ' ' '\ ')"
+
+cmd delete ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	printf "%s\n\t" "$fx"
+	printf "delete?[y/N]"
+	read ans
+	[ $ans = "y" ] && rm -rf -- $fx
+}}
+
+# compress current file or selected files with tar and gunzip
+cmd tar ${{
+    set -f
+    mkdir $1
+    cp -r $fx $1
+    tar -czf $1.tar.gz $1
+    rm -rf $1
+}}
+
+# extract the current file with the right command
+# (xkcd link: https://xkcd.com/1168/)
+cmd extract ${{
+    set -f
+    case $f in
+        *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf $f;;
+        *.tar.gz|*.tgz) tar xzvf $f;;
+        *.tar.xz|*.txz) tar xJvf $f;;
+        *.zip) unzip $f;;
+        *.rar) unrar x $f;;
+        *.7z) 7z x $f;;
+    esac
+}}
+
+# change dir with fzf
+cmd fzf_jump ${{
+    res="$(find . -type d | fzf --header='Jump to location')"
+    if [ -d "$res" ]; then
+        cmd="cd"
+    else 
+        cmd="select"                                                       
+    fi
+    lf -remote "send $id $cmd \"$res\""
+}}
+
+# drag and drop prompt
+cmd dragon $dragon-drag-and-drop -a $fx
+
+# copy path to clipboard
+cmd yank-path &printf '%s' "$fx" | wl-copy
+
+# Bindings
+map A rename
+map c
+map cc clear
+map cd push :cd<space>
+map cw push A<c-u> # rename from zero
+map I push A<c-a> # rename from the beginning
+map i push A<a-b><a-b><a-f> # rename before extention
+map a push A<a-b> # rename after extention
+map <c-n> push :mkdir<space>
+map <c-r> reload
+map <enter> shell
+map D delete
+map <enter> shell
+map f :fzf_jump
+map t :dragon
+map W $setsid $TERMINAL & # open new terminal window
+map Y :yank-path
+map L $LESSOPEN='| ~/.local/bin/scope %s' less -R $f # open file preview in pager

@@ -10,6 +10,7 @@ alias units="units -H ''"
 alias trans="trans -v -pager='less -R'"
 alias lsdp="swaymsg -pt get_outputs | less"
 alias op="xdg-open"
+alias drag="dragon-drag-and-drop"
 corona() { curl -s https://corona-stats.online/$1 ;} # It's corona time
 wintitle() { printf "\033]2;%s\a" "$1";}
 sass-watch() {
@@ -32,8 +33,25 @@ alias spw="setsid $TERMINAL >/dev/null 2>&1 &"
 alias testinet="ping -c2 example.com"
 
 # Fuzzy finder
-alias fzd='cd "$(find * -type d | fzf || echo ".")"'
-alias fzv='nvim $(find * -type f | fzf)'
+alias fzd='cd "$(find . -type d | fzf || echo ".")"'
+alias fzv='nvim $(find . -type f | fzf)'
+alias fzo='op $(find . -type f | fzf)'
+
+# Function for changing working dir after exiting lf
+lfcd () {
+    tmp="$(mktemp)"
+    lf -last-dir-path="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp"
+        if [ -d "$dir" ]; then
+            if [ "$dir" != "$(pwd)" ]; then
+                cd "$dir"
+            fi
+        fi
+    fi
+}
+bindkey -s '^o' 'lfcd\n'
 
 # Mounting drive shortcuts
 alias mnt="udisksctl mount -b"

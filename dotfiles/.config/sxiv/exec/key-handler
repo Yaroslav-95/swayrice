@@ -35,9 +35,9 @@ while read file; do
       dir="$(dirname "$file")"
       name="$(basename "$file")"
       base="${name%.*}"
-      mv "$file" ~/etc/temp/trash/
+      mv "$file" ~/.local/trash/
       if [ "JPEG" = "$(basename $dir)" ]; then
-        mv $(dirname "$dir")/"$base".NEF ~/etc/temp/trash/
+        mv $(dirname "$dir")/"$base".NEF ~/.local/trash/
       fi
       exit ;;
 	"C-comma")  rotate 270 $file ;;

@@ -121,7 +121,7 @@ input 6127:24647:Lenovo_ThinkPad_Compact_USB_Keyboard_with_TrackPoint {
 # Desktop mouse
 input 1118:2083:Microsoft_Microsoft___Classic_IntelliMouse__ {
 	accel_profile flat
-	pointer_accel 0.5
+	pointer_accel 0
 }
 
 # Default wallpaper
@@ -177,7 +177,6 @@ bindsym --to-code {
 	$mod+F4 exec menublk
 	$mod+F10 exec chcolors
 	$mod+F12 exec menutz
-	$mod+r exec $term -t "ranger" -e ranger
 	$mod+t exec --no-startup-id toggletorrent
 	$mod+Ctrl+t exec --no-startup-id launch-transmission
 	$mod+s exec "xway steam"
