@@ -28,8 +28,36 @@ ultramar = {
 c.content.notifications = False
 
 ## Disable JS by default
-
 c.content.javascript.enabled = False
+
+# Enable JS for certain sites
+js_whitelist = [
+    "*://localhost/*",
+    "*://127.0.0.1/*",
+    "*://github.com/*",
+    "*://duckduckgo.com/*",
+    "*://*.youtube.com/*",
+    "*://*.google.com/*",
+    '*://*.namecheap.com/*',
+    '*://*.wikipedia.org/*',
+    '*://yandex.ru/*',
+    '*://*.yaroslavps.com/*',
+    '*://openedu.ru/*',
+    '*://developer.mozilla.org/*',
+    '*://*.vultr.com/*',
+    '*://*.ifmo.ru/*',
+    '*://*.4chan.org/*',
+    '*://*.4channel.org/*',
+]
+for site in js_whitelist:
+    with config.pattern(site) as p:
+        p.content.javascript.enabled = True
+
+## Disable 3rd party cookies
+c.content.cookies.accept = "no-3rdparty"
+
+## Pretend that we are Chrome
+c.content.headers.user_agent = "Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}"
 
 ## Downloads
 
@@ -396,6 +424,11 @@ c.colors.tabs.selected.odd.fg = ultramar['dark0']
 # Why end the shortcuts in 9 when you still have one more useful key (0)?
 config.bind('<Alt-9>', 'tab-focus 9', mode='normal')
 config.bind('<Alt-0>', 'tab-focus -1', mode='normal')
+
+# Open links externally with xdg-open (i.e. to open youtube videos with mpv, or
+# images with sxiv or imv, etc.)
+config.bind(',x', 'spawn xdg-open {url}')
+config.bind(',X', 'hint links spawn xdg-open {hint-url}')
 
 # Bindings for Russian keyboard layout (my most used bindings)
 
