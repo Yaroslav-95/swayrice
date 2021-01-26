@@ -1,3 +1,5 @@
+import subprocess
+
 # Uncomment this to still load settings configured via autoconfig.yml
 config.load_autoconfig()
 
@@ -56,8 +58,18 @@ for site in js_whitelist:
 ## Disable 3rd party cookies
 c.content.cookies.accept = "no-3rdparty"
 
-## Pretend that we are Chrome
-c.content.headers.user_agent = "Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}"
+# Pretend that we are the latest version of Chrome, since some retarded sites
+# think it is fine to pester me with ads to install Firefox or Chrome or
+# whatever upon seeing a non-standard user agent string. I swear the web is just
+# getting worse day by day. Just when you think it can't get worse they come up
+# with some new crap worse than anything else before. Why can't a person just
+# browse the web peacefully, reading content without being annoyed by ads,
+# spyware, pop ups and broken javascript written by soydevs that don't know how
+# to make a proper website without adding a ton of javascript, or at least
+# degrade gracefully if the latest webshit "standard" isn't being used because I
+# don't want my web browser to be a second OS on top of my actual OS.
+chrome_ver = subprocess.check_output("pacman -Si chromium | grep Version | sed 's/^.*: \([0-9]*\.[0-9]*\.[0-9]*\.[0-9]*\).*$/\\1/g'", shell=True).decode('ascii').rstrip()
+c.content.headers.user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{0} Safari/537.36".format(chrome_ver)
 
 ## Downloads
 
