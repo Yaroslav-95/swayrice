@@ -68,6 +68,8 @@ cmd fzf_jump ${{
 # drag and drop prompt
 cmd dragon $dragon-drag-and-drop -a $fx
 
+cmd dragon_drop $cp $(dragon-drag-and-drop --target | sed 's/file:\/\///g') .
+
 # copy path to clipboard
 cmd yank-path &printf '%s' "$fx" | wl-copy
 
@@ -87,6 +89,7 @@ map D delete
 map <enter> shell
 map f :fzf_jump
 map t :dragon
+map T :dragon_drop
 map W $setsid $TERMINAL & # open new terminal window
 map Y :yank-path
 map L $LESSOPEN='| ~/.local/bin/scope %s' less -R $f # open file preview in pager
