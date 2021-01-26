@@ -6,7 +6,7 @@ mon="1"
 cp $1 "$HOME/.config/wall$mon.png"
 
 IFS=$'\n'
-outputcf=$(grep '^output .* background.*$' ~/.config/sway/config)
+outputcf=$(grep '^output .* background.*$' ~/.config/sway/$(uname -n))
 
 for line in $outputcf; do
   swaymsg $line
