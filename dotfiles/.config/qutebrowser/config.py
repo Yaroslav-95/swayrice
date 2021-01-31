@@ -1,6 +1,6 @@
 import subprocess
 
-# Uncomment this to still load settings configured via autoconfig.yml
+# Still load settings configured via autoconfig.yml
 config.load_autoconfig()
 
 # ------------ Color scheme ----------------
@@ -78,13 +78,13 @@ c.downloads.remove_finished = 3000
 
 ## Default search engine
 
-# c.url.searchengines = { "DEFAULT": "https://searx.be/?q={}" }
-c.url.searchengines = { "DEFAULT": "https://srx.yaroslavps.com/?q={}" }
+# c.url.searchengines = { "DEFAULT": "https://searx.bar/search?q={}" }
+c.url.searchengines = { "DEFAULT": "https://srx.yaroslavps.com/search?q={}" }
 
-# c.url.default_page = "https://searx.be"
+# c.url.default_page = "https://searx.bar"
 c.url.default_page = "https://srx.yaroslavps.com"
 
-# c.url.start_pages = "https://searx.be"
+# c.url.start_pages = "https://searx.bar"
 c.url.start_pages = "https://srx.yaroslavps.com"
 
 ## Default fonts
