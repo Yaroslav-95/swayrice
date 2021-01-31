@@ -58,6 +58,10 @@ alias mnt="udisksctl mount -b"
 alias umnt="udisksctl unmount -b"
 alias dlock="udisksctl lock -b"
 alias dulock="udisksctl unlock -b"
+# Work network drive
+alias mntdss="sudo mount -t cifs -o \
+	username=delapena,uid=yaroslav,gid=yaroslav //10.0.4.140/dss /mnt/dss"
+alias umntdss="sudo umount /mnt/dss"
 
 # Internet
 alias yt="youtube-dl --add-metadata -ic" # Download video link
