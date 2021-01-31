@@ -44,7 +44,7 @@ js_whitelist = [
     '*://*.wikipedia.org/*',
     '*://yandex.ru/*',
     '*://*.yaroslavps.com/*',
-    '*://openedu.ru/*',
+    '*://*.openedu.ru/*',
     '*://developer.mozilla.org/*',
     '*://*.vultr.com/*',
     '*://*.ifmo.ru/*',
