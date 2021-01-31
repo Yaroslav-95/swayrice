@@ -22,12 +22,8 @@ grm() { printf "git@git.yaroslavps.com:%s" "$1" }
 
 # Generic shortcuts
 alias music="ncmpcpp"
-alias clock="ncmpcpp -s clock"
 alias news="newsboat && killall -42 waybar"
-alias files="ranger"
 alias audio="ncpamixer"
-alias calendar="calcurse"
-alias contacts="abook"
 alias calc="R --no-save -q"
 alias spw="setsid $TERMINAL >/dev/null 2>&1 &"
 alias testinet="ping -c2 example.com"
