@@ -1,12 +1,10 @@
-image=~/.config/lockwall.png
 color=#00000000
 font=monospace
 font-size=32
 scaling=fill
-indicator-radius=100
+indicator-radius=120
 show-failed-attempts
-hide-keyboard-layout
-inside-color=#00000000
+inside-color=#000000bb
 inside-ver-color=#3f6e90
 inside-wrong-color=#b73030
 inside-clear-color=#a1a6b2cc
@@ -20,7 +18,15 @@ line-wrong-color=#434c5e
 line-clear-color=#434c5e
 separator-color=#00000000
 key-hl-color=#9eba86
-text-color=#1d2021
-text-ver-color=#1d2021
+text-color=#e5e9f0
+text-ver-color=#e5e9f0
 text-wrong-color=#1d2021
 text-clear-color=#1d2021
+
+fade-in=1
+clock
+indicator
+screenshots
+datestr=%a, %F
+effect-blur=12x3
+layout-bg-color=#000000bb
