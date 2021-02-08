@@ -124,9 +124,6 @@ input 1118:2083:Microsoft_Microsoft___Classic_IntelliMouse__ {
 	pointer_accel 0
 }
 
-# Default wallpaper
-output "*" background ~/.config/wall1.png fill
-
 # Keymaps
 input * {
 	xkb_layout "us,es,ru"
