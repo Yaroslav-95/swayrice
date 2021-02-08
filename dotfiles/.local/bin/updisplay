@@ -1,0 +1,8 @@
+#!/bin/sh
+
+IFS=$'\n'
+outputcf=$(grep '^output .*$' ~/.config/sway/$(uname -n))
+
+for line in $outputcf; do
+  swaymsg $line
+done
