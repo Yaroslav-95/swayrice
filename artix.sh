@@ -29,6 +29,7 @@ cp system/resolvconf.conf /etc/
 cp system/NetworkManager/NetworkManager.conf /etc/NetworkManager/NetworkManager.conf
 cp system/mkinitcpio.conf /etc/
 cp system/pam.d/* /etc/pam.d/
+cp -r system/pacman.d/hooks /etc/pacman.d/
 
 resolvconf -u
 
