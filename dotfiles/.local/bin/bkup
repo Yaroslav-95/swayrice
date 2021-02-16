@@ -1,0 +1,52 @@
+#!/bin/sh
+
+# Yaroslav de la Peña Smirnov 2021
+# Shortcut script for backing up files with rsync.
+# By default it starts a dry run, to check that there are no conflicts. To
+# commit the copy, i.e. do a normal (non-dry) run, use -c as the first or last
+# argument.
+
+############################# Config example ###################################
+## Lines in the locations file contain the shortcuts for the sources and
+## destinations. For example, sources:
+# src	d	/home/yaroslav/docs
+# src	m	/home/yaroslav/music
+## destinations:
+# dst	rm	yaroslav@example.com:
+# dst	hd	/mnt/disk/
+## The columns MUST be separated by ONE tab character
+################################################################################
+
+locations="$HOME/docs/data/bkup/locations"
+ops="-ahv --delete --progress"
+
+if [ "$1" = "-c" ]; then
+	srckey="$2"
+	dstkey="$3"
+else
+	if [ "$3" != "-c" ]; then
+		ops="-ahvn --delete"
+	fi
+	srckey="$1"
+	dstkey="$2"
+fi
+
+if [ -z $srckey ] || [ -z $dstkey ]; then
+	echo "Usage: bkup [-c] <source shortcut> <destination shortcut> [-c]"
+	exit 1
+fi
+
+relsrc="$(grep -E "src[[:space:]]+$srckey" "$locations" | cut -f3)"
+if [ -z "$relsrc" ]; then
+	echo "Source shortcut not found"
+	exit 1
+fi
+target="$(echo "$relsrc" | awk -F'/' '{print $(NF)}')"
+
+reldst="$(grep -E "dst[[:space:]]+$dstkey[[:space:]]+" "$locations" | cut -f3)"
+if [ -z "$reldst" ]; then
+	echo "Destination shortcut not found"
+	exit 1
+fi
+
+rsync $ops "$relsrc/" "$reldst$target/"
