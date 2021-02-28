@@ -24,7 +24,7 @@ grm() { printf "git@git.yaroslavps.com:%s" "$1" }
 alias music="ncmpcpp"
 alias news="newsboat && killall -42 waybar"
 alias audio="ncpamixer"
-alias calc="R --no-save -q"
+alias calc="python -q"
 alias spw="setsid $TERMINAL >/dev/null 2>&1 &"
 alias testinet="ping -c2 example.com"
 

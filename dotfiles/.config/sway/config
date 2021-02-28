@@ -11,6 +11,9 @@ set $browser "qutebrowser"
 # set default desktop layout (default is tiling)
 # workspace_layout tabbed <stacking|tabbed>
 
+# Switch back to previously focused ws on ws switch command repeat
+workspace_auto_back_and_forth yes
+
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 default_border pixel 2
 default_floating_border pixel 2
