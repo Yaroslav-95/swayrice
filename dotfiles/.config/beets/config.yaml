@@ -1,1 +1,15 @@
 directory: "~/music"
+plugins: convert fetchart embedart
+convert:
+    auto: no
+    never_convert_lossy_files: yes
+    album_art_maxwidth: 500
+    format: vorbis
+    formats:
+        vorbis: ffmpeg -i $source -y -vn -acodec libvorbis -aq 6 $dest
+        ogg: ffmpeg -i $source -y -vn -acodec libvorbis -aq 6 $dest
+fetchart:
+    maxwidth: 1200
+embedart:
+    auto: yes
+    maxwidth: 500
