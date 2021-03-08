@@ -124,7 +124,7 @@ input 6127:24647:Lenovo_ThinkPad_Compact_USB_Keyboard_with_TrackPoint {
 # Desktop mouse
 input 1118:2083:Microsoft_Microsoft___Classic_IntelliMouse__ {
 	accel_profile flat
-	pointer_accel 0
+	pointer_accel -0.5
 }
 
 # Keymaps
