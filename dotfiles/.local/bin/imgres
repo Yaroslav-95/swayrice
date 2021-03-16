@@ -1,7 +1,8 @@
 #!/bin/sh
 
 if [ -z "$3" ]; then
-    echo "Usage: imgres option input output"
+    echo "Usage: imgres <option> <input> <output>"
+    echo "Available options: recipe, wallpaper, thumbnail"
     exit
 fi
 
@@ -11,15 +12,20 @@ output="$3"
 
 case "$option" in
     recipe)
-        convert "$input" -resize 1200x800 -quality 85 "$output"
-        exiftool -overwrite_original -all= "$output"
+        convert "$input" \
+        	-strip \
+        	-interlace plane \
+        	-define jpeg:dct-method=float \
+        	-sampling-factor 4:2:0 \
+        	-resize 1200x800 \
+        	-quality 80 \
+        	"$output"
         ;;
     wallpaper)
         convert "$input" -resize 2560x1440^ -quality 90 "$output"
         ;;
     thumbnail)
-        convert "$input" -resize 400x270 -quality 80 "$output"
-        exiftool -overwrite_original -all= "$output"
+        convert "$input" -strip -interlace plane -resize 400x270 -quality 75 "$output"
         ;;
     *)
         echo "Invalid option \"$option\""
