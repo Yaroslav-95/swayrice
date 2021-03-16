@@ -1,3 +1,4 @@
+import os
 import subprocess
 
 # Still load settings configured via autoconfig.yml
@@ -32,28 +33,12 @@ c.content.notifications = False
 ## Disable JS by default
 c.content.javascript.enabled = False
 
-# Enable JS for certain sites
-js_whitelist = [
-    "*://localhost/*",
-    "*://127.0.0.1/*",
-    "*://github.com/*",
-    "*://duckduckgo.com/*",
-    "*://*.youtube.com/*",
-    "*://*.google.com/*",
-    '*://*.namecheap.com/*',
-    '*://*.wikipedia.org/*',
-    '*://yandex.ru/*',
-    '*://*.yaroslavps.com/*',
-    '*://*.openedu.ru/*',
-    '*://developer.mozilla.org/*',
-    '*://*.vultr.com/*',
-    '*://*.ifmo.ru/*',
-    '*://*.4chan.org/*',
-    '*://*.4channel.org/*',
-]
-for site in js_whitelist:
-    with config.pattern(site) as p:
-        p.content.javascript.enabled = True
+# Read separate whitelist file and enable JS for those sites
+with open(os.path.expanduser("~/.config/qutebrowser/jswhitelist")) as f:
+    for line in f:
+        site = line.rstrip('\n')
+        with config.pattern(site) as p:
+            p.content.javascript.enabled = True
 
 ## Disable 3rd party cookies
 c.content.cookies.accept = "no-3rdparty"
@@ -91,7 +76,7 @@ c.url.start_pages = "https://srx.yaroslavps.com"
 c.fonts.default_size = "10pt"
 
 ## Prefer dark mode in websites that support it
-c.colors.webpage.prefers_color_scheme_dark = True
+c.colors.webpage.preferred_color_scheme = "dark"
 
 ## Background color of the completion widget category headers.
 ## Type: QssColor
