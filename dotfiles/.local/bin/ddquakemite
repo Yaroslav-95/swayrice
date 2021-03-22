@@ -7,10 +7,11 @@ if ! [ -z "$(swaymsg -t get_tree | grep 'ddterminal')" ]; then
         swaymsg '[title="ddterminal"] move scratchpad'
     fi
 else
-    $TERMINAL -t "ddterminal" -e tmuxatt &
+    $TERMINAL -T "ddterminal" tmuxatt &
     sleep 0.2s
-    currenty=$(swaygetcurrentwindow | cut -d ' ' -f1 | cut -d ',' -f2 )
-    let moveup=$currenty-30
+    curwiny=$(swaygetcurrentwindow | cut -d ' ' -f1 | cut -d ',' -f2 )
+    curdisy=$(swaymsg -pt get_outputs | grep -A3 focused | grep Position | cut -d ',' -f2)
+    moveup=$(($curwiny - $curdisy - 30))
     swaymsg move up "$moveup px"
 fi
 

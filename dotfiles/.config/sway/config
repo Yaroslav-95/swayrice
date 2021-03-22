@@ -5,8 +5,8 @@
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
 set $alt Mod1
-set $term alacritty
-set $browser "qutebrowser"
+set $term foot
+set $browser qutebrowser
 
 # set default desktop layout (default is tiling)
 # workspace_layout tabbed <stacking|tabbed>
@@ -112,7 +112,7 @@ bindswitch --reload --locked lid:on exec "swaysession suspend"
 # Trackpoint (Thinkpad)
 input 2:10:TPPS/2_IBM_TrackPoint {
 	accel_profile flat
-	pointer_accel 0.7
+	pointer_accel 0.8
 }
 
 # Trackpoint (Thinkpad Compact Keyboard (External))
@@ -159,7 +159,7 @@ bindsym --to-code {
 	$mod+Shift+q kill
 	$mod+q kill
 
-	# bemenu program launcher (-x force run through xwayland, -t run in terminal)
+	# bemenu program launcher (-x force run through xwayland, -T run in terminal)
 	$mod+d exec --no-startup-id menurun
 	$mod+Shift+d exec --no-startup-id "menurun -t"
 	$mod+Ctrl+d exec --no-startup-id "menurun -x"
@@ -180,9 +180,9 @@ bindsym --to-code {
 	$mod+t exec --no-startup-id toggletorrent
 	$mod+Ctrl+t exec --no-startup-id launch-transmission
 	$mod+s exec "xway steam"
-	$mod+m exec $term -e ncmpcpp
-	$mod+n exec $term -t "newsboat" -e newsboat && killall -42 waybar
-	$mod+a exec $term -t "aerc" -e aerc
+	$mod+m exec $term ncmpcpp
+	$mod+n exec $term -T "newsboat" newsboat && killall -42 waybar
+	$mod+a exec $term -T "aerc" aerc
 	$mod+o exec --no-startup-id notistats
 	$mod+c exec --no-startup-id camtoggle
 	$mod+grave exec --no-startup-id menuemoji
@@ -195,7 +195,7 @@ bindsym --to-code {
 
 	# Network management
 	$mod+Shift+c exec togglevpn
-	$mod+Shift+n exec $term -t "Network Manager" -e 'nmtui'
+	$mod+Shift+n exec $term -T "Network Manager" 'nmtui'
 
 	# Screenshot and recording
 	Print exec --no-startup-id menugrim -q
@@ -204,7 +204,7 @@ bindsym --to-code {
 	Ctrl+Print exec --no-startup-id swayrecord
 
 	# Sound
-	$mod+Shift+m exec $term -t "ncpamixer" -e 'ncpamixer'
+	$mod+Shift+m exec $term -T "ncpamixer" 'ncpamixer'
 	$mod+Ctrl+m exec --no-startup-id menuoutput
 
 	# Applications that start with no gaps

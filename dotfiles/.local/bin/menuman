@@ -16,4 +16,4 @@ if [ -z "$chosen" ]; then
     exit 0
 fi
 
-$TERMINAL -t "man $chosen" -e man $chosen
+$TERMINAL -T "man $chosen" man $chosen

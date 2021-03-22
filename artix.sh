@@ -3,16 +3,16 @@
 # Very basic helper script to install some programs and configs for an
 # Artix+runit+Sway system
 
-pacman -Sy --noconfirm zsh zsh-syntax-highlighting openresolv wireguard-tools \
+pacman -Sy zsh zsh-syntax-highlighting openresolv wireguard-tools \
 	bind-tools sway swaylock swayidle waybar egl-wayland imv swaybg \
 	xorg-server-xwayland alacritty qt5-wayland wl-clipboard dbus tmux htop \
-	bemenu bemenu-wlroots mupdf mpd ncmpcpp mpc mpv libnotify mako cronie \
+	bemenu bemenu-wlroots mupdf mpd ncmpcpp mpc mpv libnotify cronie \
 	cronie-runit metalog metalog-runit dnsmasq dnsmasq-runit networkmanager \
 	networkmanager-runit rsync grim wf-recorder slurp ffmpeg w3m youtube-dl \
 	youtube-viewer newsboat wget curl inkscape gimp darktable gcc make \
 	fontconfig pkg-config fakeroot papirus-icon-theme alsa-utils pulseaudio \
-	pamixer pulseaudio-bluetooth imagemagick exiftool ntfs-3g unzip unrar \
-	gnome-themes-standard telegram-desktop qt5ct r bc udisks2 \
+	pamixer pulseaudio-bluetooth imagemagick ntfs-3g unzip unrar \
+	gnome-themes-standard telegram-desktop qt5ct r bc udisks2 dash \
 	perl-term-readline-gnu transmission-cli transmission-remote-gtk \
 	python-pynvim python-pip python-pillow calcurse acpi acpid gnupg \
 	noto-fonts-cjk noto-fonts-emoji ttf-joypixels otf-latin-modern \
@@ -21,7 +21,7 @@ pacman -Sy --noconfirm zsh zsh-syntax-highlighting openresolv wireguard-tools \
 	bluez-runit acpilight accountsservice xdg-user-dirs abook terminus-font \
 	qutebrowser jq stow wdiff texlive-most units isync notmuch pass \
 	translate-shell gnome-keyring pacman-contrib linux-headers \
-	v4l2loopback-dkms highlight mediainfo
+	v4l2loopback-dkms highlight mediainfo || exit 1
 
 # Copy system config files
 cp system/sudoers /etc/
@@ -30,8 +30,19 @@ cp system/NetworkManager/NetworkManager.conf /etc/NetworkManager/NetworkManager.
 cp system/mkinitcpio.conf /etc/
 cp system/pam.d/* /etc/pam.d/
 cp -r system/pacman.d/hooks /etc/pacman.d/
+cp -r runit/powertune /etc/runit/sv/
 
 resolvconf -u
+
+# Activate runit services
+ln -s /etc/runit/sv/dbus /run/runit/service/
+ln -s /etc/runit/sv/dnsmasq /run/runit/service/
+ln -s /etc/runit/sv/bluetoothd /run/runit/service/
+ln -s /etc/runit/sv/cronie /run/runit/service/
+ln -s /etc/runit/sv/metalog /run/runit/service/
+ln -s /etc/runit/sv/NetworkManager /run/runit/service/
+ln -s /etc/runit/sv/dhcpcd /run/runit/service/
+ln -s /etc/runit/sv/wpa_supplicant /run/runit/service/
 
 # Install AUR helper
 cd /tmp

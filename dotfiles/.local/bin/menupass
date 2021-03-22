@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/usr/bin/bash
 
 # Inspiration taken from
 # https://git.zx2c4.com/password-store/tree/contrib/dmenu/passmenu

@@ -14,7 +14,7 @@ export MANWIDTH=80
 
 # User specific environment and startup programs:
 export LANG=en_US.UTF-8
-export TERMINAL=alacritty
+export TERMINAL=foot
 export EDITOR="nvim"
 export PAGER="less -R -j.5"
 export BROWSER=qutebrowser
