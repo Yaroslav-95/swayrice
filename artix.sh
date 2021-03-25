@@ -19,9 +19,9 @@ pacman -Sy zsh zsh-syntax-highlighting openresolv wireguard-tools \
 	otf-latinmodern-math powerline-fonts python-pygit2 polkit polkit-gnome \
 	zathura zathura-pdf-mupdf zathura-djvu gst-libav vifm blueman bluez \
 	bluez-runit acpilight accountsservice xdg-user-dirs abook terminus-font \
-	qutebrowser jq stow wdiff texlive-most units isync notmuch pass \
-	translate-shell gnome-keyring pacman-contrib linux-headers \
-	v4l2loopback-dkms highlight mediainfo || exit 1
+	qutebrowser jq stow wdiff texlive-most texlive-lang biber units isync \
+	notmuch pass translate-shell gnome-keyring pacman-contrib linux-headers \
+	openntpd openntpd-runit v4l2loopback-dkms highlight mediainfo || exit 1
 
 # Copy system config files
 cp system/sudoers /etc/

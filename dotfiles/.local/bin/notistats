@@ -3,7 +3,7 @@
 body=$(df -h / | tail -1 | awk '{print "Free space on /:\t" $4}';
 free -m | sed '2!d' | awk '{print "Memory in use:\t" $3"/"$2"MB"}';
 lscpu | grep 'CPU MHz' | awk '{print "CPU clock:\t" $3"MHz"}';
-sensors | grep 'Package id 0' | sed 's/Package id 0/CPU temp/' | awk '{print $1 $2 "\t" $3}';
+sensors | grep 'Core 0' | sed 's/Core 0/CPU temp/' | awk '{print $1 $2 "\t" $3}';
 sensors | grep 'fan')
 if [ -f /sys/class/power_supply/BAT0/uevent ]; then
   body=$body"\n"$(echo print\(\'BAT0 drainage:\\t{}W\'.format\($(grep 'POWER_SUPPLY_POWER_NOW' /sys/class/power_supply/BAT0/uevent | awk -F '=' '{print $2}')/1000000\)\) | python)
