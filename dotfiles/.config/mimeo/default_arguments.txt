@@ -1,1 +1,1 @@
---quiet --term "alacritty -e %s"
+--quiet --term "foot %s"
