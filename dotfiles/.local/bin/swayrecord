@@ -16,7 +16,7 @@ TYPE="$1"
 VIDEO_PID=""
 AUDIO_PID=""
 
-trap finishrecording SIGINT
+trap finishrecording INT
 
 finishvideo () {
   kill -2 "$VIDEO_PID"
@@ -35,12 +35,12 @@ finishscreencast () {
   kill -2 "$AUDIO_PID"
   notify-send "📼 Recording" "One moment, screencast is being encoded..."
   ffmpeg -i "$VREC_DIR/temp-$OUTPUT.mp4" \
-    -i "$VREC_DIR/temp-$OUTPUT.mp3" \
+    -i "$VREC_DIR/temp-$OUTPUT.opus" \
     -codec copy \
     -shortest \
     "$VREC_DIR/screencast-$OUTPUT.mp4"
   rm -f "$VREC_DIR/temp-$OUTPUT.mp4"
-  rm -f "$VREC_DIR/temp-$OUTPUT.mp3"
+  rm -f "$VREC_DIR/temp-$OUTPUT.opus"
   notify-send "📼 Recording" \
     "Screencast recording stopped and saved at "$VREC_DIR/screencast-$OUTPUT.mp4""
 }
@@ -96,7 +96,7 @@ screenshare () {
 screencast () {
   wf-recorder -o "$MONITOR" -f "$VREC_DIR/temp-$OUTPUT.mp4" &
   VIDEO_PID=$!
-  ffmpeg -f alsa -i default -c:a mp3 "$VREC_DIR/temp-$OUTPUT.mp3" &
+  ffmpeg -f alsa -i default -c:a libopus "$VREC_DIR/temp-$OUTPUT.opus" &
   AUDIO_PID=$!
   echo $$ > ~/.cache/recordingpid
   echo "📼" > ~/.cache/recordingicon
@@ -106,7 +106,7 @@ screencast () {
 }
 
 audio () {
-  ffmpeg -f alsa -i default -c:a flac "$AREC_DIR/$OUTPUT.flac" &
+  ffmpeg -f alsa -i default -c:a libopus "$AREC_DIR/$OUTPUT.opus" &
   AUDIO_PID=$!
   echo $$ > ~/.cache/recordingpid
   echo "🎙" > ~/.cache/recordingicon

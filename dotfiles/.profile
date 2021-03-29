@@ -32,6 +32,7 @@ export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
 export GOPATH="$XDG_DATA_HOME/go"
+export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuchrc"
 eval "$(dircolors "$HOME/.config/dir_colors")"
 
 . "$HOME/.config/lf/icons"

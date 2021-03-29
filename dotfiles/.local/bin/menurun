@@ -11,7 +11,7 @@ case $1 in
     action="xway"
     title="Run through xwayland:";;
   -t)
-    action="$TERMINAL -e"
+    action="$TERMINAL"
     title="Run in terminal:";;
 esac
 
