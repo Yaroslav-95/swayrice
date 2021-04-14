@@ -3,11 +3,11 @@
 # Very basic helper script to install some programs and configs for an
 # Artix+runit+Sway system
 
-pacman -Sy zsh zsh-syntax-highlighting openresolv wireguard-tools \
+pacman -Sy zsh zsh-syntax-highlighting wireguard-tools mediainfo highlight \
 	bind-tools sway swaylock swayidle waybar egl-wayland imv swaybg \
 	xorg-server-xwayland alacritty qt5-wayland wl-clipboard dbus tmux htop \
 	bemenu bemenu-wlroots mupdf mpd ncmpcpp mpc mpv libnotify cronie \
-	cronie-runit metalog metalog-runit dnsmasq dnsmasq-runit networkmanager \
+	cronie-runit metalog metalog-runit dnsmasq networkmanager \
 	networkmanager-runit rsync grim wf-recorder slurp ffmpeg w3m youtube-dl \
 	youtube-viewer newsboat wget curl inkscape gimp darktable gcc make \
 	fontconfig pkg-config fakeroot papirus-icon-theme alsa-utils pulseaudio \
@@ -21,22 +21,18 @@ pacman -Sy zsh zsh-syntax-highlighting openresolv wireguard-tools \
 	bluez-runit acpilight accountsservice xdg-user-dirs abook terminus-font \
 	qutebrowser jq stow wdiff texlive-most texlive-lang biber units isync \
 	notmuch pass translate-shell gnome-keyring pacman-contrib linux-headers \
-	openntpd openntpd-runit v4l2loopback-dkms highlight mediainfo || exit 1
+	openntpd openntpd-runit v4l2loopback-dkms || exit 1
 
 # Copy system config files
 cp system/sudoers /etc/
-cp system/resolvconf.conf /etc/
-cp system/NetworkManager/NetworkManager.conf /etc/NetworkManager/NetworkManager.conf
 cp system/mkinitcpio.conf /etc/
 cp system/pam.d/* /etc/pam.d/
+cp -r system/NetworkManager/* /etc/NetworkManager/
 cp -r system/pacman.d/hooks /etc/pacman.d/
 cp -r runit/powertune /etc/runit/sv/
 
-resolvconf -u
-
 # Activate runit services
 ln -s /etc/runit/sv/dbus /run/runit/service/
-ln -s /etc/runit/sv/dnsmasq /run/runit/service/
 ln -s /etc/runit/sv/bluetoothd /run/runit/service/
 ln -s /etc/runit/sv/cronie /run/runit/service/
 ln -s /etc/runit/sv/metalog /run/runit/service/
