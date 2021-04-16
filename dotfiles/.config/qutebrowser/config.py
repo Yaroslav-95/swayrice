@@ -28,7 +28,7 @@ ultramar = {
 
 ## Notifications for websites are retarded
 
-c.content.notifications = False
+c.content.notifications.enabled = False
 
 ## Disable JS by default
 c.content.javascript.enabled = False
@@ -441,6 +441,7 @@ config.bind('пЩ', 'set-cmd-text :open -t -r {url:pretty}', mode='normal')
 
 config.bind('г', 'undo', mode='normal')
 config.bind('в', 'tab-close', mode='normal')
+config.bind('В', 'tab-close -o', mode='normal')
 config.bind('пС', 'tab-clone', mode='normal')
 
 config.bind('а', 'hint', mode='normal')
@@ -456,7 +457,7 @@ config.bind('д', 'scroll right', mode='normal')
 config.bind('пп', 'scroll-to-perc 0', mode='normal')
 config.bind('П', 'scroll-to-perc', mode='normal')
 
-config.bind('ш', 'enter-mode insert', mode='normal')
+config.bind('ш', 'mode-enter insert', mode='normal')
 
 config.bind('Т', 'search-prev', mode='normal')
 config.bind('т', 'search-next', mode='normal')
