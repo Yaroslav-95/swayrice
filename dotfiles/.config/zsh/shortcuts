@@ -47,7 +47,10 @@ lfcd () {
         fi
     fi
 }
+
+# some keybindings
 bindkey -s '^o' 'lfcd\n'
+bindkey -s '^t' 'spw\n'
 
 # Mounting drive shortcuts
 alias mnt="udisksctl mount -b"
