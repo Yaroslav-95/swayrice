@@ -48,7 +48,8 @@ handle_mime() {
 	application/zip) unzip -l -- "${FILE_PATH}" ;;
 	application/gzip) tar -ztf "${FILE_PATH}" ;;
 	application/x-rar) unrar lb -- "${FILE_PATH}" ;;
-    video/* | audio/*|application/octet-stream | image/*) mediainfo "${FILE_PATH}" | awk -F':' '{ print $2 }' || exit 1;;
+    video/* | audio/*|application/octet-stream) mediainfo "${FILE_PATH}" | awk -F':' '{ print $2 }' || exit 1;;
+    image/*) exiftool "${FILE_PATH}";;
     */pdf) pdftotext -l 10 -nopgbrk -q -- "${FILE_PATH}" - ;;
     *opendocument*) odt2txt "${FILE_PATH}" ;;
     *) file -b "${FILE_PATH}" ;;
