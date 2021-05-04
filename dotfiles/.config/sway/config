@@ -14,6 +14,9 @@ set $browser qutebrowser
 # Switch back to previously focused ws on ws switch command repeat
 workspace_auto_back_and_forth yes
 
+# Move mouse to focused container
+mouse_warping container
+
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 default_border pixel 2
 default_floating_border pixel 2
@@ -106,10 +109,9 @@ for_window [app_id="telegramdesktop"] floating enable, sticky enable
 for_window [title="^ddterminal$"] floating enable, sticky enable
 #for_window [title="^ddterminal$"] border none
 
-# Laptop lid
-bindswitch --reload --locked lid:on exec "swaysession suspend"
+# Don't display mouse cursor while typing
+seat * hide_cursor when-typing enable
 
-# Trackpoint (Thinkpad)
 input 2:10:TPPS/2_IBM_TrackPoint {
 	accel_profile flat
 	pointer_accel 0.8
