@@ -12,6 +12,11 @@
 
 readarray -t blkdevs <<< "$(lsblk -r -o NAME,TYPE,FSTYPE,MOUNTPOINT | tail -n +2)"
 
+notify_and_end() {
+	notify-send "💽Drive management" "$1"
+	exit $2
+}
+
 get_mountable() {
   for blkdev in "${blkdevs[@]}"; do
     name="$(cut -d " " -f1 <<< "${blkdev}")"
@@ -51,59 +56,61 @@ get_unmountable() {
 }
 
 mount_dev() {
-  fstype="$(lsblk -r -o FSTYPE "/dev/$1" | tail -n 1)"
-  part="/dev/$1"
-  if [ "$fstype" = "crypto_LUKS" ]; then
-    password="$(echo "" | bemenu -p "Enter passphrase for encrypted drive:" --tf="$BEMENU_TF" --tb="$BEMENU_NB" --ff="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB" --monitor="$BEMENU_MONITOR")"
-    if [ -z "$password" ]; then
-      exit 0
-    fi
-    printf "%s" "$password" > "$HOME/.cache/diskey"
-    part="$(udisksctl unlock --key-file="$HOME/.cache/diskey" -b "/dev/$1" | cut -d " " -f4 )"
-    part="${part%?}"
-    rm -f "$HOME/.cache/diskey"
-  fi
-  message="$(udisksctl mount -b "$part")"
-  if [ $? -eq 0 ]; then
-    notify-send "💽Drive mounting" "$message"
-  else
-    notify-send "💽Drive mounting" "An error occurred, could not mount device $1"
-  fi
+	fstype="$(lsblk -r -o FSTYPE "/dev/$1" | tail -n 1)"
+	part="/dev/$1"
+	if [ "$fstype" = "crypto_LUKS" ]; then
+		password="$(echo "" | bemenu -p "Enter passphrase for encrypted drive:" --tf="$BEMENU_TF" --tb="$BEMENU_NB" --ff="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB" --monitor="$BEMENU_MONITOR")"
+		if [ -z "$password" ]; then
+  	  	  exit 0
+		fi
+		printf "%s" "$password" > "$HOME/.cache/diskey"
+		part="$(udisksctl unlock --key-file="$HOME/.cache/diskey" -b "/dev/$1" 2> $HOME/.cache/udiskerr | cut -d " " -f4 )"
+		part="${part%?}"
+		rm -f "$HOME/.cache/diskey"
+		if [ $? -ne 0 ]; then
+			notify_and_end "Error mounting: $(cat $HOME/.cache/udiskerr)" 1
+		fi
+	fi
+	message="$(udisksctl mount -b "$part" 2> $HOME/.cache/udiskerr)"
+	if [ $? -eq 0 ]; then
+		notify_and_end "$message" 0
+	else
+		notify_and_end "Error mounting: $(cat $HOME/.cache/udiskerr)" 1
+	fi
 }
 
 unmount_dev() {
   fstype="$(lsblk -r -o FSTYPE "/dev/$1" | sed "2q;d")"
   if [ "$fstype" = "crypto_LUKS" ]; then
     volume="/dev/mapper/$(lsblk -r -o NAME "/dev/$1" | tail -n 1)"
-    if udisksctl unmount -b "$volume" && udisksctl lock -b "/dev/$1"; then
-        notify-send "💽Drive manager" "Device $1 has been unmounted and locked"
+    if udisksctl unmount -b "$volume" 2> $HOME/.cache/udiskerr && udisksctl lock -b "/dev/$1" 2> $HOME/.cache/udiskerr; then
+        notify_and_end "Device $1 has been unmounted and locked" 0
     else
-        notify-send "💽Drive manager" "An error occurred, could not unmount device $1"
+		notify_and_end "Error unmounting: $(cat $HOME/.cache/udiskerr)" 1
     fi
   else
-    if udisksctl unmount -b "/dev/$1"; then
-        notify-send "💽Drive manager" "Device $1 has been unmounted"
+    if udisksctl unmount -b "/dev/$1" 2> $HOME/.cache/udiskerr; then
+        notify_and_end "Device $0 has been unmounted" 0
     else
-        notify-send "💽Drive manager" "An error occurred, could not unmount device $1"
+		notify_and_end "Error unmounting: $(cat $HOME/.cache/udiskerr)" 1
     fi
   fi
 }
 
 get_usb_storage() {
-  for dev in /sys/block/*; do
-    if udevadm info --query=property --path=$dev | grep -q ^ID_BUS=usb
-    then
-      echo "$(cut -d "/" -f4 <<< ${dev})"
-    fi
-  done
+	for dev in /sys/block/*; do
+		if udevadm info --query=property --path=$dev | grep -q ^ID_BUS=usb; then
+			echo "$(cut -d "/" -f4 <<< ${dev})"
+		fi
+	done
 }
 
 poweroff_dev() {
-  if udisksctl power-off -b "/dev/$1"; then
-    notify-send "💽Drive manager" "Device $1 has been powered off"
-  else
-    notify-send "💽Drive manager" "An error occurred, could not power off device $1. Make sure that it's not in use."
-  fi
+	if udisksctl power-off -b "/dev/$1"; then
+		notify_and_end "Device $1 has been powered off" 0
+	else
+		notify_and_end "An error occurred, could not power off device $1. Make sure that it's not in use." 1
+	fi
 }
 
 action="$(printf "mount\nunmount\npoweroff\n" | bemenu -p "What to do?" --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB" --monitor="$BEMENU_MONITOR")"
