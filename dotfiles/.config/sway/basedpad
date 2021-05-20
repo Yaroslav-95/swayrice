@@ -1,0 +1,24 @@
+# vim: filetype=i3
+
+# Configuration specific to my laptop computer
+
+# Default wallpaper
+output "*" background ~/.config/wall1.png fill
+
+# Outputs
+output "LVDS-1" pos 0 0
+
+# On lid close
+bindswitch --reload --locked lid:on exec "lock-color"
+
+# Workspaces
+workspace $ws1  output LVDS-1
+workspace $ws2  output LVDS-1
+workspace $ws3  output LVDS-1
+workspace $ws4  output LVDS-1
+workspace $ws5  output LVDS-1
+workspace $ws6  output LVDS-1
+workspace $ws7  output DP-1 VGA-1
+workspace $ws8  output DP-1 VGA-1
+workspace $ws9  output DP-1 VGA-1
+workspace $ws10 output DP-1 VGA-1
