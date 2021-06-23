@@ -90,7 +90,7 @@ unmount_dev() {
     fi
   else
     if udisksctl unmount -b "/dev/$1" 2> $HOME/.cache/udiskerr; then
-        notify_and_end "Device $0 has been unmounted" 0
+        notify_and_end "Device $1 has been unmounted" 0
     else
 		notify_and_end "Error unmounting: $(cat $HOME/.cache/udiskerr)" 1
     fi
