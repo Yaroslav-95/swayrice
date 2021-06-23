@@ -1,6 +1,7 @@
 #!/bin/sh
 
-IFS=$'\n'
+IFS='
+'
 outputcf=$(grep '^output .*$' ~/.config/sway/$(uname -n))
 
 for line in $outputcf; do
