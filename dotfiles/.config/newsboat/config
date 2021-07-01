@@ -2,6 +2,8 @@
 
 external-url-viewer "urlview"
 
+text-width 80
+
 bind-key j down
 bind-key k up
 bind-key j next articlelist
