@@ -83,6 +83,7 @@ map I push A<c-a> # rename from the beginning
 map i push A<a-b><a-b><a-f> # rename before extention
 map a push A<a-b> # rename after extention
 map <c-n> push :mkdir<space>
+map <c-t> push :$touch<space>
 map <c-r> reload
 map <enter> shell
 map D delete
