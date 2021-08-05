@@ -1,0 +1,64 @@
+#!/bin/sh
+
+# Yaroslav de la Peña Smirnov 2021
+# Script for starting a new C project with the following layout:
+# ├── include
+# ├── src
+# ├── Makefile
+# └── README.md
+
+if [ -z "$1" ]; then
+	echo "Specify the name of the project" 1>&2
+	exit 1
+fi
+
+projname="$1"
+projupper="$(printf "%s" "$projname" | tr '[a-z]' '[A-Z]')"
+
+printf "CFLAGS?=-std=gnu99 -O2 -Wall
+CC?=gcc
+RM:=rm -rf
+
+SRC_DIR:=src
+OBJ_DIR:=obj
+INC_DIRS=\$(addprefix -iquote,include)
+LIBS:=
+
+%s_SOURCES:=\$(wildcard \$(SRC_DIR)/*.c)
+%s_OBJECTS:=\$(%s_SOURCES:%%.c=\$(OBJ_DIR)/%%.o)
+BUILD_DIR:=build
+
+all: \$(BUILD_DIR) %s
+
+%s: \$(%s_OBJECTS)
+	\$(CC) \$(LIBS) \$(LDFLAGS) -o \$(BUILD_DIR)/\$@ \$^
+
+\$(OBJ_DIR)/%%.o: %%.c
+	\$(CC) -c \$(CFLAGS) -I\$(INCLUDE_DIR) \$(INC_DIRS) -o \$@ \$<
+
+\$(BUILD_DIR):
+	mkdir -p \$(BUILD_DIR)
+	mkdir -p \$(OBJ_DIR)/src
+
+debug: CFLAGS := -O0 -g -DDEBUG
+debug: all
+
+clean:
+	\$(RM) \$(%s_OBJECTS)
+	\$(RM) \$(BUILD_DIR)/*
+
+.PHONY: clean all debug test
+
+.PRECIOUS: \$(OBJ_DIR)/%%.o
+" \
+	$projupper \
+	$projupper \
+	$projupper \
+	$projname \
+	$projname \
+	$projupper \
+	$projupper \
+	>> Makefile
+
+mkdir -p src include
+printf "# %s\n" $projname >> README.md
