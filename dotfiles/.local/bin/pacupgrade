@@ -11,7 +11,12 @@ fi
 touch ~/.cache/pacupdatelive
 killall -41 waybar
 
-sudo pacman -Syu
+if [ "$1" = "-a" ]; then
+	yay -Syu
+else
+	sudo pacman -Syu
+fi
+
 
 rm -f ~/.cache/pacupdatelive
 killall -41 waybar

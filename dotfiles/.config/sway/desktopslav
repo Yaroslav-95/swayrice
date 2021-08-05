@@ -4,6 +4,7 @@
 
 # Outputs
 output "HDMI-A-2" background ~/.config/wall2.png fill
+output "HDMI-A-1" background ~/.config/wall1.png fill
 output "HDMI-A-1" pos 0 0
 output "HDMI-A-2" pos 1920 0
 

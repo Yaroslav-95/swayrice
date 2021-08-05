@@ -1,7 +1,7 @@
 #!/bin/sh
 
-location="Saint Petersburg"
+location="Saint-Petersburg"
 
 [ -n "$1" ] && location=$1
 
-curl wttr.in/"$location"
+curl "wttr.in/$location"

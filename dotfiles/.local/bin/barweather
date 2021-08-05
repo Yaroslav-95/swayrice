@@ -1,7 +1,7 @@
 #!/bin/sh
 
 cachefile="$HOME/.cache/weather"
-location="Saint Petersburg"
+location="Saint-Petersburg"
 update_freq=1800
 obsolete_after=10800
 

@@ -22,10 +22,11 @@ text-ver-color=#e5e9f0
 text-wrong-color=#1d2021
 text-clear-color=#1d2021
 
-fade-in=1
+fade-in=.3
 clock
 indicator
 screenshots
 datestr=%a, %F
+effect-pixelate=8
 effect-blur=12x3
 layout-bg-color=#000000bb
