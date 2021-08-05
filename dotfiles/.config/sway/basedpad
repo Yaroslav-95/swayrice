@@ -9,7 +9,7 @@ output "*" background ~/.config/wall1.png fill
 output "LVDS-1" pos 0 0
 
 # On lid close
-bindswitch --reload --locked lid:on exec "lock-color"
+bindswitch --reload --locked lid:on exec "swaysession suspend"
 
 # Workspaces
 workspace $ws1  output LVDS-1
