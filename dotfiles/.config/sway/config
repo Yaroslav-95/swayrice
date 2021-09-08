@@ -53,15 +53,15 @@ exec_always {
 
 ##### Startup scripts and programs #####
 # Waybar
-exec --no-startup-id waybar_launch
+exec waybar_launch
 # music daemon
-exec --no-startup-id mpd
+exec mpd
 # Bluetooth adapter applet
-exec_always --no-startup-id blueman-applet
+exec_always blueman-applet
 # Notification handler
-exec --no-startup-id mako
+exec mako
 # Environment variables for cron scripts
-exec_always --no-startup-id setsessionenv
+exec_always setsessionenv
 
 # Workspace names
 # to display names or symbols instead of plain workspace numbers you can use
@@ -162,65 +162,65 @@ bindsym --to-code {
 	$mod+q kill
 
 	# bemenu program launcher (-x force run through xwayland, -T run in terminal)
-	$mod+d exec --no-startup-id menurun
-	$mod+Shift+d exec --no-startup-id "menurun -t"
-	$mod+Ctrl+d exec --no-startup-id "menurun -x"
+	$mod+d exec menurun
+	$mod+Shift+d exec "menurun -t"
+	$mod+Ctrl+d exec "menurun -x"
 
 	# Mako (notifications)
 	$mod+Ctrl+space       exec "makoctl dismiss"
 	$mod+Ctrl+Shift+space exec "makoctl restore"
 
 	# Start Applications
-	$mod+Shift+w exec --no-startup-id $browser
-	$mod+Ctrl+w exec --no-startup-id chromium
+	$mod+Shift+w exec $browser
+	$mod+Ctrl+w exec chromium -enable-features=UseOzonePlatform -ozone-platform=wayland
 	$mod+F1 exec menuman
 	$mod+F2 exec menumako
 	$mod+F3 exec menudisplay
 	$mod+F4 exec menublk
 	$mod+F10 exec chcolors
 	$mod+F12 exec menutz
-	$mod+t exec --no-startup-id toggletorrent
-	$mod+Ctrl+t exec --no-startup-id launch-transmission
+	$mod+t exec toggletorrent
+	$mod+Ctrl+t exec launch-transmission
 	$mod+s exec "xway steam"
 	$mod+m exec $term ncmpcpp
 	$mod+n exec $term -T "newsboat" newsboat && killall -42 waybar
 	$mod+a exec $term -T "aerc" aerc
-	$mod+o exec --no-startup-id notistats
-	$mod+c exec --no-startup-id camtoggle
-	$mod+grave exec --no-startup-id menuemoji
-	$mod+Ctrl+grave exec --no-startup-id menuwebsurf
-	$mod+Shift+grave exec --no-startup-id menuwebsurf paste
-	$mod+apostrophe exec --no-startup-id menupass
-	$mod+Shift+apostrophe exec --no-startup-id "menupass -l"
-	$mod+Ctrl+apostrophe exec --no-startup-id "menupass -f"
-	$mod+Ctrl+Shift+apostrophe exec --no-startup-id "menupass -s"
+	$mod+o exec notistats
+	$mod+c exec camtoggle
+	$mod+grave exec menuemoji
+	$mod+Ctrl+grave exec menuwebsurf
+	$mod+Shift+grave exec menuwebsurf paste
+	$mod+apostrophe exec menupass
+	$mod+Shift+apostrophe exec "menupass -l"
+	$mod+Ctrl+apostrophe exec "menupass -f"
+	$mod+Ctrl+Shift+apostrophe exec "menupass -s"
 
 	# Network management
 	$mod+Shift+c exec togglevpn
 	$mod+Shift+n exec $term -T "Network Manager" 'nmtui'
 
 	# Screenshot and recording
-	Print exec --no-startup-id menugrim -q
-	$mod+Print exec --no-startup-id menugrim
-	Shift+Print exec --no-startup-id "swayrecord screencast"
-	Ctrl+Print exec --no-startup-id swayrecord
+	Print exec menugrim -q
+	$mod+Print exec menugrim
+	Shift+Print exec "swayrecord screencast"
+	Ctrl+Print exec swayrecord
 
 	# Sound
 	$mod+Shift+m exec $term -T "ncpamixer" 'ncpamixer'
-	$mod+Ctrl+m exec --no-startup-id menuoutput
+	$mod+Ctrl+m exec menuoutput
 
 	# Applications that start with no gaps
-	$mod+g		exec --no-startup-id gimp; gaps inner current set 0; gaps outer current set 0
-	$mod+i		exec --no-startup-id inkscape; gaps inner current set 0; gaps outer current set 0
+	$mod+g		exec gimp; gaps inner current set 0; gaps outer current set 0
+	$mod+i		exec inkscape; gaps inner current set 0; gaps outer current set 0
 
 	# Dropdown/scratchpad applications
-	$mod+Shift+v exec --no-startup-id ddvk
-	$mod+Shift+t exec --no-startup-id ddtelegram
-	$mod+Shift+p exec --no-startup-id ddquakemite
+	$mod+Shift+v exec ddvk
+	$mod+Shift+t exec ddtelegram
+	$mod+Shift+p exec ddquakemite
 
 	# Sticky float to a bottom corner
-	$mod+Shift+b floating toggle; sticky toggle; exec --no-startup-id picinpic
-	$mod+Ctrl+b floating toggle; sticky toggle; exec --no-startup-id picinpic left
+	$mod+Shift+b floating toggle; sticky toggle; exec picinpic
+	$mod+Ctrl+b floating toggle; sticky toggle; exec picinpic left
 
 	# change focus
 	$mod+h focus left
@@ -320,27 +320,27 @@ bindsym --to-code {
 	$mod+Shift+r reload
 
 	# restart waybar
-	$mod+Ctrl+r exec --no-startup-id waybar_launch
+	$mod+Ctrl+r exec waybar_launch
 
 	# show/hide waybar
-	$mod+F11 exec --no-startup-id "killall -10 waybar"
+	$mod+F11 exec "killall -10 waybar"
 
 	# Shut down, restart and locking features
 	$mod+Shift+e exec menusession
 
 	# Resize
-	$mod+Shift+y exec --no-startup-id swayresize left
-	$mod+Shift+u exec --no-startup-id swayresize down
-	$mod+Shift+i exec --no-startup-id swayresize up
-	$mod+Shift+o exec --no-startup-id swayresize right
-	$mod+Ctrl+y exec --no-startup-id swayresize left 10
-	$mod+Ctrl+u exec --no-startup-id swayresize down 10
-	$mod+Ctrl+i exec --no-startup-id swayresize up 10
-	$mod+Ctrl+o exec --no-startup-id swayresize right 10
+	$mod+Shift+y exec swayresize left
+	$mod+Shift+u exec swayresize down
+	$mod+Shift+i exec swayresize up
+	$mod+Shift+o exec swayresize right
+	$mod+Ctrl+y exec swayresize left 10
+	$mod+Ctrl+u exec swayresize down 10
+	$mod+Ctrl+i exec swayresize up 10
+	$mod+Ctrl+o exec swayresize right 10
 
 	# Lock screen
-	$mod+x exec --no-startup-id lock-color
-	$mod+Shift+x exec --no-startup-id lock-color screenon
+	$mod+x exec lock-color
+	$mod+Shift+x exec lock-color screenon
 
 	# Gaps
 	$mod+semicolon		      gaps inner current set 15; gaps outer current set 0
@@ -354,12 +354,12 @@ bindsym --to-code {
 	#### Shortcuts to control my other computer through ssh ####
 
 	# Media keys
-	$mod+XF86AudioPrev		exec --no-startup-id exremote "lmc prev"
-	$mod+XF86AudioPlay		exec --no-startup-id exremote "lmc toggle"
-	$mod+XF86AudioNext		exec --no-startup-id exremote "lmc next"
-	$mod+XF86AudioRaiseVolume		exec --no-startup-id exremote "lmc up 5"
-	$mod+XF86AudioLowerVolume		exec --no-startup-id exremote "lmc down 5"
-	$mod+XF86AudioMute exec --no-startup-id exremote "lmc mute"
+	$mod+XF86AudioPrev		exec exremote "lmc prev"
+	$mod+XF86AudioPlay		exec exremote "lmc toggle"
+	$mod+XF86AudioNext		exec exremote "lmc next"
+	$mod+XF86AudioRaiseVolume		exec exremote "lmc up 5"
+	$mod+XF86AudioLowerVolume		exec exremote "lmc down 5"
+	$mod+XF86AudioMute exec exremote "lmc mute"
 
 	$mod+Ctrl+Shift+F5   exec exremote "mpc seek -10"
 	$mod+Ctrl+F5     		exec exremote "lmc prev"
@@ -381,12 +381,12 @@ bindsym --to-code --locked {
 	$mod+Ctrl+Down        exec "xbacklight -dec 5"
 
 	# Media keys
-	XF86AudioPrev		        exec --no-startup-id "lmc prev"
-	XF86AudioPlay		        exec --no-startup-id "lmc toggle"
-	XF86AudioNext		        exec --no-startup-id "lmc next"
-	XF86AudioRaiseVolume		exec --no-startup-id lmc up 5
-	XF86AudioLowerVolume		exec --no-startup-id lmc down 5
-	XF86AudioMute           exec --no-startup-id lmc mute
+	XF86AudioPrev		        exec "lmc prev"
+	XF86AudioPlay		        exec "lmc toggle"
+	XF86AudioNext		        exec "lmc next"
+	XF86AudioRaiseVolume		exec lmc up 5
+	XF86AudioLowerVolume		exec lmc down 5
+	XF86AudioMute           exec lmc mute
 
 	$mod+Shift+F5   exec mpc seek -10
 	$mod+F5     		exec lmc prev
