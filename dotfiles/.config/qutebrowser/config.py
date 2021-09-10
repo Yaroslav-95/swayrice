@@ -26,6 +26,8 @@ ultramar = {
     'green': '#6d974b'
 }
 
+c.editor.command = [ "foot", "nvim", "{file}", "+normal {line}G{column0}l", ]
+
 ## Notifications for websites are retarded
 
 c.content.notifications.enabled = False
