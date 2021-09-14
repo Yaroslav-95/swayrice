@@ -5,18 +5,22 @@
 # Source settings from .bemenurc
 . ~/.config/bemenurc
 
-prompt="🌐"
+searchurl="https://srx.yaroslavps.com/search?q="
+histf="$HOME/.config/vimb/history"
 
 # Have to use this "hack" because bemenu doesn't know how to paste
 if [ "$1" = "paste" ]; then
-  prompt="$(wl-paste)"
+	prompt="$(wl-paste)"
+else
+	prompt="$(cat "$histf")"
 fi
 
-choice=$(echo "$prompt" | bemenu -i -p "Enter link or query:" --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB" --monitor="$BEMENU_MONITOR") || exit 1
+choice=$(printf "%s" "$prompt" | bemenu -i -l 25 -p "Enter link or query:" --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB" --monitor="$BEMENU_MONITOR") || exit 1
 
-if [ "$choice" = "🌐"  ]; then
-  $BROWSER
+if echo "$choice" | egrep ".*://.*" >/dev/null 2>&1; then
+	choice="$(echo "$choice" | cut -f 1)"
+	mimeo "$choice"
 else
-  mimeo "$choice"
+	$BROWSER "$choice"
 fi
 
