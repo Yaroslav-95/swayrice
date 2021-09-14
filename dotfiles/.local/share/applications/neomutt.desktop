@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=neomutt
+GenericName=Email Client
+Exec=neomutt -- %u
+Terminal=true
+MimeType=x-scheme-handler/mailto
