@@ -1,9 +1,0 @@
-[Unit]
-Description=Play Startup Sound
-
-[Service]
-ExecStart=/usr/bin/mpv /home/yaroslav/.local/share/soundalerts/start.ogg
-
-[Install]
-Alias=startupsound.service
-WantedBy=sound.target
