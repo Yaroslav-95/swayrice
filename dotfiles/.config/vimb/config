@@ -35,8 +35,6 @@ set x-hint-command=:sh! xdg-open <C-R>;
 
 set geolocation=never
 
-set prevent-newwindow=true
-
 set cookie-accept=origin
 
 # GUI color settings

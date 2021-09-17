@@ -68,6 +68,11 @@ alias yta="youtube-dl --add-metadata -xic" # Download only audio
 alias YT="youtube-viewer"
 alias starwars="telnet towel.blinkenlights.nl"
 
+# git
+gitcc () {
+	git clone "$(wl-paste --no-newline)"
+}
+
 # Audio and Music
 alias mute="lmc mute"
 alias vu="lmc up"

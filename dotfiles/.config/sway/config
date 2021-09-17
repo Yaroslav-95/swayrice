@@ -170,6 +170,7 @@ bindsym --to-code {
 	$mod+Shift+w exec menuwebsurf
 	$mod+Ctrl+w exec menuwebsurf paste
 	$mod+F1 exec menuman
+	$mod+Shift+F1 exec menuman -s
 	$mod+F2 exec menumako
 	$mod+F3 exec menudisplay
 	$mod+F4 exec menublk
