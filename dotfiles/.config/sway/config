@@ -54,7 +54,11 @@ exec_always {
 ##### Startup scripts and programs #####
 # Waybar
 exec waybar_launch
-# music daemon
+# Audio
+exec pipewire
+exec pipewire-media-session
+exec pipewire-pulse
+# Music daemon
 exec mpd
 # Bluetooth adapter applet
 exec_always blueman-applet
