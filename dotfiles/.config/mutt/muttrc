@@ -20,6 +20,7 @@ set forward_quote				# include message in forwards
 set reverse_name				# reply as whomever it was to
 set include						# include message in replies
 set mail_check=60 				# to avoid lags using IMAP with some email providers (yahoo for example)
+shutdown-hook 'echo `killall -43 waybar`'
 unignore x-spam-status
 auto_view text/html				# automatically show html (mailcap uses lynx)
 auto_view application/pgp-encrypted
