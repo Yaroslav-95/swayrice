@@ -1,0 +1,40 @@
+#!/bin/sh
+
+# Yaroslav de la Peña Smirnov 2021
+# 
+# A quick script to quickly open several terminal windows, in a layout that I
+# often use, all in the specified directory. The layout looks something like
+# this:
+# 
+# ┌──────────────────┬──────────────────────────────────────────────┐
+# │                  │                                              │
+# │                  │                                              │
+# │        lf        │                                              │
+# │                  │                                              │
+# │                  │                                              │
+# ├──────────────────┤                                              │
+# │                  │                    shell                     │
+# │                  │                                              │
+# │                  │                                              │
+# │       shell      │                                              │
+# │                  │                                              │
+# │                  │                                              │
+# │                  │                                              │
+# └──────────────────┴──────────────────────────────────────────────┘
+
+if [ -z "$1" ]; then
+	echo "Specify working directory"
+	exit 1
+fi
+
+swaymsg "gaps inner current set 0; gaps outer current set 0"
+
+cd "$1"
+setsid $TERMINAL -a "$TERMINAL lf:$1" "lf" >/dev/null 2>&1 & sleep 0.1
+setsid $TERMINAL -a "$TERMINAL edit:$1" >/dev/null 2>&1 & sleep 0.1
+
+sleep 0.2
+swaymsg "[app_id=\"$TERMINAL lf:$1\"] focus; resize set width 27ppt; split v"
+setsid $TERMINAL >/dev/null 2>&1 & sleep 0.2
+swaymsg "resize set height 60ppt" && sleep 0.1
+swaymsg "[app_id=\"$TERMINAL edit:$1\"] focus"
