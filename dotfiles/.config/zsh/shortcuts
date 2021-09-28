@@ -30,8 +30,8 @@ alias testinet="ping -c2 example.com"
 
 # Fuzzy finder
 alias fzd='cd "$(find . -type d | fzf || echo ".")"'
-alias fzv='nvim $(find . -type f | fzf)'
-alias fzo='op $(find . -type f | fzf)'
+alias fzv='nvim "$(find . -type f | fzf)"'
+alias fzo='op "$(find . -type f | fzf)"'
 
 # Function for changing working dir after exiting lf
 lfcd () {
