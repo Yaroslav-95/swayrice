@@ -193,6 +193,7 @@ bindsym --to-code {
 	$mod+Shift+apostrophe exec "menupass -l"
 	$mod+Ctrl+apostrophe exec "menupass -f"
 	$mod+Ctrl+Shift+apostrophe exec "menupass -s"
+	$mod+backslash exec "menuworkspace"
 
 	# Network management
 	$mod+Shift+c exec togglevpn

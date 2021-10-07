@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Open a "workspace" (see workspace) from a list of dirs under home
+
+# Source settings from .bemenurc
+. ~/.config/bemenurc
+
+# All dirs under home, except ones under hidden dirs
+dirs="$(find $HOME -type d -path "*/\.*" -prune -o -not -name ".*" -type d)"
+
+workspace "$(echo "$dirs" |
+	bemenu -i -l 25 -p "Enter link or query:" --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB" --monitor="$BEMENU_MONITOR")"
