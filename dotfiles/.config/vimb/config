@@ -1,0 +1,49 @@
+#set home-page=https://srx.yaroslavps.com/
+set home-page=about:blank
+
+set download-path=~/dls
+
+set editor-command=foot nvim %s
+
+set input-autohide=true
+
+set spell-checking=true
+set spell-checking-languages=en,es,ru
+
+set webgl=true
+
+set incsearch=true
+
+set default-font=monospace
+
+shortcut-add s=https://srx.yaroslavps.com/search?q=$0
+shortcut-add d=http://dict.cc/?s=$0
+shortcut-add y=http://www.youtube.com/results?search_query=$0
+shortcut-add duck=https://duckduckgo.com/?q=$0
+
+shortcut-default s
+
+nmap + zI
+nmap - zO
+nmap = zz
+
+set hint-keys-same-length=true
+set hint-keys=asdfghjkl
+set hint-timeout=0
+
+set x-hint-command=:sh! xdg-open <C-R>;
+
+set geolocation=never
+
+set cookie-accept=origin
+
+# GUI color settings
+# Color scheme: Base16 Eighties (https://github.com/chriskempson/base16)
+set completion-css=color:#6d974b;background-color:#151517;font:10pt monospace;
+set completion-hover-css=color:#6d974b;background-color:#232328;font:10pt monospace;
+set completion-selected-css=color:#6d974b;background-color:#515151;font:10pt monospace;
+set input-css=color:#6d974b;background-color:#393939;font:10pt monospace;
+set input-error-css=color:#b73030;background-color:#393939;font:10pt monospace;
+set status-css=color:#faf6e5;background-color:#393939;font:10pt monospace;
+set status-ssl-css=color:#99cc99;background-color:#393939;font:10pt monospace;
+set status-ssl-invalid-css=color:#f2777a;background-color:#393939;font:10pt monospace;

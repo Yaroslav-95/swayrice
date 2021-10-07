@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Check several times before giving up, useful when just waking up from sleep
+# since internet is usually not available right away
+wget -q --tries=3 --timeout=20 --spider 1.1.1.1 > /dev/null || exit
+
+curl "http://sbc.io/hosts/hosts" 2>/dev/null | \
+	grep -vE '^(\s*)[1-9a-f:]{1,4}.*' | \
+	cat /etc/hosts.head - > /etc/hosts

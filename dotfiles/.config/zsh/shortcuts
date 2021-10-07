@@ -29,9 +29,9 @@ alias spw="setsid $TERMINAL >/dev/null 2>&1 &"
 alias testinet="ping -c2 example.com"
 
 # Fuzzy finder
-alias fzd='cd "$(find . -type d | fzf || echo ".")"'
-alias fzv='nvim $(find . -type f | fzf)'
-alias fzo='op $(find . -type f | fzf)'
+alias fzd='cd "$(find . -type d -path "*/\.*" -prune -o -not -name ".*" -type d | fzf || echo ".")"'
+alias fzv='nvim "$(find . -type d -path "*/\.*" -prune -o -not -name ".*" -type f | fzf)"'
+alias fzo='op "$(find . -type d -path "*/\.*" -prune -o -not -name ".*" -type f | fzf)"'
 
 # Function for changing working dir after exiting lf
 lfcd () {
@@ -67,6 +67,11 @@ alias yt="youtube-dl --add-metadata -ic" # Download video link
 alias yta="youtube-dl --add-metadata -xic" # Download only audio
 alias YT="youtube-viewer"
 alias starwars="telnet towel.blinkenlights.nl"
+
+# git
+gitcc () {
+	git clone "$(wl-paste --no-newline)"
+}
 
 # Audio and Music
 alias mute="lmc mute"

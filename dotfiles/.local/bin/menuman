@@ -1,19 +1,67 @@
 #!/bin/sh
 # Search and open man page
+# Options: 
+# -t use in terminal with fzf otherwise launch bemenu. 
+# -s search with apropos.
 
-list="$(man -k . | awk '{ print $1$2 }')"
+# Source settings from .bemenurc
+. ~/.config/bemenurc
 
-if [ "$1" = "-t" ]; then
-  chosen=$(printf "$list" | fzf)
+issearch=
+isterminal=
+
+printusage() {
+	echo "Options:" >&2
+	echo " -t use in terminal with fzf otherwise launch bemenu." >&2
+	echo " -s search with apropos." >&2
+}
+
+while getopts "st" curopt "$@"; do
+	case "$curopt" in
+		"s")
+			issearch=1
+			continue;;
+		"t")
+			isterminal=1
+			continue;;
+		"?")
+			printusage
+			exit 1;;
+	esac
+done
+
+if [ ! -z "$issearch" ]; then
+	if [ ! -z "$isterminal" ]; then
+		printf "Enter query:\t"
+		read query
+	else
+		query="$(echo "" | bemenu -p "Enter apropos query:" -i --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB" --monitor="$BEMENU_MONITOR")"
+	fi
+	if [ -z "$query" ]; then
+		echo "Empty query" >&2
+		exit 1
+	fi
+	list="$(apropos "$query")"
 else
-  # Source settings from .bemenurc
-  . ~/.config/bemenurc
+	list="$(man -k . | awk '{ print $1$2 }')"
+fi
 
-  chosen=$(printf "$list" | bemenu -p "Select man page:" -i -l 25 --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB" --monitor="$BEMENU_MONITOR")
+if [ ! -z "$isterminal" ]; then
+	chosen=$(printf "$list" | fzf)
+else
+	chosen=$(printf "$list" | bemenu -p "Select man page:" -i -l 25 --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB" --monitor="$BEMENU_MONITOR")
 fi
 
 if [ -z "$chosen" ]; then
     exit 0
+fi
+
+if [ ! -z "$issearch" ]; then
+	chosen="$(printf "$chosen" | sed "s/\(.* ([a-zA-Z0-9]*)\)\s*-.*/\1/")"
+fi
+
+if [ ! -z "$isterminal" ]; then
+	man "$chosen" && exit
 fi
 
 $TERMINAL -T "man $chosen" man $chosen

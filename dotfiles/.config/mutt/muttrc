@@ -20,6 +20,8 @@ set forward_quote				# include message in forwards
 set reverse_name				# reply as whomever it was to
 set include						# include message in replies
 set mail_check=60 				# to avoid lags using IMAP with some email providers (yahoo for example)
+shutdown-hook 'echo `killall -43 waybar`'
+unignore x-spam-status
 auto_view text/html				# automatically show html (mailcap uses lynx)
 auto_view application/pgp-encrypted
 #set display_filter = "tac | sed '/\\\[-- Autoview/,+1d' | tac" # Suppress autoview messages.
@@ -55,7 +57,7 @@ bind pager,browser gg top-page
 bind pager,browser G bottom-page
 bind index,pager,browser \CD half-down
 bind index,pager,browser \CU half-up
-bind index,pager S sync-mailbox
+bind index,pager s sync-mailbox
 bind index,pager R group-reply
 bind index \031 previous-undeleted	# Mouse wheel
 bind index \005 next-undeleted		# Mouse wheel
@@ -75,6 +77,7 @@ macro index,pager a "<enter-command>set my_pipe_decode=\$pipe_decode pipe_decode
 macro index \Cf "<enter-command>unset wait_key<enter><shell-escape>printf 'Enter a search term to find with notmuch: '; read x; echo \$x >~/.cache/mutt_terms<enter><limit>~i \"\`notmuch search --output=messages \$(cat ~/.cache/mutt_terms) | head -n 600 | perl -le '@a=<>;s/\^id:// for@a;$,=\"|\";print@a' | perl -le '@a=<>; chomp@a; s/\\+/\\\\+/ for@a;print@a' \`\"<enter>" "show only messages matching a notmuch pattern"
 #macro index A "<limit>all\n" "show all messages (undo limit)"
 macro index,pager A ";<save-message>=Archive<enter>" "archive mail"
+macro index,pager S ";<save-message>=Spam<enter>" "send mail to spam"
 
 # Sidebar mappings
 set sidebar_visible = yes

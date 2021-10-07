@@ -10,8 +10,8 @@ pacman -Sy zsh zsh-syntax-highlighting wireguard-tools mediainfo highlight \
 	cronie-runit metalog metalog-runit dnsmasq networkmanager dhcpcd \
 	networkmanager-runit rsync grim wf-recorder slurp ffmpeg w3m youtube-dl \
 	newsboat wget curl inkscape gimp darktable gcc make wpa_supplicant \
-	fontconfig pkg-config fakeroot papirus-icon-theme alsa-utils pulseaudio \
-	pamixer pulseaudio-bluetooth imagemagick ntfs-3g unzip unrar \
+	fontconfig pkg-config fakeroot papirus-icon-theme alsa-utils pipewire \
+	pipewire-alsa pipewire-pulse pamixer imagemagick ntfs-3g unzip unrar \
 	gnome-themes-standard telegram-desktop qt5ct r bc udisks2 dash \
 	perl-term-readline-gnu transmission-cli transmission-remote-gtk \
 	python-pynvim python-pip python-pillow calcurse acpi acpid gnupg \
@@ -19,7 +19,7 @@ pacman -Sy zsh zsh-syntax-highlighting wireguard-tools mediainfo highlight \
 	otf-latinmodern-math powerline-fonts python-pygit2 polkit polkit-gnome \
 	zathura zathura-pdf-mupdf zathura-djvu gst-libav blueman bluez \
 	bluez-runit acpilight accountsservice xdg-user-dirs terminus-font \
-	qutebrowser jq stow wdiff texlive-most texlive-lang biber units isync \
+	vimb jq stow wdiff texlive-most texlive-lang biber units isync neomutt \
 	notmuch pass translate-shell gnome-keyring pacman-contrib linux-headers \
 	openntpd openntpd-runit v4l2loopback-dkms || exit 1
 
@@ -53,7 +53,7 @@ chown -R "$1:$1" build
 cd build
 sudo -u "$1" "git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si"
 
-yay -S --noconfirm aerc-git ttf-symbola ttf-ms-fonts pam-gnupg ncpamixer mimeo \
+yay -S --noconfirm ttf-symbola ttf-ms-fonts pam-gnupg ncpamixer mimeo \
 	xdg-utils-mimeo cli-visualizer lf dragon-drag-and-drop swaylock-effects \
 	youtube-viewer abook 
 

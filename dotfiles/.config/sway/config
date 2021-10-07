@@ -6,7 +6,7 @@
 set $mod Mod4
 set $alt Mod1
 set $term foot
-set $browser qutebrowser
+set $browser `$BROWSER`
 
 # set default desktop layout (default is tiling)
 # workspace_layout tabbed <stacking|tabbed>
@@ -54,7 +54,11 @@ exec_always {
 ##### Startup scripts and programs #####
 # Waybar
 exec waybar_launch
-# music daemon
+# Audio
+exec pipewire
+exec pipewire-media-session
+exec pipewire-pulse
+# Music daemon
 exec mpd
 # Bluetooth adapter applet
 exec_always blueman-applet
@@ -96,10 +100,6 @@ for_window [title="mpvfloat"] floating enable, sticky enable
 no_focus [title="mpvfloat"]
 
 # Dropdown-like windows
-
-# VK Messenger
-for_window [instance="vk" window_role="browser-window"] floating enable, sticky enable
-# for_window [class="VK"] move scratchpad
 
 # Telegram Desktop
 for_window [app_id="telegramdesktop"] floating enable, sticky enable
@@ -171,9 +171,10 @@ bindsym --to-code {
 	$mod+Ctrl+Shift+space exec "makoctl restore"
 
 	# Start Applications
-	$mod+Shift+w exec $browser
-	$mod+Ctrl+w exec chromium -enable-features=UseOzonePlatform -ozone-platform=wayland
+	$mod+Shift+w exec menuwebsurf
+	$mod+Ctrl+w exec menuwebsurf paste
 	$mod+F1 exec menuman
+	$mod+Shift+F1 exec menuman -s
 	$mod+F2 exec menumako
 	$mod+F3 exec menudisplay
 	$mod+F4 exec menublk
@@ -184,16 +185,15 @@ bindsym --to-code {
 	$mod+s exec "xway steam"
 	$mod+m exec $term ncmpcpp
 	$mod+n exec $term -T "newsboat" newsboat && killall -42 waybar
-	$mod+a exec $term -T "aerc" aerc
+	$mod+a exec $term -T "neomutt" neomutt
 	$mod+o exec notistats
 	$mod+c exec camtoggle
 	$mod+grave exec menuemoji
-	$mod+Ctrl+grave exec menuwebsurf
-	$mod+Shift+grave exec menuwebsurf paste
 	$mod+apostrophe exec menupass
 	$mod+Shift+apostrophe exec "menupass -l"
 	$mod+Ctrl+apostrophe exec "menupass -f"
 	$mod+Ctrl+Shift+apostrophe exec "menupass -s"
+	$mod+backslash exec "menuworkspace"
 
 	# Network management
 	$mod+Shift+c exec togglevpn

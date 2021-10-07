@@ -38,6 +38,12 @@ bindkey -M menuselect 'L' vi-forward-char
 bindkey -M menuselect 'J' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
 
+# History search
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
+bindkey -a "k" history-beginning-search-backward
+bindkey -a "j" history-beginning-search-forward
+
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
   if [[ ${KEYMAP} == vicmd ]] ||

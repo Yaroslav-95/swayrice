@@ -1,0 +1,25 @@
+/* Hint mode color styling
+ *
+ * The precedence of the user style is lower than that of the website so you
+ * have to mark your style definition to have higher priority.
+ */
+span[vimbhint^='label'] {
+    background-color: #5b8277 !important;
+    border: 0 !important;
+    color: #151517 !important;
+    font: bold 10pt monospace !important;
+    opacity: 1 !important;
+    padding: .1em .4em !important;
+    text-transform: uppercase !important;
+}
+span[vimbhint='label focus'] {
+    font: bold 13pt monospace !important;
+}
+*[vimbhint^='hint'] {
+    background-color: #e6e3d6 !important;
+    color: #151517 !important;
+}
+*[vimbhint='hint focus'] {
+    background-color: #e2b55a !important;
+    color: #151517 !important;
+}
