@@ -17,7 +17,7 @@ export LANG=en_US.UTF-8
 export TERMINAL=foot
 export EDITOR="nvim"
 export PAGER="less -R -j.5"
-export BROWSER=vimb
+export BROWSER=qutebrowser
 
 # Sanely export XDG Base dir variables
 eval "$(sed 's/^[^#].*/export &/g;t;d' ~/.config/user-dirs.dirs)"
