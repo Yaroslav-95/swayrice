@@ -29,9 +29,13 @@ alias spw="setsid $TERMINAL >/dev/null 2>&1 &"
 alias testinet="ping -c2 example.com"
 
 # Fuzzy finder
-alias fzd='cd "$(find . -type d -path "*/\.*" -prune -o -not -name ".*" -type d | fzf || echo ".")"'
-alias fzv='nvim "$(find . -type d -path "*/\.*" -prune -o -not -name ".*" -type f | fzf)"'
 alias fzo='op "$(find . -type d -path "*/\.*" -prune -o -not -name ".*" -type f | fzf)"'
+source /usr/share/fzf/completion.zsh
+source /usr/share/fzf/key-bindings.zsh
+bindkey -r '^T'
+bindkey -r '\ec'
+bindkey '^F' fzf-file-widget
+bindkey '^A' fzf-cd-widget
 
 # Function for changing working dir after exiting lf
 lfcd () {
@@ -48,7 +52,7 @@ lfcd () {
     fi
 }
 
-# some keybindings
+# Some keybindings
 bindkey -s '^o' 'lfcd\n'
 bindkey -s '^t' 'spw\n'
 
