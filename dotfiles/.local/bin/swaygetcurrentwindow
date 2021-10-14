@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env python3
+import i3ipc
 
-echo "$(swaymsg -t get_tree |\
-	jq 'recurse(.nodes[]) | if .focused then .rect else empty end' |\
-	tr -d '\n\r' |\
-	sed -e 's/[^0-9,]//g' -e 's/,/ /2' -e 's/,/x/2')"
+sway = i3ipc.Connection()
+win = sway.get_tree().find_focused().rect
+print("{},{} {}x{}".format(win.x, win.y, win.width, win.height))
