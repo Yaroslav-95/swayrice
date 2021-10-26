@@ -52,13 +52,24 @@ cmd extract ${{
 
 # change dir with fzf
 cmd fzf_jump ${{
-    res="$(find . -type d | fzf --header='Jump to location')"
-    if [ -d "$res" ]; then
-        cmd="cd"
-    else 
-        cmd="select"                                                       
-    fi
-    lf -remote "send $id $cmd \"$res\""
+	res="$(find . -type d | fzf --header='Jump to location')"
+	if [ -d "$res" ]; then
+	    cmd="cd"
+	else 
+	    cmd="select"                                                       
+	fi
+	lf -remote "send $id $cmd \"$res\""
+}}
+
+# open file with fzf
+cmd fzf_open ${{
+	res="$(find . -type d -path "*/\.*" -prune -o -not -name ".*" -type f | fzf)"
+	if [ -e "$res" ]; then
+	    cmd="mimeo"
+	else 
+	    cmd="select"                                                       
+	fi
+	$cmd "$res"
 }}
 
 # drag and drop prompt
@@ -87,6 +98,7 @@ map <enter> shell
 map D delete
 map <enter> shell
 map f :fzf_jump
+map o :fzf_open
 map t :dragon
 map T :dragon_drop
 map W $setsid $TERMINAL > /dev/null 2>&1 & # open new terminal window
