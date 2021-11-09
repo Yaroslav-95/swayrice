@@ -12,10 +12,11 @@ if [ "$1" = "paste" ]; then
 	prompt="$(wl-paste)"
 else
 	qmarks="$HOME/.config/qutebrowser/quickmarks"
+	bmarks="$HOME/.config/qutebrowser/bookmarks/urls"
 	hist="$HOME/.local/share/qutebrowser/history.sqlite"
 	prompt="$(sqlite3 -separator ' ' "$hist" \
 		'select title, url from CompletionHistory' |
-		cat "$qmarks" -)"
+		cat "$qmarks" - | cat "$bmarks" -)"
 fi
 
 choice=$(printf "%s" "$prompt" |

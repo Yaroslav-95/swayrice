@@ -12,6 +12,7 @@ imgurl %U
   ^https?://.*\.jpeg
   ^https?://.*\.gif
   ^https?://.*\.bmp
+  ^https?://.*\.webp
 
 bookurl %U
   ^https?://.*\.pdf
