@@ -71,5 +71,12 @@ zle -N zle-keymap-select
 
 [ -f "$HOME/.cache/colorscheme" ] && trap "source $HOME/.cache/colorscheme" DEBUG
 
-[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] &&
+if [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]
+then
+  	# Arch/Artix
   . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+elif [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]
+then
+	# Debian
+  . /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
