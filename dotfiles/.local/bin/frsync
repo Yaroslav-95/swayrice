@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# Shortcut script to rsync files between two local/remote directories
+# Looks for a matching line in ~/.config/frsync.conf
+# Lines in said config look like this:
+# remote-docs ~/docs/ remote:docs/
+
+opts="-avh --delete"
+
+if [ "$1" = "-n" ]; then
+	opts="-avhn --delete"
+	direction="$2"
+	target="$3"
+else
+	direction="$1"
+	target="$2"
+fi
+
+l=$(grep "$target" $HOME/.config/frsync.conf)
+
+[ -z "$l" ] && echo "No such target $target" && exit 1
+
+if [ "$direction" = "up" ]; then
+	src=$(echo "$l" | cut -f2)
+	dst=$(echo "$l" | cut -f3)
+else
+	src=$(echo "$l" | cut -f3)
+	dst=$(echo "$l" | cut -f2)
+fi
+
+src=${src/#\~/$HOME}
+dst=${dst/#\~/$HOME}
+
+echo "rsync $opts $src $dst"
+rsync $opts $src $dst
