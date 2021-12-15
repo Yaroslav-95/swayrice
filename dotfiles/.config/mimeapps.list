@@ -7,6 +7,7 @@ application/xml=org.qutebrowser.qutebrowser.desktop;
 audio/mpeg=mpv.desktop;
 audio/x-xm=mpv.desktop;
 audio/x-mod=mpv.desktop;
+audio/x-it=mpv.desktop;
 image/gif=imv.desktop;
 image/jpeg=sxiv.desktop;
 image/png=sxiv.desktop;

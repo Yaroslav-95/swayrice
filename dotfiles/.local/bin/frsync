@@ -16,7 +16,7 @@ else
 	target="$2"
 fi
 
-l=$(grep "$target" $HOME/.config/frsync.conf)
+l=$(grep "^$target" $HOME/.config/frsync.conf)
 
 [ -z "$l" ] && echo "No such target $target" && exit 1
 
