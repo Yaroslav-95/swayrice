@@ -75,7 +75,7 @@ alias dlock="udisksctl lock -b"
 alias dulock="udisksctl unlock -b"
 # Work network drive
 alias mntdss="sudo mount -t cifs -o \
-	username=delapena,uid=yaroslav,gid=yaroslav //10.0.4.140/dss /mnt/dss"
+	uid=yaroslav,gid=yaroslav //10.0.4.140/dss /mnt/dss"
 alias umntdss="sudo umount /mnt/dss"
 
 # Internet
