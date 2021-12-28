@@ -5,6 +5,7 @@ set period 1
 set ifs "\n"
 set info size
 set previewer ~/.local/bin/scope
+set mouse on
 
 # Custom commands
 
@@ -104,3 +105,10 @@ map T :dragon_drop
 map W $setsid $TERMINAL > /dev/null 2>&1 & # open new terminal window
 map Y :yank-path
 map L $LESSOPEN='| ~/.local/bin/scope %s' less -R $f # open file preview in pager
+
+# Mouse bindings
+map <m-1> open
+map <m-2> updir
+map <m-3> invert
+map <m-up> up
+map <m-down> down
