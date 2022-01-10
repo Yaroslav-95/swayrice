@@ -28,6 +28,12 @@ alias calc="python -q -i -c 'import math'"
 alias spw="setsid $TERMINAL >/dev/null 2>&1 &"
 alias testinet="ping -c2 example.com"
 
+# rsync shortcuts
+alias rs="rsync -avh"
+alias rsn="rsync -avhn"
+alias rsd="rsync -avh --delete"
+alias rsdn="rsync -avhn --delete"
+
 # Fuzzy finder
 alias fzo='op "$(find . -type d -path "*/\.*" -prune -o -not -name ".*" -type f | fzf)"'
 if [ -f /usr/share/fzf/completion.zsh ]; then
