@@ -9,12 +9,27 @@ rotate() {
 	esac
 }
 
-if [ "$1" = "t" ]; then
+action="$1"
+
+if [ "$1" = "C-t" ]; then
 	while read file; do
 		files="$(printf "%s\n%s" "$files" "$file")"
 	done
 	dragon-drag-and-drop -a $files
 	exit 0
+fi
+if [ "$1" = "C-r" ]; then
+	while read file; do
+		# Move file to 'trash' directory, if the current directory's name is
+		# JPEG, remove the NEF file as well
+		dir="$(dirname "$file")"
+		name="$(basename "$file")"
+		base="${name%.*}"
+		mv "$file" ~/.local/trash/
+		if [ "JPEG" = "$(basename $dir)" ]; then
+			mv $(dirname "$dir")/"$base".NEF ~/.local/trash/
+		fi
+	done
 fi
 
 while read file; do
@@ -36,17 +51,6 @@ while read file; do
 			exit ;;
 		"C-f")
 			wl-copy "$file"
-			exit ;;
-		"C-r")
-			# Move file to 'trash' directory, if the current directory's name is
-			# JPEG, remove the NEF file as well
-			dir="$(dirname "$file")"
-			name="$(basename "$file")"
-			base="${name%.*}"
-			mv "$file" ~/.local/trash/
-			if [ "JPEG" = "$(basename $dir)" ]; then
-			mv $(dirname "$dir")/"$base".NEF ~/.local/trash/
-			fi
 			exit ;;
 		"C-comma")  rotate 270 $file ;;
 		"C-period") rotate  90 $file ;;
