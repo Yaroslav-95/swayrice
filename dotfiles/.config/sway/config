@@ -56,7 +56,7 @@ exec_always {
 exec waybar_launch
 # Audio
 exec pipewire
-exec pipewire-media-session
+exec wireplumber
 exec pipewire-pulse
 # Music daemon
 exec mpd
