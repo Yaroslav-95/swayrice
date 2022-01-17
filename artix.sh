@@ -11,8 +11,8 @@ pacman -Sy zsh zsh-syntax-highlighting wireguard-tools mediainfo highlight \
 	networkmanager-runit rsync grim wf-recorder slurp ffmpeg w3m youtube-dl \
 	newsboat wget curl inkscape gimp darktable gcc make wpa_supplicant \
 	fontconfig pkg-config fakeroot papirus-icon-theme alsa-utils pipewire \
-	pipewire-alsa pipewire-pulse pamixer imagemagick ntfs-3g unzip unrar \
-	gnome-themes-standard telegram-desktop qt5ct r bc udisks2 dash \
+	pipewire-alsa pipewire-pulse wireplumber pamixer imagemagick ntfs-3g unzip \
+	unrar gnome-themes-standard telegram-desktop qt5ct r bc udisks2 dash \
 	perl-term-readline-gnu transmission-cli transmission-remote-gtk \
 	python-pynvim python-pip python-pillow calcurse acpi acpid gnupg \
 	noto-fonts-cjk noto-fonts-emoji ttf-joypixels otf-latin-modern \
