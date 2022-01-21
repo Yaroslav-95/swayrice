@@ -9,6 +9,7 @@ audio/x-xm=mpv.desktop;
 audio/x-mod=mpv.desktop;
 audio/x-it=mpv.desktop;
 application/x-object=mpv.desktop;
+application/octet-stream=mpv.desktop;
 image/gif=nsxiv.desktop;
 image/jpeg=nsxiv.desktop;
 image/png=nsxiv.desktop;
