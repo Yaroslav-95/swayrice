@@ -112,12 +112,21 @@ for_window [title="^ddterminal$"] floating enable, sticky enable
 # Don't display mouse cursor while typing
 seat * hide_cursor when-typing enable
 
+# X200 Trackpoint
 input 2:10:TPPS/2_IBM_TrackPoint {
-	accel_profile flat
-	pointer_accel 0.8
+	accel_profile adaptive
+	pointer_accel 0
+	middle_emulation enabled
 }
 
-# Trackpoint (Thinkpad Compact Keyboard (External))
+# Tex Shinobi Trackpoint 
+input 1241:1031:USB-HID_Keyboard_Mouse {
+	accel_profile adaptive
+	pointer_accel 0
+	middle_emulation enabled
+}
+
+# Thinkpad Compact Keyboard (External) Trackpoint 
 input 6127:24647:Lenovo_ThinkPad_Compact_USB_Keyboard_with_TrackPoint {
 	accel_profile flat
 	pointer_accel 1
@@ -126,13 +135,13 @@ input 6127:24647:Lenovo_ThinkPad_Compact_USB_Keyboard_with_TrackPoint {
 # Desktop mouse
 input 1118:2083:Microsoft_Microsoft___Classic_IntelliMouse__ {
 	accel_profile flat
-	pointer_accel -0.5
+	pointer_accel 0.5
 }
 
 # Keymaps
 input * {
 	xkb_layout "us,es,ru"
-	xkb_options "lv3:ralt_switch,grp:alt_shift_toggle,misc:typo,caps:escape,grp_led:scroll"
+	xkb_options "lv3:ralt_switch,grp:alt_shift_toggle,misc:typo,caps:escape,grp_led:caps"
 }
 
 # Set inner/outer gaps
