@@ -14,14 +14,20 @@ image/gif=nsxiv.desktop;
 image/jpeg=nsxiv.desktop;
 image/png=nsxiv.desktop;
 image/webp=nsxiv.desktop;
+image/heic=nsxiv.desktop;
+image/heif=nsxiv.desktop;
 image/svg+xml=org.inkscape.Inkscape.desktop
 text/html=org.qutebrowser.qutebrowser.desktop;
 text/xml=nvim.desktop;
 text/plain=nvim.desktop;
+text/csv=nvim.desktop;
 x-scheme-handler/discord-589393213723246592=discord-589393213723246592.desktop;
 x-scheme-handler/http=org.qutebrowser.qutebrowser.desktop;
 x-scheme-handler/https=org.qutebrowser.qutebrowser.desktop;
 x-scheme-handler/qute=org.qutebrowser.qutebrowser.desktop;
 x-scheme-handler/discord-455712169795780630=discord-455712169795780630.desktop
 x-scheme-handler/mailto=neomutt.desktop
-x-scheme-handler/tg=userapp-Telegram Desktop-I9W870.desktop
+x-scheme-handler/tg=userapp-Telegram Desktop-BLI1G1.desktop
+
+[Added Associations]
+x-scheme-handler/tg=userapp-Telegram Desktop-BLI1G1.desktop;
