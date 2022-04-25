@@ -47,6 +47,7 @@ handle_mime() {
                 --style="${HIGHLIGHT_STYLE}" --force -- "${FILE_PATH}" ;;
 	application/zip) unzip -l -- "${FILE_PATH}" ;;
 	application/gzip) tar -ztf "${FILE_PATH}" ;;
+	application/x-xz) tar -Jtf "${FILE_PATH}" ;;
 	application/x-rar) unrar lb -- "${FILE_PATH}" ;;
     video/* | audio/*|application/octet-stream) mediainfo "${FILE_PATH}" | awk -F':' '{ print $2 }' || exit 1;;
     image/*) exiftool "${FILE_PATH}";;
