@@ -1,8 +1,6 @@
 #!/bin/sh
-# /usr/bin/i3exit
 
-# on void just sudo
-[[ $(cat /proc/1/comm) == "systemd" ]] && logind=systemctl || logind=loginctl
+[ "$(cat /proc/1/comm)" = "systemd" ] && logind=systemctl || logind=loginctl
 
 case "$1" in
     lock)
@@ -29,8 +27,11 @@ case "$1" in
         $logind poweroff
         ;;
     *)
-        echo "== ! i3exit: missing or invalid argument ! =="
-        echo "Try again with: lock | logout | switch_user | suspend | hibernate | reboot | shutdown"
+        if [ "$SWAYSESSION_GUI" = 1 ]; then
+			notify-send "🖥 swaysession" "Invalid option"
+        else
+        	echo "swaysession: missing or invalid argument"
+        fi
         exit 2
 esac
 

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ "$ROFI_RETV" != 0 ]; then
+	swaymsg output $1 toggle > /dev/null
+fi
+
+displays="$(swaymsg -t get_outputs | grep -E "name" |
+	sed "s/^.*\"name\": \"//g;s/\",$//g;")"
+
+echo -ne "\0prompt\x1fToggle display\n"
+for d in $displays; do
+	echo -ne "$d\0icon\x1fdisplay\n"
+done

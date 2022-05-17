@@ -94,6 +94,7 @@ for_window [class="Pavucontrol"] floating enable
 for_window [class="^qt5ct$"] floating enable, sticky enable
 for_window [class="(?i)System-config-printer.py"] floating enable
 for_window [title="wl-clipboard"] floating enable
+for_window [class="GLava"] border none
 
 # Webcam window
 for_window [title="mpvfloat"] floating enable, sticky enable
@@ -170,22 +171,19 @@ bindsym --to-code {
 	$mod+Shift+q kill
 	$mod+q kill
 
-	# bemenu program launcher (-x force run through xwayland, -T run in terminal)
-	$mod+d exec menurun
-	$mod+Shift+d exec "menurun -t"
-	$mod+Ctrl+d exec "menurun -x"
+	# rofi launcher
+	$mod+d exec rofi -show combi
 
 	# Mako (notifications)
 	$mod+Ctrl+space       exec "makoctl dismiss"
 	$mod+Ctrl+Shift+space exec "makoctl restore"
 
 	# Start Applications
-	$mod+Shift+w exec menuwebsurf
-	$mod+Ctrl+w exec menuwebsurf paste
+	$mod+Shift+w exec rofi -show websurf -modi "websurf:rofiwebsurf"
 	$mod+F1 exec menuman
 	$mod+Shift+F1 exec menuman -s
 	$mod+F2 exec menumako
-	$mod+F3 exec menudisplay
+	$mod+F3 exec rofi -show display -modi "display:rofidisplay"
 	$mod+F4 exec menublk
 	$mod+F10 exec chcolors
 	$mod+F12 exec menutz
@@ -197,7 +195,7 @@ bindsym --to-code {
 	$mod+a exec $term -T "neomutt" neomutt
 	$mod+o exec notistats
 	$mod+c exec camtoggle
-	$mod+grave exec menuemoji
+	$mod+grave exec rofi -show moji -modi "moji:rofimoji"
 	$mod+apostrophe exec menupass
 	$mod+Shift+apostrophe exec "menupass -l"
 	$mod+Ctrl+apostrophe exec "menupass -f"
@@ -335,7 +333,7 @@ bindsym --to-code {
 	$mod+F11 exec "killall -10 waybar"
 
 	# Shut down, restart and locking features
-	$mod+Shift+e exec menusession
+	$mod+Shift+e exec rofi -show session -modi "session:rofisession"
 
 	# Resize
 	$mod+Shift+y exec swayresize left

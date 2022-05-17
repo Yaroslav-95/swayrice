@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if [ "$ROFI_RETV" != 0 ]; then
+	choice="$1"
+	if echo "$choice" | egrep ".*://.*" >/dev/null 2>&1; then
+		choice="$(echo "$choice" | sed -E 's/(.*:\/\/([^[:space:]])*).*/\1/g' | 
+			grep -E "https?:" || echo "$choice")"
+		mimeo "$choice" > /dev/null
+	else
+		setsid $BROWSER "$choice" > /dev/null &
+	fi
+	exit 0
+fi
+
+qmarks="$HOME/.config/qutebrowser/quickmarks"
+bmarks="$HOME/.config/qutebrowser/bookmarks/urls"
+hist="$HOME/.local/share/qutebrowser/history.sqlite"
+prompt="$(sqlite3 -separator ' ' "$hist" \
+	'select title, url from CompletionHistory' |
+	cat "$qmarks" - | cat "$bmarks" -)"
+
+echo -ne "\0prompt\x1fEnter query or link\n"
+printf "%s" "$prompt"
