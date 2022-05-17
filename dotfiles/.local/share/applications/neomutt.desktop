@@ -3,4 +3,7 @@ Name=neomutt
 GenericName=Email Client
 Exec=neomutt -- %u
 Terminal=true
+Icon=mail-unread
+Type=Application
+StartupNotify=false
 MimeType=x-scheme-handler/mailto

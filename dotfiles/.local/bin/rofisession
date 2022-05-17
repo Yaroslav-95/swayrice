@@ -7,9 +7,8 @@ if [ -n "$1" ]; then
 	exit 0
 fi
 
-echo -ne "\0no-custom\x1ftrue\n"
 echo -ne "\0prompt\x1fWhat to do?\n"
 echo -ne "logout\0icon\x1fsystem-log-out\n"
 echo -ne "suspend\0icon\x1fsystem-suspend\n"
-echo -ne "reboot\0icon\x1fsystem-restart\n"
+echo -ne "reboot\0icon\x1fsystem-reboot\n"
 echo -ne "poweroff\0icon\x1fsystem-shutdown\n"

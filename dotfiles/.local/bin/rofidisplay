@@ -7,6 +7,7 @@ fi
 displays="$(swaymsg -t get_outputs | grep -E "name" |
 	sed "s/^.*\"name\": \"//g;s/\",$//g;")"
 
+echo -ne "\0no-custom\x1ftrue\n"
 echo -ne "\0prompt\x1fToggle display\n"
 for d in $displays; do
 	echo -ne "$d\0icon\x1fdisplay\n"

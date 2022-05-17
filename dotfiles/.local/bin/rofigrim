@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ "$ROFI_RETV" = 1 ]; then
+	coproc screensht "$1"
+	exit 0
+elif [ "$ROFI_RETV" = 20 ]; then
+	coproc screensht "$1" copy
+	exit 0
+fi
+
+
+echo -ne "\0no-custom\x1ftrue\n"
+echo -ne "\0prompt\x1fWhat to screenshot?\n"
+echo -ne "\0message\x1fMake a selection (Alt+Enter to copy to clipboard)\n"
+echo -ne "\0use-hot-keys\x1ftrue\n"
+echo -ne "select area\0icon\x1fedit-cut\n"
+echo -ne "current window\0icon\x1fdesktop\n"
+echo -ne "full screen\0icon\x1fdisplay\n"

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ "$ROFI_RETV" != 0 ]; then
+	changeoutput $1
+	notify-send "🔉 Audio output" "Audio output switched to '$1'"
+	exit 0
+fi
+
+displays="$(swaymsg -t get_outputs | grep -E "name" |
+	sed "s/^.*\"name\": \"//g;s/\",$//g;")"
+
+echo -ne "\0no-custom\x1ftrue\n"
+echo -ne "\0prompt\x1fSelect audio output\n"
+for s in $(listsinks); do
+	echo -ne "$s\0icon\x1faudio-speakers\n"
+done

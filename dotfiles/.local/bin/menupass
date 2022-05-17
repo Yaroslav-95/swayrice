@@ -3,9 +3,6 @@
 # Inspiration taken from
 # https://git.zx2c4.com/password-store/tree/contrib/dmenu/passmenu
 
-# Source settings from .bemenurc
-. ~/.config/bemenurc
-
 shopt -s nullglob globstar
 
 notititle="🔑 Password store"
@@ -33,7 +30,7 @@ notify_nocache() {
 }
 
 show_menu() {
-  password=$(printf '%s\n' "${password_files[@]}" | bemenu -p "$1:" --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB" --monitor="$BEMENU_MONITOR")
+  password=$(printf '%s\n' "${password_files[@]}" | rofi -dmenu -p "$1")
   [ -n "$password" ] || exit
 }
 

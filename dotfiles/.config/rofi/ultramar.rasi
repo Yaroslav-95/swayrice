@@ -54,7 +54,9 @@ textbox {
     text-color: @foreground;
 }
 listview {
-    fixed-height: 0;
+    fixed-height: false;
+    lines: 20;
+    dynamic: true;
     border:       2px 0px 0px ;
     border-color: @separatorcolor;
     spacing:      2px ;

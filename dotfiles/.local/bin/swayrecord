@@ -1,7 +1,4 @@
-#!/bin/sh
-
-# Source settings from .bemenurc
-. ~/.config/bemenurc
+#!/bin/bash
 
 if ! [ -d $VREC_DIR ]; then
 	mkdir -p $VREC_DIR
@@ -116,7 +113,7 @@ audio () {
 }
 
 askrecording () {
-  TYPE="$(printf "video\nscreencast\nscreenshare\naudio\n" | bemenu -l 6 -i -p "What should be recorded?" --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB")"
+  TYPE="$(echo -ne "video\0icon\x1fcamera-video\nscreencast\0icon\x1fcamera-web\nscreenshare\0icon\x1fvideo-display\naudio\0icon\x1faudio-input-microphone\n" | rofi -dmenu -i -p "What should be recorded?")"
   case "$TYPE" in
     video) video;;
     screencast) screencast;;
@@ -132,10 +129,12 @@ if [ -f "$HOME/.cache/recordingpid" ]; then
 fi
 
 if [ $(swaymsg -t get_outputs | jq '. | length') -gt 1 ]; then
-MONITOR=$(swaymsg -t get_outputs | grep -E "name" | sed "s/^.*\"name\": \"//g;s/\",$//g;" | bemenu -p "Select display for capture: " --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB" --monitor="$BEMENU_MONITOR")
+	MONITOR=$(swaymsg -t get_outputs | grep -E "name" | sed "s/^.*\"name\": \"\(.*\)\",/\1\x00icon\x1fdisplay/g;" | rofi -dmenu -i -p "Select display for capture")
 else
 	MONITOR="$(swaymsg -t get_outputs | jq -r '.[0]["name"]')"
 fi
+
+[ -z "$MONITOR" ] && exit 0
 
 case $1 in
   video) video;;

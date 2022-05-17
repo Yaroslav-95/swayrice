@@ -1,5 +1,5 @@
 configuration {
-	modi: "drun,filebrowser,run,ssh,combi";
+	modi: "drun,run,file-browser-extended,ssh,combi";
 /*	font: "mono 12";*/
 	location: 2;
 /*	yoffset: 0;*/
@@ -32,8 +32,8 @@ configuration {
 /*	auto-select: false;*/
 /*	parse-hosts: false;*/
 /*	parse-known-hosts: true;*/
-	combi-modi: "filebrowser,drun,run";
-/*	matching: "normal";*/
+	combi-modi: "file-browser-extended,drun,run";
+	matching: "regex";
 /*	tokenize: true;*/
 /*	m: "-5";*/
 /*	filter: ;*/
@@ -108,7 +108,7 @@ configuration {
 /*	kb-custom-8: "Alt+8";*/
 /*	kb-custom-9: "Alt+9";*/
 /*	kb-custom-10: "Alt+0";*/
-/*	kb-custom-11: "Alt+exclam";*/
+	kb-custom-11: "Alt+exclam,Alt+Return";
 /*	kb-custom-12: "Alt+at";*/
 /*	kb-custom-13: "Alt+numbersign";*/
 /*	kb-custom-14: "Alt+dollar";*/

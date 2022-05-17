@@ -36,7 +36,6 @@ window#waybar {
 #battery,
 #network,
 #backlight,
-#custom-vpn-status,
 #custom-torrent-status,
 #workspaces {
   background: #232328;
@@ -80,7 +79,6 @@ window#waybar {
 #custom-swaykbd,
 #custom-ds4battery,
 #custom-rec-status,
-#custom-vpn-status,
 #custom-pac-status,
 #custom-mail-status,
 #custom-news-status,

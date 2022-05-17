@@ -21,7 +21,6 @@
         "custom/news-status",
         "memory",
         "custom/torrent-status",
-        "custom/vpn-status",
         "network",
         "backlight",
         "battery#bat0",
@@ -175,10 +174,6 @@
         "signal": 5,
         "interval": "once",
         "exec": "barrecstatus"
-    },
-    "custom/vpn-status": {
-        "format": "<span color=\"#5b8277\">{}</span>",
-        "exec": "barvpnstatus"
     },
     "custom/torrent-status": {
         "format": "<span color=\"#5b8277\">{}</span>",

@@ -3,7 +3,7 @@
 COLORSCHEME="dark"
 
 if [ -f $HOME/.cache/colorscheme ]; then
-	source $HOME/.cache/colorscheme
+	. $HOME/.cache/colorscheme
 fi
 
 case $COLORSCHEME in

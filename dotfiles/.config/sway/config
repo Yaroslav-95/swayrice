@@ -47,8 +47,8 @@ floating_modifier $mod
 # GTK theme and icons
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
-	gsettings set $gnome-schema gtk-theme 'oomox-materia-dark'
-	gsettings set $gnome-schema icon-theme 'Papirus-Dark'
+	gsettings set $gnome-schema gtk-theme 'Adwaita-dark'
+	gsettings set $gnome-schema icon-theme 'Arc'
 }
 
 ##### Startup scripts and programs #####
@@ -172,7 +172,7 @@ bindsym --to-code {
 	$mod+q kill
 
 	# rofi launcher
-	$mod+d exec rofi -show combi
+	$mod+d exec rofi -show drun -sidebar-mode
 
 	# Mako (notifications)
 	$mod+Ctrl+space       exec "makoctl dismiss"
@@ -186,7 +186,7 @@ bindsym --to-code {
 	$mod+F3 exec rofi -show display -modi "display:rofidisplay"
 	$mod+F4 exec menublk
 	$mod+F10 exec chcolors
-	$mod+F12 exec menutz
+	$mod+F12 exec rofi -show tz -modi "tz:rofitz"
 	$mod+t exec toggletorrent
 	$mod+Ctrl+t exec launch-transmission
 	$mod+s exec "xway steam"
@@ -195,6 +195,7 @@ bindsym --to-code {
 	$mod+a exec $term -T "neomutt" neomutt
 	$mod+o exec notistats
 	$mod+c exec camtoggle
+	$mod+Shift+c exec rofi -show calc -modi calc -no-show-match -no-sort
 	$mod+grave exec rofi -show moji -modi "moji:rofimoji"
 	$mod+apostrophe exec menupass
 	$mod+Shift+apostrophe exec "menupass -l"
@@ -203,25 +204,18 @@ bindsym --to-code {
 	$mod+backslash exec "menuworkspace"
 
 	# Network management
-	$mod+Shift+c exec togglevpn
 	$mod+Shift+n exec $term -T "Network Manager" 'nmtui'
 
 	# Screenshot and recording
-	Print exec menugrim -q
-	$mod+Print exec menugrim
-	Shift+Print exec "swayrecord screencast"
+	Print exec screensht "full screen"
+	$mod+Print exec rofi -show grim -modi "grim:rofigrim"
 	Ctrl+Print exec swayrecord
 
 	# Sound
 	$mod+Shift+m exec $term -T "ncpamixer" 'ncpamixer'
-	$mod+Ctrl+m exec menuoutput
-
-	# Applications that start with no gaps
-	$mod+g		exec gimp; gaps inner current set 0; gaps outer current set 0
-	$mod+i		exec inkscape; gaps inner current set 0; gaps outer current set 0
+	$mod+Ctrl+m exec rofi -show audio -modi "audio:rofiaudio"
 
 	# Dropdown/scratchpad applications
-	$mod+Shift+v exec ddvk
 	$mod+Shift+t exec ddtelegram
 	$mod+Shift+p exec ddquakemite
 

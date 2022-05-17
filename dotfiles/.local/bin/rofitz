@@ -1,0 +1,13 @@
+#!/bin/bash
+
+tzones="$(cd /usr/share/zoneinfo/posix && find * -type f -or -type l)"
+
+echo -ne "\0no-custom\x1ftrue\n"
+echo -ne "\0prompt\x1fChoose timezone\n"
+
+if [ "$ROFI_RETV" != 0 ]; then
+	t="$(TZ=$1 date)"
+	echo -ne "\0message\x1fDate and time in $1: $t\n"
+fi
+
+printf "%s" "$tzones"

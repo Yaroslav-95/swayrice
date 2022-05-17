@@ -1,18 +1,15 @@
 #!/bin/sh
 # Search and open man page
 # Options: 
-# -t use in terminal with fzf otherwise launch bemenu. 
+# -t use in terminal with fzf otherwise launch gui menu
 # -s search with apropos.
-
-# Source settings from .bemenurc
-. ~/.config/bemenurc
 
 issearch=
 isterminal=
 
 printusage() {
 	echo "Options:" >&2
-	echo " -t use in terminal with fzf otherwise launch bemenu." >&2
+	echo " -t use in terminal with fzf otherwise gui menu." >&2
 	echo " -s search with apropos." >&2
 }
 
@@ -35,7 +32,7 @@ if [ ! -z "$issearch" ]; then
 		printf "Enter query:\t"
 		read query
 	else
-		query="$(echo "" | bemenu -p "Enter apropos query:" -i --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB" --monitor="$BEMENU_MONITOR")"
+		query="$(echo "" | rofi -dmenu -p "Enter apropos query" -i)"
 	fi
 	if [ -z "$query" ]; then
 		echo "Empty query" >&2
@@ -49,7 +46,7 @@ fi
 if [ ! -z "$isterminal" ]; then
 	chosen=$(printf "$list" | fzf)
 else
-	chosen=$(printf "$list" | bemenu -p "Select man page:" -i -l 25 --tf="$BEMENU_TF" --tb="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB" --monitor="$BEMENU_MONITOR")
+	chosen=$(printf "$list" | rofi -dmenu -p "Select man page" -i)
 fi
 
 if [ -z "$chosen" ]; then

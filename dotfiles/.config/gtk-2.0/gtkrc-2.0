@@ -2,8 +2,8 @@
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
 include "/home/yaroslav/.gtkrc-2.0.mine"
-gtk-theme-name="oomox-materia-dark"
-gtk-icon-theme-name="Papirus-Dark"
+gtk-theme-name="Adwaita-dark"
+gtk-icon-theme-name="Arc"
 gtk-font-name="FuraCode Nerd Font Mono 10"
 gtk-cursor-theme-name="Adwaita"
 gtk-cursor-theme-size=0

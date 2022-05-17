@@ -1,0 +1,51 @@
+#!/bin/sh
+
+notify_saved() {
+    notify-send -i "$1" "🖼 Screenshot" "Screenshot has been saved in $1" ;
+}
+
+notify_copied() {
+    notify-send "🖼 Screenshot" "Screenshot has been copied to clipboard" ;
+}
+
+if [ "$2" = "copy" ]; then
+	case "$1" in
+		"select area")
+			grim -g "$(slurp)" - | wl-copy
+			notify_copied
+			;;
+		"current window")
+			grim -g "$(swaygetcurrentwindow)" - | wl-copy
+			notify_copied
+			;;
+		"full screen")
+    		grim - | wl-copy
+    		notify_copied
+    		;;
+    	*) exit 0;;
+	esac
+	exit 0
+else
+	if ! [ -d $SCROT_DIR ]; then
+		mkdir -p $SCROT_DIR
+	fi
+	case "$1" in
+		"select area")
+			scrpath="$SCROT_DIR/selected-$(date '+%y%m%d-%H%M-%S').png"
+			grim -g "$(slurp)" "$scrpath"
+			notify_saved "$scrpath"
+			;;
+		"current window")
+			scrpath="$SCROT_DIR/window-$(date '+%y%m%d-%H%M-%S').png"
+			grim -g "$(swaygetcurrentwindow)" "$scrpath"
+			notify_saved "$scrpath"
+			;;
+		"full screen")
+			scrpath="$SCROT_DIR/fullscreen-$(date '+%y%m%d-%H%M-%S').png"
+    		grim "$scrpath"
+    		notify_saved "$scrpath"
+    		;;
+    	*) exit 0;;
+	esac
+	exit 0
+fi
