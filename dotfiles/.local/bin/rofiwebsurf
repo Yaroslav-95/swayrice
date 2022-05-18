@@ -3,7 +3,8 @@
 if [ "$ROFI_RETV" != 0 ]; then
 	choice="$1"
 	if echo "$choice" | egrep ".*://.*" >/dev/null 2>&1; then
-		choice="$(echo "$choice" | sed -E 's/(.*:\/\/([^[:space:]])*).*/\1/g' | 
+		choice="$(echo "$choice" | grep -Eo "[^[:space:]]*:\/\/[^[:space:]]*" |
+			head -n1 | 
 			grep -E "https?:" || echo "$choice")"
 		mimeo "$choice" > /dev/null
 	else

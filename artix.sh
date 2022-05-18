@@ -59,6 +59,8 @@ pacman -Sy \
 	pkg-config \
 	fakeroot \
 	papirus-icon-theme \
+	arc-icon-theme \
+	elementary-icon-theme \
 	alsa-utils \
 	pipewire \
 	pipewire-alsa \

@@ -172,7 +172,7 @@ bindsym --to-code {
 	$mod+q kill
 
 	# rofi launcher
-	$mod+d exec rofi -show drun -sidebar-mode
+	$mod+d exec rofi -show drun -sidebar-mode -modi "drun,run,file-browser-extended,ssh,combi"
 
 	# Mako (notifications)
 	$mod+Ctrl+space       exec "makoctl dismiss"

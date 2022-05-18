@@ -1,5 +1,5 @@
 configuration {
-	modi: "drun,run,file-browser-extended,ssh,combi";
+	modi: "";
 /*	font: "mono 12";*/
 	location: 2;
 /*	yoffset: 0;*/
@@ -109,7 +109,7 @@ configuration {
 /*	kb-custom-9: "Alt+9";*/
 /*	kb-custom-10: "Alt+0";*/
 	kb-custom-11: "Alt+exclam,Alt+Return";
-/*	kb-custom-12: "Alt+at";*/
+	kb-custom-12: "Alt+at,Alt+h";
 /*	kb-custom-13: "Alt+numbersign";*/
 /*	kb-custom-14: "Alt+dollar";*/
 /*	kb-custom-15: "Alt+percent";*/
