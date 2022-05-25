@@ -327,7 +327,7 @@ bindsym --to-code {
 	$mod+F11 exec "killall -10 waybar"
 
 	# Shut down, restart and locking features
-	$mod+Shift+e exec rofi -show session -modi "session:rofisession"
+	$mod+Shift+e exec rofi -show session -matching prefix -modi "session:rofisession"
 
 	# Resize
 	$mod+Shift+y exec swayresize left

@@ -57,7 +57,7 @@ mount_dev() {
 	fstype="$(lsblk -r -o FSTYPE "/dev/$1" | tail -n 1)"
 	part="/dev/$1"
 	if [ "$fstype" = "crypto_LUKS" ]; then
-		password="$(echo "" | rofi -dmenu -p "Enter passphrase for encrypted drive" --tf="$BEMENU_TF" --tb="$BEMENU_NB" --ff="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB" --monitor="$BEMENU_MONITOR")"
+		password="$(echo "" | rofi -dmenu -password -p "Enter passphrase for encrypted drive" --tf="$BEMENU_TF" --tb="$BEMENU_NB" --ff="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB" --monitor="$BEMENU_MONITOR")"
 		if [ -z "$password" ]; then
   	  	  exit 0
 		fi
@@ -111,7 +111,7 @@ poweroff_dev() {
 	fi
 }
 
-action="$(printf "mount\nunmount\npoweroff\n" | rofi -dmenu -p "What to do?" )"
+action="$(printf "mount\nunmount\npoweroff\n" | rofi -dmenu -matching prefix -p "What to do?" )"
 
 case "$action" in
   mount)
