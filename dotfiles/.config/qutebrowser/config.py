@@ -33,18 +33,22 @@ c.editor.command = [ "foot", "nvim", "{file}", "+normal {line}G{column0}l", ]
 c.content.notifications.enabled = False
 
 ## Disable JS by default
-c.content.javascript.enabled = False
+#c.content.javascript.enabled = False
 
 # Read separate whitelist file and enable JS for those sites
-with open(os.path.expanduser("~/.config/qutebrowser/jswhitelist")) as f:
-    for line in f:
-        site = line.rstrip('\n')
-        with config.pattern(site) as p:
-            p.content.javascript.enabled = True
+#with open(os.path.expanduser("~/.config/qutebrowser/jswhitelist")) as f:
+#    for line in f:
+#        site = line.rstrip('\n')
+#        with config.pattern(site) as p:
+#            p.content.javascript.enabled = True
 
 ## Disable 3rd party cookies
 c.content.cookies.accept = "no-3rdparty"
 
+# Unfortunately this seems to break Cloudfare's retarded browser integrity
+# check, so now I have to chose between not being able to access half of the
+# internet and having troubles with a few sites. It's a clown world.
+#
 # Pretend that we are the latest version of Chrome, since some retarded sites
 # think it is fine to pester me with ads to install Firefox or Chrome or
 # whatever upon seeing a non-standard user agent string. I swear the web is just
@@ -55,8 +59,8 @@ c.content.cookies.accept = "no-3rdparty"
 # to make a proper website without adding a ton of javascript, or at least
 # degrade gracefully if the latest webshit "standard" isn't being used because I
 # don't want my web browser to be a second OS on top of my actual OS.
-chrome_ver = subprocess.check_output("pacman -Si chromium | grep Version | sed 's/^.*: \([0-9]*\.[0-9]*\.[0-9]*\.[0-9]*\).*$/\\1/g'", shell=True).decode('ascii').rstrip()
-c.content.headers.user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{0} Safari/537.36".format(chrome_ver)
+#chrome_ver = subprocess.check_output("pacman -Si chromium | grep Version | sed 's/^.*: \([0-9]*\.[0-9]*\.[0-9]*\.[0-9]*\).*$/\\1/g'", shell=True).decode('ascii').rstrip()
+#c.content.headers.user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{0} Safari/537.36".format(chrome_ver)
 
 ## Downloads
 
@@ -463,4 +467,3 @@ config.bind('ш', 'mode-enter insert', mode='normal')
 
 config.bind('Т', 'search-prev', mode='normal')
 config.bind('т', 'search-next', mode='normal')
-
