@@ -4,6 +4,7 @@ application/epub+zip=org.pwmt.zathura-pdf-mupdf.desktop;
 application/rdf+xml=org.qutebrowser.qutebrowser.desktop;
 application/xhtml+xml=org.qutebrowser.qutebrowser.desktop;
 application/xml=org.qutebrowser.qutebrowser.desktop;
+application/x-mimearchive=org.qutebrowser.qutebrowser.desktop;
 audio/mpeg=mpv.desktop;
 audio/x-xm=mpv.desktop;
 audio/x-mod=mpv.desktop;

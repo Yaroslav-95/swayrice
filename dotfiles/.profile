@@ -17,6 +17,7 @@ export LANG=en_US.UTF-8
 export TERMINAL=foot
 export EDITOR="nvim"
 export PAGER="less -R -j.5"
+export MANPAGER='nvim +Man!'
 export BROWSER=qutebrowser
 
 # Sanely export XDG Base dir variables
