@@ -115,8 +115,8 @@ seat * hide_cursor when-typing enable
 
 # X200 Trackpoint
 input 2:10:TPPS/2_IBM_TrackPoint {
-	accel_profile adaptive
-	pointer_accel 0
+	accel_profile flat
+	pointer_accel 1
 	middle_emulation enabled
 }
 
@@ -185,6 +185,7 @@ bindsym --to-code {
 	$mod+F2 exec menumako
 	$mod+F3 exec rofi -show display -modi "display:rofidisplay"
 	$mod+F4 exec menublk
+	$mod+F9 exec networkmanager_dmenu
 	$mod+F10 exec chcolors
 	$mod+F12 exec rofi -show tz -modi "tz:rofitz"
 	$mod+t exec toggletorrent

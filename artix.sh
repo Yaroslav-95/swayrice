@@ -174,5 +174,6 @@ yay -S --noconfirm \
 	compiledb \
 	rofi-lbonn-wayland \
 	rofi-calc \
-	rofi-file-browser-extended-git
+	rofi-file-browser-extended-git \
+	networkmanager-dmenu-git
 
