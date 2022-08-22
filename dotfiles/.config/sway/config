@@ -185,7 +185,7 @@ bindsym --to-code {
 	$mod+F2 exec menumako
 	$mod+F3 exec rofi -show display -modi "display:rofidisplay"
 	$mod+F4 exec menublk
-	$mod+F9 exec networkmanager_dmenu
+	$mod+Shift+n exec networkmanager_dmenu
 	$mod+F10 exec chcolors
 	$mod+F12 exec rofi -show tz -modi "tz:rofitz"
 	$mod+t exec toggletorrent
@@ -203,9 +203,6 @@ bindsym --to-code {
 	$mod+Ctrl+apostrophe exec "menupass -f"
 	$mod+Ctrl+Shift+apostrophe exec "menupass -s"
 	$mod+backslash exec "menuworkspace"
-
-	# Network management
-	$mod+Shift+n exec $term -T "Network Manager" 'nmtui'
 
 	# Screenshot and recording
 	Print exec screensht "full screen"
