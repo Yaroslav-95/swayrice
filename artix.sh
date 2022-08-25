@@ -166,7 +166,7 @@ yay -S --noconfirm \
 	ncpamixer \
 	mimeo \
 	xdg-utils-mimeo \
-	lf \
+	lf-sixel-git \
 	dragon-drag-and-drop \
 	swaylock-effects \
 	youtube-viewer \

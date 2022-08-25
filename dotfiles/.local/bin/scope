@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -C -f -u
+set -C -f
 #IFS=$'\n'
 IFS="$(printf '%b_' '\n')"; IFS="${IFS%_}"
 
@@ -17,8 +17,11 @@ IFS="$(printf '%b_' '\n')"; IFS="${IFS%_}"
 # 2    | plain text | Display the plain content of the file
 
 # Script arguments
-FILE_PATH="${1}"         # Full path of the highlighted file
-#HEIGHT="${2}"
+FILE_PATH="$1"         # Full path of the highlighted file
+w="$2"
+h="$3"
+# x=$4
+# y=$5
 
 #FILE_EXTENSION="${FILE_PATH##*.}"
 #FILE_EXTENSION_LOWER=$(echo ${FILE_EXTENSION} | tr '[:upper:]' '[:lower:]')
@@ -28,6 +31,13 @@ HIGHLIGHT_SIZE_MAX=262143  # 256KiB
 HIGHLIGHT_TABWIDTH=8
 HIGHLIGHT_STYLE='pablo'
 
+handle_img() {
+	if [ -n "$w" -a -n "$h" ]; then
+		chafa --animate off -s "${w}x${h}" $FILE_PATH | sed 's/#/\n#/g'
+	else
+		exiftool "${FILE_PATH}"
+	fi
+}
 
 handle_mime() {
     local mimetype="${1}"
@@ -50,7 +60,7 @@ handle_mime() {
 	application/x-xz) tar -Jtf "${FILE_PATH}" ;;
 	application/x-rar) unrar lb -- "${FILE_PATH}" ;;
     video/* | audio/*|application/octet-stream) mediainfo "${FILE_PATH}" | awk -F':' '{ print $2 }' || exit 1;;
-    image/*) exiftool "${FILE_PATH}";;
+    image/*) handle_img;;
     */pdf) pdftotext -l 10 -nopgbrk -q -- "${FILE_PATH}" - ;;
     *opendocument*) odt2txt "${FILE_PATH}" ;;
     *) file -b "${FILE_PATH}" ;;
@@ -59,4 +69,3 @@ handle_mime() {
 
 MIMETYPE="$( file --dereference --brief --mime-type -- "${FILE_PATH}" )"
 handle_mime "${MIMETYPE}"
-exit 1

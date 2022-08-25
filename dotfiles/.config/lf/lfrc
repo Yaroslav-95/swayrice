@@ -104,7 +104,7 @@ map t :dragon
 map T :dragon_drop
 map W $setsid $TERMINAL > /dev/null 2>&1 & # open new terminal window
 map Y :yank-path
-map L $LESSOPEN='| ~/.local/bin/scope %s' less -R $f # open file preview in pager
+map L $LESSOPEN='| ~/.local/bin/scope %s' less -r $f # open file preview in pager
 
 # Mouse bindings
 map <m-1> open
