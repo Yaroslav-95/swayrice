@@ -74,9 +74,9 @@ cmd fzf_open ${{
 }}
 
 # drag and drop prompt
-cmd dragon $dragon-drag-and-drop -a $fx
+cmd dragon $dragon-drop -a $fx
 
-cmd dragon_drop $cp $(dragon-drag-and-drop --target | sed 's/file:\/\///g') .
+cmd dragon_drop $cp $(dragon-drop --target | sed 's/file:\/\///g') .
 
 # copy path to clipboard
 cmd yank-path &printf '%s' "$fx" | wl-copy

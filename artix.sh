@@ -167,7 +167,7 @@ yay -S --noconfirm \
 	mimeo \
 	xdg-utils-mimeo \
 	lf-sixel-git \
-	dragon-drag-and-drop \
+	dragon-drop \
 	swaylock-effects \
 	youtube-viewer \
 	abook \
