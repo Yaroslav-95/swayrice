@@ -1,0 +1,4 @@
+#!/bin/sh
+
+killall pipewire wireplumber pipewire-pulse
+pipewire & wireplumber & pipewire-pulse &

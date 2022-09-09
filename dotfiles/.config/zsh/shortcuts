@@ -27,6 +27,8 @@ alias audio="ncpamixer"
 alias calc="python -q -i -c 'import math'"
 alias spw="setsid $TERMINAL >/dev/null 2>&1 &"
 alias testinet="ping -c2 example.com"
+alias past="wl-paste -n"
+alias ppast="wl-paste -pn"
 
 # rsync shortcuts
 alias rs="rsync -avh"

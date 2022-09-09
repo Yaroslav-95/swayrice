@@ -55,9 +55,7 @@ exec_always {
 # Waybar
 exec waybar_launch
 # Audio
-exec pipewire
-exec wireplumber
-exec pipewire-pulse
+exec pipewire-restart
 # Music daemon
 exec mpd
 # Bluetooth adapter applet
