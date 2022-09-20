@@ -44,7 +44,7 @@ export $(dbus-launch)
 # Start sway automatically upon login on tty1 or tty2
 if [ -z $DISPLAY ] && [ $(tty) = /dev/tty1 ] || [ $(tty) = /dev/tty2 ]; then
   # DBUS variables (for Artix)
-  sway -d 2> ~/.cache/sway.log 1> /dev/null && clear && exit
+  exec sway -d 2> ~/.cache/sway.log 1> /dev/null && clear && exit
   mv ~/.cache/sway.log ~/.cache/sway-crash-$(date +"%Y-%m-%dT%H:%M").log
 fi
 

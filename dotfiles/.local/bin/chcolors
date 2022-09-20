@@ -13,8 +13,5 @@ case $COLORSCHEME in
 		COLORSCHEME="dark" ;;
 esac
 
-sed -i --follow-symlinks \
-	"s/^colors:.*/colors: \*$COLORSCHEME/g" \
-	$HOME/.config/alacritty/alacritty.yml
-
 echo "export COLORSCHEME=$COLORSCHEME" > $HOME/.cache/colorscheme
+pkill -SIGUSR1 zsh

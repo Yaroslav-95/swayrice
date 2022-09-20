@@ -69,7 +69,11 @@ zle -N zle-keymap-select
 
 [ -f "$HOME/.config/zsh/shortcuts" ] && . "$HOME/.config/zsh/shortcuts"
 
-[ -f "$HOME/.cache/colorscheme" ] && trap "source $HOME/.cache/colorscheme" DEBUG
+if [ -f "$HOME/.cache/colorscheme" ]; then
+	trap "source $HOME/.cache/colorscheme && shtheme ultramar-\$COLORSCHEME" SIGUSR1
+	source $HOME/.cache/colorscheme
+	shtheme ultramar-$COLORSCHEME
+fi
 
 if [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]
 then
