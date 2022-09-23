@@ -61,4 +61,4 @@ if [ ! -z "$isterminal" ]; then
 	man "$chosen" && exit
 fi
 
-$TERMINAL -T "Manual pages - $chosen" man $chosen
+$TERMINAL $SHELL -ic "man \"$chosen\""
