@@ -19,7 +19,7 @@ mouse_warping container
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 default_border pixel 2
-default_floating_border pixel 2
+default_floating_border normal 2
 
 # Hide borders
 # hide_edge_borders both
@@ -200,7 +200,8 @@ bindsym --to-code {
 	$mod+Shift+apostrophe exec "menupass -l"
 	$mod+Ctrl+apostrophe exec "menupass -f"
 	$mod+Ctrl+Shift+apostrophe exec "menupass -s"
-	$mod+backslash exec "menuworkspace"
+	$mod+backslash exec "menuwin"
+	$mod+Shift+backslash exec "menuwin -s"
 
 	# Screenshot and recording
 	Print exec screensht "full screen"
