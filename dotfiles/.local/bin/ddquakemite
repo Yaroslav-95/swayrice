@@ -1,17 +1,41 @@
 #!/bin/sh
 
-if ! [ -z "$(swaymsg -t get_tree | grep 'ddterminal')" ]; then
-    if [ -z "$(swaymsg -t get_tree | grep -A 46 'ddterminal' | tail -n 1 | grep 'true')" ]; then
-        swaymsg '[title="ddterminal"] scratchpad show'
-    else
-        swaymsg '[title="ddterminal"] move scratchpad'
-    fi
-else
-    $TERMINAL -T "ddterminal" tmuxatt &
-    sleep 0.2s
+# Yaroslav de la Peña Smirnov 2019-2022
+# hacky script to spawn a dropdown-like terminal for quickly typing some
+# commands
+
+# reposition the terminal right below the status bar; as a side effect, this
+# can be used with any floating window, not just ddterminal by calling the
+# script with '-r'
+reposition() {
     curwiny=$(swaygetcurrentwindow | cut -d ' ' -f1 | cut -d ',' -f2 )
     curdisy=$(swaymsg -pt get_outputs | grep -A3 focused | grep Position | cut -d ',' -f2)
     moveup=$(($curwiny - $curdisy - 30))
     swaymsg move up "$moveup px"
+}
+
+if [ "$1" = "-r" ]; then
+    reposition
+    exit
+fi
+
+ddstatus=$(swaymsg -t get_tree | jq  -r '
+    ..
+    | objects
+    | select(.type == "workspace") as $ws
+    | ..
+    | objects
+    | select(has("app_id"))
+    | select(.name == "ddterminal")
+    | (if .focused == true then "+" else "-" end)')
+
+if [ "$ddstatus" = "-" ]; then
+    swaymsg '[title="ddterminal"] scratchpad show'
+elif [ "$ddstatus" = "+" ]; then
+    swaymsg '[title="ddterminal"] move scratchpad'
+else
+    $TERMINAL -T "ddterminal" tmuxatt &
+    sleep 0.2s
+    reposition
 fi
 

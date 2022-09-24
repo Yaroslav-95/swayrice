@@ -212,10 +212,11 @@ bindsym --to-code {
 
 	# Dropdown/scratchpad applications
 	$mod+Shift+p exec ddquakemite
+	$mod+Ctrl+p exec ddquakemite -r
 
 	# Switch/swap windows
-	$mod+bracketright exec "menuwin"
-	$mod+Shift+bracketright exec "menuwin -s"
+	$mod+bracketright exec menuwin
+	$mod+Shift+bracketright exec menuwin -s
 
 	# Sticky float to a bottom corner
 	$mod+Shift+b floating toggle; sticky toggle; exec picinpic
