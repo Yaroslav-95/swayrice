@@ -34,7 +34,7 @@ if [ "$ddstatus" = "-" ]; then
 elif [ "$ddstatus" = "+" ]; then
     swaymsg '[title="ddterminal"] move scratchpad'
 else
-    $TERMINAL -T "ddterminal" tmuxatt &
+    $TERMINAL -T "ddterminal" -o "locked-title=true" zsh -ic "tmuxatt" &
     sleep 0.2s
     reposition
 fi
