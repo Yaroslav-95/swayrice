@@ -31,10 +31,10 @@ alias past="wl-paste -n"
 alias ppast="wl-paste -pn"
 
 # rsync shortcuts
-alias rs="rsync -avh"
-alias rsn="rsync -avhn"
-alias rsd="rsync -avh --delete"
-alias rsdn="rsync -avhn --delete"
+alias rs="rsync -avhH"
+alias rsn="rsync -avhHn"
+alias rsd="rsync -avhH --delete"
+alias rsdn="rsync -avhHn --delete"
 
 # Fuzzy finder
 alias fzo='op "$(find . -type d -path "*/\.*" -prune -o -not -name ".*" -type f | fzf)"'
