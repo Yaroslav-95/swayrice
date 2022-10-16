@@ -56,10 +56,14 @@ exec_always {
 exec waybar_launch
 # Audio
 exec pipewire-restart
+# playerctl daemon for better MPRIS support
+exec playerctld daemon
 # Music daemon
 exec mpd
+# MPRIS support for MPD
+exec mpd-mpris
 # Bluetooth adapter applet
-exec_always blueman-applet
+exec blueman-applet
 # Notification handler
 exec mako
 # Environment variables for cron scripts
@@ -354,11 +358,11 @@ bindsym --to-code {
 	$mod+XF86AudioLowerVolume		exec exremote "lmc down 5"
 	$mod+XF86AudioMute exec exremote "lmc mute"
 
-	$mod+Ctrl+Shift+F5   exec exremote "mpc seek -10"
+	$mod+Ctrl+Shift+F5   exec exremote "lmc back 5"
 	$mod+Ctrl+F5     		exec exremote "lmc prev"
 	$mod+Ctrl+F6     		exec exremote "lmc toggle"
 	$mod+Ctrl+F7     		exec exremote "lmc next"
-	$mod+Ctrl+Shift+F7   exec exremote "mpc seek +10"
+	$mod+Ctrl+Shift+F7   exec exremote "lmc forward 5"
 
 	# Remote computer's clipboard
 	$mod+Ctrl+c exec clipremote copy
@@ -381,13 +385,13 @@ bindsym --to-code --locked {
 	XF86AudioLowerVolume		exec lmc down 5
 	XF86AudioMute           exec lmc mute
 
-	$mod+Shift+F5   exec mpc seek -10
+	$mod+Shift+F5   exec lmc back 5
 	$mod+F5     		exec lmc prev
 	$mod+F6     		exec lmc toggle
 	$mod+F7     		exec lmc next
-	$mod+Shift+F7   exec mpc seek +10
-	$mod+F8         exec mpc single
-	$mod+Shift+F8   exec mpc repeat
+	$mod+Shift+F7   exec lmc forward 5
+	$mod+F8         exec playerctl loop Track
+	$mod+Shift+F8   exec playerctl loop None
 }
 
 include "~/.config/sway/`uname -n`"

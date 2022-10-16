@@ -5,13 +5,12 @@ case "$1" in
 	"down") pamixer --allow-boost -d "$2" || amixer sset Master 2%- ;;
 	"mute") pamixer --allow-boost -t || amixer sset Master toggle ;;
 	"truemute") pamixer --allow-boost -m || amixer sset Master mute ;;
-	"toggle") mpc toggle ; $newmpd ;;
-	"pause") mpc pause ; $newmpd ;;
-	"forward") mpc seek +"$2" ; $newmpd ;;
-	"back") mpc seek -"$2" ; $newmpd ;;
-	"next") mpc next ; $newmpd ;;
-	"prev") mpc prev ; $newmpd ;;
-	"replay") mpc seek 0% ; $newmpd ;;
+	"toggle") playerctl play-pause;;
+	"pause") playerctl pause;;
+	"forward") playerctl position "$2"+;;
+	"back") playerctl position "$2"-;;
+	"next") playerctl next;;
+	"prev") playerctl previous;;
 esac
 
 exit

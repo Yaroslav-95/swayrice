@@ -74,7 +74,6 @@ pacman -Sy \
 	gnome-themes-standard \
 	telegram-desktop \
 	qt5ct \
-	r \
 	bc \
 	udisks2 \
 	dash \
@@ -127,6 +126,8 @@ pacman -Sy \
 	openntpd \
 	openntpd-runit \
 	v4l2loopback-dkms \
+	playerctl \
+	mpv-mpris \
 	|| exit 1
 
 # Copy system config files
@@ -175,5 +176,7 @@ yay -S --noconfirm \
 	rofi-lbonn-wayland \
 	rofi-calc \
 	rofi-file-browser-extended-git \
-	networkmanager-dmenu-git
+	networkmanager-dmenu-git \
+	waybar-mpris-git \
+	mpd-mpris
 
