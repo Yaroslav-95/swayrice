@@ -32,7 +32,7 @@
     },
     "custom/waybar-mpris": {
     	"return-type": "json",
-    	"exec": "waybar-mpris --position --autofocus --pause=' <span color=\\\"#5b8277\\\"></span>' --play=' <span color=\\\"#b2872f\\\"></span>'",
+    	"exec": "waybar-mpris --position --autofocus --order=\"SYMBOL:ARTIST:TITLE:POSITION\" --pause=' <span color=\\\"#5b8277\\\"></span>' --play=' <span color=\\\"#b2872f\\\"></span>'",
     	"on-click": "waybar-mpris --send toggle",
     	"on-click-right": "waybar-mpris --send player-next"
     },
