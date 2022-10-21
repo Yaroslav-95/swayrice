@@ -1,0 +1,28 @@
+# vim: filetype=i3
+
+# Configuration specific to my laptop computer
+
+# Automatic display settings
+exec kanshi
+
+# Default wallpaper
+output "*" background ~/.config/wall1.png fill
+
+# Outputs
+output "eDP-1" pos 0 0 scale 1.25
+
+# On lid close
+bindswitch --reload --locked lid:on exec "swaysession suspend"
+
+# Workspaces
+workspace $ws1  output eDP-1 HDMI-A-2
+workspace $ws2  output eDP-1 HDMI-A-2
+workspace $ws3  output eDP-1 HDMI-A-2
+workspace $ws4  output eDP-1 HDMI-A-2
+workspace $ws5  output eDP-1 HDMI-A-2
+workspace $ws6  output eDP-1 HDMI-A-2
+workspace $ws7  output VGA-1
+workspace $ws8  output VGA-1
+workspace $ws9  output VGA-1
+workspace $ws10 output VGA-1
+

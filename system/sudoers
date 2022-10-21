@@ -9,6 +9,7 @@
 
 Defaults passwd_timeout=0
 Defaults timestamp_timeout=15
+Defaults timestamp_type=global
 
 ##
 ## User privilege specification
