@@ -1,7 +1,6 @@
 export PATH=$PATH:$HOME/.local/bin
-export SCROT_DIR=$HOME/pics/screenshots/
-export VREC_DIR=$HOME/vids/recordings/
-export AREC_DIR=$HOME/audio/recordings/
+
+# Wayland-specific
 #export GDK_BACKEND=wayland
 export EGL_PLATFORM=wayland
 export CLUTTER_PLATFORM=wayland
@@ -10,15 +9,19 @@ export QT_QPA_PLATFORM=wayland-egl
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=0
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export _JAVA_AWT_WM_NONREPARENTING=1
-export MANWIDTH=80
+export MOZ_ENABLE_WAYLAND=1
 
-# User specific environment and startup programs:
+# User-specific environment and startup programs:
 export LANG=en_US.UTF-8
 export TERMINAL=foot
 export EDITOR="nvim"
 export PAGER="less -R -j.5"
 export MANPAGER='nvim +Man!'
 export BROWSER=qutebrowser
+export MANWIDTH=80
+export SCROT_DIR=$HOME/pics/screenshots/
+export VREC_DIR=$HOME/vids/recordings/
+export AREC_DIR=$HOME/audio/recordings/
 
 # Sanely export XDG Base dir variables
 eval "$(sed 's/^[^#].*/export &/g;t;d' ~/.config/user-dirs.dirs)"
