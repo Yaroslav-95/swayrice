@@ -59,9 +59,7 @@ exec pipewire-restart
 # playerctl daemon for better MPRIS support
 exec playerctld daemon
 # Music daemon
-exec mpd
-# MPRIS support for MPD
-exec mpd-mpris
+exec mpd-restart
 # Bluetooth adapter applet
 exec blueman-applet
 # Notification handler

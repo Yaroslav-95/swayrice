@@ -1,0 +1,8 @@
+#!/bin/sh
+
+killall mpd
+killall mpd-mpris
+
+mpd &
+sleep 1
+mpd-mpris &
