@@ -83,6 +83,12 @@ cmd yank-path &printf '%s' "$fx" | wl-copy
 
 cmd open &mimeo $fx
 
+cmd hard_link %{{
+		load=$(cat ~/.local/share/lf/files)
+		list=$(echo "$load" | sed '1d')
+		ln $list .
+}}
+
 # Bindings
 map A rename
 map c
@@ -105,6 +111,7 @@ map T :dragon_drop
 map W $setsid $TERMINAL > /dev/null 2>&1 & # open new terminal window
 map Y :yank-path
 map L $LESSOPEN='| ~/.local/bin/scope %s' less -r $f # open file preview in pager
+map P hard_link
 
 # Mouse bindings
 map <m-1> open
