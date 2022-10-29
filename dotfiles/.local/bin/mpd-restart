@@ -1,8 +1,8 @@
 #!/bin/sh
 
 killall mpd
-killall mpd-mpris
+killall mpDris2
 
 mpd &
 sleep 1
-mpd-mpris &
+mpDris2 &
