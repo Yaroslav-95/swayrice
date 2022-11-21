@@ -32,9 +32,9 @@
     },
     "custom/waybar-mpris": {
     	"return-type": "json",
-    	"exec": "waybar-mpris --position --autofocus --order=\"SYMBOL:ARTIST:TITLE:POSITION\" --pause='<span color=\\\"#5b8277\\\"></span>' --play='<span color=\\\"#b2872f\\\"></span>'",
-    	"on-click": "waybar-mpris --send toggle",
-    	"on-click-right": "waybar-mpris --send player-next"
+    	"exec": "waybar-mpris --autofocus --text-format=\"%i [%p] %a - %t\" --tooltip-format=\"%t by %a from %A\n%p/%d\n(%P)\" --pause='<span color=\"#5b8277\"></span>' --play='' --max-title 45",
+    	"on-click": "lmc toggle",
+    	"on-click-right": "lmc next"
     },
     "mpd": {
         "format": " {stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon} [{elapsedTime:%M:%S}] {artist} - {title}",
