@@ -66,6 +66,8 @@ exec blueman-applet
 exec mako
 # Environment variables for cron scripts
 exec_always setsessionenv
+# xdg-desktop-portal screen sharing crap
+exec dbus-update-activation-environment DISPLAY I3SOCK SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
 # Workspace names
 # to display names or symbols instead of plain workspace numbers you can use

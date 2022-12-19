@@ -81,7 +81,7 @@ screenshare () {
   loopbackcam="$(v4l2-ctl --list-devices | \
   	grep v4l2loopback -m1 -A1 | \
   	sed -e '1d' -e 's/\s//g')"
-  wf-recorder -o "$MONITOR" -x yuv420p -c rawvideo -m v4l2 -f $loopbackcam &
+  wf-recorder -o "$MONITOR" -c rawvideo -m v4l2 -f $loopbackcam -x yuv420p -t &
   VIDEO_PID=$!
   echo $$ > ~/.cache/recordingpid
   echo "📺" > ~/.cache/recordingicon

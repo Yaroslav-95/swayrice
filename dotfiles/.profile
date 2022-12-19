@@ -44,9 +44,12 @@ eval "$(dircolors "$HOME/.config/dir_colors")"
 
 # Start sway automatically upon login on tty1 or tty2
 if [ -z $DISPLAY ] && [ $(tty) = /dev/tty1 ] || [ $(tty) = /dev/tty2 ]; then
-	# DBUS variables (for Artix)
-	export $(dbus-launch)
-	exec sway -d 2> ~/.cache/sway.log 1> /dev/null && clear && exit
+	dbus-run-session sway
+	if [ $? = 0 ] && [ ! -e ~/.cache/dont-kill ]; then
+		killall -u $(whoami)
+		clear
+		exit
+	fi
 	mv ~/.cache/sway.log ~/.cache/sway-crash-$(date +"%Y-%m-%dT%H:%M").log
 fi
 
