@@ -89,6 +89,12 @@ cmd hard_link %{{
 		ln $list .
 }}
 
+cmd soft_link %{{
+		load=$(cat ~/.local/share/lf/files)
+		list=$(echo "$load" | sed '1d')
+		ln -s $list .
+}}
+
 # Bindings
 map A rename
 map c
@@ -112,6 +118,7 @@ map W $setsid $TERMINAL > /dev/null 2>&1 & # open new terminal window
 map Y :yank-path
 map L $LESSOPEN='| ~/.local/bin/scope %s' less -r $f # open file preview in pager
 map P hard_link
+map <a-p> soft_link
 
 # Mouse bindings
 map <m-1> open
