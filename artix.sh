@@ -128,9 +128,12 @@ pacman -Sy \
 	v4l2loopback-dkms \
 	playerctl \
 	mpv-mpris \
+	perl-image-exiftool \
+	fzf \
+	chafa \
 	|| exit 1
 
-# Copy system config files
+ Copy system config files
 cp system/sudoers /etc/
 cp system/mkinitcpio.conf /etc/
 cp system/pam.d/* /etc/pam.d/
@@ -160,13 +163,10 @@ chown -R "$1:$1" build
 cd build
 sudo -u "$1" "git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si"
 
-yay -S --noconfirm \
+yay -S \
 	ttf-symbola \
-	ttf-ms-fonts \
 	pam-gnupg \
 	ncpamixer \
-	mimeo \
-	xdg-utils-mimeo \
 	lf-sixel-git \
 	dragon-drop \
 	swaylock-effects \
