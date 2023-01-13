@@ -8,6 +8,10 @@ case "$1" in
         ;;
     logout)
         swaymsg exit
+        clear
+        if [ ! -e ~/.cache/dont-kill ]; then
+        	killall -u $(whoami)
+        fi
         ;;
     switch_user)
         dm-tool switch-to-greeter
@@ -19,11 +23,13 @@ case "$1" in
         lock-color & sleep 1 && $logind hibernate
         ;;
     reboot)
-        rm -f ~/.cache/openvpnpid
+        swaymsg exit
+        clear
         $logind reboot
         ;;
     poweroff)
-        rm -f ~/.cache/openvpnpid
+        swaymsg exit
+        clear
         $logind poweroff
         ;;
     *)
