@@ -1,0 +1,23 @@
+#!/bin/sh
+
+resize() {
+
+	amount="$(rofi -dmenu -p "Resize $1")"
+	if [ -z "$amount" ]; then
+		exit
+	fi
+	if [ "$1" = "width" ] || [ "$1" = "height" ]; then
+		swaymsg "resize set $1 ${amount}ppt"
+		exit
+	fi;
+	swayresize "$1" "$amount"
+}
+
+if [ -n "$1" ]; then
+	resize "$1"
+	exit
+fi
+
+
+direction="$(printf "left\nright\nup\ndown\nwidth\nheight" | rofi -dmenu -matching prefix -p "Select resize direction or dimension")"
+resize "$direction"

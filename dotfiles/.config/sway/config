@@ -177,26 +177,34 @@ bindsym --to-code {
 	$mod+Ctrl+space       exec "makoctl dismiss"
 	$mod+Ctrl+Shift+space exec "makoctl restore"
 
-	# Start Applications
+	# Menus/Quick actions
 	$mod+Shift+w exec rofi -show websurf -modi "websurf:rofiwebsurf"
 	$mod+F1 exec menuman
 	$mod+Shift+F1 exec menuman -s
 	$mod+F2 exec menumako
 	$mod+F3 exec rofi -show display -modi "display:rofidisplay"
 	$mod+F4 exec menublk
-	$mod+Shift+n exec networkmanager_dmenu
+	$mod+F9 exec notistats
+	$mod+F11 exec "killall -10 waybar"
 	$mod+F10 exec chcolors
 	$mod+F12 exec rofi -show tz -modi "tz:rofitz"
+	$mod+Shift+n exec networkmanager_dmenu
+	$mod+Shift+c exec rofi -show calc -modi calc -no-show-match -no-sort
+	$mod+grave exec rofi -show moji -modi "moji:rofimoji"
+	$mod+Shift+m exec $term -T "ncpamixer" 'ncpamixer'
+	$mod+Ctrl+m exec rofi -show audio -modi "audio:rofiaudio"
+	$mod+Shift+e exec rofi -show session -matching prefix -modi "session:rofisession"
+
+	# Shortcuts
 	$mod+t exec toggletorrent
 	$mod+Ctrl+t exec launch-transmission
 	$mod+s exec "xway steam"
 	$mod+m exec $term ncmpcpp
 	$mod+n exec $term -T "newsboat" newsboat && killall -42 waybar
 	$mod+a exec $term -T "neomutt" neomutt
-	$mod+o exec notistats
 	$mod+c exec camtoggle
-	$mod+Shift+c exec rofi -show calc -modi calc -no-show-match -no-sort
-	$mod+grave exec rofi -show moji -modi "moji:rofimoji"
+
+	# Password manager
 	$mod+apostrophe exec menupass
 	$mod+Shift+apostrophe exec "menupass -l"
 	$mod+Ctrl+apostrophe exec "menupass -f"
@@ -206,10 +214,6 @@ bindsym --to-code {
 	Print exec screensht "full screen"
 	$mod+Print exec rofi -show grim -modi "grim:rofigrim"
 	Ctrl+Print exec swayrecord
-
-	# Sound
-	$mod+Shift+m exec $term -T "ncpamixer" 'ncpamixer'
-	$mod+Ctrl+m exec rofi -show audio -modi "audio:rofiaudio"
 
 	# scratchpad shortcuts
 	$mod+bracketleft scratchpad show
@@ -276,7 +280,7 @@ bindsym --to-code {
 
 	#navigate workspaces next / previous
 	$mod+Tab		workspace next
-	$mod+Shift+Tab		workspace prev
+	$mod+Shift+Tab	workspace prev
 
 	# switch to workspace
 	$mod+1 workspace $ws1
@@ -320,33 +324,32 @@ bindsym --to-code {
 	# restart waybar
 	$mod+Ctrl+r exec waybar_launch
 
-	# show/hide waybar
-	$mod+F11 exec "killall -10 waybar"
-
-	# Shut down, restart and locking features
-	$mod+Shift+e exec rofi -show session -matching prefix -modi "session:rofisession"
-
 	# Resize
-	$mod+Shift+y exec swayresize left
-	$mod+Shift+u exec swayresize down
-	$mod+Shift+i exec swayresize up
-	$mod+Shift+o exec swayresize right
-	$mod+Ctrl+y exec swayresize left 10
-	$mod+Ctrl+u exec swayresize down 10
-	$mod+Ctrl+i exec swayresize up 10
-	$mod+Ctrl+o exec swayresize right 10
+	$mod+Shift+y	exec swayresize left
+	$mod+Shift+u	exec swayresize down
+	$mod+Shift+i	exec swayresize up
+	$mod+Shift+o	exec swayresize right
+	$mod+Ctrl+y		exec swayresize left 10
+	$mod+Ctrl+u		exec swayresize down 10
+	$mod+Ctrl+i		exec swayresize up 10
+	$mod+Ctrl+o		exec swayresize right 10
+	$mod+y			exec menuresize left
+	$mod+u			exec menuresize down
+	$mod+i			exec menuresize up
+	$mod+o			exec menuresize right
+	$mod+p			exec menuresize
 
 	# Lock screen
-	$mod+x exec lock-color
-	$mod+Shift+x exec lock-color screenon
+	$mod+x			exec lock-color
+	$mod+Shift+x	exec lock-color screenon
 
 	# Gaps
-	$mod+semicolon		      gaps inner current set 15; gaps outer current set 0
-	$mod+Shift+semicolon		gaps inner current set 0; gaps outer current set 0
+	$mod+semicolon			gaps inner current set 15; gaps outer current set 0
+	$mod+Shift+semicolon	gaps inner current set 0; gaps outer current set 0
 	$mod+Ctrl+semicolon		gaps inner current set 45; gaps outer current set 15
 	$mod+period			    gaps outer current plus 5
 	$mod+Shift+period		gaps outer current minus 5
-	$mod+comma		      gaps inner current plus 5
+	$mod+comma				gaps inner current plus 5
 	$mod+Shift+comma		gaps inner current minus 5
 
 	#### Shortcuts to control my other computer through ssh ####
