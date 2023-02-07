@@ -97,7 +97,8 @@ for_window [class="^qt5ct$"] floating enable, sticky enable
 for_window [class="(?i)System-config-printer.py"] floating enable
 for_window [title="wl-clipboard"] floating enable
 for_window [class="GLava"] border none
-for_window [app_id="telegramdesktop"] sticky enable
+for_window [app_id=".*telegram.*"] sticky enable
+for_window [app_id="zoom"] floating enable
 
 # Webcam window
 for_window [title="mpvfloat"] floating enable, sticky enable
