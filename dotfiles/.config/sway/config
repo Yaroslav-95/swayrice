@@ -5,7 +5,7 @@
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
 set $alt Mod1
-set $term foot
+set $term `$TERMINAL`
 set $browser `$BROWSER`
 
 # set default desktop layout (default is tiling)
@@ -196,10 +196,10 @@ bindsym --to-code {
 	$mod+Ctrl+m exec rofi -show audio -modi "audio:rofiaudio"
 	$mod+Shift+e exec rofi -show session -matching prefix -modi "session:rofisession"
 
-	# Shortcuts
+	# Application Shortcuts
+	$mod+s exec $browser
 	$mod+t exec toggletorrent
 	$mod+Ctrl+t exec launch-transmission
-	$mod+s exec "xway steam"
 	$mod+m exec $term ncmpcpp
 	$mod+n exec $term -T "newsboat" newsboat && killall -42 waybar
 	$mod+a exec $term -T "neomutt" neomutt
