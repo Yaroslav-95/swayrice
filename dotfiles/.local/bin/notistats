@@ -15,4 +15,4 @@ if [ -f /sys/class/drm/card0/device/hwmon/hwmon1/temp1_input ]; then
 	body=$body"\n"$(echo print\(\'GPU temp:\\t{}C\'.format\($(cat /sys/class/drm/card0/device/hwmon/hwmon1/temp1_input)/1000\)\) | python)
 fi
 
-notify-send "Hardware status" "$body"
+notify-send "⚡ Hardware status" "$body"

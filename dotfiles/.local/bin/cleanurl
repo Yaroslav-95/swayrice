@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Nothing really fancy here, just removes useless tracking GET vars (e.g. amazon
+# URLs).
+# BEWARE: this script is as dumb as it gets, it might break some URLs that
+# actually depend on GET vars (e.g. youtube URLs).
+
+wl-paste -n | cut -d '?' -f1 | wl-copy -n
+
+notify-send "✨ URL cleaned" "$(wl-paste)"
