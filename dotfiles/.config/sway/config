@@ -196,10 +196,10 @@ bindsym --to-code {
 	$mod+Ctrl+m exec rofi -show audio -modi "audio:rofiaudio"
 	$mod+Shift+e exec rofi -show session -matching prefix -modi "session:rofisession"
 
-	# Shortcuts
+	# Application Shortcuts
+	$mod+s exec $browser
 	$mod+t exec toggletorrent
 	$mod+Ctrl+t exec launch-transmission
-	$mod+s exec "xway steam"
 	$mod+m exec $term ncmpcpp
 	$mod+n exec $term -T "newsboat" newsboat && killall -42 waybar
 	$mod+a exec $term -T "neomutt" neomutt
