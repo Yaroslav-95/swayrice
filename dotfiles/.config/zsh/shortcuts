@@ -3,22 +3,18 @@
 # Some aliases
 alias v="nvim"
 alias abook="abook -C $HOME/.config/abook/abookrc --datafile $HOME/docs/data/contacts/addressbook"
-alias eslint="./node_modules/.bin/eslint"
 alias ls="ls -hN --color=auto --group-directories-first"
-alias tmux="tmux -f $HOME/.config/tmux/tmux.conf"
 alias units="units -H ''"
 alias trans="trans -v -pager='less -R'"
 alias lsdp="swaymsg -pt get_outputs | less"
 alias op="xdg-open"
 alias drag="dragon-drop"
-corona() { curl -s https://corona-stats.online/$1 ;} # It's corona time
 wintitle() { printf "\033]2;%s\a" "$1";}
 sass-watch() {
   while inotifywait -q -e create -e modify sass; do 
     sassc $1 $2
   done
 }
-grm() { printf "git@git.yaroslavps.com:%s" "$1" }
 
 # Generic shortcuts
 alias music="ncmpcpp"
@@ -35,9 +31,10 @@ alias rs="rsync -avhH"
 alias rsn="rsync -avhHn"
 alias rsd="rsync -avhH --delete"
 alias rsdn="rsync -avhHn --delete"
+alias rsg="rsync -avhH --delete --filter=':- .gitignore'"
+alias rsgn="rsync -avhHn --delete --filter=':- .gitignore'"
 
 # Fuzzy finder
-alias fzo='op "$(find . -type d -path "*/\.*" -prune -o -not -name ".*" -type f | fzf)"'
 if [ -f /usr/share/fzf/completion.zsh ]; then
 	# Arch/Artix
 	. /usr/share/fzf/completion.zsh
@@ -81,10 +78,6 @@ alias mnt="udisksctl mount -b"
 alias umnt="udisksctl unmount -b"
 alias dlock="udisksctl lock -b"
 alias dulock="udisksctl unlock -b"
-# Work network drive
-alias mntdss="sudo mount -t cifs -o \
-	uid=yaroslav,gid=yaroslav //10.0.4.140/dss /mnt/dss"
-alias umntdss="sudo umount /mnt/dss"
 
 # Internet
 alias yt="youtube-dl --add-metadata -ic" # Download video link
@@ -97,17 +90,7 @@ gitcc () {
 	git clone "$(wl-paste --no-newline)"
 }
 
-# Audio and Music
+# Audio
 alias mute="lmc mute"
-alias vu="lmc up"
-alias vd="lmc down"
-alias play="mpc toggle"
-alias next="mpc next"
-alias prev="mpc prev"
-alias pause="mpc pause"
-alias beg="mpc seek 0%"
-alias lilbak="mpc seek -10"
-alias lilfor="mpc seek +10"
-alias bigbak="mpc seek -120"
-alias bigfor="mpc seek +120"
-
+alias vu="lmc up 5"
+alias vd="lmc down 5"
