@@ -113,13 +113,6 @@ for_window [title="^ddterminal$"] floating enable, sticky enable
 # Don't display mouse cursor while typing
 seat * hide_cursor when-typing enable
 
-# X200 Trackpoint
-input 2:10:TPPS/2_IBM_TrackPoint {
-	accel_profile flat
-	pointer_accel 1
-	middle_emulation enabled
-}
-
 # Tex Shinobi Trackpoint 
 input 1241:1031:USB-HID_Keyboard_Mouse {
 	accel_profile adaptive
