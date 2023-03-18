@@ -15,7 +15,7 @@ if [ "$1" = "C-t" ]; then
 	while read file; do
 		files="$(printf "%s\n%s" "$files" "$file")"
 	done
-	dragon-drag-and-drop -a $files
+	dragon-drop -a $files
 	exit 0
 fi
 if [ "$1" = "C-r" ]; then
