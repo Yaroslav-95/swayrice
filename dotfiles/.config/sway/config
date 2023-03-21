@@ -52,10 +52,10 @@ exec_always {
 }
 
 ##### Startup scripts and programs #####
-# Waybar
-exec waybar_launch
 # Audio
 exec pipewire-restart
+# Waybar
+exec waybar_launch
 # playerctl daemon for better MPRIS support
 exec playerctld daemon
 # Music daemon
@@ -68,6 +68,8 @@ exec mako
 exec_always setsessionenv
 # xdg-desktop-portal screen sharing crap
 exec dbus-update-activation-environment DISPLAY I3SOCK SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+# log in sound
+exec sleep 2 && canberra-gtk-play -i Oxygen-Sys-App-Positive
 
 # Workspace names
 # to display names or symbols instead of plain workspace numbers you can use
