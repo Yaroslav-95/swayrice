@@ -7,7 +7,7 @@ case "$1" in
         lock-color
         ;;
     logout)
-        canberra-gtk-play -i Oxygen-Sys-Log-Out & sleep 1
+        canberra-gtk-play -i Oxygen-Sys-Log-Out & sleep 1.2
         swaymsg exit
         clear
         if [ ! -e ~/.cache/dont-kill ]; then
@@ -24,13 +24,13 @@ case "$1" in
         lock-color & sleep 1 && $logind hibernate
         ;;
     reboot)
-        canberra-gtk-play -i Oxygen-Sys-Log-Out & sleep 1
+        canberra-gtk-play -i Oxygen-Sys-Log-Out & sleep 1.2
         clear
         swaymsg exit
         sudo reboot now
         ;;
     poweroff)
-        canberra-gtk-play -i Oxygen-Sys-Log-Out & sleep 1
+        canberra-gtk-play -i Oxygen-Sys-Log-Out & sleep 1.2
         clear
         swaymsg exit
         # Having problems with logind poweroff and reboot after sway exit

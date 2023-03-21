@@ -68,8 +68,6 @@ exec mako
 exec_always setsessionenv
 # xdg-desktop-portal screen sharing crap
 exec dbus-update-activation-environment DISPLAY I3SOCK SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-# log in sound
-exec sleep 2 && canberra-gtk-play -i Oxygen-Sys-App-Positive
 
 # Workspace names
 # to display names or symbols instead of plain workspace numbers you can use

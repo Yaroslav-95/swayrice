@@ -8,6 +8,8 @@ if [ "$1" != "screenon" ]; then
   swayidle timeout 30 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' &
 fi
 
+canberra-gtk-play -i Oxygen-Window-All-Desktops-Not &
 swaylock
 
 pkill -n swayidle
+canberra-gtk-play -i Oxygen-Window-All-Desktops
