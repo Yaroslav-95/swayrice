@@ -7,23 +7,23 @@ config.load_autoconfig()
 # ------------ Color scheme ----------------
 
 ultramar = {
-    'light0': '#faf6e5',
-    'light1': '#e6e3d6',
-    'light2': '#d2d0c8',
-    'light3': '#b0afa8',
-    'dark0': '#151517',
-    'dark1': '#232328',
-    'dark2': '#33333a',
-    'dark3': '#404049',
-    'yellow': '#e2b55a',
-    'orange': '#af5539',
-    'red': '#b73030',
-    'magenta': '#b48ead',
-    'violet': '#9c6992',
-    'blue': '#3f6e90',
-    'cyan': '#5b8277',
-    'cyan2': '#7fac96',
-    'green': '#6d974b'
+    'light0':	'#faf6e5',
+    'light1':	'#e6e3d6',
+    'light2':	'#d2d0c8',
+    'light3':	'#b0afa8',
+    'dark0':	'#151517',
+    'dark1':	'#232328',
+    'dark2':	'#33333a',
+    'dark3':	'#404049',
+    'yellow':	'#e2b55a',
+    'orange':	'#af5539',
+    'red':      '#b73030',
+    'magenta':  '#b48ead',
+    'violet':   '#9c6992',
+    'blue':	    '#3f6e90',
+    'cyan':	    '#5b8277',
+    'cyan2':	'#7fac96',
+    'green':	'#6d974b'
 }
 
 c.editor.command = [ "foot", "nvim", "{file}", "+normal {line}G{column0}l", ]
@@ -433,37 +433,11 @@ config.bind('<Alt-0>', 'tab-focus -1', mode='normal')
 config.bind(',x', 'spawn xdg-open {url}')
 config.bind(',X', 'hint links spawn xdg-open {hint-url}')
 
-# Bindings for Russian keyboard layout (my most used bindings)
+# Open in new private window
+config.bind('po', 'set-cmd-text :open -p ', mode='normal')
 
-config.bind('Р', 'back', mode='normal')
-config.bind('О', 'tab-next', mode='normal')
-config.bind('Л', 'tab-prev', mode='normal')
-config.bind('Д', 'forward', mode='normal')
-
-config.bind('щ', 'set-cmd-text :open ', mode='normal')
-config.bind('Щ', 'set-cmd-text :open -t ', mode='normal')
-config.bind('пщ', 'set-cmd-text :open {url:pretty}', mode='normal')
-config.bind('пЩ', 'set-cmd-text :open -t -r {url:pretty}', mode='normal')
-
-config.bind('г', 'undo', mode='normal')
-config.bind('в', 'tab-close', mode='normal')
-config.bind('В', 'tab-close -o', mode='normal')
-config.bind('пС', 'tab-clone', mode='normal')
-
-config.bind('а', 'hint', mode='normal')
-config.bind('А', 'hint all tab', mode='normal')
-
-config.bind('ш', 'reload', mode='normal')
-config.bind('Ш', 'reload -f', mode='normal')
-
-config.bind('р', 'scroll left', mode='normal')
-config.bind('о', 'scroll down', mode='normal')
-config.bind('л', 'scroll up', mode='normal')
-config.bind('д', 'scroll right', mode='normal')
-config.bind('пп', 'scroll-to-perc 0', mode='normal')
-config.bind('П', 'scroll-to-perc', mode='normal')
-
-config.bind('ш', 'mode-enter insert', mode='normal')
-
-config.bind('Т', 'search-prev', mode='normal')
-config.bind('т', 'search-next', mode='normal')
+# Bindings for Russian keyboard layout
+config.unbind('.')
+en_keys = "qwertyuiop[]asdfghjkl;'zxcvbnm,./"+'QWERTYUIOP{}ASDFGHJKL:"ZXCVBNM<>?'
+ru_keys = 'йцукенгшщзхъфывапролджэячсмитьбю.'+'ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ,'
+c.bindings.key_mappings.update(dict(zip(ru_keys, en_keys)))
