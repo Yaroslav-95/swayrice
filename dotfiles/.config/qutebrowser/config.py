@@ -69,14 +69,10 @@ c.downloads.remove_finished = 3000
 
 ## Default search engine
 
-# c.url.searchengines = { "DEFAULT": "https://searx.bar/search?q={}" }
-c.url.searchengines = { "DEFAULT": "https://srx.yaroslavps.com/search?q={}" }
+c.url.searchengines = { "DEFAULT": "https://search.rhscz.eu/search?q={}" }
 
-# c.url.default_page = "https://searx.bar"
-c.url.default_page = "https://srx.yaroslavps.com"
-
-# c.url.start_pages = "https://searx.bar"
-c.url.start_pages = "https://srx.yaroslavps.com"
+c.url.default_page = "https://takeoff.mriya.space/"
+c.url.start_pages = "https://takeoff.mriya.space/"
 
 ## Default fonts
 c.fonts.default_size = "10pt"
