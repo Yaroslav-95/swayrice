@@ -59,6 +59,7 @@ window#waybar {
 #custom-mail-status,
 #custom-news-status,
 #custom-waybar-mpris,
+#custom-batwatt,
 #custom-torrent-status {
 	color: #fdf6e3;
   	padding: 0 6px;
