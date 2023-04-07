@@ -6,8 +6,14 @@ precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
 
-PROMPT=$'\n''%{[38;5;14m%}%B%~ ${reset_color}%F{yellow}${vcs_info_msg_0_}%f'$'\n''%F{green}→%f '
-RPROMPT='%{[38;5;14m%} %n%f@%F{red}%m%f'
+if [ "$USER" = "root" ]; then
+	# Make it so that we display root's user@host on the left and colored red so
+	# that it is quite clear that we are under root.
+	PROMPT=$'\n''%{[38;5;14m%}%B%~ ${reset_color}%F{yellow}${vcs_info_msg_0_}%f'$'\n''%F{red}%n%f@%F{red}%m%f %F{green}→%f '
+else
+	PROMPT=$'\n''%{[38;5;14m%}%B%~ ${reset_color}%F{yellow}${vcs_info_msg_0_}%f'$'\n''%F{green}→%f '
+	RPROMPT='%{[38;5;14m%} %n%f@%F{red}%m%f'
+fi
 zstyle ':vcs_info:git:*' formats ' %b'
 
 # Basic auto/tab complete:
