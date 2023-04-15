@@ -27,14 +27,21 @@ if [ -z "$1" ]; then
 	exit 1
 fi
 
-swaymsg "gaps inner current set 0; gaps outer current set 0"
+displayw=$(swaymsg -rt get_outputs |\
+	jq --raw-output '.[] | select(.focused == true) | .rect.width')
+sidebarw=30
+
+if [ $displayw -lt 2560 ]; then
+	swaymsg "gaps inner current set 0; gaps outer current set 0"
+	sidebarw=27
+fi
 
 cd "$1"
 setsid $TERMINAL -a "$TERMINAL lf:$1" zsh -ic "lfcd" >/dev/null 2>&1 & sleep 0.1
 setsid $TERMINAL -a "$TERMINAL edit:$1" >/dev/null 2>&1 & sleep 0.1
 
 sleep 0.2
-swaymsg "[app_id=\"$TERMINAL lf:$1\"] focus; resize set width 27ppt; split v"
+swaymsg "[app_id=\"$TERMINAL lf:$1\"] focus; resize set width ${sidebarw}ppt; split v"
 setsid $TERMINAL >/dev/null 2>&1 & sleep 0.2
 swaymsg "resize set height 60ppt" && sleep 0.1
 swaymsg "[app_id=\"$TERMINAL edit:$1\"] focus"
