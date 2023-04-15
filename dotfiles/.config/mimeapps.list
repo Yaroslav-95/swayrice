@@ -9,6 +9,7 @@ audio/mpeg=mpv.desktop;
 audio/x-xm=mpv.desktop;
 audio/x-mod=mpv.desktop;
 audio/x-it=mpv.desktop;
+audio/x-dsf=mpv.desktop;
 application/x-object=mpv.desktop;
 application/octet-stream=mpv.desktop;
 image/bmp=nsxiv.desktop;
@@ -30,8 +31,8 @@ x-scheme-handler/https=org.qutebrowser.qutebrowser.desktop;
 x-scheme-handler/qute=org.qutebrowser.qutebrowser.desktop;
 x-scheme-handler/discord-455712169795780630=discord-455712169795780630.desktop
 x-scheme-handler/mailto=neomutt.desktop
-x-scheme-handler/tg=userapp-Telegram Desktop-BLI1G1.desktop
+x-scheme-handler/tg=org.telegram.desktop.desktop
 x-scheme-handler/msteams=teams.desktop
 
 [Added Associations]
-x-scheme-handler/tg=userapp-Telegram Desktop-BLI1G1.desktop;
+x-scheme-handler/tg=userapp-Telegram Desktop-BLI1G1.desktop;org.telegram.desktop.desktop;
