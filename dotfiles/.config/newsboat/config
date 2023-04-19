@@ -33,6 +33,6 @@ color info color7 color0
 color article default default
 color end-of-text-marker white default
 
-browser "setsid mimeo %u"
+browser "setsid xdg-open %u &"
 macro , open-in-browser
 #macro c set browser "copy(){ printf '%s' $1 | wl-copy ;}; copy "; open-in-browser ; set browser mimeo

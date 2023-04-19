@@ -12,7 +12,7 @@ lyrics_fetchers = musixmatch, plyrics, jahlyrics, internet
 # Interfaz:
 user_interface = 						"alternative"
 alternative_header_first_line_format = 	"$(white)─┤ $b$(cyan)%a$(end)$/b ├─$(end)"
-alternative_header_second_line_format =	"$(16)$(blue)%t (%y)$(end)"
+alternative_header_second_line_format =	"$(white)%t (%y)$(end)"
 alternative_ui_separator_color = 		"default"
 
 # Formato de canción:
