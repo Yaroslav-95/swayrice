@@ -7,22 +7,24 @@ config.load_autoconfig()
 # ------------ Color scheme ----------------
 
 ultramar = {
-    'light0':	'#faf6e5',
-    'light1':	'#e6e3d6',
-    'light2':	'#d2d0c8',
-    'light3':	'#b0afa8',
+    'light0':	'#fcf8e2',
+    'light1':	'#f2eccf',
+    'light2':	'#e0d8b3',
+    'light3':	'#d6cda3',
+    'light4':	'#ccbe99',
     'dark0':	'#151517',
-    'dark1':	'#232328',
-    'dark2':	'#33333a',
-    'dark3':	'#404049',
+    'dark1':	'#212128',
+    'dark2':	'#32323e',
+    'dark3':	'#424a4d',
+    'dark4':	'#424a4d',
     'yellow':	'#e2b55a',
     'orange':	'#af5539',
     'red':      '#b73030',
     'magenta':  '#b48ead',
     'violet':   '#9c6992',
     'blue':	    '#3f6e90',
-    'cyan':	    '#5b8277',
-    'cyan2':	'#7fac96',
+    'cyan0':	'#5b8277',
+    'cyan1':	'#7fac96',
     'green':	'#6d974b'
 }
 
@@ -94,7 +96,7 @@ c.colors.completion.category.border.top = ultramar['dark0']
 
 ## Foreground color of completion widget category headers.
 ## Type: QtColor
-c.colors.completion.category.fg = ultramar['light1']
+c.colors.completion.category.fg = ultramar['light0']
 
 ## Background color of the completion widget for even rows.
 ## Type: QssColor
@@ -102,19 +104,19 @@ c.colors.completion.even.bg = ultramar['dark1']
 
 ## Text color of the completion widget.
 ## Type: QtColor
-c.colors.completion.fg = ultramar['light1']
+c.colors.completion.fg = ultramar['light0']
 
 ## Background color of the selected completion item.
 ## Type: QssColor
-c.colors.completion.item.selected.bg = ultramar['cyan']
+c.colors.completion.item.selected.bg = ultramar['cyan0']
 
 ## Bottom border color of the selected completion item.
 ## Type: QssColor
-c.colors.completion.item.selected.border.bottom = ultramar['cyan']
+c.colors.completion.item.selected.border.bottom = ultramar['cyan0']
 
 ## Top border color of the completion widget category headers.
 ## Type: QssColor
-c.colors.completion.item.selected.border.top = ultramar['cyan']
+c.colors.completion.item.selected.border.top = ultramar['cyan0']
 
 ## Foreground color of the selected completion item.
 ## Type: QtColor
@@ -126,11 +128,11 @@ c.colors.completion.match.fg = ultramar['yellow']
 
 ## Background color of the completion widget for odd rows.
 ## Type: QssColor
-c.colors.completion.odd.bg = ultramar['dark3']
+c.colors.completion.odd.bg = ultramar['dark2']
 
 ## Color of the scrollbar in completion view
 ## Type: QssColor
-c.colors.completion.scrollbar.bg = ultramar['dark3']
+c.colors.completion.scrollbar.bg = ultramar['dark2']
 
 ## Color of the scrollbar handle in completion view.
 ## Type: QssColor
@@ -146,7 +148,7 @@ c.colors.downloads.error.bg = ultramar['red']
 
 ## Foreground color for downloads with errors.
 ## Type: QtColor
-c.colors.downloads.error.fg = ultramar['light1']
+c.colors.downloads.error.fg = ultramar['light0']
 
 ## Color gradient start for download backgrounds.
 ## Type: QtColor
@@ -154,7 +156,7 @@ c.colors.downloads.error.fg = ultramar['light1']
 
 ## Color gradient start for download text.
 ## Type: QtColor
-c.colors.downloads.start.fg = ultramar['light1']
+c.colors.downloads.start.fg = ultramar['light0']
 
 ## Color gradient stop for download backgrounds.
 ## Type: QtColor
@@ -188,11 +190,11 @@ c.hints.border = '1px solid ' + ultramar['dark0'];
 ## Background color for hints. Note that you can use a `rgba(...)` value
 ## for transparency.
 ## Type: QssColor
-c.colors.hints.bg = ultramar['cyan']
+c.colors.hints.bg = ultramar['cyan0']
 
 ## Font color for hints.
 ## Type: QssColor
-c.colors.hints.fg = ultramar['light1']
+c.colors.hints.fg = ultramar['light0']
 
 ## Font color for the matched part of hints.
 ## Type: QssColor
@@ -204,7 +206,7 @@ c.colors.keyhint.bg = 'rgba(27, 30, 37, 80%)'
 
 ## Text color for the keyhint widget.
 ## Type: QssColor
-c.colors.keyhint.fg = ultramar['light1']
+c.colors.keyhint.fg = ultramar['light0']
 
 ## Highlight color for keys to complete the current keychain.
 ## Type: QssColor
@@ -220,7 +222,7 @@ c.colors.messages.error.border = ultramar['red']
 
 ## Foreground color of an error message.
 ## Type: QssColor
-c.colors.messages.error.fg = ultramar['light1']
+c.colors.messages.error.fg = ultramar['light0']
 
 ## Background color of an info message.
 ## Type: QssColor
@@ -232,7 +234,7 @@ c.colors.messages.info.border = ultramar['dark0']
 
 ## Foreground color an info message.
 ## Type: QssColor
-c.colors.messages.info.fg = ultramar['light1']
+c.colors.messages.info.fg = ultramar['light0']
 
 ## Background color of a warning message.
 ## Type: QssColor
@@ -244,7 +246,7 @@ c.colors.messages.warning.border = ultramar['orange']
 
 ## Foreground color a warning message.
 ## Type: QssColor
-c.colors.messages.warning.fg = ultramar['light1']
+c.colors.messages.warning.fg = ultramar['light0']
 
 ## Background color for prompts.
 ## Type: QssColor
@@ -268,7 +270,7 @@ c.colors.statusbar.caret.bg = ultramar['violet']
 
 ## Foreground color of the statusbar in caret mode.
 ## Type: QssColor
-c.colors.statusbar.caret.fg = ultramar['light1']
+c.colors.statusbar.caret.fg = ultramar['light0']
 
 ## Background color of the statusbar in caret mode with a selection.
 ## Type: QssColor
@@ -276,7 +278,7 @@ c.colors.statusbar.caret.selection.bg = ultramar['violet']
 
 ## Foreground color of the statusbar in caret mode with a selection.
 ## Type: QssColor
-c.colors.statusbar.caret.selection.fg = ultramar['light1']
+c.colors.statusbar.caret.selection.fg = ultramar['light0']
 
 ## Background color of the statusbar in command mode.
 ## Type: QssColor
@@ -284,15 +286,15 @@ c.colors.statusbar.command.bg = ultramar['dark0']
 
 ## Foreground color of the statusbar in command mode.
 ## Type: QssColor
-c.colors.statusbar.command.fg = ultramar['light1']
+c.colors.statusbar.command.fg = ultramar['light0']
 
 ## Background color of the statusbar in private browsing + command mode.
 ## Type: QssColor
-c.colors.statusbar.command.private.bg = ultramar['magenta']
+c.colors.statusbar.command.private.bg = ultramar['light1']
 
 ## Foreground color of the statusbar in private browsing + command mode.
 ## Type: QssColor
-c.colors.statusbar.command.private.fg = ultramar['light1']
+c.colors.statusbar.command.private.fg = ultramar['dark0']
 
 ## Background color of the statusbar in insert mode.
 ## Type: QssColor
@@ -308,7 +310,7 @@ c.colors.statusbar.normal.bg = ultramar['dark0']
 
 ## Foreground color of the statusbar.
 ## Type: QssColor
-c.colors.statusbar.normal.fg = ultramar['light1']
+c.colors.statusbar.normal.fg = ultramar['light0']
 
 ## Background color of the statusbar in passthrough mode.
 ## Type: QssColor
@@ -316,19 +318,19 @@ c.colors.statusbar.passthrough.bg = ultramar['blue']
 
 ## Foreground color of the statusbar in passthrough mode.
 ## Type: QssColor
-c.colors.statusbar.passthrough.fg = ultramar['light1']
+c.colors.statusbar.passthrough.fg = ultramar['light0']
 
 ## Background color of the statusbar in private browsing mode.
 ## Type: QssColor
-c.colors.statusbar.private.bg = ultramar['magenta']
+c.colors.statusbar.private.bg = ultramar['light1']
 
 ## Foreground color of the statusbar in private browsing mode.
 ## Type: QssColor
-c.colors.statusbar.private.fg = ultramar['light1']
+c.colors.statusbar.private.fg = ultramar['dark0']
 
 ## Background color of the progress bar.
 ## Type: QssColor
-c.colors.statusbar.progress.bg = ultramar['light1']
+c.colors.statusbar.progress.bg = ultramar['light0']
 
 ## Foreground color of the URL in the statusbar on error.
 ## Type: QssColor
@@ -336,7 +338,7 @@ c.colors.statusbar.url.error.fg = ultramar['red']
 
 ## Default foreground color of the URL in the statusbar.
 ## Type: QssColor
-c.colors.statusbar.url.fg = ultramar['light1']
+c.colors.statusbar.url.fg = ultramar['light0']
 
 ## Foreground color of the URL in the statusbar for hovered links.
 ## Type: QssColor
@@ -345,12 +347,12 @@ c.colors.statusbar.url.hover.fg = ultramar['blue']
 ## Foreground color of the URL in the statusbar on successful load
 ## (http).
 ## Type: QssColor
-c.colors.statusbar.url.success.http.fg = ultramar['light1']
+c.colors.statusbar.url.success.http.fg = ultramar['light0']
 
 ## Foreground color of the URL in the statusbar on successful load
 ## (https).
 ## Type: QssColor
-c.colors.statusbar.url.success.https.fg = ultramar['cyan']
+c.colors.statusbar.url.success.https.fg = ultramar['cyan0']
 
 ## Foreground color of the URL in the statusbar when there's a warning.
 ## Type: QssColor
@@ -366,7 +368,7 @@ c.colors.tabs.even.bg = ultramar['dark0']
 
 ## Foreground color of unselected even tabs.
 ## Type: QtColor
-c.colors.tabs.even.fg = ultramar['light2']
+c.colors.tabs.even.fg = ultramar['light1']
 
 ## Color for the tab indicator on errors.
 ## Type: QtColor
@@ -378,7 +380,7 @@ c.colors.tabs.indicator.start = ultramar['blue']
 
 ## Color gradient end for the tab indicator.
 ## Type: QtColor
-c.colors.tabs.indicator.stop = ultramar['cyan']
+c.colors.tabs.indicator.stop = ultramar['cyan0']
 
 ## Color gradient interpolation system for the tab indicator.
 ## Type: ColorSystem
@@ -395,11 +397,11 @@ c.colors.tabs.odd.bg = ultramar['dark2']
 
 ## Foreground color of unselected odd tabs.
 ## Type: QtColor
-c.colors.tabs.odd.fg = ultramar['light2']
+c.colors.tabs.odd.fg = ultramar['light0']
 
 ## Background color of selected even tabs.
 ## Type: QtColor
-c.colors.tabs.selected.even.bg = ultramar['cyan2']
+c.colors.tabs.selected.even.bg = ultramar['cyan1']
 
 ## Foreground color of selected even tabs.
 ## Type: QtColor
@@ -407,7 +409,7 @@ c.colors.tabs.selected.even.fg = ultramar['dark0']
 
 ## Background color of selected odd tabs.
 ## Type: QtColor
-c.colors.tabs.selected.odd.bg = ultramar['cyan2']
+c.colors.tabs.selected.odd.bg = ultramar['cyan1']
 
 ## Foreground color of selected odd tabs.
 ## Type: QtColor

@@ -4,7 +4,7 @@
 }
 window#waybar {
   	background: #000000;
-  	color: #fdf6e3;
+  	color: #f2eccf;
   	min-height: 0;
 }
 #tray,
@@ -13,7 +13,7 @@ window#waybar {
 #backlight,
 #custom-torrent-status,
 #workspaces {
-  	background: #232328;
+  	background: #151517;
   	border-top: 2px solid #000000;
   	border-bottom: 2px solid #000000;
 }
@@ -26,7 +26,7 @@ window#waybar {
 }
 #workspaces button {
   	padding: 0 6px;
-  	color: #fdf6e3;
+  	color: #fcf8e2;
   	border-radius: 0;
   	border: 1px solid rgba(0, 0, 0, 0);
 }
@@ -61,7 +61,7 @@ window#waybar {
 #custom-waybar-mpris,
 #custom-batwatt,
 #custom-torrent-status {
-	color: #fdf6e3;
+	color: #fcf8e2;
   	padding: 0 6px;
 }
 #custom-weather {

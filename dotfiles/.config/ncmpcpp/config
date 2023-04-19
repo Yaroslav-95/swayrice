@@ -5,19 +5,18 @@
 
 ncmpcpp_directory = ~/.config/ncmpcpp
 
-## Directory for storing downloaded lyrics. It defaults to ~/.lyrics since other
-## MPD clients (eg. ncmpc) also use that location.
+## Directory for storing downloaded lyrics.
 lyrics_directory = ~/.local/share/lyrics
 lyrics_fetchers = musixmatch, plyrics, jahlyrics, internet
 
 # Interfaz:
 user_interface = 						"alternative"
-alternative_header_first_line_format = 	"$(white)─┤ $b$(red)%a$(end)$/b ├─$(end)"
-alternative_header_second_line_format =	"$(16)%t (%y)$(end)"
-alternative_ui_separator_color = 		"cyan"
+alternative_header_first_line_format = 	"$(white)─┤ $b$(cyan)%a$(end)$/b ├─$(end)"
+alternative_header_second_line_format =	"$(16)$(blue)%t (%y)$(end)"
+alternative_ui_separator_color = 		"default"
 
 # Formato de canción:
-song_columns_list_format = 				"$L (10)[white]{n} $1│$7 (20)[cyan]{a} $1│$7 (20)[white]{b} $1│$7 (38)[cyan]{t} $1│$7 (2)[white]{l}"
+song_columns_list_format = 				"$L (10)[white]{n} $1│$7 (20)[cyan]{a} $1│$7 (20)[blue]{b} $1│$7 (38)[blue]{t} $1│$7 (2)[white]{l}"
 now_playing_prefix = 					"$b"
 centered_cursor = 						"no"
 cyclic_scrolling = 						"yes"
@@ -42,9 +41,9 @@ visualizer_look = 						"▋▋"
 
 # Color:
 color1 = 								"white"
-color2 = 								"red"
+color2 = 								"cyan"
 discard_colors_if_item_is_selected = 	"yes"
-main_window_color = 					"white"
+main_window_color = 					"default"
 header_window_color = 					"4"
 progressbar_color = 					"blue"
 statusbar_color = 						"red"

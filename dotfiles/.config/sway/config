@@ -31,12 +31,12 @@ font pango:monospace 9
 # Theme colors
 # class                   border  backgr. text    indic.  child_border
   client.focused          #5b8277 #7fac96 #151517 #9eba86 #5b8277
-  client.focused_inactive #000000 #33333a #7fac96 #000000 #000000
-  client.unfocused        #000000 #33333a #faf6e5 #000000 #000000
-  client.urgent           #cb4b16 #fdf6e3 #1abc9c #268bd2 #cb4b16
-  client.placeholder      #ffffff #0c0c0c #ffffff #ffffff #3f6e90
+  client.focused_inactive #000000 #32323e #7fac96 #000000 #000000
+  client.unfocused        #000000 #32323e #fcf8e2 #000000 #000000
+  client.urgent           #cb4b16 #fcf8e2 #1abc9c #268bd2 #cb4b16
+  client.placeholder      #fcf8e2 #0c0c0c #fcf8e2 #fcf8e2 #3f6e90
 
-  client.background       #1b1e25
+  client.background       #151517
 
 titlebar_padding 6 2
 titlebar_border_thickness 2

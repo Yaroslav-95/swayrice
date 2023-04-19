@@ -5,7 +5,7 @@
  ***********************************************/
 
 * {
-    selected-normal-foreground:  #fcf8e2;
+    selected-normal-foreground:  #151517;
     foreground:                  #fcf8e2;
     normal-foreground:           @foreground;
     alternate-normal-background: #151517;
