@@ -66,7 +66,7 @@ cmd fzf_jump ${{
 cmd fzf_open ${{
 	res="$(find . -type d -path "*/\.*" -prune -o -not -name ".*" -type f | fzf)"
 	if [ -e "$res" ]; then
-	    &xdg-open "$res"
+	    setsid xdg-open "$res" &
 	fi
 }}
 
