@@ -1,0 +1,27 @@
+#!/bin/sh
+# Show the charge or discharge rate of the battery
+
+rate="$(printf "scale=3\n%s\n" "$(grep 'POWER_SUPPLY_POWER_NOW' /sys/class/power_supply/BAT0/uevent | awk -F '=' '{print $2}') / 1000000" | bc)"
+stat="$(grep 'POWER_SUPPLY_STATUS' /sys/class/power_supply/BAT0/uevent | awk -F '=' '{print $2}')"
+
+if [ "$1" = "-p" ]; then
+	# Output in plain text
+	echo "Battery $stat at a rate of ${rate}W"
+	exit 0
+fi
+
+if [ "$stat" = "Charging" ]; then
+	tooltip="Battery is charging at a rate of"
+	arrow="↑"
+	color="#5b8277"
+elif [ "$stat" = "Discharging" ]; then
+	tooltip="Battery is discharging at a rate of"
+	arrow="↓"
+	color="#b2872f"
+else
+	tooltip="Battery is not charging"
+	arrow=""
+	color="#fcf8e2"
+fi
+
+printf '{ "class": "%s", "text": "<span color=\\"%s\\">%s</span> %sW", "tooltip": "%s: %sW" }' "$stat" "$color" "$arrow" "$rate" "$tooltip" "$rate"

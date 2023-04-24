@@ -8,9 +8,7 @@ window#waybar {
   	min-height: 0;
 }
 #tray,
-#battery,
 #network,
-#backlight,
 #custom-torrent-status,
 #workspaces {
   	background: #151517;
