@@ -1,7 +1,7 @@
 font=monospace 10
-text-color=#faf6e5
-background-color=#232328
-border-color=#000000
+text-color=#fcf8e2
+background-color=#212128
+border-color=#424a4d
 default-timeout=5000
 height=700
 max-visible=5

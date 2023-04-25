@@ -8,8 +8,10 @@ fi
 
 case $COLORSCHEME in
 	dark)
+		gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
 		COLORSCHEME="light" ;;
 	*)
+		gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 		COLORSCHEME="dark" ;;
 esac
 

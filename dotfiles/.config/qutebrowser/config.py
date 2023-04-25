@@ -80,7 +80,7 @@ c.url.start_pages = "https://takeoff.mriya.space/"
 c.fonts.default_size = "10pt"
 
 ## Prefer dark mode in websites that support it
-c.colors.webpage.preferred_color_scheme = "dark"
+c.colors.webpage.preferred_color_scheme = "auto"
 
 ## Background color of the completion widget category headers.
 ## Type: QssColor

@@ -44,11 +44,13 @@ titlebar_border_thickness 2
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
 
-# GTK theme and icons
-set $gnome-schema org.gnome.desktop.interface
+# GTK settings
+set $gschema org.gnome.desktop.interface
 exec_always {
-	gsettings set $gnome-schema gtk-theme 'Adwaita-dark'
-	gsettings set $gnome-schema icon-theme 'Arc'
+	gsettings set $gschema gtk-theme	'Adwaita'
+	gsettings set $gschema icon-theme	'Arc'
+	gsettings set $gschema font-name	'monospace 10'
+	gsettings set $gschema color-scheme	'prefer-dark'
 }
 
 ##### Startup scripts and programs #####
