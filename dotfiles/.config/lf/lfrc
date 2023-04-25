@@ -1,11 +1,12 @@
 set icons
-set scrolloff 10
+set scrolloff 3
 set ratios 1:4:3
 set period 1
 set ifs "\n"
 set info size
 set previewer ~/.local/bin/scope
 set mouse on
+set drawbox on
 
 # Custom commands
 
@@ -118,8 +119,4 @@ map P hard_link
 map <a-p> soft_link
 
 # Mouse bindings
-map <m-1> open
-map <m-2> updir
-map <m-3> invert
-map <m-up> up
-map <m-down> down
+map <m-3> :dragon
