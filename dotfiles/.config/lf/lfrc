@@ -67,7 +67,7 @@ cmd fzf_jump ${{
 cmd fzf_open ${{
 	res="$(find . -type d -path "*/\.*" -prune -o -not -name ".*" -type f | fzf)"
 	if [ -e "$res" ]; then
-	    setsid xdg-open "$res" &
+	    setsid mimeo "$res" &
 	fi
 }}
 
@@ -79,7 +79,7 @@ cmd dragon_drop $cp $(dragon-drop --target | sed 's/file:\/\///g') .
 # copy path to clipboard
 cmd yank-path &printf '%s' "$fx" | wl-copy
 
-cmd open &xdg-open $fx
+cmd open &mimeo $fx
 
 cmd hard_link %{{
 		load=$(cat ~/.local/share/lf/files)
