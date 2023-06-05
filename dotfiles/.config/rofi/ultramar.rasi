@@ -8,7 +8,7 @@
     selected-normal-foreground:  #151517;
     foreground:                  #fcf8e2;
     normal-foreground:           @foreground;
-    alternate-normal-background: #151517;
+    alternate-normal-background: #15151777;
     red:                         #b73030;
     selected-urgent-foreground:  @foreground;
     blue:                        #3f6e90;
@@ -19,10 +19,10 @@
     active-foreground:           @blue;
     lightbg:                     rgba ( 238, 232, 213, 100 % );
     selected-active-foreground:  rgba ( 249, 249, 249, 100 % );
-    alternate-active-background: rgba ( 75, 81, 96, 89 % );
-    background:                  #000000;
+    alternate-active-background: rgba ( 75, 81, 96, 50 % );
+    background:                  #00000099;
     alternate-normal-foreground: @foreground;
-    normal-background:           @background;
+    normal-background:           #00000077;
     lightfg:                     rgba ( 88, 104, 117, 100 % );
     selected-normal-background:  @cyan1;
     border-color:                @cyan;
@@ -31,7 +31,6 @@
     urgent-background:           rgba ( 29, 31, 33, 17 % );
     selected-urgent-background:  @red;
     alternate-urgent-foreground: @urgent-foreground;
-    background-color:            @background;
     alternate-active-foreground: @active-foreground;
     active-background:           rgba ( 29, 31, 33, 17 % );
     selected-active-background:  rgba ( 68, 145, 237, 100 % );
@@ -46,7 +45,7 @@ mainbox {
     padding: 0;
 }
 message {
-    border:       2px 0px 0px ;
+    border:       0px ;
     border-color: @separatorcolor;
     padding:      1px ;
 }
@@ -57,7 +56,7 @@ listview {
     fixed-height: false;
     lines: 20;
     dynamic: true;
-    border:       2px 0px 0px ;
+    border:       0px ;
     border-color: @separatorcolor;
     spacing:      2px ;
     scrollbar:    true;
@@ -72,7 +71,6 @@ element-text {
     text-color:       inherit;
 }
 element.normal.normal {
-    background-color: @normal-background;
     text-color:       @normal-foreground;
 }
 element.normal.urgent {

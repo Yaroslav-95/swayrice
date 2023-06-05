@@ -41,6 +41,16 @@ font pango:monospace 9
 titlebar_padding 6 2
 titlebar_border_thickness 2
 
+# swayfx
+shadows enable
+shadow_blur_radius 15
+shadow_color #000000aa
+blur enable
+blur_radius 8
+
+layer_effects "rofi" blur enable; shadows enable
+layer_effects "notifications" blur enable; shadows enable
+
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
 
