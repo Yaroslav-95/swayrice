@@ -156,12 +156,14 @@ set $ogaps 0
 gaps inner $igaps
 gaps outer $ogaps
 
-# Smart gaps (gaps used if only more than one container on the workspace)
-# smart_gaps on
+# Smart borders (draw borders around container only if it is not the only
+# container on this workspace)
 
-# Smart borders (draw borders around container only if it is not the only container on this workspace)
-# on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-smart_borders no_gaps
+# on|no_gaps (on=always activate and no_gaps=only activate if the gap size to
+# the edge of the screen is 0)
+
+# Currently broken on swayfx
+smart_borders off
 
 ##### Bindsyms (layout-independent) #####
 bindsym --to-code {
