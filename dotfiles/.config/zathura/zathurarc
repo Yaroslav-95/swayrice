@@ -1,2 +1,6 @@
+set default-bg \#151517
 set selection-clipboard clipboard
 set window-title-basename
+set recolor-keephue
+set recolor-lightcolor \#fcf8e2
+set recolor-darkcolor \#151517
