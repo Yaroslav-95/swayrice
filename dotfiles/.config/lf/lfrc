@@ -5,8 +5,8 @@ set period 1
 set ifs "\n"
 set info size
 set previewer ~/.local/bin/scope
-set mouse on
-set drawbox on
+set mouse true
+set drawbox true
 
 # Custom commands
 
