@@ -54,31 +54,31 @@ get_unmountable() {
 }
 
 mount_dev() {
-	fstype="$(lsblk -r -o FSTYPE "/dev/$1" | tail -n 1)"
+	fstype="$(udevadm info -x /dev/sdd1 | grep FS_TYPE | cut -d '=' -f2)"
 	part="/dev/$1"
 	if [ "$fstype" = "crypto_LUKS" ]; then
 		password="$(echo "" | rofi -dmenu -password -p "Enter passphrase for encrypted drive" --tf="$BEMENU_TF" --tb="$BEMENU_NB" --ff="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB" --monitor="$BEMENU_MONITOR")"
 		if [ -z "$password" ]; then
   	  	  exit 0
 		fi
-		printf "%s" "$password" > "$HOME/.cache/diskey"
+		echo -n "$password" > "$HOME/.cache/diskey"
 		part="$(udisksctl unlock --key-file="$HOME/.cache/diskey" -b "/dev/$1" 2> $HOME/.cache/udiskerr | cut -d " " -f4 )"
 		part="${part%?}"
 		rm -f "$HOME/.cache/diskey"
-		if [ $? -ne 0 ]; then
-			notify_and_end "Error mounting: $(cat $HOME/.cache/udiskerr)" 1
+		if [ $? -ne 0 -o -z "$part" ]; then
+			notify_and_end "$(cat $HOME/.cache/udiskerr)" 1
 		fi
 	fi
 	message="$(udisksctl mount -b "$part" 2> $HOME/.cache/udiskerr)"
 	if [ $? -eq 0 ]; then
 		notify_and_end "$message" 0
 	else
-		notify_and_end "Error mounting: $(cat $HOME/.cache/udiskerr)" 1
+		notify_and_end "Error mounting $part: $(cat $HOME/.cache/udiskerr)" 1
 	fi
 }
 
 unmount_dev() {
-  fstype="$(lsblk -r -o FSTYPE "/dev/$1" | sed "2q;d")"
+  fstype="$(udevadm info -x /dev/sdd1 | grep FS_TYPE | cut -d '=' -f2)"
   if [ "$fstype" = "crypto_LUKS" ]; then
     volume="/dev/mapper/$(lsblk -r -o NAME "/dev/$1" | tail -n 1)"
     if udisksctl unmount -b "$volume" 2> $HOME/.cache/udiskerr && udisksctl lock -b "/dev/$1" 2> $HOME/.cache/udiskerr; then
@@ -97,7 +97,7 @@ unmount_dev() {
 
 get_usb_storage() {
 	for dev in /sys/block/*; do
-		if udevadm info --query=property --path=$dev | grep -q ^ID_BUS=usb; then
+		if udevadm info --query=property --path=$dev | grep -q USB; then
 			echo "$(cut -d "/" -f4 <<< ${dev})"
 		fi
 	done
