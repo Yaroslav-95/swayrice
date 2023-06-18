@@ -54,8 +54,8 @@ get_unmountable() {
 }
 
 mount_dev() {
-	fstype="$(udevadm info -x /dev/sdd1 | grep FS_TYPE | cut -d '=' -f2)"
 	part="/dev/$1"
+	fstype="$(udevadm info -x $part | grep FS_TYPE | cut -d '=' -f2)"
 	if [ "$fstype" = "crypto_LUKS" ]; then
 		password="$(echo "" | rofi -dmenu -password -p "Enter passphrase for encrypted drive" --tf="$BEMENU_TF" --tb="$BEMENU_NB" --ff="$BEMENU_NB" --fb="$BEMENU_NB" --fn="$BEMENU_FN" --nb="$BEMENU_NB" --nf="$BEMENU_NF" --hf="$BEMENU_HF" --hb="$BEMENU_HB" --monitor="$BEMENU_MONITOR")"
 		if [ -z "$password" ]; then
