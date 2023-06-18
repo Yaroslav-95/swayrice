@@ -78,7 +78,8 @@ mount_dev() {
 }
 
 unmount_dev() {
-  fstype="$(udevadm info -x /dev/sdd1 | grep FS_TYPE | cut -d '=' -f2)"
+	part="/dev/$1"
+  fstype="$(udevadm info -x $part | grep FS_TYPE | cut -d '=' -f2)"
   if [ "$fstype" = "crypto_LUKS" ]; then
     volume="/dev/mapper/$(lsblk -r -o NAME "/dev/$1" | tail -n 1)"
     if udisksctl unmount -b "$volume" 2> $HOME/.cache/udiskerr && udisksctl lock -b "/dev/$1" 2> $HOME/.cache/udiskerr; then
