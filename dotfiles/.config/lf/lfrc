@@ -93,6 +93,50 @@ cmd soft_link %{{
 		ln -s $list .
 }}
 
+cmd paste &{{
+	set -- $(cat ~/.local/share/lf/files)
+	mode="$1"
+	shift
+	case "$mode" in
+		copy)
+			rsync -rlDvh --ignore-existing --progress -- "$@" . |
+			stdbuf -i0 -o0 -e0 tr '\r' '\n' |
+			while IFS= read -r line; do
+				lf -remote "send $id echo $line"
+			done
+			;;
+		move)
+			mv -n -- "$@" .
+			lf -remote "send $id clear"
+			;;
+	esac
+	lf -remote "send $id reload"
+}}
+
+cmd archive &{{
+	set -- $(cat ~/.local/share/lf/files)
+	mode="$1"
+	shift
+	case "$mode" in
+		copy)
+			rsync -avhH --delete --progress -- "$@" . |
+			stdbuf -i0 -o0 -e0 tr '\r' '\n' |
+			while IFS= read -r line; do
+				lf -remote "send $id echo $line"
+			done
+			;;
+		move)
+			rsync -avhH --delete --remove-source-files --progress -- "$@" . |
+			stdbuf -i0 -o0 -e0 tr '\r' '\n' |
+			while IFS= read -r line; do
+				lf -remote "send $id echo $line"
+			done
+			lf -remote "send $id clear"
+			;;
+	esac
+	lf -remote "send $id reload"
+}}
+
 # Bindings
 map A rename
 map c
@@ -117,6 +161,7 @@ map Y :yank-path
 map L $LESSOPEN='| ~/.local/bin/scope %s' less -r $f # open file preview in pager
 map P hard_link
 map <a-p> soft_link
+map r archive
 
 # Mouse bindings
 map <m-3> :dragon
