@@ -19,5 +19,8 @@ if [ -n "$1" ]; then
 fi
 
 
-direction="$(printf "left\nright\nup\ndown\nwidth\nheight" | rofi -dmenu -matching prefix -p "Select resize direction or dimension")"
+direction="$(printf "width\nheight\nleft\nright\nup\ndown" | rofi -dmenu -matching prefix -p "Select resize direction or dimension")"
+if [ -z "$direction" ]; then
+	exit
+fi
 resize "$direction"
