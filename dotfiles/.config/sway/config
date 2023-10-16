@@ -129,7 +129,7 @@ seat * hide_cursor when-typing enable
 # Tex Shinobi Trackpoint 
 input 1241:1031:USB-HID_Keyboard_Mouse {
 	accel_profile adaptive
-	pointer_accel 0
+	pointer_accel -0.3
 	middle_emulation enabled
 }
 
