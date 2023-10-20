@@ -68,6 +68,8 @@ TERM xterm-256color
 TERM xterm-88color
 TERM xterm-color
 TERM xterm-debian
+TERM foot
+TERM foot-extra
 
 # Below are the color init strings for the basic file types. A color init
 # string consists of one or more of the following numeric codes:
@@ -182,6 +184,7 @@ EXEC 01;32
 .mpeg 01;35
 .m2v 01;35
 .mkv 01;35
+.webp 01;35
 .webm 01;35
 .ogm 01;35
 .mp4 01;35
@@ -205,8 +208,7 @@ EXEC 01;32
 .yuv 01;35
 .cgm 01;35
 .emf 01;35
-
-# http://wiki.xiph.org/index.php/MIME_Types_and_File_Extensions
+.nef 01;35
 .axv 01;35
 .anx 01;35
 .ogv 01;35
@@ -221,6 +223,9 @@ EXEC 01;32
 .log 00;32
 .tex 00;32
 .doc 00;32
+.docx 00;32
+.md 00;32
+.html 00;32
 
 # audio formats
 .aac 00;36
@@ -233,10 +238,9 @@ EXEC 01;32
 .mp3 00;36
 .mpc 00;36
 .ogg 00;36
+.opus 00;36
 .ra 00;36
 .wav 00;36
-
-# http://wiki.xiph.org/index.php/MIME_Types_and_File_Extensions
 .axa 00;36
 .oga 00;36
 .spx 00;36
