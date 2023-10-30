@@ -81,6 +81,8 @@ exec mako
 exec_always setsessionenv
 # xdg-desktop-portal screen sharing crap
 exec dbus-update-activation-environment DISPLAY I3SOCK SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+# IME (env var "unset" so that it will shut up about Wayland support)
+exec GTK_IM_MODULE= fcitx5 -d
 
 # Workspace names
 # to display names or symbols instead of plain workspace numbers you can use
@@ -180,7 +182,7 @@ bindsym --to-code {
 	$mod+q kill
 
 	# rofi launcher
-	$mod+d exec rofi -show drun -sidebar-mode -modi "drun,run,file-browser-extended,ssh,combi"
+	$mod+d exec rofi -show drun -sidebar-mode -modi "drun,run,filebrowser,ssh,combi"
 
 	# Mako (notifications)
 	$mod+Ctrl+space       exec "makoctl dismiss"

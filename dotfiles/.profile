@@ -11,6 +11,12 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 export _JAVA_AWT_WM_NONREPARENTING=1
 export MOZ_ENABLE_WAYLAND=1
 
+# Input method
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export SDL_IM_MODULE=fcitx
+export XMODIFIERS='@im=fcitx'
+
 # User-specific environment and startup programs:
 export LANG=en_US.UTF-8
 export TERMINAL=foot
