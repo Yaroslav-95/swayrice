@@ -46,7 +46,7 @@ shadows enable
 shadow_blur_radius 15
 shadow_color #000000aa
 blur enable
-blur_radius 5
+blur_radius 7
 blur_passes 3
 
 layer_effects "rofi" blur enable; shadows enable
@@ -239,8 +239,8 @@ bindsym --to-code {
 	$mod+Shift+bracketright exec menuwin -s
 
 	# Sticky float to a bottom corner
-	$mod+Shift+b floating toggle; sticky toggle; exec picinpic
-	$mod+Ctrl+b floating toggle; sticky toggle; exec picinpic left
+	$mod+Shift+b exec picinpic
+	$mod+Ctrl+b exec picinpic left
 
 	# change focus
 	$mod+h focus left

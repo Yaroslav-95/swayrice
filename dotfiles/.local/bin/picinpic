@@ -1,18 +1,15 @@
 #!/bin/sh
 
-currentmonrect="$(swaymsg -t get_outputs | jq ".[] | select(.focused == true) | .rect")"
-resx=$(echo $currentmonrect | jq --raw-output ".width")
-resy=$(echo $currentmonrect | jq --raw-output ".height")
-
-sx=$(($resx / 4))
-sy=$(($resy / 4))
-posx=$(($resx - $sx - 15))
-posy=$(($resy - $sy - 40))
-
-swaymsg resize set "$sx" "$sy"
+swaymsg floating toggle
+sleep 0.1
+isfloat=$(swaymsg -t get_workspaces | jq ".[] | select(.focused == true).floating_nodes[] | select(.focused == true) | any")
+if [ "$isfloat" = "true" ]; then
+	swaymsg sticky enable
+	swaymsg resize set 25ppt 25ppt
+fi
 
 if [ "$1" = "left" ]; then
-  swaymsg move position -- "-15" "$posy"
+  swaymsg move position -- "0ppt" "75ppt"
   exit
 fi
-swaymsg move position -- "$posx" "$posy"
+swaymsg move position -- "75ppt" "75ppt"
