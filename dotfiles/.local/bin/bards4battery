@@ -1,7 +1,7 @@
 #!/bin/sh
 
-if [ -f /sys/class/power_supply/sony_controller_battery_*/capacity ]; then
-  percentage=$(cat /sys/class/power_supply/sony_controller_battery_*/capacity)
+if [ -f /sys/class/power_supply/ps-controller-battery-*/capacity ]; then
+  percentage=$(cat /sys/class/power_supply/ps-controller-battery-*/capacity)
 
   if [ percentage -lt 40 ]; then
     printf "<span color=\"#b2872f\">%s%%</span>" "$percentage"
