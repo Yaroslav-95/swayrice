@@ -1,6 +1,6 @@
 text/plain; $EDITOR %s ;
+text/html; (xdg-open %s && sleep 1) ; nametemplate=%s.html; needsterminal;
 text/html; lynx -assume_charset=%{charset} -display_charset=utf-8 -dump %s; nametemplate=%s.html; copiousoutput;
-text/html; mutt-open %s ; nametemplate=%s.html
 image/*; mutt-open %s ;
 video/*; setsid mpv --quiet %s &; copiousoutput
 audio/*; mpv %s ;
